@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.ysarch.vmall.common.context.CustomActivityManager;
 import com.ysarch.vmall.component.dialog.ClipSearchDialog;
 import com.ysarch.vmall.component.dialog.TBShareCmdDialogNew;
@@ -42,21 +43,22 @@ public class ClipContentHelper {
             @Override
             public void run() {
 //                if (!activity.isFinishing() && !activity.isDestroyed()) {
-                String copy = SystemUtil.getCopy(CustomActivityManager.getInstance().getCurrentActivity());
-                if(copy!=null&&!copy.equals(mContent)) {
-                    mContent = copy;
+                String content = SystemUtil.getCopy(CustomActivityManager.getInstance().getCurrentActivity());
 
-                    if (!TextUtils.isEmpty(mContent)) {
-                        if (mContent.contains("http")) {
-                            analyzeTBShareCmd(mContent);
-                            return;
-                        }
-                        showSearchContentDialog(mContent);
+                if (!TextUtils.isEmpty(content)) {
+                    if (content.contains("https")) {
+                        SystemUtil.clearClipboard(CustomActivityManager.getInstance().getCurrentActivity());
+                        JsonObject jsonObject = new JsonObject();
+                        jsonObject.addProperty("content", content);
+                        analyzeTBShareCmd(jsonObject.toString());
+                        return;
                     }
-
-                    SystemUtil.clearClipboard(CustomActivityManager.getInstance().getCurrentActivity());
-//                }
+                    JsonObject jsonObject = new JsonObject();
+                    jsonObject.addProperty("content", content);
+                    analyzeTBShareCmd(jsonObject.toString());
+                    showSearchContentDialog(content);
                 }
+//                }
             }
         }, 1500);
     }

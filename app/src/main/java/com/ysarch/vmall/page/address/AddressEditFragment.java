@@ -2,6 +2,7 @@ package com.ysarch.vmall.page.address;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,18 +11,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.ysarch.uibase.base.BaseFragment;
 import com.ysarch.uibase.common.WinSoftKeyboardManager;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.domain.bean.AddressItemBean;
+import com.ysarch.vmall.domain.bean.JsonBean;
 import com.ysarch.vmall.domain.bean.RegionsResult;
 import com.ysarch.vmall.domain.bean.ZoneItemBean;
 import com.ysarch.vmall.domain.constant.BundleKey;
 import com.ysarch.vmall.page.address.presenter.AddressEditPresenter;
+import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.ResUtils;
 import com.ysarch.vmall.utils.SystemUtil;
 import com.ysarch.vmall.utils.VMallUtils;
@@ -29,6 +34,7 @@ import com.yslibrary.utils.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -59,9 +65,9 @@ public class AddressEditFragment extends BaseFragment<AddressEditPresenter> {
 
 
     //    private ArrayList<ZoneItemBean> mProvinces = new ArrayList<>();
-    private ArrayList<ZoneItemBean> mProvinces = new ArrayList<>();
-    private ArrayList<ArrayList<ZoneItemBean>> mCities = new ArrayList<>();
-    private ArrayList<ArrayList<ArrayList<ZoneItemBean>>> mAreaes = new ArrayList<>();
+//    private ArrayList<ZoneItemBean> mProvinces = new ArrayList<>();
+//    private ArrayList<ArrayList<ZoneItemBean>> mCities = new ArrayList<>();
+//    private ArrayList<ArrayList<ArrayList<ZoneItemBean>>> mAreaes = new ArrayList<>();
     private int mProvinceSelIndex = -1;
     private int mCitySelIndex = -1;
 
@@ -69,6 +75,82 @@ public class AddressEditFragment extends BaseFragment<AddressEditPresenter> {
     private boolean mShowOpt = true;
     private boolean mAutoSelectDefault = false;
     private boolean mIsConfirmOrder = false;
+
+    private List<JsonBean> options1Items = new ArrayList<>();
+    private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
+    private ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<>();
+
+
+    public void onRegionDataSucc(RegionsResult regionsResult) {
+//        mProvinces.clear();
+//        mProvinces.addAll(regionsResult.getProvinceList());
+
+        List<ZoneItemBean> provinceList = regionsResult.getProvinceList();
+        List<ZoneItemBean> cityList = regionsResult.getCityList();
+        List<ZoneItemBean> districtList = regionsResult.getDistrictList();
+
+
+        for (ZoneItemBean provinceItemBean : provinceList){
+            JsonBean jsonBean = new JsonBean();
+            jsonBean.setText(provinceItemBean.getText());
+            jsonBean.setValue(provinceItemBean.getValue());
+
+            List<JsonBean.CityBean> cityBeans = new ArrayList<>();
+            for (ZoneItemBean cityItemBean : cityList){
+                if(cityItemBean.getParentVal().equals(jsonBean.getValue())){
+                    JsonBean.CityBean cityBean = new JsonBean.CityBean();
+                    cityBean.setParentVal(cityItemBean.getParentVal());
+                    cityBean.setText(cityItemBean.getText());
+                    cityBean.setValue(cityItemBean.getValue());
+                    List<ZoneItemBean> zoneItemBeans = new ArrayList<>();
+                    for(ZoneItemBean districtItemBean : districtList){
+                        if(districtItemBean.getParentVal().equals(cityItemBean.getValue())){
+                            zoneItemBeans.add(districtItemBean);
+                        }
+                    }
+                    cityBean.setArea(zoneItemBeans);
+                    cityBeans.add(cityBean);
+                }
+            }
+            jsonBean.setCityList(cityBeans);
+            options1Items.add(jsonBean);
+        }
+
+
+        initJsonData();
+
+
+        showRegionPicker();
+    }
+
+    private void initJsonData() {
+
+        for (int i = 0; i < options1Items.size(); i++) {//遍历省份
+            ArrayList<String> cityList = new ArrayList<>();//该省的城市列表（第二级）
+            ArrayList<ArrayList<String>> province_AreaList = new ArrayList<>();//该省的所有地区列表（第三极）
+
+            for (int c = 0; c < options1Items.get(i).getCityList().size(); c++) {//遍历该省份的所有城市
+                String cityName = options1Items.get(i).getCityList().get(c).getText();
+                cityList.add(cityName);//添加城市
+                ArrayList<String> city_AreaList = new ArrayList<>();//该城市的所有地区列表
+
+                for(int j=0;j< options1Items.get(i).getCityList().get(c).getArea().size();j++){
+                    city_AreaList.add(options1Items.get(i).getCityList().get(c).getArea().get(j).getText());
+                }
+                province_AreaList.add(city_AreaList);//添加该省所有地区数据
+            }
+
+            /**
+             * 添加城市数据
+             */
+            options2Items.add(cityList);
+
+            /**
+             * 添加地区数据
+             */
+            options3Items.add(province_AreaList);
+        }
+    }
 
 
     @Override
@@ -180,7 +262,7 @@ public class AddressEditFragment extends BaseFragment<AddressEditPresenter> {
                 break;
             case R.id.tv_region_edit_address:
                 SystemUtil.hideKeyboard(view);
-                if (CollectionUtils.isEmpty(mProvinces)) {
+                if (CollectionUtils.isEmpty(options1Items)) {
                     getPresenter().checkRegionDatas();
                 } else {
                     showRegionPicker();
@@ -204,77 +286,89 @@ public class AddressEditFragment extends BaseFragment<AddressEditPresenter> {
         }
     }
 
-    public void onRegionDataSucc(RegionsResult regionsResult) {
-        mProvinces.clear();
-        mProvinces.addAll(regionsResult.getCityList());
-
-        // 地区数据解析成选择器格式
-        ArrayList<ZoneItemBean> cities = new ArrayList<>();
-        cities.addAll(regionsResult.getDistrictList());
-
-        for (int i = 0; i < mProvinces.size(); i++) {
-            Iterator<ZoneItemBean> citiesIterator = cities.iterator();
-            ArrayList<ZoneItemBean> provinceCities = new ArrayList<>();
-
-            ArrayList<ArrayList<ZoneItemBean>> cityDistricts = new ArrayList<>();
-            ZoneItemBean province = mProvinces.get(i);
-
-            if (!TextUtils.isEmpty(mProvinceLabel) && mProvinceSelIndex == -1) {
-                if (mProvinceLabel.equals(province.getText())) {
-                    mProvinceSelIndex = i;
-                }
-            }
-            while (citiesIterator.hasNext()) {
-                ZoneItemBean zoneItemBean = citiesIterator.next();
-                if (zoneItemBean.getParentVal().equals(province.getValue())) {
-                    provinceCities.add(zoneItemBean);
-                    citiesIterator.remove();
-
-//                    ArrayList<ZoneItemBean> cityDis = new ArrayList<>();
-//                    Iterator<ZoneItemBean> districtsIterator = districts.iterator();
-//                    while (districtsIterator.hasNext()){
-//                        ZoneItemBean districtBean = districtsIterator.next();
-//                        if(districtBean.getParentVal().equals(zoneItemBean.getValue())){
-//                            cityDis.add(districtBean);
-//                            districtsIterator.remove();
-//                        }
-//                    }
-//                    cityDistricts.add(cityDis);
-                }
-            }
-            mCities.add(provinceCities);
-//            mDistricts.add(cityDistricts);
-        }
-
-        if (mCitySelIndex == -1
-                && !TextUtils.isEmpty(mCityLabel) && mProvinceSelIndex != -1) {
-            ArrayList<ZoneItemBean> cityBeans = mCities.get(mProvinceSelIndex);
-            for (int i = 0; i < cityBeans.size(); i++) {
-                ZoneItemBean zoneItemBean = cityBeans.get(i);
-                if (zoneItemBean.getText().equals(mCityLabel)) {
-                    mCitySelIndex = i;
-                    break;
-                }
-            }
-        }
-
-        showRegionPicker();
-    }
+//    public void onRegionDataSucc(RegionsResult regionsResult) {
+//        mProvinces.clear();
+//        mProvinces.addAll(regionsResult.getCityList());
+//
+//        // 地区数据解析成选择器格式
+//        ArrayList<ZoneItemBean> cities = new ArrayList<>();
+//        cities.addAll(regionsResult.getDistrictList());
+//
+//        for (int i = 0; i < mProvinces.size(); i++) {
+//            Iterator<ZoneItemBean> citiesIterator = cities.iterator();
+//            ArrayList<ZoneItemBean> provinceCities = new ArrayList<>();
+//
+//            ArrayList<ArrayList<ZoneItemBean>> cityDistricts = new ArrayList<>();
+//            ZoneItemBean province = mProvinces.get(i);
+//
+//            if (!TextUtils.isEmpty(mProvinceLabel) && mProvinceSelIndex == -1) {
+//                if (mProvinceLabel.equals(province.getText())) {
+//                    mProvinceSelIndex = i;
+//                }
+//            }
+//            while (citiesIterator.hasNext()) {
+//                ZoneItemBean zoneItemBean = citiesIterator.next();
+//                if (zoneItemBean.getParentVal().equals(province.getValue())) {
+//                    provinceCities.add(zoneItemBean);
+//                    citiesIterator.remove();
+//
+////                    ArrayList<ZoneItemBean> cityDis = new ArrayList<>();
+////                    Iterator<ZoneItemBean> districtsIterator = districts.iterator();
+////                    while (districtsIterator.hasNext()){
+////                        ZoneItemBean districtBean = districtsIterator.next();
+////                        if(districtBean.getParentVal().equals(zoneItemBean.getValue())){
+////                            cityDis.add(districtBean);
+////                            districtsIterator.remove();
+////                        }
+////                    }
+////                    cityDistricts.add(cityDis);
+//                }
+//            }
+//            mCities.add(provinceCities);
+////            mDistricts.add(cityDistricts);
+//        }
+//
+//        if (mCitySelIndex == -1
+//                && !TextUtils.isEmpty(mCityLabel) && mProvinceSelIndex != -1) {
+//            ArrayList<ZoneItemBean> cityBeans = mCities.get(mProvinceSelIndex);
+//            for (int i = 0; i < cityBeans.size(); i++) {
+//                ZoneItemBean zoneItemBean = cityBeans.get(i);
+//                if (zoneItemBean.getText().equals(mCityLabel)) {
+//                    mCitySelIndex = i;
+//                    break;
+//                }
+//            }
+//        }
+//
+//        showRegionPicker();
+//    }
 
     private void showRegionPicker() {
         int optIndex1 = mProvinceSelIndex == -1 ? 0 : mProvinceSelIndex;
         int optIndex2 = mCitySelIndex == -1 ? 0 : mCitySelIndex;
         OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(),
                 (options1, options2, options3, v) -> {
-                    mProvinceSelIndex = options1;
-                    mCitySelIndex = options2;
-                    //返回的分别是三个级别的选中位置
-                    mProvinceLabel = mProvinces.size() > 0 ?
-                            mProvinces.get(options1).getPickerViewText() : "";
-                    mCityLabel = mCities.size() > 0
-                            && mCities.get(options1).size() > 0 ?
-                            mCities.get(options1).get(options2).getPickerViewText() : "";
-                    mTVRegion.setText(mProvinceLabel + mCityLabel);
+//                    mProvinceSelIndex = options1;
+//                    mCitySelIndex = options2;
+//                    //返回的分别是三个级别的选中位置
+//                    mProvinceLabel = mProvinces.size() > 0 ?
+//                            mProvinces.get(options1).getPickerViewText() : "";
+//                    mCityLabel = mCities.size() > 0
+//                            && mCities.get(options1).size() > 0 ?
+//                            mCities.get(options1).get(options2).getPickerViewText() : "";
+//                    mTVRegion.setText(mProvinceLabel + mCityLabel);
+                    Log.e("niko","options1 = " +options1 + "options2 = " +options2+" options3 = " +options3 );
+
+                    String result = "";
+                    String province = " "+options1Items.get(options1).getText();
+                    JsonBean.CityBean cityBean = options1Items.get(options1).getCityList().get(options2);
+                    String city = options1Items.get(options1).getCityList().get(options2).getText();
+                    String area = "";
+                    if(cityBean.getArea()!=null&&cityBean.getArea().size()>0){
+                        area = cityBean.getArea().get(options3).getText()+" ";
+                    }
+                    mTVRegion.setText(area+city+province);
+
                 })
 
                 .setTitleText(ResUtils.getString(R.string.label_city_choose))
@@ -287,9 +381,43 @@ public class AddressEditFragment extends BaseFragment<AddressEditPresenter> {
                 .setSubmitColor(0xff666666)
                 .setContentTextSize(14)
                 .build();
-        pvOptions.setPicker(mProvinces, mCities);
-        pvOptions.setSelectOptions(optIndex1, optIndex2);
+//        pvOptions.setPicker(mProvinces, mCities);
+//        pvOptions.setSelectOptions(optIndex1, optIndex2);
+        pvOptions.setPicker(options1Items, options2Items, options3Items);
         pvOptions.show();
+
+
+//        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), new OnOptionsSelectListener() {
+//            @Override
+//            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+//                //返回的分别是三个级别的选中位置
+//                String opt1tx = options1Items.size() > 0 ?
+//                        options1Items.get(options1).getPickerViewText() : "";
+//
+//                String opt2tx = options2Items.size() > 0
+//                        && options2Items.get(options1).size() > 0 ?
+//                        options2Items.get(options1).get(options2) : "";
+//
+//                String opt3tx = options2Items.size() > 0
+//                        && options3Items.get(options1).size() > 0
+//                        && options3Items.get(options1).get(options2).size() > 0 ?
+//                        options3Items.get(options1).get(options2).get(options3) : "";
+//
+//                String tx = opt1tx + opt2tx + opt3tx;
+//                Toast.makeText(getContext(), tx, Toast.LENGTH_SHORT).show();
+//            }
+//        })
+//
+//                .setTitleText("城市选择")
+//                .setDividerColor(Color.BLACK)
+//                .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
+//                .setContentTextSize(20)
+//                .build();
+//
+//        /*pvOptions.setPicker(options1Items);//一级选择器
+//        pvOptions.setPicker(options1Items, options2Items);//二级选择器*/
+//        pvOptions.setPicker(options1Items, options2Items, options3Items);//三级选择器
+//        pvOptions.show();
     }
 
     public void onRegionDataFail() {
