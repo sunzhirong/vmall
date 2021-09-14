@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="19dp"
+    android:paddingTop="24dp"
+    android:background="@drawable/shape_round_rect_r4_fill_white"
+    android:orientation="vertical">
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/height_min_dialog_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_simple_dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"dp
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="title" />
+
+        <TextView
+            android:id="@+id/tv_simple_dialog_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingTop="20dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="20dp"
+            android:text="支付密码错误，请重试"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+    </LinearLayout>-->
+
+    <TextView
+        android:id="@+id/tv_title_simple_dialog_singlebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_marginBottom="14dp"
+        android:textColor="#333333"
+        android:paddingVertical="0dp"
+        android:textSize="20sp"
+        android:visibility="gone"
+        tools:text="title" />
+
+    <TextView
+        android:id="@+id/tv_content_simple_dialog_singlebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:gravity="center"
+        android:layout_marginTop="0dp"
+        android:padding="0dp"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="#222222"
+        android:textSize="17sp"
+        tools:text="支付密码错误，请重试" />
+
+    <TextView
+        android:id="@+id/tv_confirm_simple_dialog_singlebtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/selector_primary_round_rect_r4"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="15sp" />
+
+</LinearLayout>

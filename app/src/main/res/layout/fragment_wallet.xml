@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/margin_h_common"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="35dp"
+        android:background="@drawable/my_wallet_bg">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_my_balance"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="$"
+                android:textColor="#ffffffff"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_income_cash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:gravity="center"
+                android:text="0.00"
+                android:textColor="#ffffffff"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="47dp"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:visibility="gone">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="冻结金额(元)"-->
+<!--                android:textColor="#99ffffff"-->
+<!--                android:textSize="14sp" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/img_explain"-->
+<!--                android:layout_width="18dp"-->
+<!--                android:layout_height="18dp"-->
+<!--                android:layout_marginStart="3dp"/>-->
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="3dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="end"-->
+<!--                    android:text="¥"-->
+<!--                    android:textColor="#ffffffff"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_freeze_up_cash"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="0.00"-->
+<!--                    android:textColor="#ffffffff"-->
+<!--                    android:textSize="20sp" />-->
+
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+
+    </FrameLayout>
+
+
+
+<!--    <com.ysarch.uibase.textview.CompatTextView-->
+<!--        android:id="@+id/ctv_transaction_details_cash"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="52dp"-->
+<!--        android:layout_marginTop="19dp"-->
+<!--        android:drawableRight="@drawable/ic_arrow_grey_right"-->
+<!--        android:gravity="center_vertical|left"-->
+<!--        android:text="@string/label_transaction_detail"-->
+<!--        android:textColor="#FF333333"-->
+<!--        android:textSize="16sp"/>-->
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/thickness_line_divide"-->
+<!--        android:background="@color/gray_divide_line" />-->
+
+
+<!--    <com.ysarch.uibase.textview.CompatTextView-->
+<!--        android:id="@+id/ctv_balance_cash"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="52dp"-->
+<!--        android:drawableRight="@drawable/ic_arrow_grey_right"-->
+<!--        android:gravity="center_vertical|left"-->
+<!--        android:text="@string/label_withdraw_deposit"-->
+<!--        android:textColor="#FF333333"-->
+<!--        android:textSize="16sp" />-->
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/thickness_line_divide"-->
+<!--        android:background="@color/gray_divide_line" />-->
+
+<!--    <com.ysarch.uibase.textview.CompatTextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="52dp"-->
+<!--        android:drawableRight="@drawable/ic_arrow_grey_right"-->
+<!--        android:gravity="center_vertical|left"-->
+<!--        android:text="@string/label_recharge"-->
+<!--        android:textColor="#FF333333"-->
+<!--        android:textSize="16sp" />-->
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/thickness_line_divide"-->
+<!--        android:background="@color/gray_divide_line" />-->
+
+
+
+    <TextView
+        android:id="@+id/tv_recharge_cash"
+        android:textStyle="bold"
+        android:layout_marginTop="190dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:text="@string/label_recharge"
+        android:background="@drawable/shape_round_rect_r22_fill_primary"
+        style="@style/sumbitTvStyle"/>
+
+    <TextView
+        android:id="@+id/tv_pay_password"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:background="@drawable/shape_round_rect_r22_fill_tra_stroke_primary"
+        android:text="@string/label_pay_password"
+        android:textColor="@color/colorPrimary"
+        style="@style/cancelTvStyle"/>
+
+</LinearLayout>

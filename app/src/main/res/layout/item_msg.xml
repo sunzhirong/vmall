@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingTop="6dp">
+
+    <TextView
+        android:id="@+id/tv_time_msg_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_h_common"
+        android:textColor="#343434"
+        android:textSize="@dimen/text_12pt"
+        tools:text="2020.10" />
+
+    <TextView
+        android:id="@+id/tv_title_msg_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_h_common"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="#343434"
+        android:textSize="@dimen/text_14pt"
+        tools:text="测试" />
+
+    <TextView
+        android:id="@+id/tv_content_msg_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_h_common"
+        android:layout_marginTop="2dp"
+        android:textColor="#666666"
+        android:textSize="@dimen/text_14pt"
+        tools:text="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/thickness_line_divide"
+        android:layout_marginTop="6dp"
+        android:background="@color/gray_divide_line" />
+</LinearLayout>

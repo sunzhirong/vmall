@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ly_root_tb_cmd_dialog"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:background="@drawable/ic_clip_search_bg"
+        android:layout_width="288dp"
+        android:layout_height="70dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="45dp"
+            android:text="@string/label_intelligent_search"
+            style="@style/blackA14sp"
+            android:textSize="@dimen/text_18pt"/>
+
+
+        <TextView
+            android:layout_marginLeft="28dp"
+            android:text="@string/label_intelligent_search_tips"
+            style="@style/grayA14sp"
+            android:textSize="@dimen/text_12pt"/>
+    </LinearLayout>
+    <LinearLayout
+        android:background="@color/white"
+        android:paddingHorizontal="23dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="20dp"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_tb_cmd_dialog"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:riv_oval="true"
+            android:scaleType="centerCrop"
+            tools:background="#33ff33"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/tv_title_tb_cmd_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="2"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_14pt"
+                android:textColor="#343434"
+                tools:text="这个聚划算不错"/>
+
+            <LinearLayout
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_price_prefix_tb_cmd_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_10pt"
+                    android:text="$"/>
+
+                <TextView
+                    android:id="@+id/tv_price_tb_cmd_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_13pt"
+                    android:layout_marginLeft="4dp"
+                    tools:text="123123"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30dp"
+        android:orientation="vertical"
+        android:background="@drawable/shape_round_rect_r10_bottom_fill_white">
+
+
+
+        <TextView
+            android:id="@+id/tv_nav_detail_tb_cmd_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/selector_round_rect_r20_enable_primary_dis_ddd"
+            android:textSize="@dimen/text_15pt"
+            android:textColor="@color/white"
+            android:text="@string/label_open_now"
+            android:gravity="center"
+            android:layout_marginHorizontal="@dimen/margin_h_common"
+            android:layout_marginTop="10dp"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/iv_close_tb_cmd_dialog"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_close_white"/>
+</LinearLayout>

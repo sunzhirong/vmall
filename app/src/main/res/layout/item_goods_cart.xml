@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="149dp"
+    android:background="@color/white">
+
+
+
+    <ImageView
+        android:id="@+id/iv_radio_goods_cart"
+        android:layout_width="45dp"
+        android:layout_height="98dp"
+        android:paddingHorizontal="10dp"
+        android:src="@drawable/selector_ic_radiobtn_cart"
+        app:layout_constraintBottom_toBottomOf="@+id/riv_cover_goods_cart"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/riv_cover_goods_cart" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/riv_cover_goods_cart"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintLeft_toRightOf="@+id/iv_radio_goods_cart"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="5dp"
+        tools:background="#33dd33" />
+
+
+    <TextView
+        android:id="@+id/tv_name_goods_cart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:ellipsize="end"
+        android:lines="2"
+        android:text="沙世漫画"
+        android:textColor="#343434"
+        android:textSize="@dimen/text_14pt"
+        android:layout_marginRight="6dp"
+        app:layout_constraintLeft_toRightOf="@+id/riv_cover_goods_cart"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/riv_cover_goods_cart" />
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_sku"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_goods_cart"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_name_goods_cart"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="horizontal">
+        <com.ysarch.uibase.textview.CompatTextView
+            android:id="@+id/ctv_sku_goods_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_round_rect_r3_fill_f8f8f8"
+            android:paddingHorizontal="7dp"
+            android:paddingVertical="2dp"
+            tools:text="测xxxxxxxxxxxxxxxxxxxxxxxx试"
+            android:textColor="#666666"
+            android:textSize="@dimen/text_12pt"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_price_goods_cart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="KHR 234"
+        android:textColor="#343434"
+        android:textSize="@dimen/text_15pt"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/ll_sku"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_name_goods_cart"
+        app:layout_constraintRight_toRightOf="@+id/tv_name_goods_cart" />
+
+    <ImageView
+        android:id="@+id/iv_plus_goods_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/ic_black_cross"
+        android:paddingRight="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/riv_cover_goods_cart" />
+
+
+    <TextView
+        android:id="@+id/tv_num_goods_cart"
+        android:layout_width="38dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="9dp"
+        android:background="#F8F8F8"
+        android:gravity="center"
+        tools:text="2"
+        android:textColor="#343434"
+        android:textSize="@dimen/text_15pt"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_plus_goods_cart"
+        app:layout_constraintRight_toLeftOf="@+id/iv_plus_goods_cart"
+        app:layout_constraintTop_toTopOf="@+id/iv_plus_goods_cart" />
+
+    <ImageView
+        android:id="@+id/iv_minus_goods_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/selector_minus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginRight="9dp"
+        android:paddingLeft="6dp"
+        app:layout_constraintRight_toLeftOf="@+id/tv_num_goods_cart"
+        app:layout_constraintTop_toBottomOf="@+id/riv_cover_goods_cart" />
+
+    
+    <View
+        android:id="@+id/v_divide_line_goods_cart"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:background="#dcdcdc"
+        app:layout_constraintLeft_toLeftOf="@+id/riv_cover_goods_cart"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

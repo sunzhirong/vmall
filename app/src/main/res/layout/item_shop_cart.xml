@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_round_rect_r10_fill_white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingHorizontal="12dp"
+    android:paddingTop="13dp"
+    android:paddingBottom="3dp"
+    android:orientation="vertical">
+    <com.ysarch.uibase.textview.CompatTextView
+        android:id="@+id/ctv_name_shop_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/selector_ic_radiobtn_cart"
+        app:drawableLeftWidth="17dp"
+        app:drawableLeftHeight="17dp"
+        android:textSize="@dimen/text_14pt"
+        android:textColor="#343434"
+        android:textStyle="bold"
+        android:drawablePadding="9dp"
+        android:gravity="center_vertical"
+        android:text="沙世旗舰店"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcy_shop_cart"
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

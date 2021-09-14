@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_icon_phone_register"
+            android:layout_width="@dimen/size_icon_account"
+            android:layout_height="@dimen/size_icon_account"
+            android:layout_marginTop="@dimen/margin_top_et_account"
+            android:src="@drawable/ic_phone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/et_account_register"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_account_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawable_padding_account"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_input_phone_number"
+            android:inputType="number"
+            android:maxLength="12"
+            android:lines="1"
+            android:textColor="@color/text_paragraph"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/text_16pt"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_icon_phone_register"
+            app:layout_constraintLeft_toRightOf="@+id/iv_icon_phone_register"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_icon_phone_register" />
+
+        <View
+            android:id="@+id/v_divide_line_account_register"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/thickness_line_divide"
+            android:layout_marginTop="@dimen/margin_bottom_et_account"
+            android:background="@color/gray_divide_line"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon_phone_register" />
+
+
+        <ImageView
+            android:id="@+id/iv_icon_auth_code_register"
+            android:layout_width="@dimen/size_icon_account"
+            android:layout_height="@dimen/size_icon_account"
+            android:layout_marginTop="@dimen/margin_top_et_account"
+            android:src="@drawable/ic_authcode"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/et_auth_code_register"
+            app:layout_constraintTop_toBottomOf="@+id/v_divide_line_account_register" />
+
+
+        <EditText
+            android:id="@+id/et_auth_code_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawable_padding_account"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_input_auth_code"
+            android:inputType="number"
+            android:lines="1"
+            android:textColor="@color/text_paragraph"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/text_16pt"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_icon_auth_code_register"
+            app:layout_constraintLeft_toRightOf="@+id/iv_icon_auth_code_register"
+            app:layout_constraintRight_toRightOf="@+id/tv_auth_code_register"
+            app:layout_constraintTop_toTopOf="@+id/iv_icon_auth_code_register" />
+
+
+        <TextView
+            android:id="@+id/tv_auth_code_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|right"
+            android:text="@string/label_auth_code"
+            android:textColor="@color/auth_tv_enable_primary_dis_ccc"
+            android:textSize="@dimen/text_14pt"
+            app:layout_constraintBottom_toBottomOf="@+id/et_auth_code_register"
+            app:layout_constraintLeft_toRightOf="@+id/et_auth_code_register"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_auth_code_register" />
+
+
+        <View
+            android:id="@+id/v_divide_line_auth_code_register"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/thickness_line_divide"
+            android:layout_marginTop="@dimen/margin_bottom_et_account"
+            android:background="@color/gray_divide_line"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon_auth_code_register" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_nickname_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_goneMarginTop="0dp"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@id/v_divide_line_auth_code_register">
+
+            <ImageView
+                android:id="@+id/iv_nickname_register"
+                android:layout_width="@dimen/size_icon_account"
+                android:layout_height="@dimen/size_icon_account"
+                android:src="@drawable/ic_nickname"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_nickname_register"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/drawable_padding_account"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/hint_input_nickname"
+                android:maxLength="20"
+                android:lines="1"
+                android:textColor="@color/text_paragraph"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/text_16pt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/iv_nickname_register"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <View
+                android:id="@+id/v_divide_line_nickname_register"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/thickness_line_divide"
+                android:layout_marginTop="@dimen/margin_bottom_et_account"
+                android:background="@color/gray_divide_line"
+                app:layout_constraintTop_toBottomOf="@id/et_nickname_register" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ImageView
+            android:id="@+id/iv_icon_password_register"
+            android:layout_width="@dimen/size_icon_account"
+            android:layout_height="@dimen/size_icon_account"
+            android:layout_marginTop="@dimen/margin_top_et_account"
+            android:src="@drawable/ic_lock"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/et_password_register"
+            app:layout_constraintTop_toBottomOf="@id/ctl_nickname_register" />
+
+        <EditText
+            android:id="@+id/et_password_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawable_padding_account"
+            android:layout_marginRight="4dp"
+            android:background="@null"
+            android:digits="0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_input_password"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            android:lines="1"
+            android:textColor="@color/text_paragraph"
+            android:textColorHint="@color/text_hint"
+            android:textSize="@dimen/text_16pt"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_icon_password_register"
+            app:layout_constraintLeft_toRightOf="@+id/iv_icon_password_register"
+            app:layout_constraintRight_toLeftOf="@+id/iv_password_eye_register"
+            app:layout_constraintTop_toTopOf="@id/iv_icon_password_register" />
+
+
+        <ImageView
+            android:id="@+id/iv_password_eye_register"
+            android:layout_width="@dimen/size_icon_eyes"
+            android:layout_height="@dimen/size_icon_eyes"
+            android:padding="4dp"
+            android:src="@drawable/selector_password_visible_switch"
+            app:layout_constraintBottom_toBottomOf="@+id/et_password_register"
+            app:layout_constraintLeft_toRightOf="@+id/et_password_register"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/et_password_register" />
+
+        <View
+            android:id="@+id/v_divide_line_password_register"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/thickness_line_divide"
+            android:layout_marginTop="@dimen/margin_bottom_et_account"
+            android:background="@color/gray_divide_line"
+            app:layout_constraintTop_toBottomOf="@id/et_password_register" />
+
+
+        <TextView
+            android:id="@+id/tv_confirm_register"
+            style="@style/btn_primary"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_account_confirm_btn"
+            android:layout_marginTop="@dimen/margin_top_register_button"
+            android:enabled="false"
+            android:text="@string/label_register"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_divide_line_password_register" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+

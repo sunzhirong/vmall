@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ll_container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/bg_page_new"
+    android:orientation="vertical">
+
+    <View
+        style="@style/horLineStyle"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/blackA14sp"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/margin_h_common"
+            android:layout_marginTop="13dp"
+            android:text="@string/label_amount_recharge" />
+
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_h_common"
+            android:paddingHorizontal="@dimen/margin_h_common"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_20"
+                android:text="$20"
+                style="@style/rechargeAmountStyle" />
+            <TextView
+                android:id="@+id/tv_30"
+                android:text="$30"
+                android:layout_marginHorizontal="@dimen/margin_h_common"
+                style="@style/rechargeAmountStyle" />
+            <TextView
+                android:id="@+id/tv_50"
+                android:text="$50"
+                style="@style/rechargeAmountStyle" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginVertical="@dimen/margin_h_common"
+            android:paddingHorizontal="@dimen/margin_h_common"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_100"
+                android:text="$100"
+                style="@style/rechargeAmountStyle" />
+            <TextView
+                android:id="@+id/tv_200"
+                android:text="$200"
+                android:layout_marginHorizontal="@dimen/margin_h_common"
+                style="@style/rechargeAmountStyle" />
+            <EditText
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:id="@+id/et_self"
+                android:hint="@string/label_recharge_by_self"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textColorHint="@color/selector_color_rechage_amount"
+                android:textColor="@color/selector_color_rechage_amount"
+                android:layout_height="match_parent"
+                android:background="@drawable/rechage_amount_bg"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="12dp"
+        android:paddingHorizontal="@dimen/margin_h_common">
+
+
+        <TextView
+            style="@style/blackA14sp"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/margin_h_common"
+            android:layout_marginBottom="15dp"
+            android:text="@string/label_choose_pay_way" />
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll_aba"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <ImageView-->
+<!--                android:background="@drawable/ic_aba_icon"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="35dp" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_marginLeft="@dimen/margin_h_common"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    style="@style/blackA14sp"-->
+<!--                    android:text="@string/label_aba_bank" />-->
+
+
+<!--                <TextView-->
+<!--                    style="@style/blackA14sp"-->
+<!--                    android:textSize="@dimen/sp_12"-->
+<!--                    android:layout_marginTop="2dp"-->
+<!--                    android:textColor="@color/grayC"-->
+<!--                    android:text="@string/label_aba_bank_tips" />-->
+
+<!--            </LinearLayout>-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_aba_selectable"-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="25dp"-->
+<!--                android:src="@drawable/selector_ic_radiobtn_cart" />-->
+
+<!--        </LinearLayout>-->
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll_wing"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <ImageView-->
+<!--                android:background="@drawable/ic_wing_icon"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="35dp" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_marginLeft="@dimen/margin_h_common"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    style="@style/blackA14sp"-->
+<!--                    android:text="@string/label_wing" />-->
+
+
+<!--                <TextView-->
+<!--                    style="@style/blackA14sp"-->
+<!--                    android:textSize="@dimen/sp_12"-->
+<!--                    android:layout_marginTop="2dp"-->
+<!--                    android:textColor="@color/grayC"-->
+<!--                    android:text="@string/label_wing_tips" />-->
+
+<!--            </LinearLayout>-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_wing_selectable"-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="25dp"-->
+<!--                android:src="@drawable/selector_ic_radiobtn_cart" />-->
+
+<!--        </LinearLayout>-->
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_channel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/margin_h_common">
+
+        <TextView
+            android:id="@+id/tv_recharge_amount_prefix"
+            style="@style/blackA14sp"
+            android:text="@string/label_recharge_payable"
+            android:textSize="@dimen/text_16pt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_recharge_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_h_common"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_18pt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_recharge_amount_prefix"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_submit_recharge"
+            style="@style/sumbitTvStyle"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="@string/label_recharge_now"
+            android:textSize="@dimen/text_16pt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

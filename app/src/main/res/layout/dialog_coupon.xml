@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/v_mark_coupon_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="@string/label_can_use_coupon"
+                android:textColor="@color/blackA"
+                android:textSize="@dimen/text_18pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_dialog_close" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcy_coupon_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/bg_page_gray" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_page_gray">
+
+            <RelativeLayout
+                android:id="@+id/rl_select_none"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/shape_round_rect_r5_fill_white">
+
+
+                <TextView
+                    android:layout_marginLeft="12dp"
+                    android:layout_centerVertical="true"
+                    android:text="@string/label_no_coupons"
+                    style="@style/blackA14sp"/>
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="12dp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/iv_radio_coupon_selectable"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/selector_ic_radiobtn_cart"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_confirm_coupon_dialog"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="43dp"-->
+<!--            android:layout_marginHorizontal="@dimen/height_account_confirm_btn"-->
+<!--            android:layout_marginTop="14dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:background="@drawable/selector_primary_round_rect_r5"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/label_confirm"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="@dimen/text_16pt" />-->
+    </LinearLayout>
+
+
+</LinearLayout>

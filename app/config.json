@@ -1,0 +1,22 @@
+{
+  //extraInfo 不要出现以`channel`为key的情况
+  /*
+  不声明extraInfo的channel默认使用的extraInfo
+  如果没有此项则没有默认extraInfo
+  */
+  "defaultExtraInfo": {
+    "channelId": "1",
+    "date": "2020071920"
+  },
+
+  /*
+    strategy:
+     1. ifNone (默认适用此策略) : 仅当对应channel没有extraInfo时生效
+     2. always : 所有channel都生效，channel中extraInfo的key与defaultExtraInfo重复时，覆盖defaultExtraInfo中的内容。
+   */
+
+//  "defaultExtraInfoStrategy": "always",
+  "channelInfoList": [
+    {"channel":"official","alias":"official","extraInfo":{"channelid":1, "date":"20200827" , "gdtchannel":999}}
+  ]
+}

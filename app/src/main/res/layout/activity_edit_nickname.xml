@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:background="@color/title_bar_bg">
+
+        <TextView
+            android:id="@+id/tv_base_title_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/title_bar_text"
+            android:textSize="@dimen/text_18pt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/label_edit_nickname" />
+
+
+
+        <LinearLayout
+            android:id="@+id/ly_base_title_bar_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:paddingRight="@dimen/title_bar_margin_h"
+            android:visibility="visible"
+            app:layout_constraintRight_toRightOf="parent" >
+            <TextView
+                android:text="@string/label_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_base_title_bar_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/title_bar_margin_h"
+            app:layout_constraintLeft_toLeftOf="parent" >
+            <TextView
+                android:text="@string/label_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:layout_margin="@dimen/margin_h_common"
+        android:background="@drawable/shape_round_rect_r5_fill_tra_stroke_55555_1dp"
+        android:id="@+id/et_nickname"
+        android:layout_width="match_parent"
+        android:hint="@string/input_your_nickname"
+        android:padding="10dp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

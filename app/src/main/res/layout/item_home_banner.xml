@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:src="@drawable/shape_round_rect_lb10_rb180_fill_f94956"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.bigkoo.convenientbanner.ConvenientBanner
+            android:id="@+id/cb_home_banner"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_h_common"
+            android:layout_marginTop="6dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="20dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_home_1"/>
+
+                <TextView
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/label_home_taobao"
+                    android:textColor="@color/grayC"
+                    android:textSize="@dimen/text_12pt"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_home_2"/>
+
+                <TextView
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/label_national_transport"
+                    android:textColor="@color/grayC"
+                    android:textSize="@dimen/text_12pt"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_home_3"/>
+
+                <TextView
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/label_home_return_back"
+                    android:textColor="@color/grayC"
+                    android:textSize="@dimen/text_12pt"/>
+            </LinearLayout>
+
+<!--            <com.ysarch.uibase.textview.CompatTextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:drawableLeft="@drawable/ic_home_1"-->
+<!--                android:drawablePadding="4dp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="@string/label_home_taobao"-->
+<!--                android:textColor="@color/grayC"-->
+<!--                android:textSize="@dimen/text_12pt"-->
+<!--                app:drawableLeftHeight="20dp"-->
+<!--                app:drawableLeftWidth="20dp" />-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:layout_weight="1" />-->
+
+<!--            <com.ysarch.uibase.textview.CompatTextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:drawableLeft="@drawable/ic_home_2"-->
+<!--                android:drawablePadding="4dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:text="@string/label_national_transport"-->
+<!--                android:textColor="@color/grayC"-->
+<!--                android:textSize="@dimen/text_12pt"-->
+<!--                app:drawableLeftHeight="20dp"-->
+<!--                app:drawableLeftWidth="20dp" />-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:layout_weight="1" />-->
+
+<!--            <com.ysarch.uibase.textview.CompatTextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:drawableLeft="@drawable/ic_home_3"-->
+<!--                android:drawablePadding="4dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:text="@string/label_home_return_back"-->
+<!--                android:textColor="@color/grayC"-->
+<!--                android:textSize="@dimen/text_12pt"-->
+<!--                app:drawableLeftHeight="20dp"-->
+<!--                app:drawableLeftWidth="20dp" />-->
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

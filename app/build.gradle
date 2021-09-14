@@ -1,0 +1,163 @@
+apply plugin: 'com.android.application'
+apply from: "../conf.gradle"
+apply plugin: 'walle'
+apply plugin: 'multi-languages'
+android {
+    compileSdkVersion configVersion.compileSdkVersion
+    buildToolsVersion configVersion.buildToolsVersion
+    defaultConfig {
+        applicationId "com.ysarch.vmall"
+        minSdkVersion configVersion.minSdkVersion
+        targetSdkVersion configVersion.targetSdkVersion
+        versionCode configVersion.versionCode
+        versionName configVersion.versionName
+        multiDexEnabled true
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            ndk {
+                //选择要添加的对应cpu类型的.so库
+                abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86'
+                //还可以添加 'armeabi', 'x86'
+            }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('vmall.keystore')
+            storePassword "vm1024"
+            keyAlias "vmall"
+            keyPassword "vm1024"
+        }
+
+        release {
+            storeFile file('vmall.keystore')
+            storePassword "vm1024"
+            keyAlias "vmall"
+            keyPassword "vm1024"
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            shrinkResources true
+            minifyEnabled true
+            zipAlignEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            buildConfigField "boolean", "ISDEBUG", "true"
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    packagingOptions {
+        doNotStrip "*/armeabi-v7a/*.so"
+        doNotStrip "*/x86/*.so"
+        doNotStrip "*/arm64-v8a/*.so"
+        doNotStrip "*/x86_64/*.so"
+        doNotStrip "armeabi.so"
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    multiLanguages {
+        //set plugin is enable( default)
+        enable = true
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+walle {
+    apkOutputFolder = new File("${project.getProjectDir()}/outputs")
+    apkFileNameFormat = 'vmall-${channel}-${versionName}-${buildType}.apk'
+    configFile = new File("${project.getProjectDir()}/config.json")
+}
+
+
+dependencies {
+    configurations.all {
+        resolutionStrategy {
+            force compileDependencies.okio
+//            force compileDependencies.retrofit
+            force compileDependencies.okhttp3
+
+
+//            //有高低两个版本，统一降低至低版本
+//            force 'com.google.guava:guava:16.0.1'//16.0.1 - 19.0
+//            force 'org.apache.ant:ant:1.7.0'//1.7.0 - 1.8.0
+//            force 'com.android.support:multidex-instrumentation:1.0.3'//1.0.2 - 1.0.3
+        }
+    }
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(":mvp")
+    implementation project(":yslibrary")
+    implementation project(":gridpassword")
+
+    implementation compileDependencies.appcompat_v7
+    implementation compileDependencies.constraint_layout
+    implementation compileDependencies.support_v4
+    implementation compileDependencies.multidex
+    implementation compileDependencies.fastjson
+
+    implementation compileDependencies.butterknife
+    annotationProcessor compileDependencies.butterknife_apt
+
+
+    implementation compileDependencies.glide
+    annotationProcessor compileDependencies.glide_compiler
+    implementation compileDependencies.glideOkhttp
+
+    implementation compileDependencies.pickerView
+
+    implementation compileDependencies.snaphelper
+    implementation compileDependencies.gif_drawable
+
+    implementation compileDependencies.walle
+    implementation compileDependencies.statusBarCompat
+
+    implementation compileDependencies.roundedimageview
+
+    implementation compileDependencies.rxbing
+    implementation compileDependencies.rxbing_support_v4
+    implementation compileDependencies.rxbing_appcompat_v7
+    implementation compileDependencies.rxbing_design
+    implementation compileDependencies.rxbing_recyclerview
+
+    implementation compileDependencies.convenientbanner
+    implementation compileDependencies.jsoup
+    implementation compileDependencies.layoutmanager_flowlayout
+    implementation compileDependencies.kefu_ease
+    implementation compileDependencies.oss
+
+
+//    implementation 'com.github.chrisbanes.photoview:library:1.2.4'
+    implementation 'com.bm.photoview:library:1.4.1'
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation 'com.github.jokar:multi-languages:0.1.5'
+}

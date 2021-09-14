@@ -1,0 +1,16 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.jungly.gridpasswordview"
+4    android:versionCode="4"
+5    android:versionName="03" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->E:\Get_Project\vmall\gridpassword\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->E:\Get_Project\vmall\gridpassword\src\main\AndroidManifest.xml
+10
+11    <application />
+11-->E:\Get_Project\vmall\gridpassword\src\main\AndroidManifest.xml:4:5-20
+12
+13</manifest>

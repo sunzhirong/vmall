@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ly_protocol"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.ysarch.uibase.textview.CompatTextView
+        android:id="@+id/ctv_protocol_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:drawableLeft="@drawable/selectable_red_circle_check"
+        android:drawablePadding="4dp"
+        android:text="@string/protocol_prefix"
+        android:textColor="#666666"
+        android:textSize="@dimen/text_12pt"
+        app:drawableLeftHeight="11dp"
+        app:drawableLeftWidth="11dp" />
+
+    <TextView
+        android:id="@+id/tv_protocol_bee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:text="@string/protocol_bee"
+        android:textColor="@color/colorPrimary"
+        android:visibility="gone"
+        android:textSize="@dimen/text_12pt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:text="和"
+        android:textColor="#666666"
+        android:visibility="gone"
+        android:textSize="@dimen/text_12pt" />
+
+    <TextView
+        android:id="@+id/tv_protocol_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:text="@string/protocol_service"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_12pt" />
+</LinearLayout>

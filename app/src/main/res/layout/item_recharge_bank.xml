@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="15dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textStyle="bold"
+        android:id="@+id/tv_bank"
+        android:textColor="@color/selector_color_sel_primary_unsel_333333"
+        style="@style/grayA14sp"/>
+
+</LinearLayout>

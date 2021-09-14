@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_recharge_succ_bg"
+        android:layout_width="218dp"
+        android:layout_height="190dp"/>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp"
+        android:text="@string/label_rechage_succ_tips"
+        style="@style/blackA14sp"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tv_confirm"
+        android:text="@string/label_confirm"
+        android:textSize="@dimen/sp_16"
+        android:layout_width="135dp"
+        android:background="@drawable/shape_round_rect_r22_fill_primary"
+        android:layout_height="45dp"
+        style="@style/sumbitTvStyle"/>
+
+</LinearLayout>

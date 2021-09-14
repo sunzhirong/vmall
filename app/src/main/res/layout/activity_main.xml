@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".page.main.MainActivity">
+
+
+   <FrameLayout
+       android:id="@+id/fl_fragment_container_main_page"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#dcdcdc"/>
+    <RadioGroup
+        android:id="@+id/rg_tab_main_page"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <com.ysarch.uibase.tab.HomeBottomTab
+            android:id="@+id/tb_sy_main_tab"
+            style="@style/TabBottom"
+            android:button="@drawable/checkable_sy_main_tab"
+            android:text="@string/label_sy_tab"
+            app:drawableHeight="22dp"
+            app:drawableLabelGap="@dimen/main_tab_drawable_padding"
+            app:drawableWidth="22dp" />
+
+        <com.ysarch.uibase.tab.HomeBottomTab
+            android:id="@+id/tb_cate_main_tab"
+            style="@style/TabBottom"
+            android:button="@drawable/checkable_fl_main_tab"
+            android:text="@string/label_fl_tab"
+            app:drawableHeight="22dp"
+            app:drawableLabelGap="@dimen/main_tab_drawable_padding"
+            app:drawableWidth="22dp" />
+
+
+        <com.ysarch.uibase.tab.HomeBottomTab
+            android:id="@+id/tb_discover_main_tab"
+            style="@style/TabBottom"
+            android:button="@drawable/checkable_discover_main_tab"
+            android:text="@string/label_discover_tab"
+            app:drawableHeight="22dp"
+            app:drawableLabelGap="@dimen/main_tab_drawable_padding"
+            android:visibility="gone"
+            app:drawableWidth="22dp" />
+
+        <com.ysarch.uibase.tab.HomeBottomTab
+            android:id="@+id/tb_cart_main_tab"
+            style="@style/TabBottom"
+            android:button="@drawable/checkable_cart_main_tab"
+            android:text="@string/label_cart_tab"
+            app:drawableHeight="22dp"
+            app:drawableLabelGap="@dimen/main_tab_drawable_padding"
+            app:drawableWidth="22dp" />
+
+        <com.ysarch.uibase.tab.HomeBottomTab
+            android:id="@+id/tb_mine_main_tab"
+            style="@style/TabBottom"
+            android:button="@drawable/checkable_mine_main_tab"
+            android:text="@string/label_mine_tab"
+            app:drawableHeight="22dp"
+            app:drawableLabelGap="@dimen/main_tab_drawable_padding"
+            app:drawableWidth="22dp" />
+
+    </RadioGroup>
+
+</LinearLayout>

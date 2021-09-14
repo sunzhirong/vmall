@@ -1,0 +1,122 @@
+ext {
+//    configVersion = [
+//            compileSdkVersion : 28,
+//            buildToolsVersion : "28.0.3",
+//
+//            minSdkVersion     : 21,
+//            targetSdkVersion  : 28,
+//
+//            versionCode       : 1,
+//            versionName       : '1.0.0',
+//
+//            VSupportSdk       : '27.1.0',
+//
+//            VRetrofitSdk      : "2.2.0",
+//            VOkhttp           : "3.4.2",
+//            VRxlifecycle      : "2.0.1",
+//
+//            vButterknife      : "10.2.1",
+//            vRxbing           : "2.0.0",
+//            glide             : "4.11.0",
+//
+//
+//            VXSupportSdk      : "1.0.0",
+//            VXConstraintLayout: "1.1.3",
+//            VXMultidex        : "2.0.1",
+//            VXAnnotations     : "1.1.0",
+//            VRxjava           : "2.1.1"
+//    ]
+
+    configVersion = [
+            compileSdkVersion : 29,
+            buildToolsVersion : "29.0.0",
+
+            minSdkVersion     : 21,
+            targetSdkVersion  : 29,
+
+            versionCode       : 1,
+            versionName       : '1.0.0',
+
+            VSupportSdk       : '27.1.0',
+
+            VRetrofitSdk      : "2.2.0",
+            VOkhttp           : "3.11.0",
+            VRxlifecycle      : "2.0.1",
+
+            vButterknife      : "10.2.1",
+            vRxbing           : "2.0.0",
+            glide             : "4.11.0",
+
+
+            VXSupportSdk      : "1.0.0",
+            VXConstraintLayout: "1.1.3",
+            VXMultidex        : "2.0.1",
+            VXAnnotations     : "1.1.0",
+            VRxjava           : "2.1.1",
+
+            okio              : "1.14.0"
+    ]
+    compileDependencies = [
+            appcompat_v7                : "androidx.appcompat:appcompat:${configVersion.VXSupportSdk}",
+            support_v4                  : "androidx.legacy:legacy-support-v4:${configVersion.VXSupportSdk}",
+            constraint_layout           : "androidx.constraintlayout:constraintlayout:${configVersion.VXConstraintLayout}",
+            design                      : "com.google.android.material:material:${configVersion.VXSupportSdk}",
+            annotations                 : "androidx.annotation:annotation:${configVersion.VXSupportSdk}",
+            recyclerview_v7             : 'androidx.recyclerview:recyclerview:1.0.0',
+            multidex                    : "androidx.multidex:multidex:${configVersion.VXMultidex}",
+
+            fastjson                    : 'com.alibaba:fastjson:1.1.68.android',
+            gson                        : "com.google.code.gson:gson:2.8.6",
+            butterknife                 : "com.jakewharton:butterknife:${configVersion.vButterknife}",
+            butterknife_apt             : "com.jakewharton:butterknife-compiler:${configVersion.vButterknife}",
+
+            rxandroid                   : "io.reactivex.rxjava2:rxandroid:${configVersion.VRxjava}",
+            rxjava                      : "io.reactivex.rxjava2:rxjava:${configVersion.VRxjava}",
+
+            retrofit                    : "com.squareup.retrofit2:retrofit:${configVersion.VRetrofitSdk}",
+            retrofit_converter_gson     : "com.squareup.retrofit2:converter-gson:${configVersion.VRetrofitSdk}",
+            retrofit_adapter_rxjava     : "com.squareup.retrofit2:adapter-rxjava2:${configVersion.VRetrofitSdk}",
+            okhttp3_logging_interceptor : "com.squareup.okhttp3:logging-interceptor:${configVersion.VOkhttp}",
+            okhttp3                     : "com.squareup.okhttp3:okhttp:${configVersion.VOkhttp}",
+
+            rxlifecycle                 : "com.trello.rxlifecycle2:rxlifecycle:${configVersion.VRxlifecycle}",
+            rxlifecycle_android         : "com.trello.rxlifecycle2:rxlifecycle-android:${configVersion.VRxlifecycle}",
+            rxlifecycle_components      : "com.trello.rxlifecycle2:rxlifecycle-components:${configVersion.VRxlifecycle}",
+            rxpermissions               : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar",
+
+            rxbing                      : "com.jakewharton.rxbinding2:rxbinding:${configVersion.vRxbing}",
+            rxbing_support_v4           : "com.jakewharton.rxbinding2:rxbinding-support-v4:${configVersion.vRxbing}",
+            rxbing_appcompat_v7         : "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:${configVersion.vRxbing}",
+            rxbing_design               : "com.jakewharton.rxbinding2:rxbinding-design:${configVersion.vRxbing}",
+            rxbing_recyclerview         : "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:${configVersion.vRxbing}",
+
+            glide                       : "com.github.bumptech.glide:glide:${configVersion.glide}",
+            glideOkhttp                 : "com.github.bumptech.glide:okhttp3-integration:${configVersion.glide}",
+            glide_compiler              : "com.github.bumptech.glide:compiler:${configVersion.glide}",
+
+            calendar                    : 'com.necer.ncalendar:ncalendar:5.0.0',
+            pickerView                  : "com.contrarywind:Android-PickerView:4.1.8",
+
+            snaphelper                  : 'com.github.rubensousa:gravitysnaphelper:1.5',
+            gif_drawable                : 'pl.droidsonroids.gif:android-gif-drawable:1.2.6',
+
+            walle                       : 'com.meituan.android.walle:library:1.1.6',
+            smartrefresh                : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2',
+            smartrefresh_header_material: 'com.scwang.smart:refresh-header-material:2.0.1',
+
+            roundedimageview            : "com.makeramen:roundedimageview:2.3.0",
+
+            jpush                       : 'cn.jiguang.sdk:jpush:3.7.0',
+            jcore                       : 'cn.jiguang.sdk:jcore:2.4.2',
+            statusBarCompat             : 'com.github.niorgai:StatusBarCompat:2.3.3',
+
+            convenientbanner            : "com.bigkoo:convenientbanner:2.1.5",
+            jsoup                       : "org.jsoup:jsoup:1.10.2",
+            layoutmanager_flowlayout    : "com.github.1002326270xc:LayoutManager-FlowLayout:v1.8",
+            kefu_ease                   : "com.hyphenate:kefu-easeui-android:1.1.9",
+            oss                         : "com.aliyun.dpa:oss-android-sdk:2.9.4",
+            okio                        : "com.squareup.okio:okio:${configVersion.okio}"
+
+
+    ]
+}

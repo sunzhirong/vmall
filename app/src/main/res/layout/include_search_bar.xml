@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_round_rect_r16_fill_ffffff">
+<!--    android:background="#0000ff">-->
+
+    <ImageView
+        android:id="@+id/iv_search_bar"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_search_gray"/>
+    <TextView
+        android:layout_centerInParent="true"
+        android:id="@+id/tv_hint_search_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_13pt"
+        android:layout_marginLeft="4dp"
+        android:text="@string/label_home_search"/>
+
+</RelativeLayout>

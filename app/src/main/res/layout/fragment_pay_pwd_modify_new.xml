@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:padding="15dp"
+        android:layout_gravity="left"
+        android:text="@string/label_cancel"
+        android:textSize="@dimen/sp_16"
+        style="@style/grayA14sp"/>
+
+
+    <TextView
+        android:id="@+id/tv_pwd_tips"
+        android:layout_marginTop="97dp"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:text="@string/label_pwd_modify"
+        style="@style/blackA14sp"/>
+
+    <TextView
+        android:id="@+id/tv_confirm_tips"
+        android:visibility="invisible"
+        android:layout_marginTop="18dp"
+        android:textSize="@dimen/sp_16"
+        android:text="@string/label_pwd_confirm_tips"
+        style="@style/grayA14sp"/>
+
+    <com.ysarch.vmall.component.PwdEditText
+        android:id="@+id/pwd_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="40dp" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <com.ysarch.vmall.component.KeyboardView
+        android:id="@+id/keyboardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp" />
+
+</LinearLayout>

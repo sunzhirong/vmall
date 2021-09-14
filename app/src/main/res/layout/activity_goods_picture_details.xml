@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/black">
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="8dp"
+        android:layout_gravity="end"
+        android:background="@drawable/ic_goods_picture_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp" />
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="25dp"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="@dimen/sp_14"
+        android:paddingHorizontal="15dp"
+        android:background="@drawable/shape_round_rect_r12_fill_7f7f7f"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:paddingHorizontal="10dp"
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:layout_alignParentBottom="true"
+        android:background="#3a3e4a">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>

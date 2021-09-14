@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/margin_h_common"
+        android:paddingRight="@dimen/margin_h_common"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:id="@+id/rl_ava"
+        android:layout_height="65dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/iv_ava"
+            android:layout_centerVertical="true"
+            app:riv_oval="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+        <TextView
+            android:id="@+id/tv_name"
+            android:text="@string/label_my_ava"
+            style="@style/blackA14sp"
+            android:layout_centerVertical="true" />
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="6dp"
+            android:background="@drawable/ic_arrow_grey_right"
+            android:layout_height="11dp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_marginHorizontal="@dimen/margin_h_common"
+        style="@style/horLineStyle"/>
+    <com.ysarch.vmall.component.SettingItem
+        android:id="@+id/siv_nickname"
+        app:leftText="@string/label_my_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_marginHorizontal="@dimen/margin_h_common"
+        style="@style/horLineStyle"/>
+    <com.ysarch.vmall.component.SettingItem
+        android:id="@+id/siv_phone_num"
+        app:leftText="@string/label_phone_number"
+        app:showEnter="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_marginHorizontal="@dimen/margin_h_common"
+        style="@style/horLineStyle"/>
+    <com.ysarch.vmall.component.SettingItem
+        android:id="@+id/siv_gender"
+        app:leftText="@string/label_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_marginHorizontal="@dimen/margin_h_common"
+        style="@style/horLineStyle"/>
+    <com.ysarch.vmall.component.SettingItem
+        android:id="@+id/siv_birthday"
+        app:leftText="@string/label_birthday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

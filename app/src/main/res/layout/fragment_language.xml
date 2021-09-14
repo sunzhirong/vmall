@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ly_en_language"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingHorizontal="@dimen/margin_h_common"
+        android:gravity="center_vertical">
+        <com.ysarch.uibase.textview.CompatTextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_language_en"
+            android:text="@string/label_lan_english"
+            android:textSize="@dimen/text_14pt"
+            android:gravity="center_vertical"
+            android:textColor="#343434"
+            android:drawablePadding="10dp"
+            app:drawableLeftWidth="30dp"
+            app:drawableLeftHeight="30dp"/>
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/selector_radio_primary"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_km_language"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingHorizontal="@dimen/margin_h_common"
+        android:gravity="center_vertical">
+        <com.ysarch.uibase.textview.CompatTextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_language_kh"
+            android:text="@string/label_lan_cambodia"
+            android:textSize="@dimen/text_14pt"
+            android:gravity="center_vertical"
+            android:textColor="#343434"
+            android:drawablePadding="10dp"
+            app:drawableLeftWidth="30dp"
+            app:drawableLeftHeight="30dp"/>
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/selector_radio_primary"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_cn_language"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingHorizontal="@dimen/margin_h_common"
+        android:gravity="center_vertical">
+        <com.ysarch.uibase.textview.CompatTextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_language_cn"
+            android:text="@string/label_lan_chinese"
+            android:textSize="@dimen/text_14pt"
+            android:gravity="center_vertical"
+            android:textColor="#343434"
+            android:drawablePadding="10dp"
+            app:drawableLeftWidth="30dp"
+            app:drawableLeftHeight="30dp"/>
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/selector_radio_primary"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

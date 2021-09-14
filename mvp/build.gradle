@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply from: '../conf.gradle'
+
+group = 'com.github.limedroid'
+
+android {
+    compileSdkVersion configVersion.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion configVersion.minSdkVersion
+        targetSdkVersion configVersion.targetSdkVersion
+        versionCode configVersion.versionCode
+        versionName configVersion.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation compileDependencies.appcompat_v7
+    implementation compileDependencies.support_v4
+    api compileDependencies.design
+    implementation compileDependencies.annotations
+    implementation compileDependencies.recyclerview_v7
+    api compileDependencies.butterknife
+    annotationProcessor compileDependencies.butterknife_apt
+    api compileDependencies.gson
+    api compileDependencies.rxandroid
+    api compileDependencies.rxjava
+    api compileDependencies.retrofit
+    api compileDependencies.retrofit_converter_gson
+    api compileDependencies.retrofit_adapter_rxjava
+    api compileDependencies.okhttp3
+    api compileDependencies.okhttp3_logging_interceptor
+    api compileDependencies.rxlifecycle
+    api compileDependencies.rxlifecycle_android
+    api compileDependencies.rxlifecycle_components
+    api compileDependencies.rxpermissions
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+artifacts {
+    archives sourcesJar
+}

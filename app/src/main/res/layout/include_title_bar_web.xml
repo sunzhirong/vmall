@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_title_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <com.ysarch.uibase.StatusBarView
+        android:id="@+id/sbv_web_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height">
+
+    <ImageView
+        android:id="@+id/iv_back_title_bar_web"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|left"
+        android:paddingHorizontal="@dimen/margin_h_common"
+        android:src="@drawable/ic_back_black" />
+
+    <TextView
+        android:id="@+id/tv_title_bar_web"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textSize="@dimen/text_15pt"
+        tools:text="sdfsdf"
+        android:textColor="#343434" />
+    </FrameLayout>
+
+   <!-- <ImageView
+        android:id="@+id/iv_title_bar_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:paddingLeft="@dimen/margin_16"
+        android:paddingRight="@dimen/margin_16"
+        android:src="@drawable/share_img" />-->
+
+
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:orientation="horizontal">
+
+
+  <ImageView
+      android:layout_marginRight="7dp"
+      android:src="@drawable/ic_home_cate_header_left"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+  <ImageView
+      android:src="@drawable/ic_home_hot"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+  <TextView
+      android:text="@string/label_hot_goods"
+      android:textSize="@dimen/text_18pt"
+      android:textStyle="bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+
+  <ImageView
+      android:layout_marginLeft="7dp"
+      android:src="@drawable/ic_home_cate_header_right"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"/>
+
+<!--  <com.ysarch.uibase.textview.CompatTextView-->
+<!--      android:layout_width="wrap_content"-->
+<!--      android:layout_height="wrap_content"-->
+<!--      android:textColor="@color/colorPrimary"-->
+<!--      android:drawableLeft="@drawable/ic_home_cate_header_left"-->
+<!--      android:drawableRight="@drawable/ic_home_cate_header_right"-->
+<!--      app:drawableLeftWidth="17dp"-->
+<!--      app:drawableLeftHeight="12.5dp"-->
+<!--      app:drawableRightWidth="17dp"-->
+<!--      app:drawableRightHeight="12.5dp"-->
+<!--      android:drawablePadding="16dp"-->
+<!--      android:textSize="@dimen/text_24pt"-->
+<!--      android:text="@string/label_recommend_goods"/>-->
+
+<!--    <TextView-->
+<!--        android:visibility="gone"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="2dp"-->
+<!--        android:textColor="#9a9a9a"-->
+<!--        android:textSize="@dimen/text_10pt"-->
+<!--        android:text="You Can Choose One Free Gift In Your First Order"/>-->
+
+</LinearLayout>

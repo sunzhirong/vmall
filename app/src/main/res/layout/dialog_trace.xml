@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_h_common">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_trace_title"
+            android:textColor="@color/blackA"
+            android:textSize="@dimen/text_18pt"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/horLineStyle"
+        android:background="#f0f0f0" />
+
+    <RelativeLayout
+        android:layout_marginVertical="15dp"
+        android:paddingHorizontal="@dimen/margin_h_common"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/blackA14sp"
+            android:text="@string/label_expected_arrival"/>
+
+        <TextView
+            android:layout_alignParentEnd="true"
+            android:id="@+id/tv_trace_time"
+            android:textColor="#ff9f09"
+            style="@style/blackA14sp"/>
+
+    </RelativeLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_h_common"
+        android:divider="@drawable/table_line"
+        android:orientation="vertical"
+        android:showDividers="beginning|middle|end"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:background="#eeeeee"
+            android:divider="@drawable/table_line"
+            android:orientation="horizontal"
+            android:showDividers="beginning|middle|end">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/blackA" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:text="@string/label_stock_up"
+                android:textColor="@color/blackA" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/label_1_3_day"
+                android:textColor="@color/blackA" />
+        </TableRow>
+
+        <TableRow
+            android:background="@color/white"
+            android:divider="@drawable/table_line"
+            android:orientation="horizontal"
+            android:showDividers="beginning|middle|end">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@color/blackA" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:text="@string/label_logistics_transportation"
+                android:textColor="@color/blackA" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/label_5_7_day"
+                android:textColor="@color/blackA" />
+        </TableRow>
+
+        <TableRow
+            android:background="#eeeeee"
+            android:divider="@drawable/table_line"
+            android:orientation="horizontal"
+            android:showDividers="beginning|middle|end">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="@color/blackA" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:text="@string/label_delivery"
+                android:textColor="@color/blackA" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/label_2_3_day"
+                android:textColor="@color/blackA" />
+        </TableRow>
+    </TableLayout>
+
+
+    <View
+        style="@style/horLineStyle"
+        android:layout_marginTop="15dp"
+        android:background="#f0f0f0" />
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        style="@style/sumbitTvStyle"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="@dimen/margin_h_common"
+        android:layout_marginVertical="10dp"
+        android:background="@drawable/shape_round_rect_r22_fill_primary"
+        android:text="@string/label_confirm"
+        android:textSize="@dimen/text_14pt" />
+
+</LinearLayout>

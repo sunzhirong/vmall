@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_round_rect_lb5_rb5_fill_white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:paddingHorizontal="@dimen/padding_h_order_item"
+        android:paddingTop="25dp"
+        android:paddingBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:gravity="end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_item_goods_price"
+                android:textSize="@dimen/text_12pt"
+                android:textColor="@color/grayA"
+                android:text="@string/format_item_goods_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_item_freight_price"
+                android:textColor="@color/grayA"
+                android:textSize="@dimen/text_12pt"
+                android:text="@string/format_item_goods_freight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_item_total_price"
+                android:textColor="@color/grayA"
+                android:textSize="@dimen/text_12pt"
+                android:text="@string/format_item_goods_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:gravity="end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_item_paid_price"
+                style="@style/blackA14sp"
+                android:text="@string/format_item_goods_paid"
+               />
+
+            <TextView
+                android:id="@+id/tv_dot"
+                style="@style/blackA14sp"
+                android:text="，"/>
+            <TextView
+                android:id="@+id/tv_item_unpaid_price_label"
+                style="@style/blackA14sp"
+                android:layout_height="match_parent"
+                android:text="@string/label_order_unpay" />
+
+            <TextView
+                android:id="@+id/tv_item_unpaid_price"
+                style="@style/redA14sp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        style="@style/horLineStyle"/>
+
+    <LinearLayout
+        android:paddingHorizontal="@dimen/padding_h_order_item"
+        android:id="@+id/ly_extra_opt_order_history"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_tips_order_history"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:textSize="@dimen/text_14pt"-->
+<!--            android:visibility="visible"-->
+<!--            android:text="余额不足，请充值"/>-->
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_height="35dp"
+            android:background="@drawable/shape_round_rect_r17_fill_tra_stroke_graya"
+            android:id="@+id/tv_black_opt_order_item"
+            android:text="@string/label_order_cancel"
+            android:paddingHorizontal="15dp"
+            style="@style/cancelTvStyle"/>
+
+        <TextView
+            android:layout_height="35dp"
+            android:background="@drawable/shape_round_rect_r17_fill_primary"
+            android:layout_marginLeft="12dp"
+            android:id="@+id/tv_red_opt_order_item"
+            tools:text="立即充值"
+            android:paddingHorizontal="15dp"
+            style="@style/sumbitTvStyle"/>
+    </LinearLayout>
+</LinearLayout>

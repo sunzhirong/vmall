@@ -1,0 +1,570 @@
+package com.ysarch.vmall.page.orders;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.ysarch.uibase.base.BaseFragment;
+import com.ysarch.vmall.R;
+import com.ysarch.vmall.common.adapter.OrderGoodsAdapter;
+import com.ysarch.vmall.common.context.AppContext;
+import com.ysarch.vmall.common.context.UserInfoManager;
+import com.ysarch.vmall.common.imageloader.BeeGlide;
+import com.ysarch.vmall.component.dialog.CancelOrderDialog;
+import com.ysarch.vmall.component.dialog.PayDialog;
+import com.ysarch.vmall.domain.bean.AddressItemBean;
+import com.ysarch.vmall.domain.bean.EnumBean;
+import com.ysarch.vmall.domain.bean.OrderBean;
+import com.ysarch.vmall.domain.bean.OrderItemListBean;
+import com.ysarch.vmall.domain.bean.WmsWarehouseInfoBean;
+import com.ysarch.vmall.domain.constant.BundleKey;
+import com.ysarch.vmall.domain.constant.Constants;
+import com.ysarch.vmall.page.goods.GoodsDetailActivity;
+import com.ysarch.vmall.page.orders.presenter.OrderDetailPresenter;
+import com.ysarch.vmall.utils.NavHelper;
+import com.ysarch.vmall.utils.OrderCountDownUtils;
+import com.ysarch.vmall.utils.ResUtils;
+import com.ysarch.vmall.utils.SystemUtil;
+import com.ysarch.vmall.utils.VMallUtils;
+import com.yslibrary.utils.CollectionUtils;
+
+import java.util.List;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.OnClick;
+
+/**
+ * Created by fysong on 30/09/2020
+ **/
+public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
+
+    @BindView(R.id.tv_red_opt_order_detail)
+    TextView mTVRedOpt;
+    @BindView(R.id.tv_black_opt_order_detail)
+    TextView mTVBlackOpt;
+    @BindView(R.id.tv_pay_amount_order_detail)
+    TextView mTVPayAmount;
+    @BindView(R.id.tv_total_amount_order_detail)
+    TextView mTVTotalAmount;
+    @BindView(R.id.tv_coupon_amount_order_detail)
+    TextView mTVCoupon;
+    @BindView(R.id.rcy_goods_order_detail)
+    RecyclerView mRcyGoods;
+    @BindView(R.id.tv_user_info_order_detail)
+    TextView mTVUserInfo;
+    @BindView(R.id.tv_address_order_detail)
+    TextView mTVAddress;
+    @BindView(R.id.tv_status_order_detail)
+    TextView mTVStatusLabel;
+    @BindView(R.id.tv_freight_order_detail)
+    TextView mTVFreight;
+    @BindView(R.id.tv_cn_express_amount_order_detail)
+    TextView mTVExpressCN;
+    @BindView(R.id.tv_oversea_express_amount_order_detail)
+    TextView mTVExpressOversea;
+    @BindView(R.id.ctl_freight_order_detail)
+    ConstraintLayout mCtlFreight;
+    @BindView(R.id.tv_freight_pay_status_order_detail)
+    TextView mTVFreightPayStatus;
+    @BindView(R.id.tv_mode_delivery_order_detail)
+    TextView mTVDeliveryMode;
+    @BindView(R.id.tv_mode_transport_order_detail)
+    TextView mTVTransportMode;
+    @BindView(R.id.tv_tips_order_detail)
+    TextView mTVTips;
+    @BindView(R.id.iv_order_status)
+    ImageView mIvOrderStatus;
+    @BindView(R.id.tv_count_down)
+    TextView mTvCountDown;
+    @BindView(R.id.tv_total_num)
+    TextView mTvTotalNum;
+    @BindView(R.id.tv_total_price)
+    TextView mTvTotalPrice;
+    @BindView(R.id.iv_locate)
+    ImageView mIvLocate;
+    @BindView(R.id.tv_order_sn)
+    TextView mTvOrderSn;
+    @BindView(R.id.tv_order_create_time)
+    TextView mTvOrderCreateTime;
+    @BindView(R.id.tv_order_remarks)
+    TextView mTvOrderRemarks;
+    @BindView(R.id.tv_order_dis_mode)
+    TextView mTvOrderDisMode;
+    @BindView(R.id.tv_clip)
+    TextView mTvClip;
+    @BindView(R.id.tv_total_amount_prefix_order_detail)
+    TextView mTvTotalAmountPrefixOrderDetail;
+    @BindView(R.id.tv_total_coupon)
+    TextView mTvTotalCoupon;
+    @BindView(R.id.tv_total_coupon_detail)
+    TextView mTvTotalCouponDetail;
+    @BindView(R.id.tv_coupon_amount_prefix_order_detail)
+    TextView mTvCouponAmountPrefixOrderDetail;
+    @BindView(R.id.tv_pay_amount_prefix_order_detail)
+    TextView mTvPayAmountPrefixOrderDetail;
+    @BindView(R.id.tv_china_freight_detail)
+    TextView mTvChinaFreightDetail;
+    @BindView(R.id.tv_international_freight_detail)
+    TextView mTvInternationalFreightDetail;
+    @BindView(R.id.tv_delivery_fee_detail)
+    TextView mTvDeliveryFeeDetail;
+    @BindView(R.id.tv_freight_coupon_detail)
+    TextView mTvFreightCouponDetail;
+    @BindView(R.id.tv_freight_prepaid_detail)
+    TextView mTvFreightPrepaidDetail;
+    @BindView(R.id.tv_freight_total)
+    TextView mTvFreightTotal;
+    @BindView(R.id.tv_freight_price)
+    TextView mTvFreightPrice;
+    @BindView(R.id.tv_freight_amount_prefix_order_detail)
+    TextView mTvFreightAmountPrefixOrderDetail;
+    @BindView(R.id.v_divide_freight_order_detail)
+    View mVDivideFreightOrderDetail;
+    @BindView(R.id.tv_cn_express_amount_prefix_order_detail)
+    TextView mTvCnExpressAmountPrefixOrderDetail;
+    @BindView(R.id.tv_oversea_express_amount_prefix_order_detail)
+    TextView mTvOverseaExpressAmountPrefixOrderDetail;
+    @BindView(R.id.tv_mode_delivery_prefix_order_detail)
+    TextView mTvModeDeliveryPrefixOrderDetail;
+    @BindView(R.id.tv_mode_transport_prefix_order_detail)
+    TextView mTvModeTransportPrefixOrderDetail;
+    @BindView(R.id.tv_bottome_total_price)
+    TextView mTvBottomeTotalPrice;
+    @BindView(R.id.tv_package_num_detail)
+    TextView mTvPackageNumDetail;
+    @BindView(R.id.tv_package_weight_detail)
+    TextView mTvPackageWeightDetail;
+    @BindView(R.id.iv_order_trace)
+    ImageView mIvOrderTrace;
+    @BindView(R.id.tv_order_pick_code)
+    TextView mTvOrderPickCode;
+
+    private long mOrderId = -1;
+
+    private AddressItemBean mAddressItemBean;
+    private OrderGoodsAdapter mAdapter;
+    private List<OrderItemListBean> mOrderItemListBeans;
+    private EnumBean mWarehouseBean;
+//    private boolean mAutoPay = false;
+    public OrderBean mOrderBean;
+    private OrderCountDownUtils mCountDownUtils;
+    private String mPassword;
+    private PayDialog mPayDialog;
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        if (getArguments() != null) {
+            mOrderBean = (OrderBean) getArguments().getSerializable(BundleKey.ARG_ORDER);
+            if (mOrderBean != null) {
+                mOrderId = mOrderBean.getId();
+            } else {
+                mOrderId = getArguments().getLong(BundleKey.ARG_ORDER_ID, -1);
+//                mAutoPay = getArguments().getBoolean(BundleKey.ARG_ORDER_AUTO_PAY, false);
+            }
+        }
+
+        if (mOrderId == -1) {
+            showTs(getString(R.string.tips_data_error));
+            getActivity().finish();
+        }
+
+        if (mOrderBean != null) {
+            updateData();
+        }
+
+        getPresenter().requestOrderDetail(mOrderId);
+    }
+
+    /**
+     * 更新地址信息
+     */
+    private void updateAddressInfo() {
+        if (mOrderBean != null) {
+            if(mOrderBean.getShippingMethod()==Constants.SHIPPING_METHOD_DELIVERY) {
+                mTVUserInfo.setText(VMallUtils.decodeString(mOrderBean.getReceiverName()) + "  "
+                        + VMallUtils.decodeString(mOrderBean.getReceiverPhone()));
+                mTVAddress.setText(VMallUtils.decodeString(mOrderBean.getReceiverDetailAddress()));
+            }else {
+                WmsWarehouseInfoBean wmsWarehouseInfo = mOrderBean.getWmsWarehouseInfo();
+                if(wmsWarehouseInfo==null){return;}
+                mTVUserInfo.setText(VMallUtils.decodeString(wmsWarehouseInfo.getName()) + "  "
+                        + VMallUtils.decodeString(wmsWarehouseInfo.getPhone()));
+                mTVAddress.setText(VMallUtils.decodeString(wmsWarehouseInfo.getAddress()));
+            }
+        }
+    }
+
+    private void updateData() {
+        mOrderItemListBeans = mOrderBean.getOrderItemList();
+        if (CollectionUtils.isNotEmpty(mOrderBean.getOrderItemList())) {
+            initAdapter();
+            mAdapter.requestData(mOrderItemListBeans);
+        }
+
+        mTVTotalAmount.setText(VMallUtils.convertPriceString(mOrderBean.getTotalAmount()));
+        mTVPayAmount.setText(VMallUtils.convertPriceString(mOrderBean.getPayAmount()));
+
+        // 发货方式
+        String deliveryType = AppContext.getsInstance().getModeDelivery().get(0).getDesc();
+        for (int i = 0; i < AppContext.getsInstance().getModeDelivery().size(); i++) {
+            EnumBean enumBean = AppContext.getsInstance().getModeDelivery().get(i);
+            if (enumBean.getId() == mOrderBean.getDeliverlyType()) {
+                deliveryType = enumBean.getDesc();
+                break;
+            }
+        }
+        mTVDeliveryMode.setText(deliveryType);
+
+        // 运输方式
+        String transportType = AppContext.getsInstance().getModeTransport().get(0).getDesc();
+        for (int i = 0; i < AppContext.getsInstance().getModeTransport().size(); i++) {
+            EnumBean enumBean = AppContext.getsInstance().getModeTransport().get(i);
+            if (enumBean.getId() == mOrderBean.getShippingType()) {
+                transportType = enumBean.getDesc();
+                break;
+            }
+        }
+        mTVTransportMode.setText(transportType);
+
+
+        //商品总计
+        mTvTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getTotalAmount()));
+        int num = 0;
+        for (OrderItemListBean bean : mOrderBean.getOrderItemList()) {
+            num += bean.getProductQuantity();
+        }
+        String numString = String.format(ResUtils.getString(R.string.format_order_total), num);
+        SpannableStringBuilder builder = new SpannableStringBuilder(numString);
+        ForegroundColorSpan span = new ForegroundColorSpan(Color.RED);
+        builder.setSpan(span, 1, 1 + String.valueOf(num).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mTvTotalNum.setText(builder);
+
+        //订单信息
+        mTvOrderSn.setText(String.format(ResUtils.getString(R.string.format_order_sn), mOrderBean.getOrderSn()));
+        mTvOrderCreateTime.setText(String.format(ResUtils.getString(R.string.format_order_create_time), VMallUtils.GTMToLocal(mOrderBean.getCreateTime())));
+        mTvOrderRemarks.setText(String.format(ResUtils.getString(R.string.format_order_remarks), !TextUtils.isEmpty(mOrderBean.getRemark())?mOrderBean.getRemark():""));
+        mTvOrderDisMode.setText(String.format(ResUtils.getString(R.string.format_order_dis_mode), mOrderBean.getShippingMethod()==1?"自提":"快递配送"));
+
+        //商品信息
+        mTvTotalCouponDetail.setText("-"+VMallUtils.convertPriceString(mOrderBean.getCouponAmount()));
+        mTVCoupon.setText(VMallUtils.convertPriceString(mOrderBean.getServiceAmount()));
+        mTvOrderPickCode.setText(String.format(ResUtils.getString(R.string.format_order_pick_code), !TextUtils.isEmpty(mOrderBean.getPickUpCode())?mOrderBean.getRemark():""));
+
+        if(mOrderBean.getStatus()==Constants.STATUS_ORDER_DELIVERED) {
+            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
+        }else {
+//            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getPayAmount()));
+            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getOrderAmount()));
+
+        }
+
+        //运费相关
+        mTvChinaFreightDetail.setText(VMallUtils.convertPriceString(mOrderBean.getCnFreight()));
+        mTvInternationalFreightDetail.setText(VMallUtils.convertPriceString(mOrderBean.getOverseasFreight()));
+        mTvDeliveryFeeDetail.setText(VMallUtils.convertPriceString(mOrderBean.getLocalFreight()));
+        mTvFreightCouponDetail.setText(VMallUtils.convertPriceString(mOrderBean.getFreightCouponAmount()));
+        mTvFreightPrepaidDetail.setText(VMallUtils.convertPriceString(mOrderBean.getPredictFreightAmount()));
+
+
+        mTvPackageNumDetail.setText(VMallUtils.convertTo3String(mOrderBean.getInternationalPackageVolume())+"m³");
+        mTvPackageWeightDetail.setText(VMallUtils.convertTo3String(mOrderBean.getInternationalPackageWeight())+"kg");
+        if(mOrderBean.getStatus()==Constants.STATUS_ORDER_UNPAY){
+            mIvOrderTrace.setVisibility(View.GONE);
+        }
+
+        //待收货、已完成状态可以展示运费相关
+//        updateFreight();
+        //地址信息
+        updateAddressInfo();
+        //仓库数据
+        updateWarehouse();
+        //状态信息
+        updateStatusUI();
+    }
+
+
+
+    /**
+     * 仓库数据
+     */
+    private void updateWarehouse() {
+        // 仓库数据
+        if (CollectionUtils.isEmpty(AppContext.getsInstance().getWarehouseDatas())) {
+            getPresenter().requestWarehouseData();
+        } else {
+            for (int i = 0; i < AppContext.getsInstance().getWarehouseDatas().size(); i++) {
+                EnumBean enumBean = AppContext.getsInstance().getWarehouseDatas().get(i);
+                if (enumBean.getId() == mOrderBean.getWarehouse()) {
+                    mWarehouseBean = enumBean;
+                    break;
+                }
+            }
+        }
+
+    }
+
+    private void initAdapter() {
+        if (mAdapter == null) {
+            mAdapter = new OrderGoodsAdapter(getContext(), BeeGlide.with(getContext()));
+            mRcyGoods.setLayoutManager(new LinearLayoutManager(getContext()));
+            mRcyGoods.setAdapter(mAdapter);
+            mAdapter.setOnItemClickListener((position, data) -> {
+                OrderItemListBean bean = (OrderItemListBean) data;
+                NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
+                        GoodsDetailActivity.getBundle(bean.getProductId(), bean.getSource()));
+            });
+        }
+    }
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_order_detail;
+    }
+
+
+    /**
+     * public static final int STATUS_ORDER_UNPAY = 0;                         //待付款
+     * public static final int STATUS_ORDER_DELIVER_WAITING = 1;               //采购中
+     * public static final int STATUS_ORDER_DELIVERED = 2;                     //待收货
+     * public static final int STATUS_ORDER_COMPLETE = 3;                      //已完成
+     * public static final int STATUS_ORDER_CLOSED = 4;                        //已关闭
+     * public static final int STATUS_ORDER_AUDIT_WAITING = 5;                 //待审核
+     */
+
+    private void updateStatusUI() {
+        switch (mOrderBean.getStatus()) {
+            //待支付
+            case Constants.STATUS_ORDER_UNPAY:
+                mTVRedOpt.setVisibility(View.VISIBLE);
+                mTVBlackOpt.setVisibility(View.VISIBLE);
+                mTVRedOpt.setText(ResUtils.getString(R.string.label_order_to_pay));
+                mTVBlackOpt.setText(ResUtils.getString(R.string.label_cancel));
+                mTVStatusLabel.setText(getWholeOrderStatus(ResUtils.getString(R.string.label_order_unpay)));
+                //倒计时
+                if (mCountDownUtils == null) {
+                    mCountDownUtils = new OrderCountDownUtils(getContext(), mOrderBean.getRestTime()*1000, 1000, mTvCountDown,
+                            "");
+                }
+                mCountDownUtils.start();
+                mIvOrderStatus.setBackground(getResources().getDrawable(R.drawable.ic_order_status_unpay));
+                break;
+            //待审核
+            case Constants.STATUS_ORDER_AUDIT_WAITING:
+                mTVRedOpt.setVisibility(View.GONE);
+                mTVBlackOpt.setVisibility(View.GONE);
+                mTVStatusLabel.setText(getWholeOrderStatus(ResUtils.getString(R.string.label_order_audit_waiting)));
+                mIvOrderStatus.setBackground(getResources().getDrawable(R.drawable.ic_order_status_audit_waiting));
+
+                break;
+
+            //采购中
+            case Constants.STATUS_ORDER_DELIVER_WAITING:
+                mTVRedOpt.setVisibility(View.GONE);
+                mTVBlackOpt.setVisibility(View.GONE);
+                mTVStatusLabel.setText(getWholeOrderStatus(ResUtils.getString(R.string.label_order_deliver_waiting)));
+                mIvOrderStatus.setBackground(getResources().getDrawable(R.drawable.ic_order_status_in_stock));
+
+                break;
+            //待收货
+            case Constants.STATUS_ORDER_DELIVERED:
+                mTVBlackOpt.setVisibility(View.GONE);
+//                mTVStatusLabel.setText(getWholeOrderStatus(ResUtils.getString(R.string.label_order_delivered)));
+                mTVStatusLabel.setText(mOrderBean.getCurrentTag());
+                if(mOrderBean.isNeedConfirmReceive()){
+                    mTVRedOpt.setText(ResUtils.getString(R.string.label_order_confirm_received));
+                }else {
+                    if(mOrderBean.isNeedPayFreigth()){
+                        mTVRedOpt.setText(ResUtils.getString(R.string.label_order_to_pay));
+                    }else {
+                        mTVRedOpt.setVisibility(View.GONE);
+                    }
+                }
+//                showLogistics();
+                mIvOrderStatus.setBackground(getResources().getDrawable(R.drawable.ic_order_status_delivered));
+
+                break;
+            //已完成
+            case Constants.STATUS_ORDER_COMPLETE:
+                mTVRedOpt.setVisibility(View.GONE);
+                mTVBlackOpt.setVisibility(View.GONE);
+                mTVStatusLabel.setText(getWholeOrderStatus(ResUtils.getString(R.string.label_order_complete)));
+//                showLogistics();
+                mIvOrderStatus.setBackground(getResources().getDrawable(R.drawable.ic_order_status_complete));
+
+                break;
+            //已关闭
+            case Constants.STATUS_ORDER_CLOSED:
+                mTVRedOpt.setVisibility(View.GONE);
+                mTVBlackOpt.setVisibility(View.VISIBLE);
+                mTVBlackOpt.setText(ResUtils.getString(R.string.label_order_delete));
+                mTVStatusLabel.setText(getWholeOrderStatus(ResUtils.getString(R.string.label_order_close)));
+                mIvOrderStatus.setBackground(getResources().getDrawable(R.drawable.ic_order_status_close));
+
+                break;
+        }
+    }
+
+
+
+
+    private String getWholeOrderStatus(String status) {
+//        return ResUtils.getString(R.string.label_order_status) + ": " + status;
+        return status;
+    }
+
+    @OnClick(R.id.tv_status_order_detail)
+    void onCheckOrderTrace(){
+        if(mOrderBean.getStatus()!=Constants.STATUS_ORDER_UNPAY) {
+            NavHelper.startActivity(getActivity(), OrderTraceActivity.class,OrderTraceActivity.getBundle(mOrderBean));
+        }
+    }
+
+    @OnClick(R.id.tv_black_opt_order_detail)
+    void onBlackOptClick(View view) {
+        if (mOrderBean == null) return;
+        switch (mOrderBean.getStatus()) {
+            case Constants.STATUS_ORDER_UNPAY:
+                CancelOrderDialog cancelOrderDialog = new CancelOrderDialog.Builder(context).setCallback(new CancelOrderDialog.Callback() {
+                    @Override
+                    public void onCancelOpt(int id) {
+                        getPresenter().cancelOrder(mOrderBean,id);
+                    }
+                }).build();
+                cancelOrderDialog.show();
+                break;
+            case Constants.STATUS_ORDER_CLOSED:
+                getPresenter().deleteOrder(mOrderBean);
+                break;
+        }
+    }
+
+    @OnClick(R.id.tv_red_opt_order_detail)
+    void onRedOptClick(View view) {
+        if (mOrderBean == null) return;
+
+
+        if (UserInfoManager.judeIsLogin(getActivity())) {
+            switch (mOrderBean.getStatus()) {
+                case Constants.STATUS_ORDER_UNPAY:
+                    showPayVerifyDialog();
+                    break;
+                case Constants.STATUS_ORDER_DELIVERED:
+                    if(mOrderBean.isNeedConfirmReceive()){
+                        getPresenter().confirmReceiveOrder(mOrderId);
+                    }else {
+                        showPayVerifyDialog();
+                    }
+                    break;
+            }
+        }
+    }
+
+
+
+
+    @Override
+    public OrderDetailPresenter newPresenter() {
+        return new OrderDetailPresenter();
+    }
+
+    public void onDeleteSucc(OrderBean orderBean) {
+        getActivity().finish();
+    }
+
+    public void onCancelSucc(OrderBean orderBean) {
+        mTvCountDown.setVisibility(View.GONE);
+        updateStatusUI();
+    }
+
+    public void onDataSucc(OrderBean orderBean) {
+        mOrderBean = orderBean;
+        updateData();
+
+    }
+
+    public void onDataFail() {
+    }
+
+    public void onWalletChecked(float integer) {
+        mPayDialog = new PayDialog();
+        mPayDialog.setPayCallback(new PayDialog.PayCallback() {
+            @Override
+            public void onConfirm(String password) {
+                mPassword = password;
+
+                if(mOrderBean.getStatus()==Constants.STATUS_ORDER_DELIVERED){
+                    if(mOrderBean.isNeedPayFreigth()){
+                        getPresenter().payFreightByBalance(mOrderId, mOrderBean.getOrderSn(), mPassword);
+                    }else {
+                        getPresenter().confirmReceiveOrder(mOrderId);
+                    }
+                }else {
+                    getPresenter().payByBalance(mOrderId, mOrderBean.getOrderSn(), mPassword);
+                }
+            }
+
+            @Override
+            public void onCancel() {
+            }
+
+//            @Override
+//            public void onForgetPayPassword() {
+//                NavHelper.startActivity(getActivity(), PayPwdModifyActivity.class);
+//            }
+        });
+
+//        if(mOrderBean.getStatus()!=Constants.STATUS_ORDER_DELIVERED) {
+//            mPayDialog.setPrice(mOrderBean.getRestAmount());
+//        }else {
+//            mPayDialog.setPrice(mOrderBean.getFreightAmount());
+//        }
+        mPayDialog.setPrice(mOrderBean.getRestAmount());
+        mPayDialog.show(getFragmentManager(),"test");
+    }
+
+    /**
+     * 显示支付窗口
+     */
+    private void showPayVerifyDialog() {
+        getPresenter().checkWallet();
+
+
+    }
+
+    public void onPaySucc() {
+        showTs(getString(R.string.label_pay_succ));
+        getActivity().finish();
+        NavHelper.startActivity(this,OrderPaidActivity.class);
+    }
+
+    public void onConfirmSucc(){
+        showTs(getString(R.string.label_confirm_succ));
+        getActivity().finish();
+    }
+
+    public void onWarehouseData(List<EnumBean> warehouseDatas) {
+        if (mOrderBean != null)
+            updateWarehouse();
+    }
+
+    @OnClick(R.id.tv_clip)
+    public void clipSN() {
+        if (mOrderBean != null) {
+            SystemUtil.copy(context, mOrderBean.getOrderSn());
+        }
+    }
+
+
+    public void onPwdError() {
+        mPayDialog.setPwdError(true);
+        mPayDialog.show(getFragmentManager(),"test");
+    }
+}

@@ -1,0 +1,24 @@
+R_DEF: Internal format may change without notice
+local
+attr? gpvGridBg
+attr? gpvGridColor
+attr? gpvLineColor
+attr? gpvLineWidth
+attr? gpvPasswordLength
+attr? gpvPasswordTransformation
+attr? gpvPasswordType
+attr? gpvTextColor
+attr? gpvTextSize
+id inputView
+id numberPassword
+id textPassword
+id textVisiblePassword
+id textWebPassword
+layout divider
+layout gridpasswordview
+layout textview
+style GridPasswordView
+style GridPasswordView.Divider
+style GridPasswordView.EditText
+style GridPasswordView.TextView
+styleable gridPasswordView gpvTextColor gpvTextSize gpvLineColor gpvGridColor gpvLineWidth gpvPasswordLength gpvPasswordTransformation gpvGridBg gpvPasswordType

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ysarch.vmall">
+
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取网络状态权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取wifi状态权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 读取手机IMEI的权限，须在获得此权限后再初始化sdk，如果缺少此权限，会以AndroidID作为设备唯一标识符 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 获取gps的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 读写sd卡的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 热云 结束 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission
+        android:name="android.permission.INSTALL_PACKAGES"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 客服 -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:name="com.ysarch.vmall.VMallApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".page.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.FullScreen.StartScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ysarch.vmall.page.main.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".page.account.AccountActivity"
+            android:configChanges="screenSize|keyboard|orientation"
+            android:windowSoftInputMode="adjustResize|stateVisible"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".page.orders.OrderHistoryActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".page.setting.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.setting.language.LanguageSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.coupon.CouponActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".page.wallet.WalletActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".page.search.SearchActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+<!--        android:windowSoftInputMode="stateAlwaysHidden"-->
+        <activity
+            android:name=".page.goods.GoodsDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".page.webview.CommonWebActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".page.address.AddressListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".page.address.AddressEditActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page.orders.OrderConfirmActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".page.orders.OrderDetailActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".page.coupon.CouponDrawActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page.goods.GoodsDetailActivityV1"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".page.wallet.PayPwdModifyActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".page.wallet.RechargeActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".page.wallet.WalletLogActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".page.wallet.RechargeHistoryActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page.chat.ChatActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".page.msg.MsgActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+
+
+        <activity android:name=".page.cart.CartActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+
+
+
+        <activity
+            android:name=".page.orders.OrderTraceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.orders.OrderPaidActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity android:name=".page.goods.GoodsPictureDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page.setting.OwnerSettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page.recharge.RechargeAmountActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page.recharge.RechargeSuccessActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".page.setting.PasswordSettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page.wallet.PayPwdForgetActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page.setting.EditNicknameActivity"
+        android:screenOrientation="portrait"/>
+
+        <!-- 图片选择用到 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+
+</manifest>
