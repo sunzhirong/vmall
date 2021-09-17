@@ -179,8 +179,8 @@ public class AccountLoader extends ObjectLoader {
 
 
 
-        @GET("member/address/list")
-        Flowable<SimpleResponse<List<AddressItemBean>>> requestAddressList();
+//        @GET("member/address/list")
+//        Flowable<SimpleResponse<List<AddressItemBean>>> requestAddressList();
 
         @GET("member/address/delete/{id}")
         Flowable<SimpleResponse<Object>> deleteAddress(@Path("id") long addressId);

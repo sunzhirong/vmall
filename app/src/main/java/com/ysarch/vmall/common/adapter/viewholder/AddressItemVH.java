@@ -82,7 +82,8 @@ public class AddressItemVH extends AbsViewHolder {
 
         mTVNamePhone.setText(VMallUtils.decodeString(mAddressItemBean.getName()) + " " + mAddressItemBean.getPhoneNumber());
 
-        mTVDetail.setText(VMallUtils.decodeString(mAddressItemBean.getDetailAddress()));
+//        mTVDetail.setText(VMallUtils.decodeString(mAddressItemBean.getDetailAddress()));
+        mTVDetail.setText(VMallUtils.getAddress(mAddressItemBean.getProvince(),mAddressItemBean.getCity(),mAddressItemBean.getRegion()));
 
         if (mAddressItemBean.getDefaultStatus() == 1) {
             mTVDefault.setVisibility(View.VISIBLE);

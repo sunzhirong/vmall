@@ -279,7 +279,7 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
             mTVLogin.setVisibility(View.VISIBLE);
             mTVRegister.setVisibility(View.VISIBLE);
             mRIVAvatar.setImageResource(R.drawable.ic_avatar_placeholder);
-            mCtvWallet.setVisibility(View.GONE);
+            mCtvWallet.setVisibility(View.INVISIBLE);
         }
     }
 

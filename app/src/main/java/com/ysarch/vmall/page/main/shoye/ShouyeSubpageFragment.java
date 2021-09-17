@@ -129,7 +129,8 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
 //                        EaseHelper.getInstance().navKefu(context, this);
 //                    else
 //                        NavHelper.startActivity(getActivity(), AccountActivity.class, AccountActivity.getBundle(AccountActivity.TYPE_LOGIN));
-                    NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("https://m.me/105800634679932?ref=sabayshop"));
+//                    NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("https://m.me/105800634679932?ref=sabayshop"));
+                    NavHelper.startWeb(context,"https://m.me/105800634679932?ref=sabayshop");
                     break;
                 case Constants.OPERATETYPE_HELP:
                     break;
@@ -139,6 +140,10 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
                     break;
                 case Constants.OPERATETYPE_GOODS_H5:
                 case Constants.OPERATETYPE_H5:
+                    if("https://m.me/105800634679932?ref=sabayshop".equals(data.getUrl())){
+                        NavHelper.startWeb(context,data.getUrl());
+                        return;
+                    }
                     if(data.getUrl().contains("http://")||data.getUrl().contains("https://")){
                         NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(data.getUrl()));
                     }else {

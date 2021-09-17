@@ -1,7 +1,9 @@
 package com.ysarch.vmall.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -48,4 +50,14 @@ public class NavHelper {
         }
         fragment.startActivityForResult(intent, requestCode);
     }
+
+
+    public static void startWeb(Context context,String url){
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.VIEW");
+        Uri content_url = Uri.parse(url);//此处填链接
+        intent.setData(content_url);
+        context.startActivity(intent);
+    }
+
 }

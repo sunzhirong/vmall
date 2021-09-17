@@ -113,6 +113,14 @@ public class VMallUtils {
         }
     }
 
+    public static String getAddress(String province,String city,String region){
+        String result = "";
+        if(!TextUtils.isEmpty(region)){
+            result = result.concat(region).concat(",");
+        }
+        return decodeString(result.concat(city).concat(",").concat(province));
+    }
+
 
     public static String getStringExactNull(String value) {
         if (value == null || value.equals("null")) {

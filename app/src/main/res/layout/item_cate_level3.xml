@@ -20,6 +20,7 @@
         android:layout_marginTop="6dp"
         android:textColor="@color/blackA"
         android:textSize="@dimen/text_11pt"
+        android:gravity="center"
         tools:text="酒鬼酒"/>
 
 </LinearLayout>

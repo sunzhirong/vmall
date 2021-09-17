@@ -73,7 +73,8 @@ public class OrderDetailActivity extends BaseTitleActivity {
         if(UserInfoManager.judeIsLogin(OrderDetailActivity.this) &&
                 fragment != null && fragment.mOrderBean != null){
 //            EaseHelper.getInstance().navKefu(this, fragment, fragment.mOrderBean);
-            NavHelper.startActivity(this, CommonWebActivity.class, CommonWebActivity.getBundle("https://m.me/105800634679932?ref=sabayshop"));
+//            NavHelper.startActivity(this, CommonWebActivity.class, CommonWebActivity.getBundle("https://m.me/105800634679932?ref=sabayshop"));
+            NavHelper.startWeb(this,"https://m.me/105800634679932?ref=sabayshop");
         }
     }
 }

@@ -405,7 +405,8 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
 //                    return;
 //                if (UserInfoManager.judeIsLogin(GoodsDetailActivity.this))
 //                    EaseHelper.getInstance().navKefu(this, this, mGoodsDetailBean);
-                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("https://m.me/105800634679932?ref=sabayshop"));
+//                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("https://m.me/105800634679932?ref=sabayshop"));
+                NavHelper.startWeb(context,"https://m.me/105800634679932?ref=sabayshop");
                 break;
             case R.id.ctv_cart_goods_detail:
 //                NavHelper.startActivity(GoodsDetailActivity.this, MainActivity.class,
