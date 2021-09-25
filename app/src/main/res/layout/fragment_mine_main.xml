@@ -182,31 +182,7 @@
                     android:orientation="horizontal"
                     android:paddingTop="15dp">
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
 
-                        <com.ysarch.uibase.textview.CompatTextView
-                            android:id="@+id/ctv_unpay_orders_mine_main"
-                            android:text="@string/label_order_unpay"
-                            app:drawableTopHeight="30dp"
-                            app:drawableTopWidth="30dp"
-                            android:drawableTop="@drawable/ic_mine_unpay"
-                            style="@style/mineTvStyle" />
-
-                        <View
-                            android:id="@+id/view_1"
-                            android:layout_centerHorizontal="true"
-                            android:layout_width="1dp"
-                            android:layout_height="1dp"/>
-                        
-                        <TextView
-                            android:layout_toRightOf="@+id/view_1"
-                            android:id="@+id/tv_dot_unpay_orders"
-                            tools:text="1"
-                            style="@style/mineDotStyle" />
-                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="0dp"
@@ -230,6 +206,33 @@
                         <TextView
                             android:layout_toRightOf="@+id/view_2"
                             android:id="@+id/tv_dot_audit_waiting_orders"
+                            tools:text="1"
+                            style="@style/mineDotStyle" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <com.ysarch.uibase.textview.CompatTextView
+                            android:id="@+id/ctv_unpay_orders_mine_main"
+                            android:text="@string/label_order_unpay"
+                            app:drawableTopHeight="30dp"
+                            app:drawableTopWidth="30dp"
+                            android:drawableTop="@drawable/ic_mine_unpay"
+                            style="@style/mineTvStyle" />
+
+                        <View
+                            android:id="@+id/view_1"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="1dp"
+                            android:layout_height="1dp"/>
+
+                        <TextView
+                            android:layout_toRightOf="@+id/view_1"
+                            android:id="@+id/tv_dot_unpay_orders"
                             tools:text="1"
                             style="@style/mineDotStyle" />
                     </RelativeLayout>

@@ -2,6 +2,7 @@ package com.ysarch.vmall.page.orders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ import com.ysarch.vmall.helper.DialogHelper;
 import com.ysarch.vmall.page.address.AddressEditActivity;
 import com.ysarch.vmall.page.address.AddressListActivity;
 import com.ysarch.vmall.page.orders.presenter.OrderConfirmPresenter;
+import com.ysarch.vmall.utils.LanguageUtils;
 import com.ysarch.vmall.utils.NavHelper;
 import com.ysarch.vmall.utils.ResUtils;
 import com.ysarch.vmall.utils.VMallUtils;
@@ -286,7 +288,16 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
 //            mTVAddAddress.setVisibility(View.GONE);
             mTVUserInfo.setText(VMallUtils.decodeString(mAddressItemBean.getName()) + "  "
                     + VMallUtils.decodeString(mAddressItemBean.getPhoneNumber()));
-            mTVAddress.setText(VMallUtils.decodeString(mAddressItemBean.getDetailAddress()));
+//            mTVAddress.setText(VMallUtils.decodeString(mAddressItemBean.getDetailAddress()));
+
+            if(!TextUtils.isEmpty(mAddressItemBean.getDetailAddress())) {
+                mTVAddress.setText(mAddressItemBean.getDetailAddress() + "," + VMallUtils.getAddress(mAddressItemBean.getProvince(), mAddressItemBean.getCity(), mAddressItemBean.getRegion()));
+            }else {
+                mTVAddress.setText(VMallUtils.getAddress(mAddressItemBean.getProvince(), mAddressItemBean.getCity(), mAddressItemBean.getRegion()));
+            }
+
+
+
 //            mTVSubmit.setEnabled(true);
         } else {
 //            mTVSubmit.setEnabled(false);
@@ -295,7 +306,21 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
 
 
         if(mWarehouseSelected!=null){
-            mTVWarehouseAddress.setText(mWarehouseSelected.getAddress());
+            switch (AppContext.getsInstance().getLanguageEntity().getLanId()){
+                case Constants.ID_LAN_KM:
+                    mTVWarehouseAddress.setText(mWarehouseSelected.getKhAddress());
+                    break;
+                case Constants.ID_LAN_ZH:
+                    mTVWarehouseAddress.setText(mWarehouseSelected.getAddress());
+                    break;
+                case Constants.ID_LAN_EN:
+                    mTVWarehouseAddress.setText(mWarehouseSelected.getEnAddress());
+                    break;
+                default:
+                    mTVWarehouseAddress.setText(mWarehouseSelected.getAddress());
+                    break;
+
+            }
             mTvWarehouseUserInfo.setText(VMallUtils.decodeString(mWarehouseSelected.getName()) + "  "
                     + VMallUtils.decodeString(mWarehouseSelected.getPhone()));
         }

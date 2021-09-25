@@ -60,12 +60,12 @@ public class OrderHistoryFragment extends BaseFragment<OrderHistoryPresenter> {
             mFragmentPagerItems.add(new FragmentPagerItem(OrderListFragment.class, ResUtils.getString(R.string.label_order_all),
                     OrderListFragment.getBundle(Constants.STATUS_ORDER_ALL)));
             mPageIds.add(Constants.STATUS_ORDER_ALL);
-            mFragmentPagerItems.add(new FragmentPagerItem(OrderListFragment.class, ResUtils.getString(R.string.label_order_unpay),
-                    OrderListFragment.getBundle(Constants.STATUS_ORDER_UNPAY)));
-            mPageIds.add(Constants.STATUS_ORDER_UNPAY);
             mFragmentPagerItems.add(new FragmentPagerItem(OrderListFragment.class, ResUtils.getString(R.string.label_order_audit_waiting),
                     OrderListFragment.getBundle(Constants.STATUS_ORDER_AUDIT_WAITING)));
             mPageIds.add(Constants.STATUS_ORDER_AUDIT_WAITING);
+            mFragmentPagerItems.add(new FragmentPagerItem(OrderListFragment.class, ResUtils.getString(R.string.label_order_unpay),
+                    OrderListFragment.getBundle(Constants.STATUS_ORDER_UNPAY)));
+            mPageIds.add(Constants.STATUS_ORDER_UNPAY);
             mFragmentPagerItems.add(new FragmentPagerItem(OrderListFragment.class, ResUtils.getString(R.string.label_order_deliver_waiting),
                     OrderListFragment.getBundle(Constants.STATUS_ORDER_DELIVER_WAITING)));
             mPageIds.add(Constants.STATUS_ORDER_DELIVER_WAITING);
