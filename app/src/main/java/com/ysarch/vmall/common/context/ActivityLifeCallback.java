@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.ysarch.vmall.helper.ClipContentHelper;
 import com.ysarch.vmall.helper.HeartbeatHelper;
+import com.ysarch.vmall.page.main.MainActivity;
 import com.ysarch.vmall.page.msg.MsgActivity;
 import com.ysarch.vmall.page.splash.SplashActivity;
 
@@ -55,10 +56,14 @@ public class ActivityLifeCallback implements Application.ActivityLifecycleCallba
             mInForeground = true;
         }
 
-        if(!CustomActivityManager.getInstance().isForeground()
-                && !(activity instanceof SplashActivity)){
+//        if(!CustomActivityManager.getInstance().isForeground()
+//                && !(activity instanceof SplashActivity)){
+//            getClipContentHelper().checkClipBoard(activity);
+//        }
+        if( (activity instanceof MainActivity)){
             getClipContentHelper().checkClipBoard(activity);
         }
+
         CustomActivityManager.getInstance().setForeground(true);
 
         if(activity instanceof MsgActivity )

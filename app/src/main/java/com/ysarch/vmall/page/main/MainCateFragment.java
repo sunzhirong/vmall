@@ -99,10 +99,10 @@ public class MainCateFragment extends BaseFragment<MainCatePresenter> {
                             SearchActivity.getBundle(bean.getKeywords(), true));
                     return;
                 }
-                if(data instanceof String){
-                    NavHelper.startActivity(getActivity(), SearchActivity.class,
-                            SearchActivity.getBundle((String)data, true));
-                }
+//                if(data instanceof String){
+//                    NavHelper.startActivity(getActivity(), SearchActivity.class,
+//                            SearchActivity.getBundle((String)data, true));
+//                }
             });
 
             mLayoutManager = new LinearLayoutManager(getContext());

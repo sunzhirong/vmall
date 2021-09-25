@@ -46,42 +46,47 @@ public class CatesLevel3Adapter extends AbsRVAdapter {
 
     public void refreshData(CateLevelBean cateLevelBean) {
         mMixData.clear();
-        String title ;
-        switch (AppContext.getsInstance().getLanguageEntity().getLanId()){
-            case Constants.ID_LAN_KM:
-                title = cateLevelBean.getKhName();
-                break;
-            case Constants.ID_LAN_ZH:
-                title = cateLevelBean.getName();
-                break;
-            case Constants.ID_LAN_EN:
-                title = cateLevelBean.getEnName();
-                break;
-            default:
-                title = cateLevelBean.getName();
-                break;
-        }
-        mMixData.add(new ItemDataWrapper(TYPE_CATE_LEVEl2_HEADER, title).setOnItemClickListener(mOnItemClickListener));
+//        String title ;
+//        switch (AppContext.getsInstance().getLanguageEntity().getLanId()){
+//            case Constants.ID_LAN_KM:
+//                title = cateLevelBean.getKhName();
+//                break;
+//            case Constants.ID_LAN_ZH:
+//                title = cateLevelBean.getName();
+//                break;
+//            case Constants.ID_LAN_EN:
+//                title = cateLevelBean.getEnName();
+//                break;
+//            default:
+//                title = cateLevelBean.getName();
+//                break;
+//        }
+//        mMixData.add(new ItemDataWrapper(TYPE_CATE_LEVEl2_HEADER, title).setOnItemClickListener(mOnItemClickListener));
+
+        mMixData.add(new ItemDataWrapper(TYPE_CATE_LEVEl2_HEADER, cateLevelBean).setOnItemClickListener(mOnItemClickListener));
+
         List<CateLevelBean> cateLevelBeans2 = cateLevelBean.getChildren();
         if (CollectionUtils.isNotEmpty(cateLevelBeans2)) {
             for (int j = 0; j < cateLevelBeans2.size(); j++) {
                 CateLevelBean cateLevelBean2 = cateLevelBeans2.get(j);
-                String name ;
-                switch (AppContext.getsInstance().getLanguageEntity().getLanId()){
-                    case Constants.ID_LAN_KM:
-                        name = cateLevelBean2.getKhName();
-                        break;
-                    case Constants.ID_LAN_ZH:
-                        name = cateLevelBean2.getName();
-                        break;
-                    case Constants.ID_LAN_EN:
-                        name = cateLevelBean2.getEnName();
-                        break;
-                    default:
-                        name = cateLevelBean2.getName();
-                        break;
-                }
-                mMixData.add(new ItemDataWrapper(TYPE_CATE_LEVEl3_HEADER, name).setOnItemClickListener(mOnItemClickListener));
+//                String name ;
+//                switch (AppContext.getsInstance().getLanguageEntity().getLanId()){
+//                    case Constants.ID_LAN_KM:
+//                        name = cateLevelBean2.getKhName();
+//                        break;
+//                    case Constants.ID_LAN_ZH:
+//                        name = cateLevelBean2.getName();
+//                        break;
+//                    case Constants.ID_LAN_EN:
+//                        name = cateLevelBean2.getEnName();
+//                        break;
+//                    default:
+//                        name = cateLevelBean2.getName();
+//                        break;
+//                }
+//                mMixData.add(new ItemDataWrapper(TYPE_CATE_LEVEl3_HEADER, name).setOnItemClickListener(mOnItemClickListener));
+
+                mMixData.add(new ItemDataWrapper(TYPE_CATE_LEVEl3_HEADER, cateLevelBean2).setOnItemClickListener(mOnItemClickListener));
 
                 List<CateLevelBean> children = cateLevelBean2.getChildren();
                 if (CollectionUtils.isNotEmpty(children)) {

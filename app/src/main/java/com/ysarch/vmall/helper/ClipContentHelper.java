@@ -44,8 +44,9 @@ public class ClipContentHelper {
             public void run() {
 //                if (!activity.isFinishing() && !activity.isDestroyed()) {
                 String content = SystemUtil.getCopy(CustomActivityManager.getInstance().getCurrentActivity());
-
-                if (!TextUtils.isEmpty(content)) {
+                if (content!=null&&!TextUtils.isEmpty(content)) {
+                    if(content.equals(mContent)){return;}
+                    mContent = content;
                     if (content.contains("https")) {
                         SystemUtil.clearClipboard(CustomActivityManager.getInstance().getCurrentActivity());
                         JsonObject jsonObject = new JsonObject();
@@ -60,7 +61,7 @@ public class ClipContentHelper {
                 }
 //                }
             }
-        }, 1500);
+        }, 500);
     }
 
     private void analyzeTBShareCmd(String content) {
