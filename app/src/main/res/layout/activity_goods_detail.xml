@@ -69,10 +69,10 @@
 
 
                 <RelativeLayout
-                    android:layout_marginHorizontal="@dimen/margin_h_common"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_h_common"
+                    android:layout_marginTop="20dp">
 
 
                     <TextView
@@ -86,40 +86,37 @@
 
 
                     <TextView
-                        android:layout_marginTop="8dp"
-                        android:layout_below="@+id/tv_cur_price_goods_detail"
                         android:id="@+id/tv_ori_price_goods_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_cur_price_goods_detail"
+                        android:layout_marginTop="8dp"
                         android:textColor="#bcbcbc"
                         android:textSize="@dimen/text_14pt"
                         tools:text="￥22" />
 
-                        <TextView
-                            android:textSize="14sp"
-                            android:id="@+id/tv_rate_percent"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_below="@+id/tv_cur_price_goods_detail"
-                            android:layout_toRightOf="@+id/tv_ori_price_goods_detail"
-                            android:textColor="@color/white"
-                            android:background="@drawable/ic_goods_rate_bg"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    
-                    
+                    <TextView
+                        android:id="@+id/tv_rate_percent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_cur_price_goods_detail"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toRightOf="@+id/tv_ori_price_goods_detail"
+                        android:background="@drawable/ic_goods_rate_bg"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+
                     <ImageView
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginRight="8dp"
-                        android:layout_centerVertical="true"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:background="@drawable/goods_like_selector"/>
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/goods_like_selector" />
 
                 </RelativeLayout>
-
-
-
 
 
                 <TextView
@@ -134,10 +131,10 @@
 
 
                 <RelativeLayout
-                    android:layout_marginHorizontal="@dimen/margin_h_common"
-                    android:layout_marginVertical="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_h_common"
+                    android:layout_marginVertical="15dp">
 
                     <TextView
                         android:id="@+id/tv_id_goods_detail"
@@ -145,16 +142,16 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_paragraph"
                         android:textSize="@dimen/text_14pt"
-                        tools:text="商品ID：622343453455"/>
+                        tools:text="商品ID：622343453455" />
 
                     <TextView
-                        android:layout_alignParentRight="true"
                         android:id="@+id/tv_exchange_rate_goods_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
                         android:textColor="@color/text_paragraph"
                         android:textSize="@dimen/text_14pt"
-                        tools:text="汇率：6.4"/>
+                        tools:text="汇率：6.4" />
                 </RelativeLayout>
 
                 <View
@@ -174,9 +171,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/label_logistics"
-                        android:textStyle="bold"
                         android:textColor="@color/blackA"
-                        android:textSize="@dimen/text_15pt" />
+                        android:textSize="@dimen/text_15pt"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_trace_detail"
@@ -196,9 +193,8 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_marginHorizontal="@dimen/margin_h_common"
-                    style="@style/horLineStyle"/>
-
+                    style="@style/horLineStyle"
+                    android:layout_marginHorizontal="@dimen/margin_h_common" />
 
 
                 <!--优惠券-->
@@ -275,96 +271,171 @@
                         android:background="#D3D3D3" />
                 </FrameLayout>
 
-
-                <!--   服务   -->
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:id="@+id/ctl_service"
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
-                    android:paddingHorizontal="@dimen/margin_h_common"
-                    android:paddingVertical="16dp">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/margin_h_common">
 
                     <TextView
                         android:id="@+id/tv_service_label_goods_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/label_service"
-                        android:textStyle="bold"
                         android:textColor="@color/blackA"
                         android:textSize="@dimen/text_15pt"
+                        android:textStyle="bold"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-
-                    <com.ysarch.uibase.textview.CompatTextView
-                        android:id="@+id/tv_service_item1_goods_detail"
-                        android:layout_width="wrap_content"
+                    <com.ysarch.uibase.FlowLayout
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:drawableLeft="@drawable/ic_service_goods"
-                        android:drawablePadding="2dp"
-                        android:text="@string/label_service_1"
-                        android:textColor="#9A9A9A"
-                        android:textSize="@dimen/text_12pt"
-                        app:drawableLeftHeight="11dp"
-                        app:drawableLeftWidth="12dp"
-                        app:layout_constraintBaseline_toBaselineOf="@+id/tv_service_label_goods_detail"
-                        app:layout_constraintLeft_toRightOf="@+id/tv_service_label_goods_detail" />
+                        android:layout_marginHorizontal="25dp"
+                        android:layout_weight="1">
 
-                    <com.ysarch.uibase.textview.CompatTextView
-                        android:id="@+id/tv_service_item2_goods_detail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="14dp"
-                        android:drawableLeft="@drawable/ic_service_goods"
-                        android:drawablePadding="2dp"
-                        android:text="@string/label_service_2"
-                        android:textColor="#9A9A9A"
-                        android:textSize="@dimen/text_12pt"
-                        app:drawableLeftHeight="11dp"
-                        app:drawableLeftWidth="12dp"
-                        app:layout_constraintLeft_toRightOf="@+id/tv_service_item1_goods_detail"
-                        app:layout_constraintTop_toTopOf="@+id/tv_service_item1_goods_detail" />
+                        <com.ysarch.uibase.textview.CompatTextView
+                            android:id="@+id/tv_service_item1_goods_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="25dp"
+                            android:drawableLeft="@drawable/ic_service_goods"
+                            android:drawablePadding="2dp"
+                            android:text="@string/label_service_1"
+                            android:textColor="#9A9A9A"
+                            android:textSize="@dimen/text_12pt"
+                            app:drawableLeftHeight="11dp"
+                            app:drawableLeftWidth="12dp" />
 
-                    <com.ysarch.uibase.textview.CompatTextView
-                        android:id="@+id/tv_service_item3_goods_detail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="14dp"
-                        android:drawableLeft="@drawable/ic_service_goods"
-                        android:drawablePadding="2dp"
-                        android:text="@string/label_service_3"
-                        android:textColor="#9A9A9A"
-                        android:textSize="@dimen/text_12pt"
-                        app:drawableLeftHeight="11dp"
-                        app:drawableLeftWidth="12dp"
-                        app:layout_constraintLeft_toRightOf="@+id/tv_service_item2_goods_detail"
-                        app:layout_constraintTop_toTopOf="@+id/tv_service_item2_goods_detail" />
 
-                    <com.ysarch.uibase.textview.CompatTextView
-                        android:id="@+id/tv_service_item4_goods_detail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ic_service_goods"
-                        android:drawablePadding="2dp"
-                        android:text="@string/label_service_4"
-                        android:textColor="#9A9A9A"
-                        android:textSize="@dimen/text_12pt"
-                        app:drawableLeftHeight="11dp"
-                        app:drawableLeftWidth="12dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="@+id/tv_service_item1_goods_detail" />
+                        <com.ysarch.uibase.textview.CompatTextView
+                            android:id="@+id/tv_service_item3_goods_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:drawableLeft="@drawable/ic_service_goods"
+                            android:drawablePadding="2dp"
+                            android:text="@string/label_service_3"
+                            android:textColor="#9A9A9A"
+                            android:textSize="@dimen/text_12pt"
+                            app:drawableLeftHeight="11dp"
+                            app:drawableLeftWidth="12dp" />
 
+                        <com.ysarch.uibase.textview.CompatTextView
+                            android:id="@+id/tv_service_item4_goods_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_service_goods"
+                            android:drawablePadding="2dp"
+                            android:text="@string/label_service_4"
+                            android:textColor="#9A9A9A"
+                            android:textSize="@dimen/text_12pt"
+                            app:drawableLeftHeight="11dp"
+                            app:drawableLeftWidth="12dp" />
+
+
+                    </com.ysarch.uibase.FlowLayout>
 
                     <View
                         android:layout_width="8dp"
                         android:layout_height="13dp"
-                        android:background="@drawable/ic_arrow_grey_right"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:background="@drawable/ic_arrow_grey_right" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+                <!--                &lt;!&ndash;   服务   &ndash;&gt;-->
+                <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+                <!--                    android:id="@+id/ctl_service"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="72dp"-->
+                <!--                    android:paddingHorizontal="@dimen/margin_h_common"-->
+                <!--                    android:paddingVertical="16dp">-->
+
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/tv_service_label_goods_detail"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="@string/label_service"-->
+                <!--                        android:textStyle="bold"-->
+                <!--                        android:textColor="@color/blackA"-->
+                <!--                        android:textSize="@dimen/text_15pt"-->
+                <!--                        app:layout_constraintLeft_toLeftOf="parent"-->
+                <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+                <!--                    <com.ysarch.uibase.textview.CompatTextView-->
+                <!--                        android:id="@+id/tv_service_item1_goods_detail"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginLeft="25dp"-->
+                <!--                        android:drawableLeft="@drawable/ic_service_goods"-->
+                <!--                        android:drawablePadding="2dp"-->
+                <!--                        android:text="@string/label_service_1"-->
+                <!--                        android:textColor="#9A9A9A"-->
+                <!--                        android:textSize="@dimen/text_12pt"-->
+                <!--                        app:drawableLeftHeight="11dp"-->
+                <!--                        app:drawableLeftWidth="12dp"-->
+                <!--                        app:layout_constraintBaseline_toBaselineOf="@+id/tv_service_label_goods_detail"-->
+                <!--                        app:layout_constraintLeft_toRightOf="@+id/tv_service_label_goods_detail" />-->
+
+                <!--                    <com.ysarch.uibase.textview.CompatTextView-->
+                <!--                        android:visibility="visible"-->
+                <!--                        android:id="@+id/tv_service_item2_goods_detail"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginLeft="14dp"-->
+                <!--                        android:drawableLeft="@drawable/ic_service_goods"-->
+                <!--                        android:drawablePadding="2dp"-->
+                <!--                        android:text="@string/label_service_2"-->
+                <!--                        android:textColor="#9A9A9A"-->
+                <!--                        android:textSize="@dimen/text_12pt"-->
+                <!--                        app:drawableLeftHeight="11dp"-->
+                <!--                        app:drawableLeftWidth="12dp"-->
+                <!--                        app:layout_constraintLeft_toRightOf="@+id/tv_service_item1_goods_detail"-->
+                <!--                        app:layout_constraintTop_toTopOf="@+id/tv_service_item1_goods_detail" />-->
+
+                <!--                    <com.ysarch.uibase.textview.CompatTextView-->
+                <!--                        android:id="@+id/tv_service_item3_goods_detail"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginLeft="14dp"-->
+                <!--                        android:drawableLeft="@drawable/ic_service_goods"-->
+                <!--                        android:drawablePadding="2dp"-->
+                <!--                        android:text="@string/label_service_3"-->
+                <!--                        android:textColor="#9A9A9A"-->
+                <!--                        android:textSize="@dimen/text_12pt"-->
+                <!--                        app:drawableLeftHeight="11dp"-->
+                <!--                        app:drawableLeftWidth="12dp"-->
+                <!--                        app:layout_constraintLeft_toRightOf="@+id/tv_service_item2_goods_detail"-->
+                <!--                        app:layout_constraintTop_toTopOf="@+id/tv_service_item2_goods_detail" />-->
+
+                <!--                    <com.ysarch.uibase.textview.CompatTextView-->
+                <!--                        android:id="@+id/tv_service_item4_goods_detail"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:drawableLeft="@drawable/ic_service_goods"-->
+                <!--                        android:drawablePadding="2dp"-->
+                <!--                        android:text="@string/label_service_4"-->
+                <!--                        android:textColor="#9A9A9A"-->
+                <!--                        android:textSize="@dimen/text_12pt"-->
+                <!--                        app:drawableLeftHeight="11dp"-->
+                <!--                        app:drawableLeftWidth="12dp"-->
+                <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                        app:layout_constraintLeft_toLeftOf="@+id/tv_service_item1_goods_detail" />-->
+
+
+                <!--                    <View-->
+                <!--                        android:layout_width="8dp"-->
+                <!--                        android:layout_height="13dp"-->
+                <!--                        android:background="@drawable/ic_arrow_grey_right"-->
+                <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                        app:layout_constraintRight_toRightOf="parent"-->
+                <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+                <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
                 <!--    规格    -->
@@ -390,9 +461,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/label_prop"
-                            android:textStyle="bold"
                             android:textColor="@color/blackA"
-                            android:textSize="@dimen/text_15pt" />
+                            android:textSize="@dimen/text_15pt"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tv_props_goods_detail"
@@ -439,25 +510,25 @@
                 </LinearLayout>
 
 
-             <!--   <WebView
-                    android:id="@+id/wb_dec_goods_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />-->
+                <!--   <WebView
+                       android:id="@+id/wb_dec_goods_detail"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content" />-->
 
-             <!--   <LinearLayout
-                    android:id="@+id/ly_dec_images_goods_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"/>-->
+                <!--   <LinearLayout
+                       android:id="@+id/ly_dec_images_goods_detail"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="vertical"/>-->
 
-               <!-- <androidx.core.widget.NestedScrollView
+                <!-- <androidx.core.widget.NestedScrollView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:fillViewport="true">-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcy_images_goods_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fillViewport="true">-->
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcy_images_goods_detail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
                 <!--</androidx.core.widget.NestedScrollView>-->
 
 
@@ -499,21 +570,54 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.ysarch.uibase.textview.CompatTextView
-            android:id="@+id/ctv_cart_goods_detail"
+
+        <RelativeLayout
+            android:id="@+id/rl_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:drawableTop="@drawable/ic_add_cart"
-            android:gravity="center_horizontal"
-            android:text="@string/label_cart"
-            android:textColor="#9a9a9a"
-            android:textSize="@dimen/text_9pt"
-            app:drawableTopHeight="24dp"
-            app:drawableTopWidth="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/ctv_customer_service_goods_detail"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+            <com.ysarch.uibase.textview.CompatTextView
+                android:id="@+id/ctv_cart_goods_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:drawableTop="@drawable/ic_add_cart"
+                android:gravity="center_horizontal"
+                android:text="@string/label_cart"
+                android:textColor="#9a9a9a"
+                android:textSize="@dimen/text_9pt"
+                app:drawableTopHeight="24dp"
+                app:drawableTopWidth="24dp"
+                 />
+
+            <TextView
+                android:gravity="center"
+                android:text="1"
+                android:textSize="11sp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/shape_oval_fill_primary"
+                android:layout_width="15dp"
+                android:layout_height="15dp"/>
+
+        </RelativeLayout>
+<!--        <com.ysarch.uibase.textview.CompatTextView-->
+<!--            android:id="@+id/ctv_cart_goods_detail"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="30dp"-->
+<!--            android:drawableTop="@drawable/ic_add_cart"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:text="@string/label_cart"-->
+<!--            android:textColor="#9a9a9a"-->
+<!--            android:textSize="@dimen/text_9pt"-->
+<!--            app:drawableTopHeight="24dp"-->
+<!--            app:drawableTopWidth="24dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintLeft_toRightOf="@+id/ctv_customer_service_goods_detail"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
 
         <TextView
@@ -528,7 +632,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/text_15pt"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/ctv_cart_goods_detail"
+            app:layout_constraintLeft_toRightOf="@+id/rl_cart"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

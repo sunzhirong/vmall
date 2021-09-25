@@ -79,15 +79,16 @@ public class SkuDialog extends Dialog {
     private Callback mDialogCallback;
     private SkuBeanV2 mSkuBeanSelected;
     private GoodsDetailItemBean mGoodsDetailBean;
-    private int selectPos;
+    private int selectPos = -1;
     private SkuFlowAdapter.Callback mCallback = new SkuFlowAdapter.Callback() {
         @Override
         public void onSkuChanged(int position, LocalSkuEntity entity,int selectPosition) {
             mLocalSkuEntities[position] = entity;
+
             if(!TextUtils.isEmpty(entity.getImage())){
                 selectPos = selectPosition;
             }
-            SkuDialog.this.onSkuChanged();
+            SkuDialog.this.onSkuChanged(entity.getImage());
         }
     };
     private String mDefaultImg;
@@ -137,13 +138,13 @@ public class SkuDialog extends Dialog {
             mNestedScrollView.setVisibility(View.GONE);
             mTVSelectedSku.setVisibility(View.GONE);
         }
-        onSkuChanged();
+        onSkuChanged(null);
     }
 
     /**
      * 属性变更
      */
-    private void onSkuChanged() {
+    private void onSkuChanged(String image) {
         SkuBeanV2 skuBean = null;
         if (mLocalSkuEntities != null && mLocalSkuEntities.length > 0) {
             loop1:
@@ -179,21 +180,28 @@ public class SkuDialog extends Dialog {
 
                 mTVSelectedSku.setText(stringBuilder.toString());
 
-
-                if (mLocalSkuEntities != null && mLocalSkuEntities.length > 0) {
-                    for (int i = 0; i < mLocalSkuEntities.length; i++) {
-                        if (!TextUtils.isEmpty(mLocalSkuEntities[i].getImage())) {
-                            mCurImage = mLocalSkuEntities[i].getImage();
-                            mBeeGlide.load(ImageLoadConfig.create(mCurImage).randomPlaceHolder(), mIVCover);
-                        } else {
-                            mCurImage = mDefaultImg;
-                            mBeeGlide.load(ImageLoadConfig.create(mDefaultImg).randomPlaceHolder(), mIVCover);
+                if(!TextUtils.isEmpty(image)){
+                    mCurImage = image;
+                    mBeeGlide.load(ImageLoadConfig.create(mCurImage).randomPlaceHolder(), mIVCover);
+                }else {
+                    if (mLocalSkuEntities != null && mLocalSkuEntities.length > 0) {
+                        for (int i = 0; i < mLocalSkuEntities.length; i++) {
+                            if (!TextUtils.isEmpty(mLocalSkuEntities[i].getImage())) {
+                                mCurImage = mLocalSkuEntities[i].getImage();
+                                mBeeGlide.load(ImageLoadConfig.create(mCurImage).randomPlaceHolder(), mIVCover);
+                            } else {
+                                mCurImage = mDefaultImg;
+                                mBeeGlide.load(ImageLoadConfig.create(mDefaultImg).randomPlaceHolder(), mIVCover);
+                            }
                         }
+                    } else {
+                        mCurImage = mDefaultImg;
+                        mBeeGlide.load(ImageLoadConfig.create(mDefaultImg).randomPlaceHolder(), mIVCover);
                     }
-                } else {
-                    mCurImage = mDefaultImg;
-                    mBeeGlide.load(ImageLoadConfig.create(mDefaultImg).randomPlaceHolder(), mIVCover);
                 }
+
+
+
 
             }
 
