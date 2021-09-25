@@ -272,7 +272,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
             mConvenientBanner.setPages(new CBViewHolderCreator() {
                 @Override
                 public Holder createHolder(View itemView) {
-                    return new GoodsDetailBannerHolder(itemView, mBeeGlide);
+                    return new GoodsDetailBannerHolder(itemView, mBeeGlide,context);
                 }
 
                 @Override

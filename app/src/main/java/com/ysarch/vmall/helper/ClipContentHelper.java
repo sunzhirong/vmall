@@ -45,8 +45,9 @@ public class ClipContentHelper {
 //                if (!activity.isFinishing() && !activity.isDestroyed()) {
                 String content = SystemUtil.getCopy(CustomActivityManager.getInstance().getCurrentActivity());
                 if (content!=null&&!TextUtils.isEmpty(content)) {
-                    if(content.equals(mContent)){return;}
-                    mContent = content;
+//                    if(content.equals(mContent)){return;}
+//                    mContent = content;
+                    SystemUtil.clearClipboard(CustomActivityManager.getInstance().getCurrentActivity());
                     if (content.contains("https")) {
                         SystemUtil.clearClipboard(CustomActivityManager.getInstance().getCurrentActivity());
                         JsonObject jsonObject = new JsonObject();
