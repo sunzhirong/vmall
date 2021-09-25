@@ -68,6 +68,15 @@ public class MemberBean implements Serializable {
     private String personalizedSignature;
     private int sourceType;
     private int sumTipsCount;
+    private int cartItemCount;
+
+    public int getCartItemCount() {
+        return cartItemCount;
+    }
+
+    public void setCartItemCount(int cartItemCount) {
+        this.cartItemCount = cartItemCount;
+    }
 
     public boolean isHasPayPassword() {
         return hasPayPassword;

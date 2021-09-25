@@ -117,8 +117,8 @@ public class RechargeAmountFragment extends BaseFragment<RechargeAmountPresenter
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!TextUtils.isEmpty(s.toString())) {
-                    mTvRechargeAmount.setText("$" + s.toString());
+                if (!TextUtils.isEmpty(mEtSelf.getText().toString())) {
+                    mTvRechargeAmount.setText("$" + mEtSelf.getText().toString());
                 } else {
                     mTvRechargeAmount.setText("");
                 }

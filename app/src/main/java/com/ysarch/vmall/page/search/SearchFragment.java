@@ -75,11 +75,11 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
     @Override
     public void bindUI(View mRootView) {
         super.bindUI(mRootView);
-        if(mShowKeyboard) {
-            mETKeyword.setFocusable(true);
-            mETKeyword.setFocusableInTouchMode(true);
-            mETKeyword.requestFocus();
-        }
+//        if(mShowKeyboard) {
+//            mETKeyword.setFocusable(true);
+//            mETKeyword.setFocusableInTouchMode(true);
+//            mETKeyword.requestFocus();
+//        }
 
         mETKeyword.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
@@ -120,6 +120,12 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
             gotoPage(SearchPageTag.SEARCH_CONTENT_PAGE);
         } else {
             gotoPage(SearchPageTag.SEARCH_HISTORY_PAGE);
+        }
+
+        if(mShowKeyboard) {
+            mETKeyword.setFocusable(true);
+            mETKeyword.setFocusableInTouchMode(true);
+            mETKeyword.requestFocus();
         }
     }
 

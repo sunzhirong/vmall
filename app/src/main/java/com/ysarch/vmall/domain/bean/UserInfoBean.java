@@ -29,7 +29,15 @@ public class UserInfoBean implements Serializable {
     private int orderWaitReceiveCount;
     private String birthday;
     private int gender;
+    private int cartItemCount;
 
+    public int getCartItemCount() {
+        return cartItemCount;
+    }
+
+    public void setCartItemCount(int cartItemCount) {
+        this.cartItemCount = cartItemCount;
+    }
 
     public int getOrderReadyCount() {
         return orderReadyCount;

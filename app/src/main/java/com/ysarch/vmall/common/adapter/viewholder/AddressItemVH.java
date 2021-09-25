@@ -1,5 +1,6 @@
 package com.ysarch.vmall.common.adapter.viewholder;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -83,7 +84,11 @@ public class AddressItemVH extends AbsViewHolder {
         mTVNamePhone.setText(VMallUtils.decodeString(mAddressItemBean.getName()) + " " + mAddressItemBean.getPhoneNumber());
 
 //        mTVDetail.setText(VMallUtils.decodeString(mAddressItemBean.getDetailAddress()));
-        mTVDetail.setText(VMallUtils.getAddress(mAddressItemBean.getProvince(),mAddressItemBean.getCity(),mAddressItemBean.getRegion()));
+        if(!TextUtils.isEmpty(mAddressItemBean.getDetailAddress())) {
+            mTVDetail.setText(mAddressItemBean.getDetailAddress() + "," + VMallUtils.getAddress(mAddressItemBean.getProvince(), mAddressItemBean.getCity(), mAddressItemBean.getRegion()));
+        }else {
+            mTVDetail.setText(VMallUtils.getAddress(mAddressItemBean.getProvince(), mAddressItemBean.getCity(), mAddressItemBean.getRegion()));
+        }
 
         if (mAddressItemBean.getDefaultStatus() == 1) {
             mTVDefault.setVisibility(View.VISIBLE);

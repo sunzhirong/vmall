@@ -98,6 +98,10 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
     TextView mTVExchangeRate;
     //    @BindView(R.id.tv_source_goods_detail)
 //    TextView mTVSource;
+    @BindView(R.id.tv_cart_count)
+    TextView mTVCartCount;
+
+
     private boolean bLightMode = false;
     private BeeGlide mBeeGlide;
     private int mBannerImgCount;
@@ -150,6 +154,12 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
             getPresenter().requestCouponList(mGoodsId);
         }
 
+        if(UserInfoManager.getCartItemCount()>0){
+            mTVCartCount.setVisibility(View.VISIBLE);
+            mTVCartCount.setText(UserInfoManager.getCartItemCount()+"");
+        }else {
+            mTVCartCount.setVisibility(View.GONE);
+        }
 
     }
 
@@ -348,7 +358,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
         }
     }
 
-    public void onAddCartSucc() {
+    public void onAddCartSucc(Integer cartItemCount) {
         if (mSkuDialog != null) {
             mSkuDialog.dismiss();
             mSkuDialog = null;
@@ -357,6 +367,14 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
         if (mMultiSkuDialog != null) {
             mMultiSkuDialog.dismiss();
             mMultiSkuDialog = null;
+        }
+
+        UserInfoManager.updateCartItemCount(cartItemCount);
+        if(UserInfoManager.getCartItemCount()>0){
+            mTVCartCount.setVisibility(View.VISIBLE);
+            mTVCartCount.setText(UserInfoManager.getCartItemCount()+"");
+        }else {
+            mTVCartCount.setVisibility(View.GONE);
         }
 
         showTs(getString(R.string.tip_add_cart_succ));

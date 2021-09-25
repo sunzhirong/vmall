@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
 import com.ysarch.uibase.base.BaseFragment;
@@ -25,11 +28,23 @@ import com.ysarch.vmall.domain.bean.BankItemBean;
 import com.ysarch.vmall.domain.constant.BundleKey;
 import com.ysarch.vmall.page.recharge.RechargeSuccessActivity;
 import com.ysarch.vmall.page.wallet.presenter.RechargePresenter;
+import com.ysarch.vmall.utils.GlideUtils;
 import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.NavHelper;
 import com.ysarch.vmall.utils.SystemUtil;
 import com.yslibrary.utils.CollectionUtils;
 
+//import org.devio.takephoto.app.TakePhoto;
+//import org.devio.takephoto.app.TakePhotoImpl;
+//import org.devio.takephoto.compress.CompressConfig;
+//import org.devio.takephoto.model.InvokeParam;
+//import org.devio.takephoto.model.TContextWrap;
+//import org.devio.takephoto.model.TResult;
+//import org.devio.takephoto.permission.InvokeListener;
+//import org.devio.takephoto.permission.PermissionManager;
+//import org.devio.takephoto.permission.TakePhotoInvocationHandler;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,13 +61,17 @@ import static android.app.Activity.RESULT_OK;
 /**
  * Created by fysong on 2020/10/15
  **/
-public class RechargeFragment extends BaseFragment<RechargePresenter> {
+public class RechargeFragment extends BaseFragment<RechargePresenter>
+//        implements InvokeListener,TakePhoto.TakeResultListener
+{
     private static final int TYPE_PIC_CAMERA = 1, TYPE_PIC_GALLERY = 2;
 
     @BindView(R.id.ly_upload_pic_recharge)
     LinearLayout mLyPicUpload;
     @BindView(R.id.iv_pic_recharge)
     ImageView mIVPic;
+    @BindView(R.id.iv_add)
+    ImageView mIVAdd;
 
 
     @BindView(R.id.tv_bank_select)
@@ -251,11 +270,15 @@ public class RechargeFragment extends BaseFragment<RechargePresenter> {
                                     @Override
                                     public void onClickToTakePhone() {
                                         mPublicPhotoPath = Kits.PHOTO.takePhoto(getActivity(), BuildConfig.APPLICATION_ID, TYPE_PIC_CAMERA);
+
+
+//                                        getTakePhoto().onPickFromCapture(getImageUri());
                                     }
 
                                     @Override
                                     public void onClickToFromAlbum() {
                                         Kits.PHOTO.getImageFromAlbum(getActivity(), TYPE_PIC_GALLERY);
+//                                        getTakePhoto().onPickFromGallery();
                                     }
                                 });
                     } else {
@@ -277,6 +300,9 @@ public class RechargeFragment extends BaseFragment<RechargePresenter> {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+//        if (getTakePhoto() != null) {
+//            getTakePhoto().onActivityResult(requestCode, resultCode, data);
+//        }
         switch (requestCode) {
             case TYPE_PIC_CAMERA:
                 if (resultCode != RESULT_OK) return;
@@ -285,6 +311,7 @@ public class RechargeFragment extends BaseFragment<RechargePresenter> {
                 mIVPic.setAdjustViewBounds(true);
                 mIVPic.setImageURI(uri);
 //                mLyPicUpload.setVisibility(View.GONE);
+                mIVAdd.setVisibility(View.GONE);
                 mIVPic.setVisibility(View.VISIBLE);
                 break;
             case TYPE_PIC_GALLERY:
@@ -299,6 +326,7 @@ public class RechargeFragment extends BaseFragment<RechargePresenter> {
                 mIVPic.setAdjustViewBounds(true);
                 mIVPic.setImageURI(Uri.parse(mPicPath));
 //                mLyPicUpload.setVisibility(View.GONE);
+                mIVAdd.setVisibility(View.GONE);
                 mIVPic.setVisibility(View.VISIBLE);
                 break;
             default:
@@ -360,4 +388,78 @@ public class RechargeFragment extends BaseFragment<RechargePresenter> {
 //            mCTVBank.setText("");
         }
     }
+
+
+
+//    public static int MAX_COMPRESS_SIZE = 1024 * 1024;
+//    public static int MAX_COMPRESS_PIXEL = 1920;
+//    private TakePhoto takePhoto;  //TakePhoto对象
+//    private InvokeParam invokeParam;
+//    /**
+//     * 获取takePhoto对象
+//     */
+//    public TakePhoto getTakePhoto() {
+//        if (takePhoto == null) {
+//            takePhoto = (TakePhoto) TakePhotoInvocationHandler.of(this).bind(new TakePhotoImpl(this, this));
+//        }
+//        takePhoto.onEnableCompress(getCompressConfig(), true);
+//        return takePhoto;
+//    }
+//
+//    /**
+//     * 获取图片压缩参数配置
+//     */
+//    public CompressConfig getCompressConfig() {
+//        return new CompressConfig.Builder()
+//                .setMaxSize(MAX_COMPRESS_SIZE)
+//                .setMaxPixel(MAX_COMPRESS_PIXEL)
+//                .create();
+//    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        try {
+//            PermissionManager.TPermissionType type = PermissionManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//            PermissionManager.handlePermissionsResult(getActivity(), type, invokeParam, this);
+//        } catch (Exception e) {
+//
+//        }
+//
+//    }
+//
+//    public Uri getImageUri() {
+//        File file = new File(Environment.getExternalStorageDirectory(), "/temp/" + System.currentTimeMillis() + ".jpg");
+//        if (!file.getParentFile().exists()) {
+//            file.getParentFile().mkdirs();
+//        }
+//        return Uri.fromFile(file);
+//    }
+//
+//    @Override
+//    public PermissionManager.TPermissionType invoke(InvokeParam invokeParam) {
+//        PermissionManager.TPermissionType type = PermissionManager.checkPermission(TContextWrap.of(this), invokeParam.getMethod());
+//        if (PermissionManager.TPermissionType.WAIT.equals(type)) {
+//            this.invokeParam = invokeParam;
+//        }
+//        return type;
+//    }
+//
+//    @Override
+//    public void takeSuccess(TResult result) {
+//        mPicPath = result.getImage().getCompressPath();
+//        GlideUtils.loadImageView(context,mPicPath,mIVPic);
+////        mIVPic.setImageURI(uri);
+//                mIVAdd.setVisibility(View.GONE);
+//                mIVPic.setVisibility(View.VISIBLE);
+//    }
+//
+//    @Override
+//    public void takeFail(TResult result, String msg) {
+//
+//    }
+//
+//    @Override
+//    public void takeCancel() {
+//
+//    }
 }

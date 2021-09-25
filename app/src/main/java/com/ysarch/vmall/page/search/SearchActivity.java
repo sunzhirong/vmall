@@ -53,7 +53,7 @@ public class SearchActivity extends BaseTitleActivity {
         return bundle;
     }
 
-    public static Bundle getBundle( boolean showKeyBorad) {
+    public static Bundle getBundle(boolean showKeyBorad) {
         Bundle bundle = new Bundle();
         bundle.putBoolean(BundleKey.ARG_SHOW_KEYBORAD, showKeyBorad);
         return bundle;

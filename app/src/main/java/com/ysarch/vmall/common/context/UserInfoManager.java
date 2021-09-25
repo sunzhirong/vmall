@@ -66,11 +66,25 @@ public class UserInfoManager {
             sUserInfoBean.setOrderWaitReceiveCount(memberBean.getOrderWaitReceiveCount());
             sUserInfoBean.setBirthday(memberBean.getBirthday());
             sUserInfoBean.setGender(memberBean.getGender());
+            sUserInfoBean.setCartItemCount(memberBean.getCartItemCount());
 
             CacheHelper.putString(CacheKeys.KEY_APP_USER, new Gson().toJson(sUserInfoBean));
             Log.e("user2",new Gson().toJson(sUserInfoBean));
             EventCenter.getInstance().notify(NotificationDef.EVENT_USER_INFO_CHANGE);
         }
+    }
+    public static int getCartItemCount(){
+        if(sUserInfoBean!=null) {
+           return sUserInfoBean.getCartItemCount();
+        }
+        return 0;
+    }
+    public static void updateCartItemCount(int cartItemCount){
+        if(sUserInfoBean!=null) {
+            sUserInfoBean.setCartItemCount(cartItemCount);
+            CacheHelper.putString(CacheKeys.KEY_APP_USER, new Gson().toJson(sUserInfoBean));
+        }
+
     }
 
 

@@ -172,7 +172,9 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
                 .subscribe(new ApiSubscriber<Object>(getV()) {
                     @Override
                     public void onSuccess(Object o) {
-                        getV().onAddCartSucc();
+                        if(o instanceof Number) {
+                            getV().onAddCartSucc(((Number) o).intValue());
+                        }
                     }
 
                     @Override
@@ -285,7 +287,7 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
                                         gson.fromJson(content, CommonResult.class);
 
                                 if (commonResult.getCode() == 200) {
-                                    getV().onAddCartSucc();
+                                    getV().onAddCartSucc(0);
                                 } else {
                                     getV().showTs(commonResult.getMessage());
                                 }
