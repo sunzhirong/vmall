@@ -59,8 +59,8 @@
         <activity
             android:name=".page.account.AccountActivity"
             android:configChanges="screenSize|keyboard|orientation"
-            android:windowSoftInputMode="adjustResize|stateVisible"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
 
 
         <activity
@@ -88,7 +88,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysVisible" />
-<!--        android:windowSoftInputMode="stateAlwaysHidden"-->
+        <!--        android:windowSoftInputMode="stateAlwaysHidden"-->
         <activity
             android:name=".page.goods.GoodsDetailActivity"
             android:screenOrientation="portrait" />
@@ -101,43 +101,54 @@
             android:name=".page.address.AddressListActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".page.address.AddressEditActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".page.orders.OrderConfirmActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".page.address.AddressEditActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.orders.OrderConfirmActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".page.orders.OrderDetailActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".page.orders.OrderDetailActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".page.coupon.CouponDrawActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".page.goods.GoodsDetailActivityV1"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".page.coupon.CouponDrawActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.goods.GoodsDetailActivityV1"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".page.wallet.PayPwdModifyActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".page.wallet.PayPwdModifyActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".page.wallet.RechargeActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".page.wallet.RechargeActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".page.wallet.WalletLogActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".page.wallet.WalletLogActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".page.wallet.RechargeHistoryActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".page.chat.ChatActivity"
+        <activity
+            android:name=".page.wallet.RechargeHistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.chat.ChatActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".page.msg.MsgActivity"
+        <activity
+            android:name=".page.msg.MsgActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
 
-        <activity android:name=".page.cart.CartActivity"
+        <activity
+            android:name=".page.cart.CartActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
 
 
         <activity
@@ -148,21 +159,28 @@
             android:screenOrientation="portrait" />
 
 
-        <activity android:name=".page.goods.GoodsPictureDetailsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".page.setting.OwnerSettingActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".page.recharge.RechargeAmountActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".page.recharge.RechargeSuccessActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".page.goods.GoodsPictureDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.setting.OwnerSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.recharge.RechargeAmountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.recharge.RechargeSuccessActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".page.setting.PasswordSettingActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".page.wallet.PayPwdForgetActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".page.setting.EditNicknameActivity"
-        android:screenOrientation="portrait"/>
+        <activity
+            android:name=".page.setting.PasswordSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.wallet.PayPwdForgetActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.setting.EditNicknameActivity"
+            android:screenOrientation="portrait" />
 
         <!-- 图片选择用到 -->
         <provider
@@ -174,6 +192,26 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+
+        <!--facebook-->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <!--facebook-->
+
 
     </application>
 

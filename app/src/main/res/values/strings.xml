@@ -404,4 +404,8 @@
     <string name="loading">加载中</string>
     <string name="no_more">没有更多啦</string>
     <string name="load_failed_try_agian">加载失败,点击重新加载</string>
+    <string name="label_facebook_login">Facebook登录</string>
+
+    <string name="facebook_app_id">[APP_ID]</string>
+
 </resources>
