@@ -37,11 +37,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+<!--        app:riv_oval="true"-->
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/riv_tb_cmd_dialog"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            app:riv_oval="true"
+            app:riv_corner_radius="5dp"
             android:scaleType="centerCrop"
             tools:background="#33ff33"/>
 
@@ -68,14 +69,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
+                    android:textStyle="bold"
                     android:id="@+id/tv_price_prefix_tb_cmd_dialog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_10pt"
+                    android:textSize="@dimen/text_9pt"
                     android:text="$"/>
 
                 <TextView
+                    android:textStyle="bold"
                     android:id="@+id/tv_price_tb_cmd_dialog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

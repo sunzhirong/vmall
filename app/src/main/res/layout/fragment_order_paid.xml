@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/tv_tips"
         android:layout_width="match_parent"
         android:background="@drawable/ic_paid_safe_bg"
@@ -17,15 +18,12 @@
             android:src="@drawable/ic_paid_safe_icon"/>
 
         <TextView
-            android:layout_marginLeft="-5dp"
             android:text="@string/label_pwd_safe_tips"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             style="@style/blackA14sp"
             android:textSize="@dimen/text_13pt"
             />
-        <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"></View>
         <TextView
             android:id="@+id/tv_modify_pwd"
             android:layout_marginRight="12dp"

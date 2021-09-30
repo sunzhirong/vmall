@@ -159,9 +159,9 @@ public class RechargeAmountFragment extends BaseFragment<RechargeAmountPresenter
                     ToastUtils.showShortToast(context, R.string.please_select_bank);
                     return;
                 }
-                if (!TextUtils.isEmpty(amount)) {
-                    amount = amount.substring(1);
-                    Log.e("niko bank", JSON.toJSONString(AppContext.getsInstance().getBankItemBeans()));
+                if (!TextUtils.isEmpty(amount)&&Double.parseDouble(amount)>0) {
+//                    amount = amount.substring(1);
+//                    Log.e("niko bank", JSON.toJSONString(AppContext.getsInstance().getBankItemBeans()));
                     NavHelper.startActivity(getActivity(), RechargeActivity.class, RechargeActivity.getBundle(selectBankId,Double.parseDouble(amount)));
                 } else {
                     ToastUtils.showShortToast(context, R.string.please_input_recharge_amount);
