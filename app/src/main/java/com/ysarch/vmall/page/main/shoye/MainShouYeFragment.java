@@ -72,7 +72,7 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
                         break;
                 }
                 mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, name,
-                        ShouyeSubpageFragment.getBundle(name, cateLevelBean.getChildren())));
+                        ShouyeSubpageFragment.getBundle(name,cateLevelBean.getKeywords(), cateLevelBean.getChildren())));
             }
         }
 //        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "本地发货"));
