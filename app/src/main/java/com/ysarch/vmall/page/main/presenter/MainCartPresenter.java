@@ -6,6 +6,7 @@ import android.util.SparseArray;
 import com.google.gson.Gson;
 import com.ysarch.uibase.base.BasePresenter;
 import com.ysarch.vmall.domain.bean.CartGoodsBean;
+import com.ysarch.vmall.domain.bean.CateLevelBean;
 import com.ysarch.vmall.domain.bean.GoodsDetailBean;
 import com.ysarch.vmall.domain.bean.GoodsDetailResult;
 import com.ysarch.vmall.domain.bean.SkuBean;
@@ -39,17 +40,56 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
     private SparseArray<WeakReference<GoodsDetailBean>> mSparseArray = new SparseArray<>();
 
     public void requestCartList(boolean showLoading) {
+//        CartLoader.getInstance().requestCartList()
+//                .compose(showLoading ? showLoadingDialog() : dontShowDialog())
+//                .compose(getV().bindToLifecycle())
+//                .subscribe(new ApiSubscriber<List<CartGoodsBean>>(getV()) {
+//                    @Override
+//                    public void onSuccess(List<CartGoodsBean> cartGoodsBeans) {
+//                        for (int i = 0; i < cartGoodsBeans.size(); i++) {
+//                            CartGoodsBean cartGoodsBean = cartGoodsBeans.get(i);
+//                            cartGoodsBean.setProductPic(VMallUtils.correctUrl(cartGoodsBean.getProductPic()));
+//                        }
+//                        getV().onCartDataSucc(cartGoodsBeans);
+//                    }
+//
+//                    @Override
+//                    protected void onFail(NetError error) {
+//                        super.onFail(error);
+//                        getV().onCartDataFail();
+//                    }
+//                });
         CartLoader.getInstance().requestCartList()
                 .compose(showLoading ? showLoadingDialog() : dontShowDialog())
                 .compose(getV().bindToLifecycle())
-                .subscribe(new ApiSubscriber<List<CartGoodsBean>>(getV()) {
+                .subscribe(new ApiSubscriber<List<List<CartGoodsBean>>>(getV()) {
                     @Override
-                    public void onSuccess(List<CartGoodsBean> cartGoodsBeans) {
+                    public void onSuccess(List<List<CartGoodsBean>> cartGoodsBeans) {
+                        List<CartGoodsBean> cartGoodsBeans1 = new ArrayList<>();
                         for (int i = 0; i < cartGoodsBeans.size(); i++) {
-                            CartGoodsBean cartGoodsBean = cartGoodsBeans.get(i);
-                            cartGoodsBean.setProductPic(VMallUtils.correctUrl(cartGoodsBean.getProductPic()));
+                            List<CartGoodsBean> list = cartGoodsBeans.get(i);
+                            if(list!=null && list.size()!=0){
+                                for (int j = 0;j<list.size();j++){
+                                    CartGoodsBean cartGoodsBean = list.get(j);
+                                    cartGoodsBean.setProductPic(VMallUtils.correctUrl(cartGoodsBean.getProductPic()));
+                                    if(j==0){
+                                        cartGoodsBean.setType(CartGoodsBean.TYPE_TOP);
+                                    }
+                                    if(j==list.size()-1){
+                                        cartGoodsBean.setType(CartGoodsBean.TYPE_BOTTOM);
+                                    }
+                                    if(list.size() == 1){
+                                        cartGoodsBean.setType(CartGoodsBean.TYPE_ONE);
+                                    }
+                                }
+                                cartGoodsBeans1.addAll(list);
+                            }
+
+//                            CartGoodsBean cartGoodsBean = cartGoodsBeans.get(i);
+//                            cartGoodsBean.setProductPic(VMallUtils.correctUrl(cartGoodsBean.getProductPic()));
                         }
-                        getV().onCartDataSucc(cartGoodsBeans);
+//                        getV().onCartDataSucc(cartGoodsBeans);
+                        getV().onCartDataSucc(cartGoodsBeans1);
                     }
 
                     @Override

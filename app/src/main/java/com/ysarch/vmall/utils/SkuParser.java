@@ -103,6 +103,7 @@ public class SkuParser implements Serializable {
                         loop1:
                         for (int k = 0; k < skuBeanV2s.size(); k++) {
                             SkuBeanV2 skuBeanV2 = skuBeanV2s.get(k);
+//                            if (skuBeanV2.getPropPath()!=null&&skuBeanV2.getPropPath().contains(skuPropCode)) {
                             if (skuBeanV2.getPropPath().contains(skuPropCode)) {
                                 existSkuGoods = true;
                                 break loop1;

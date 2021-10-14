@@ -407,5 +407,9 @@
     <string name="label_facebook_login">Facebook登录</string>
 
     <string name="facebook_app_id">[APP_ID]</string>
+    <string name="dialog_think_again">我再想想</string>
+    <string name="dialog_delete">删除</string>
+    <string name="dialog_confirm_delete_cart">确定删除%d个商品？</string>
+    <string name="dialog_edit_order_title">请输入数量</string>
 
 </resources>

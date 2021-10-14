@@ -108,7 +108,7 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
                 Iterator<String> iterator = urls.iterator();
                 while (iterator.hasNext()) {
                     String url = iterator.next();
-                    if (url.toLowerCase().contains(".gif")) {
+                    if (TextUtils.isEmpty(url)||url.toLowerCase().contains(".gif")) {
                         iterator.remove();
                     }
                 }
@@ -122,7 +122,7 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
                 Iterator<String> iterator = urls.iterator();
                 while (iterator.hasNext()) {
                     String url = iterator.next();
-                    if (url.toLowerCase().contains(".gif")) {
+                    if (TextUtils.isEmpty(url)||url.toLowerCase().contains(".gif")) {
                         iterator.remove();
                     }
                 }

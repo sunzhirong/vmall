@@ -90,7 +90,7 @@ public class CartGoodsAdapter extends AbsRVAdapter {
 
     @Override
     public void onBindViewHolder(@NonNull AbsViewHolder holder, int position) {
-        ((CartGoodsVH) holder).showLine(position != getItemCount() - 1);
+        ((CartGoodsVH) holder).showLast(position == getItemCount() - 1);
         holder.onBindDataWrapper(position, mMixData.get(position));
     }
 }

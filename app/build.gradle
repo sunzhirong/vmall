@@ -161,7 +161,7 @@ dependencies {
     implementation 'com.tencent.bugly:crashreport:latest.release'
     implementation 'com.github.jokar:multi-languages:0.1.5'
 
-//    implementation 'com.facebook.android:facebook-login:[8.1)'
+//    implementation 'com.facebook.android:facebook-login:latest.release'
 
 
 //    implementation('org.devio.takephoto:takephoto_library:4.1.0')

@@ -42,7 +42,7 @@ public class CartLoader extends ObjectLoader {
      *
      * @return
      */
-    public Flowable<SimpleResponse<List<CartGoodsBean>>> requestCartList() {
+    public Flowable<SimpleResponse<List<List<CartGoodsBean>>>> requestCartList() {
         return mService.requestCartList();
     }
 
@@ -149,8 +149,9 @@ public class CartLoader extends ObjectLoader {
 
     interface CartService {
 
-        @GET("/cart/list")
-        Flowable<SimpleResponse<List<CartGoodsBean>>> requestCartList();
+//        @GET("/cart/list")
+        @GET("/cart/listV2")
+        Flowable<SimpleResponse<List<List<CartGoodsBean>>>> requestCartList();
 
         @FormUrlEncoded
         @POST("/cart/clear")
