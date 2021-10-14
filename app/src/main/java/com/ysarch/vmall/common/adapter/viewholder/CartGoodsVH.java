@@ -1,8 +1,10 @@
 package com.ysarch.vmall.common.adapter.viewholder;
 
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -11,7 +13,11 @@ import com.ysarch.uibase.textview.CompatTextView;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
 import com.ysarch.vmall.common.imageloader.ImageLoadConfig;
+import com.ysarch.vmall.component.dialog.DeleteCartOrderDialog;
+import com.ysarch.vmall.component.dialog.EditCartOrderDialog;
 import com.ysarch.vmall.domain.bean.CartGoodsBean;
+import com.ysarch.vmall.utils.GlideUtils;
+import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.VMallUtils;
 
 import java.io.UnsupportedEncodingException;
@@ -45,6 +51,13 @@ public class CartGoodsVH extends AbsViewHolder {
     @BindView(R.id.v_divide_line_goods_cart)
     View mVDivideLine;
 
+    @BindView(R.id.view_top)
+    View mVTop;
+    @BindView(R.id.view_bottom)
+    View mVBottom;
+    @BindView(R.id.cl_container)
+    View mCl;
+
     private int mCurNum;
     private BeeGlide mBeeGlide;
     private CartGoodsBean mCartGoodsBean;
@@ -66,6 +79,26 @@ public class CartGoodsVH extends AbsViewHolder {
     public void onBindData(int position, Object data, Object callback) {
         mCallback = (Callback) callback;
         mCartGoodsBean = (CartGoodsBean) data;
+        showLine(false);
+        switch (mCartGoodsBean.getType()){
+            case CartGoodsBean.TYPE_TOP:
+                mVTop.setVisibility(View.VISIBLE);
+                mCl.setBackgroundResource(R.drawable.shape_round_rect_r10_fill_white_top);
+                break;
+            case CartGoodsBean.TYPE_BOTTOM:
+                mVTop.setVisibility(View.GONE);
+                mCl.setBackgroundResource(R.drawable.shape_round_rect_r10_fill_white_bottom);
+                break;
+            case CartGoodsBean.TYPE_ONE:
+                mVTop.setVisibility(View.VISIBLE);
+                mCl.setBackgroundResource(R.drawable.shape_round_rect_r10_fill_white);
+                break;
+            default:
+                showLine(true);
+                mCl.setBackgroundColor(Color.parseColor("#ffffff"));
+                mVTop.setVisibility(View.GONE);
+                break;
+        }
         mCurNum = mCartGoodsBean.getQuantity();
         mTVPrice.setText("$ " + VMallUtils.convertTo2String(mCartGoodsBean.getPrice()));
         try {
@@ -100,7 +133,7 @@ public class CartGoodsVH extends AbsViewHolder {
     }
 
     @OnClick({R.id.iv_radio_goods_cart, R.id.iv_plus_goods_cart, R.id.iv_minus_goods_cart,
-            R.id.ctv_sku_goods_cart})
+            R.id.ctv_sku_goods_cart,R.id.tv_num_goods_cart})
     void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.iv_radio_goods_cart:
@@ -143,11 +176,38 @@ public class CartGoodsVH extends AbsViewHolder {
 //                    mCallback.onSkuClick(mPosition, mCartGoodsBean);
 //                }
                 break;
+            case R.id.tv_num_goods_cart:
+                new EditCartOrderDialog.Builder(itemView.getContext())
+                        .setNum(String.valueOf(mCurNum))
+                        .setDeleteCallback(new EditCartOrderDialog.DeleteCallback() {
+                            @Override
+                            public void onConfirm(String num) {
+                                if(TextUtils.isEmpty(num)){return;}
+                                int curNum = Integer.parseInt(num);
+                                if(mCurNum==curNum){return;}
+                                if(curNum>0) {
+                                    if (mCallback != null) {
+                                        mCurNum = Integer.parseInt(num);
+                                        mTVNum.setText("" + mCurNum);
+                                        mIVMinus.setEnabled(mCurNum > 1);
+                                        mCartGoodsBean.setQuantity(mCurNum);
+
+                                        mCallback.onItemNumChange(mPosition, mCartGoodsBean);
+                                        mCallback.onQuantityChange(mCartGoodsBean.getId(), mCurNum);
+                                    }
+                                }
+                            }
+                        }).build().show();
+                break;
         }
     }
 
     public void showLine(boolean visible) {
         mVDivideLine.setVisibility(visible ? View.VISIBLE : View.GONE);
+    }
+
+    public void showLast(boolean visible){
+        mVBottom.setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 
     public interface Callback {

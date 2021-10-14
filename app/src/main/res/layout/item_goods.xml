@@ -74,6 +74,8 @@
 
 
         <TextView
+            android:maxLines="1"
+            android:ellipsize="end"
             android:id="@+id/tv_ori_price_goods_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

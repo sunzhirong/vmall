@@ -6,10 +6,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.jungly.gridpasswordview.GridPasswordView;
+import androidx.annotation.NonNull;
+
 import com.ysarch.vmall.R;
 
-import androidx.annotation.NonNull;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -17,13 +17,11 @@ import butterknife.OnClick;
 /**
  * Created by fysong on 2020-06-15
  **/
-public class DeleteOrderDialog extends Dialog {
+public class DeleteCartOrderDialog extends Dialog {
 
 
     @BindView(R.id.tv_delete_title)
     TextView mTvTitle;
-    @BindView(R.id.tv_delete_content)
-    TextView mTvContent;
     @BindView(R.id.tv_dialog_confirm)
     TextView mTvConfirm;
     @BindView(R.id.tv_dialog_cancel)
@@ -34,11 +32,11 @@ public class DeleteOrderDialog extends Dialog {
 
     private DeleteCallback mDeleteCallback;
 
-    public DeleteOrderDialog(@NonNull Context context) {
+    public DeleteCartOrderDialog(@NonNull Context context) {
         this(context, R.style.CenterDialog);
     }
 
-    public DeleteOrderDialog(@NonNull Context context, int themeResId) {
+    public DeleteCartOrderDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
         init();
     }
@@ -48,9 +46,6 @@ public class DeleteOrderDialog extends Dialog {
         super.setCancelable(flag);
     }
 
-    public void setTvContent(String content) {
-        mTvContent.setText(content);
-    }
 
     public void setTvTitle(String title) {
         mTvTitle.setText(title);
@@ -64,9 +59,6 @@ public class DeleteOrderDialog extends Dialog {
         mTvCancel.setText(cancel);
     }
 
-    private void hintContent() {
-        mTvContent.setVisibility(View.GONE);
-    }
 
 
     public void setDeleteCallback(DeleteCallback deleteCallback) {
@@ -74,7 +66,7 @@ public class DeleteOrderDialog extends Dialog {
     }
 
     private void init() {
-        View view = View.inflate(getContext(), R.layout.dialog_delete_order, null);
+        View view = View.inflate(getContext(), R.layout.dialog_delete_cart_order, null);
         setContentView(view);
         ButterKnife.bind(this, view);
 
@@ -109,10 +101,8 @@ public class DeleteOrderDialog extends Dialog {
         private Context mContext;
         private DeleteCallback mPayCallback;
         private String title;
-        private String content;
         private String submitText;
         private String cancelText;
-        private boolean hintContent;
 
 
 
@@ -130,10 +120,6 @@ public class DeleteOrderDialog extends Dialog {
             this.title = title;
             return this;
         }
-        public Builder setContent(String content){
-            this.content = content;
-            return this;
-        }
         public Builder setSubmitText(String submitText){
             this.submitText = submitText;
             return this;
@@ -144,31 +130,20 @@ public class DeleteOrderDialog extends Dialog {
         }
 
 
-        public Builder isHintContent(boolean hintContent){
-            this.hintContent = hintContent;
-            return this;
-        }
 
 
 
-
-        public DeleteOrderDialog build() {
-            DeleteOrderDialog dialog = new DeleteOrderDialog(mContext);
+        public DeleteCartOrderDialog build() {
+            DeleteCartOrderDialog dialog = new DeleteCartOrderDialog(mContext);
             dialog.setDeleteCallback(mPayCallback);
             if (!TextUtils.isEmpty(title)) {
                 dialog.setTvTitle(title);
-            }
-            if (!TextUtils.isEmpty(content)) {
-                dialog.setTvContent(content);
             }
             if (!TextUtils.isEmpty(submitText)) {
                 dialog.setTvCancel(submitText);
             }
             if (!TextUtils.isEmpty(cancelText)) {
                 dialog.setTvConfirm(cancelText);
-            }
-            if(hintContent){
-                dialog.hintContent();
             }
             return dialog;
         }

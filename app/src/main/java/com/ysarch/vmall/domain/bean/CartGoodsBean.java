@@ -7,6 +7,11 @@ import java.io.Serializable;
  **/
 public class CartGoodsBean implements Serializable {
 
+    public static final int TYPE_ONE = -1;//只有一个
+    public static final int TYPE_TOP = 0;//头部
+    public static final int TYPE_MIDDLE = 1;//中部
+    public static final int TYPE_BOTTOM = 2;//尾部
+
     /**
      * id : 135
      * productId : 623868822199
@@ -21,6 +26,81 @@ public class CartGoodsBean implements Serializable {
      * productBrand : %E6%A2%93%E6%99%A8
      * source : 0
      */
+
+
+
+
+//            "memberNickname": "string",
+//            "modifyDate": "2021-10-12T01:56:04.770Z",
+//            "productSkuCode": "string",
+//            "productSn": "string",
+//            "productSubTitle": "string",
+//            "sellerId": 0,
+
+    private String memberNickname;
+    private String modifyDate;
+    private String productSkuCode;
+    private String productSn;
+    private String productSubTitle;
+    private String sellerId;
+
+    private int type = 1;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getMemberNickname() {
+        return memberNickname;
+    }
+
+    public void setMemberNickname(String memberNickname) {
+        this.memberNickname = memberNickname;
+    }
+
+    public String getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(String modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+
+    public String getProductSkuCode() {
+        return productSkuCode;
+    }
+
+    public void setProductSkuCode(String productSkuCode) {
+        this.productSkuCode = productSkuCode;
+    }
+
+    public String getProductSn() {
+        return productSn;
+    }
+
+    public void setProductSn(String productSn) {
+        this.productSn = productSn;
+    }
+
+    public String getProductSubTitle() {
+        return productSubTitle;
+    }
+
+    public void setProductSubTitle(String productSubTitle) {
+        this.productSubTitle = productSubTitle;
+    }
+
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
+    }
 
     private int id;
     private long productId;
