@@ -3,6 +3,7 @@ package com.ysarch.vmall.page.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.vector.update_app.UpdateAppManager;
 import com.ysarch.uibase.tab.HomeBottomTab;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.CustomActivityManager;
@@ -18,6 +20,7 @@ import com.ysarch.vmall.domain.constant.BundleKey;
 import com.ysarch.vmall.domain.enums.MainPageTag;
 import com.ysarch.vmall.page.main.shoye.MainShouYeFragment;
 import com.ysarch.vmall.utils.LanguageUtils;
+import com.ysarch.vmall.utils.UpdateAppHttpUtil;
 import com.yslibrary.utils.FragmentTransUtil;
 
 import java.util.Locale;
@@ -58,6 +61,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         onTabChange(findViewById(R.id.tb_sy_main_tab));
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                new UpdateAppManager
+//                        .Builder()
+//                        //当前Activity
+//                        .setActivity(MainActivity.this)
+//                        //更新地址
+//                        .setUpdateUrl("https://www.baidu.com")
+//                        //实现httpManager接口的对象
+//                        .setHttpManager(new UpdateAppHttpUtil())
+//                        .build()
+//                        .update();
+//            }
+//        },5000);
     }
 
 

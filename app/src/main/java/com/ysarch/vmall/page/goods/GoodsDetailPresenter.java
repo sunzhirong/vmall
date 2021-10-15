@@ -2,6 +2,7 @@ package com.ysarch.vmall.page.goods;
 
 import android.text.TextUtils;
 
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.ysarch.uibase.base.BasePresenter;
 import com.ysarch.vmall.R;
@@ -16,6 +17,7 @@ import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.local.MultiSkuEntity;
 import com.ysarch.vmall.domain.services.CouponLoader;
 import com.ysarch.vmall.domain.services.GoodsLoader;
+import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.ResUtils;
 import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.utils.CollectionUtils;
