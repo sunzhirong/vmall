@@ -5,6 +5,7 @@ import com.ysarch.vmall.domain.bean.AddressItemBean;
 import com.ysarch.vmall.domain.bean.LoginResult;
 import com.ysarch.vmall.domain.bean.MemberBean;
 import com.ysarch.vmall.domain.bean.MsgBean;
+import com.ysarch.vmall.domain.bean.UpdateBean;
 import com.ysarch.vmall.domain.bean.UserInfoResult;
 import com.ysarch.vmall.domain.constant.Constants;
 
@@ -68,6 +69,14 @@ public class AccountLoader extends ObjectLoader {
     public Flowable<SimpleResponse<LoginResult>> login(@Field("telephone") String phone, @Field("password") String password) {
         return mService.login(phone, password);
     }
+    public Flowable<SimpleResponse<LoginResult>> facebookLogin(@Field("outId") String outId, @Field("token") String token,@Field("nickname") String nickname) {
+        return mService.facebookLogin(outId, token,nickname);
+    }
+
+
+
+
+
 
     /**
      * 注册
@@ -114,6 +123,9 @@ public class AccountLoader extends ObjectLoader {
     }
 
 
+    public Flowable<SimpleResponse<UpdateBean>> checkUpdate(@Query("versionCode") int versionCode){
+        return mService.checkUpdate(versionCode);
+    }
 
 
     /**
@@ -140,6 +152,11 @@ public class AccountLoader extends ObjectLoader {
         @FormUrlEncoded
         @POST("sso/login")
         Flowable<SimpleResponse<LoginResult>> login(@Field("telephone") String phone, @Field("password") String password);
+
+
+        @FormUrlEncoded
+        @POST("sso/thirdPartyLogin")
+        Flowable<SimpleResponse<LoginResult>> facebookLogin(@Field("outId") String outId, @Field("token") String token,@Field("nickname") String nickname);
 
         @GET("sso/refreshToken")
         Flowable<SimpleResponse<LoginResult>> refreshToken();
@@ -209,6 +226,9 @@ public class AccountLoader extends ObjectLoader {
 
         @GET("sso/hasNewMsg")
         Call<ResponseBody> checkHasNewMsg();
+
+        @GET("app/updateInfo")
+        Flowable<SimpleResponse<UpdateBean>> checkUpdate(@Query("versionCode") int versionCode);
 
 
     }

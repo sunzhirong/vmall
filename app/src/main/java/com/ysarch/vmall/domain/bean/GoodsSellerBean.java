@@ -216,4 +216,5 @@ public class GoodsSellerBean implements Serializable {
             this.type = type;
         }
     }
+
 }

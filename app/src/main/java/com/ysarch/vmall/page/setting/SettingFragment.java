@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ysarch.uibase.base.BaseFragment;
 import com.ysarch.uibase.dialog.SimpleDialogWithTwoBtn;
 import com.ysarch.uibase.textview.CompatTextView;
 import com.ysarch.vmall.BuildConfig;
@@ -17,6 +18,10 @@ import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
 import com.ysarch.vmall.common.imageloader.ImageLoadConfig;
 import com.ysarch.vmall.component.SettingItem;
+import com.ysarch.vmall.component.dialog.UpdateDialog;
+import com.ysarch.vmall.domain.bean.UpdateBean;
+import com.ysarch.vmall.domain.constant.CacheKeys;
+import com.ysarch.vmall.helper.CacheHelper;
 import com.ysarch.vmall.page.account.AccountActivity;
 import com.ysarch.vmall.page.account.presenter.LoginPresenter;
 import com.ysarch.vmall.page.setting.language.LanguageSettingActivity;
@@ -24,11 +29,16 @@ import com.ysarch.vmall.page.wallet.PayPwdModifyActivity;
 import com.ysarch.vmall.page.wallet.RechargeActivity;
 import com.ysarch.vmall.utils.CleanDataUtils;
 import com.ysarch.vmall.utils.NavHelper;
+import com.ysarch.vmall.utils.TimeUtils;
+import com.yslibrary.utils.ToastUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -36,7 +46,7 @@ import butterknife.OnClick;
 /**
  * Created by fysong on 16/09/2020
  **/
-public class SettingFragment extends Fragment {
+public class SettingFragment extends BaseFragment<SettingPresenter> {
 
     @BindView(R.id.tv_logout_setting)
     TextView mTVLogout;
@@ -81,33 +91,33 @@ public class SettingFragment extends Fragment {
     @BindView(R.id.iv_language)
     ImageView mIvLanguage;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_setting, container, false);
-    }
+//    @Nullable
+//    @Override
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        return inflater.inflate(R.layout.fragment_setting, container, false);
+//    }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
-
-        if (UserInfoManager.isLogin()) {
-            mTVLogout.setVisibility(View.VISIBLE);
-        } else {
-            mTVLogout.setVisibility(View.GONE);
-        }
-
-        mIVFrag.setImageResource(AppContext.getsInstance().getLanguageEntity().getIconRes());
-
-
-        mSivCache.setRightText(CleanDataUtils.getTotalCacheSize(getContext()));
-        mSivVersion.setRightText("V " + BuildConfig.VERSION_NAME);
-        if(UserInfoManager.isLogin()) {
-            mTvName.setText(UserInfoManager.getUser().getNickname());
-        }
-        mIvLanguage.setImageResource(AppContext.getsInstance().getLanguageEntity().getCircleRes());
-    }
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        ButterKnife.bind(this, view);
+//
+//        if (UserInfoManager.isLogin()) {
+//            mTVLogout.setVisibility(View.VISIBLE);
+//        } else {
+//            mTVLogout.setVisibility(View.GONE);
+//        }
+//
+//        mIVFrag.setImageResource(AppContext.getsInstance().getLanguageEntity().getIconRes());
+//
+//
+//        mSivCache.setRightText(CleanDataUtils.getTotalCacheSize(getContext()));
+//        mSivVersion.setRightText("V " + BuildConfig.VERSION_NAME);
+//        if(UserInfoManager.isLogin()) {
+//            mTvName.setText(UserInfoManager.getUser().getNickname());
+//        }
+//        mIvLanguage.setImageResource(AppContext.getsInstance().getLanguageEntity().getCircleRes());
+//    }
 
     @Override
     public void onResume() {
@@ -121,7 +131,7 @@ public class SettingFragment extends Fragment {
 
     @OnClick({R.id.tv_logout_setting, R.id.ctl_lan_setting, R.id.ctv_about_us_setting,
             R.id.ctl_pay_pwd_setting,R.id.rl_ava, R.id.siv_language, R.id.siv_login_pwd,
-            R.id.siv_pay_pwd, R.id.siv_cache})
+            R.id.siv_pay_pwd, R.id.siv_cache,R.id.siv_version})
     void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.tv_logout_setting:
@@ -140,9 +150,9 @@ public class SettingFragment extends Fragment {
                 }
                 break;
             case R.id.rl_ava:
-                if(UserInfoManager.isLogin()) {
-                    NavHelper.startActivity(this, OwnerSettingActivity.class);
-                }
+//                if(UserInfoManager.isLogin()) {
+//                    NavHelper.startActivity(this, OwnerSettingActivity.class);
+//                }
                 break;
             case R.id.siv_language:
                 NavHelper.startActivity(getActivity(), LanguageSettingActivity.class);
@@ -177,9 +187,56 @@ public class SettingFragment extends Fragment {
                             }
                         }).build().show();
                 break;
+            case R.id.siv_version:
+                getPresenter().checkUpdate();
+                break;
 
         }
     }
 
 
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        if (UserInfoManager.isLogin()) {
+            mTVLogout.setVisibility(View.VISIBLE);
+        } else {
+            mTVLogout.setVisibility(View.GONE);
+        }
+
+        mIVFrag.setImageResource(AppContext.getsInstance().getLanguageEntity().getIconRes());
+
+
+        mSivCache.setRightText(CleanDataUtils.getTotalCacheSize(getContext()));
+        mSivVersion.setRightText("V " + BuildConfig.VERSION_NAME);
+        if(UserInfoManager.isLogin()) {
+            mTvName.setText(UserInfoManager.getUser().getNickname());
+        }
+        mIvLanguage.setImageResource(AppContext.getsInstance().getLanguageEntity().getCircleRes());
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_setting;
+    }
+
+    @Override
+    public SettingPresenter newPresenter() {
+        return new SettingPresenter();
+    }
+
+    public void onCheckUpdateSucc(UpdateBean updateBean) {
+        if(updateBean.isCurrentVersionNewest()){
+            ToastUtils.showShortToast(context,R.string.no_new_version);
+            return;
+        }
+
+        UpdateDialog dialog = new UpdateDialog.Builder(getActivity())
+                .setUpdateBean(updateBean)
+                .build();
+        dialog.show();
+    }
+
+    public void onCheckUpdateFail() {
+
+    }
 }

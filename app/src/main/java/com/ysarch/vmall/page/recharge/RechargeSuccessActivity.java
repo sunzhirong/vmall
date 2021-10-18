@@ -22,6 +22,7 @@ public class RechargeSuccessActivity  extends BaseTitleActivity {
 
     @Override
     protected void onTitlebarLeftClick(View view) {
-        NavHelper.startActivity(this, WalletActivity.class);
+//        NavHelper.startActivity(this, WalletActivity.class);
+        finish();
     }
 }

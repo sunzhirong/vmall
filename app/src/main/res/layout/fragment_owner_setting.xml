@@ -53,23 +53,28 @@
         android:layout_marginHorizontal="@dimen/margin_h_common"
         style="@style/horLineStyle"/>
     <com.ysarch.vmall.component.SettingItem
+        android:visibility="gone"
         android:id="@+id/siv_phone_num"
         app:leftText="@string/label_phone_number"
         app:showEnter="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <View
+        android:visibility="gone"
         android:layout_marginHorizontal="@dimen/margin_h_common"
         style="@style/horLineStyle"/>
     <com.ysarch.vmall.component.SettingItem
+        android:visibility="gone"
         android:id="@+id/siv_gender"
         app:leftText="@string/label_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <View
+        android:visibility="gone"
         android:layout_marginHorizontal="@dimen/margin_h_common"
         style="@style/horLineStyle"/>
     <com.ysarch.vmall.component.SettingItem
+        android:visibility="gone"
         android:id="@+id/siv_birthday"
         app:leftText="@string/label_birthday"
         android:layout_width="match_parent"

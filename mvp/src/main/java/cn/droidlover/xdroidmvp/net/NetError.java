@@ -1,5 +1,7 @@
 package cn.droidlover.xdroidmvp.net;
 
+import java.util.List;
+
 /**
  * Created by wanglei on 2016/12/24.
  */
@@ -15,6 +17,14 @@ public class NetError extends Exception {
     public static final int NoDataError = 3;   //无数据返回异常
     public static final int BusinessError = 4;   //业务异常
     public static final int OtherError = 5;   //其他异常
+
+
+    public static String NoConnectError_Msg = "Network timeout, request failed";
+    public static String AuthError_Msg = "The account has been logged in from other places, please log in again";
+    public static String NoDataError_Msg = "数据为空";
+    public static String InsufficientError_Msg = "Insufficient authority";
+
+
 
     public NetError(Throwable exception, int type) {
         this.exception = exception;

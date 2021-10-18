@@ -22,7 +22,7 @@ public class OrderPaidFragment extends BaseFragment {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        mTvTips.setVisibility(UserInfoManager.getUser().isHasPayPassword()?View.GONE:View.VISIBLE);
+//        mTvTips.setVisibility(UserInfoManager.getUser().isHasPayPassword()?View.GONE:View.VISIBLE);
     }
 
     @Override

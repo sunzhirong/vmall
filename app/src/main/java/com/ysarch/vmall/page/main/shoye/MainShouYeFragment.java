@@ -1,6 +1,8 @@
 package com.ysarch.vmall.page.main.shoye;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,16 +12,25 @@ import com.ysarch.uibase.viewpager.FragmentPagerItem;
 import com.ysarch.uibase.viewpager.UnRecycleFragmentAdapter;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.AppContext;
+import com.ysarch.vmall.common.context.CustomActivityManager;
 import com.ysarch.vmall.common.context.UserInfoManager;
+import com.ysarch.vmall.component.dialog.TBShareCmdDialogNew;
+import com.ysarch.vmall.component.dialog.UpdateDialog;
 import com.ysarch.vmall.domain.bean.CateLevelBean;
+import com.ysarch.vmall.domain.bean.UpdateBean;
+import com.ysarch.vmall.domain.constant.CacheKeys;
 import com.ysarch.vmall.domain.constant.Constants;
+import com.ysarch.vmall.helper.CacheHelper;
+import com.ysarch.vmall.page.goods.GoodsDetailActivity;
 import com.ysarch.vmall.page.main.presenter.MainShouYePresenter;
 import com.ysarch.vmall.page.msg.MsgActivity;
 import com.ysarch.vmall.page.search.SearchActivity;
 import com.ysarch.vmall.utils.NavHelper;
+import com.ysarch.vmall.utils.TimeUtils;
 import com.yslibrary.utils.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import androidx.viewpager.widget.ViewPager;
@@ -41,6 +52,7 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
     @Override
     public void initData(Bundle savedInstanceState) {
         getPresenter().requestCateDatas();
+        new Handler().postDelayed(() -> getPresenter().checkUpdate(),2000);
     }
 
 
@@ -57,6 +69,7 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
             for (int i = 0; i < AppContext.getsInstance().getCateHeaderBeans().size(); i++) {
                 CateLevelBean cateLevelBean = AppContext.getsInstance().getCateHeaderBeans().get(i);
                 String name ;
+                String keywords = cateLevelBean.getKeywords();
                 switch (AppContext.getsInstance().getLanguageEntity().getLanId()){
                     case Constants.ID_LAN_KM:
                         name = cateLevelBean.getKhName();
@@ -72,16 +85,9 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
                         break;
                 }
                 mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, name,
-                        ShouyeSubpageFragment.getBundle(name,cateLevelBean.getKeywords(), cateLevelBean.getChildren())));
+                        ShouyeSubpageFragment.getBundle(name, cateLevelBean.getChildren(),keywords)));
             }
         }
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "本地发货"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "家居"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "女人"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "男人"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "儿童"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "电子产品"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "哈哈哈"));
 
         mFragmentAdapter = new UnRecycleFragmentAdapter(getContext(), getChildFragmentManager(), mFragmentPagerItems);
         mViewPager.setAdapter(mFragmentAdapter);
@@ -161,5 +167,23 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
     }
 
     public void onCateDatasFail() {
+    }
+
+    public void onCheckUpdateSucc(UpdateBean updateBean) {
+        if(updateBean.isCurrentVersionNewest()){return;}
+        if(!updateBean.isForceUpdate()) {
+            String date = TimeUtils.formatDate(new Date());
+            if (date.equals(CacheHelper.getString(CacheKeys.KEY_CHECK_UPDATE_DATE))) {
+                return;
+            }
+        }
+
+        UpdateDialog dialog = new UpdateDialog.Builder(getActivity())
+                .setUpdateBean(updateBean)
+                .build();
+        dialog.show();
+        dialog.setOnDismissListener(dialog1 -> {
+            CacheHelper.putString(CacheKeys.KEY_CHECK_UPDATE_DATE,TimeUtils.formatDate(new Date()));
+        });
     }
 }

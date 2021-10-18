@@ -68,18 +68,18 @@ public abstract class ApiSubscriber<T> extends ResourceSubscriber<T> {
         NetError error = null;
         if (!(e instanceof NetError)) {
             if (e instanceof UnknownHostException || e instanceof SocketTimeoutException) {
-                error = new NetError("Network timeout, request failed", NetError.NoConnectError);
+                error = new NetError(NetError.NoConnectError_Msg, NetError.NoConnectError);
             } else if (e instanceof JSONException || e instanceof JsonParseException || e instanceof JsonSyntaxException) {
 //                error = new NetError(e, NetError.ParseError);
                 error = new NetError(e, NetError.ParseError);
             } else if (e instanceof ResponseError) {
                 ResponseError responseError = (ResponseError) e;
                 if ("1002".equals(responseError.getErrorCode())) {
-                    error = new NetError("The account has been logged in from other places, please log in again", NetError.AuthError);
+                    error = new NetError(NetError.AuthError_Msg, NetError.AuthError);
                 } else if ("2002".equals(responseError.getErrorCode())) {
                     error = new NetError(responseError.getErrorMsg(), 2002);
                 } else if ("6002".equals(responseError.getErrorCode())) {
-                    view.showTs("Insufficient authority");
+                    view.showTs(NetError.InsufficientError_Msg);
                     view.closeSelf();
                 } else {
                     error = new NetError(responseError.getErrorMsg(), NetError.OtherError);

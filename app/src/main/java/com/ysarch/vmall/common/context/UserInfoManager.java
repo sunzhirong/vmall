@@ -11,6 +11,7 @@ import com.ysarch.vmall.domain.bean.UserInfoBean;
 import com.ysarch.vmall.domain.constant.CacheKeys;
 import com.ysarch.vmall.helper.CacheHelper;
 import com.ysarch.vmall.page.account.AccountActivity;
+import com.ysarch.vmall.page.account.FaceBookLoginActivity;
 import com.ysarch.vmall.utils.NavHelper;
 import com.yslibrary.event.EventCenter;
 
@@ -158,6 +159,10 @@ public class UserInfoManager {
         Log.e("user5",new Gson().toJson(sUserInfoBean));
 
         EventCenter.getInstance().notify(NotificationDef.EVENT_USER_ACCOUNT_CHANGE);
+    }
+
+    public static void updateFacebookProfile(){
+
     }
 
 

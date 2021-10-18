@@ -6,11 +6,13 @@ import android.os.Build;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.ysarch.uibase.common.WinSoftKeyboardManager;
 import com.ysarch.vmall.R;
 
 import butterknife.BindView;
@@ -64,6 +66,7 @@ public class EditCartOrderDialog extends Dialog {
         ButterKnife.bind(this, view);
 
         mEtNum.setInputType(InputType.TYPE_CLASS_NUMBER);
+        new WinSoftKeyboardManager((ViewGroup) view).registEditTexts();
     }
 
 

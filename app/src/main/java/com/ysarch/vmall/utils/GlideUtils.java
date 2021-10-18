@@ -2,6 +2,7 @@ package com.ysarch.vmall.utils;
 
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -28,6 +29,11 @@ public class GlideUtils {
         public static void loadImageView(Context mContext, String path, ImageView mImageView) {
             Glide.with(mContext).load(path).into(mImageView);
         }
+
+    //默认加载
+    public static void loadImageView(Context mContext, String path, ImageView mImageView, Drawable drawable) {
+        Glide.with(mContext).load(path).placeholder(drawable).into(mImageView);
+    }
 
         //加载指定大小
         public static void loadImageViewSize(Context mContext, String path, int width, int height, ImageView mImageView) {

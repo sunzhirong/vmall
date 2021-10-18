@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.manager.SupportRequestManagerFragment;
+import com.hyphenate.helpdesk.easeui.ui.BaseFragment;
 import com.ysarch.uibase.textview.CompatTextView;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.UserInfoManager;
@@ -27,6 +28,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
 import androidx.annotation.IntDef;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -53,14 +55,24 @@ public class AccountActivity extends AppCompatActivity {
      * 重置密码
      */
     public static final int TYPE_RESET_PW = 0x04;
-    @BindView(R.id.ctv_protocol_check)
-    CompatTextView mCTVChecker;
-    @BindView(R.id.ly_protocol)
-    LinearLayout mLyProtocol;
+
+
+    /**
+     * facebook登录
+     */
+    public static final int TYPE_FACEBOOK_LOGIN = 0x05;
+
+//    @BindView(R.id.ctv_protocol_check)
+//    CompatTextView mCTVChecker;
+//    @BindView(R.id.ly_protocol)
+//    LinearLayout mLyProtocol;
     private AbsAccountFragment.IAccountFragmentCallback mFragmentCallback;
-    private FunctionHasParamNoResult mProtocolListener;
-    private FunctionNoParamHasResult mProtocolChecker;
+//    private FunctionHasParamNoResult mProtocolListener;
+//    private FunctionNoParamHasResult mProtocolChecker;
     private int mPageType = 0;
+
+    private Fragment mFragment ;
+
 
     /**
      * @param type
@@ -68,6 +80,14 @@ public class AccountActivity extends AppCompatActivity {
      */
     public static Bundle getBundle(@PageType int type) {
         Bundle bundle = new Bundle();
+        bundle.putInt(BundleKey.ARG_ACCOUNT_LAUNCH_TYPE, type);
+        return bundle;
+    }
+
+
+    public static Bundle getBundle( boolean forTest,int type) {
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(BundleKey.ARG_ACCOUNT_FOR_TEST, forTest);
         bundle.putInt(BundleKey.ARG_ACCOUNT_LAUNCH_TYPE, type);
         return bundle;
     }
@@ -81,15 +101,16 @@ public class AccountActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        injectEvents();
+//        injectEvents();
 
-        mCTVChecker.setSelected(true);
+//        mCTVChecker.setSelected(true);
 
         StatusBarCompat.translucentStatusBar(this, true);
         StatusBarCompat.changeToLightStatusBar(this);
 
         Intent intent = getIntent();
         mPageType = TYPE_LOGIN;
+
 
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
@@ -103,46 +124,52 @@ public class AccountActivity extends AppCompatActivity {
                 SystemUtil.hideKeyboard(view);
             }
         });
-
+        if (bundle != null) {
+            boolean fortest = bundle.getBoolean(BundleKey.ARG_ACCOUNT_FOR_TEST, false);
+            if(!fortest){
+                mPageType = TYPE_FACEBOOK_LOGIN;
+            }
+        }
         gotoFragment(mPageType);
     }
 
-    private void injectEvents() {
-        mProtocolChecker = new FunctionNoParamHasResult<Boolean>(HailerFunctionDef.CHECK_PROTOCOL) {
-            @Override
-            public Boolean invokeFunction() {
-                return mCTVChecker.isSelected();
-            }
-        };
+//    private void injectEvents() {
+//        mProtocolChecker = new FunctionNoParamHasResult<Boolean>(HailerFunctionDef.CHECK_PROTOCOL) {
+//            @Override
+//            public Boolean invokeFunction() {
+//                return mCTVChecker.isSelected();
+//            }
+//        };
+//
+//        FunctionsManager.getInstance().addFunctionNoParamHasResult(mProtocolChecker);
+//
+//
+//        mProtocolListener = new FunctionHasParamNoResult<Boolean>(HailerFunctionDef.SWITCH_PROTOCOL_VISIBILITY) {
+//            @Override
+//            public void invokeFunction(Boolean visible) {
+//                mLyProtocol.setVisibility(visible ? View.VISIBLE : View.GONE);
+//            }
+//        };
+//        FunctionsManager.getInstance().addFunctionHasParamNoResult(
+//                mProtocolListener);
+//    }
 
-        FunctionsManager.getInstance().addFunctionNoParamHasResult(mProtocolChecker);
 
-
-        mProtocolListener = new FunctionHasParamNoResult<Boolean>(HailerFunctionDef.SWITCH_PROTOCOL_VISIBILITY) {
-            @Override
-            public void invokeFunction(Boolean visible) {
-                mLyProtocol.setVisibility(visible ? View.VISIBLE : View.GONE);
-            }
-        };
-        FunctionsManager.getInstance().addFunctionHasParamNoResult(
-                mProtocolListener);
-    }
-
-
-    @OnClick({R.id.tv_protocol_bee, R.id.tv_protocol_service, R.id.ctv_protocol_check,
+    @OnClick({
+//            R.id.tv_protocol_bee, R.id.tv_protocol_service, R.id.ctv_protocol_check,
             R.id.iv_close_account})
     void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ctv_protocol_check:
-                view.setSelected(!view.isSelected());
-                break;
-            case R.id.tv_protocol_bee:
-//                UserAgreementActivity.toUserAgreementActivity(this);
-                break;
-            case R.id.tv_protocol_service:
-//                UserAgreementActivity.toUserAgreementActivity(this, UserAgreementActivity.screct);
-                NavHelper.startActivity(this, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/PrivacyPolicy.html"));
-                break;
+//            case R.id.ctv_protocol_check:
+//                view.setSelected(!view.isSelected());
+//                break;
+//            case R.id.tv_protocol_bee:
+////                UserAgreementActivity.toUserAgreementActivity(this);
+//                break;
+//            case R.id.tv_protocol_service:
+////                UserAgreementActivity.toUserAgreementActivity(this, UserAgreementActivity.screct);
+//                NavHelper.startActivity(this, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/PrivacyPolicy.html"));
+//                break;
             case R.id.iv_close_account:
                 setResult(Activity.RESULT_CANCELED);
                 if (mPageType == TYPE_LOGIN && UserInfoManager.isLogin()) {
@@ -193,6 +220,13 @@ public class AccountActivity extends AppCompatActivity {
 //                }
 //
 //                break;
+            case TYPE_FACEBOOK_LOGIN:
+                tag = FacebookLoginFragment.TAG;
+                fragment = fragmentManager.findFragmentByTag(tag);
+                if (fragment == null) {
+                    fragment = FacebookLoginFragment.newInstance();
+                }
+                break;
             default:
                 break;
         }
@@ -201,6 +235,7 @@ public class AccountActivity extends AppCompatActivity {
             FragmentTransUtil.transFragment(fragmentManager, R.id.fl_account_container,
                     fragment, tag, true);
         }
+        mFragment = fragment;
     }
 
     public AbsAccountFragment.IAccountFragmentCallback getFragmentCallback() {
@@ -256,6 +291,14 @@ public class AccountActivity extends AppCompatActivity {
     @Retention(RetentionPolicy.SOURCE)
     public @interface PageType {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mFragment != null) {
+            mFragment.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
 }

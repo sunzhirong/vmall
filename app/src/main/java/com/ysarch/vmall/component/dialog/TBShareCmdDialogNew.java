@@ -2,6 +2,7 @@ package com.ysarch.vmall.component.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Paint;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -28,6 +29,9 @@ public class TBShareCmdDialogNew extends Dialog {
     TextView mTVTitle;
     @BindView(R.id.tv_price_tb_cmd_dialog)
     TextView mTVPrice;
+    @BindView(R.id.tv_ori_price_goods_item)
+    TextView mTVOldPrice;
+
     private BeeGlide mBeeGlide;
 
     private TBShareCmdBean mTBShareCmdBean;
@@ -76,8 +80,13 @@ public class TBShareCmdDialogNew extends Dialog {
 //            mTVShareTip.setVisibility(View.GONE);
 //        }
 
+        mTVOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+//        if(){
+//            mTVOldPrice.setVisibility(?View.VISIBLE:View.GONE);
+//        }
         mTVTitle.setText(mTBShareCmdBean.getContent());
         mTVPrice.setText(mTBShareCmdBean.getPrice());
+//        mTVOldPrice.setText(mTBShareCmdBean);
 
     }
 

@@ -181,11 +181,11 @@
     <string name="label_amount_recharge">Transfer amount</string>
     <string name="label_upload_recharge_evidence">Upload certificate</string>
     <string name="text_take_photo">Take photos</string>
-    <string name="text_from_album" >Photo album</string>
+    <string name="text_from_album">Photo album</string>
     <string name="text_please_agree_to_authorize">Please agree to use photo albums and other functions</string>
     <string name="tip_pls_select_bank">请选择充值到的银行账户</string>
     <string name="tip_pls_upload_recharge_proof">请上传充值证明的图片</string>
-    <string name="label_my_balance" >Balance</string>
+    <string name="label_my_balance">Balance</string>
     <string name="title_input_password_pls">Enter payment password</string>
     <string name="hint_forget_password_ask">Forget password</string>
     <string name="label_order_remark_prefix">Remarks</string>
@@ -222,15 +222,14 @@
     <string name="label_recharge_history">Bill</string>
 
 
-
     <string name="label_goods_id_prefix">ID </string>
     <string name="label_exchange_rate_prefix">Rate：</string>
     <string name="tip_input_phone">Enter phone number</string>
     <string name="tip_input_phone_correctly">Enter right phone number</string>
     <string name="tip_add_cart_succ">Successfully Added</string>
     <string name="em_notice_sending">发送中</string>
-    <string name="tip_msg_looking_goods" >我正在看商品</string>
-    <string name="tip_msg_looking_order" >我正在看订单</string>
+    <string name="tip_msg_looking_goods">我正在看商品</string>
+    <string name="tip_msg_looking_order">我正在看订单</string>
     <string name="format_order_sn">Order Number：%s</string>
     <string name="tip_img_upload_fail">图片上传失败</string>
     <string name="label_msg">Message</string>
@@ -244,7 +243,6 @@
     <string name="tip_input_nickname">请输入昵称</string>
     <string name="tips_delete_address">确定删除？</string>
     <string name="tip_password_un_same">前后密码不一致</string>
-
 
 
     <string name="format_order_total">%d items,total：</string>
@@ -382,27 +380,25 @@
     <string name="label_find">Find</string>
 
 
-    <string name="value1">hello , world</string>
-    <string name="btn1_title">start new activity</string>
-    <string name="btn2_title">start new IntentService</string>
-    <string name="btn3_title">start setting activity</string>
-    <string name="btn4_title">start new Service</string>
-    <string name="activity2_title">this is new activity</string>
-    <string name="setting_activity_title">this is setting activity</string>
-
-    <string name="system_language">Current system language: %1$s</string>
-    <string name="user_select_language">Current user selects language: %s</string>
-    <string name="tv3_value">set text by code</string>
-
-    <string name="service_create">created service</string>
-    <string name="intent_service_create">created IntentService</string>
-
-
-    <string name="language_select">Currently selected language:  %s</string>
     <string name="loading">加载中</string>
     <string name="no_more">没有更多啦</string>
     <string name="load_failed_try_agian">加载失败,点击重新加载</string>
 
     <string name="label_facebook_login">Facebook登录</string>
-    <string name="facebook_app_id">[APP_ID]</string>
+    <string name="facebook_app_id">409513450402246</string>
+    <string name="dialog_think_again">我再想想</string>
+    <string name="dialog_delete">删除</string>
+    <string name="dialog_confirm_delete_cart">确定删除%d个商品？</string>
+    <string name="dialog_edit_order_title">请输入数量</string>
+    <string name="label_update_now">立即升级</string>
+    <string name="label_freight">运费</string>
+    <string name="label_tb_freight_illustrate">淘宝运费说明</string>
+    <string name="tb_freight_illustrate_1">1.淘宝运费为购买单件运费价格。购买时，请提交审核后在付款</string>
+    <string name="tb_freight_illustrate_2">2.淘宝运费免服务费</string>
+    <string name="no_new_version">已是最新的版本</string>
+
+    <string name="no_connect_error_msg">Network timeout, request failed</string>
+    <string name="auth_error_msg">The account has been logged in from other places, please log in again</string>
+    <string name="nodata_error_msg">数据为空</string>
+    <string name="insufficient_error_msg">Insufficient authority</string>
 </resources>

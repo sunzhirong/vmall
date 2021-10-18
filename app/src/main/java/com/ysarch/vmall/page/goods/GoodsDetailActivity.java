@@ -1,6 +1,5 @@
 package com.ysarch.vmall.page.goods;
 
-import android.content.Context;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,13 +14,7 @@ import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.bigkoo.convenientbanner.listener.OnPageChangeListener;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.GlideUrl;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.loader.ImageLoader;
-import com.youth.banner.loader.ImageLoaderInterface;
 import com.ysarch.uibase.base.BaseActivity;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.adapter.PureImageAdapter;
@@ -41,7 +33,7 @@ import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.local.LocalPropSkuEntity;
 import com.ysarch.vmall.page.cart.CartActivity;
 import com.ysarch.vmall.page.coupon.CouponDrawActivity;
-import com.ysarch.vmall.utils.GlideUtils;
+import com.ysarch.vmall.page.webview.CommonWebActivity;
 import com.ysarch.vmall.utils.NavHelper;
 import com.ysarch.vmall.utils.SkuParser;
 import com.ysarch.vmall.utils.VMallUtils;
@@ -51,8 +43,6 @@ import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import qiu.niorgai.StatusBarCompat;
@@ -80,8 +70,8 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
 //    LinearLayout mLyImages;
     @BindView(R.id.rcy_images_goods_detail)
     RecyclerView mRcyImages;
-//    @BindView(R.id.cb_goods_detail)
-//    ConvenientBanner<String> mConvenientBanner;
+    @BindView(R.id.cb_goods_detail)
+    ConvenientBanner<String> mConvenientBanner;
     @BindView(R.id.tv_banner_indicator_goods_detail)
     TextView mTVBannerIndicator;
     @BindView(R.id.tv_name_goods_detail)
@@ -111,8 +101,10 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
     @BindView(R.id.tv_cart_count)
     TextView mTVCartCount;
 
-    @BindView(R.id.banner)
-    Banner mBanner;
+    @BindView(R.id.ll_freight)
+    LinearLayout mLlFreight;
+    @BindView(R.id.tv_freight_detail)
+    TextView mTvFreightDetail;
 
 
     private boolean bLightMode = false;
@@ -210,23 +202,23 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
         });
 
 
-//        mConvenientBanner.setOnPageChangeListener(new OnPageChangeListener() {
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//
-//            }
-//
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//
-//            }
-//
-//            @Override
-//            public void onPageSelected(int index) {
-//                index = index + 1;
-//                mTVBannerIndicator.setText(index + "/" + mBannerImgCount);
-//            }
-//        });
+        mConvenientBanner.setOnPageChangeListener(new OnPageChangeListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+            }
+
+            @Override
+            public void onPageSelected(int index) {
+                index = index + 1;
+                mTVBannerIndicator.setText(index + "/" + mBannerImgCount);
+            }
+        });
     }
 
     private void initAdapter() {
@@ -290,60 +282,25 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
 //        mTVSource.setText(getString(R.string.label_goods_source_prefix) +
 //                VMallUtils.getPlatformName(mGoodsDetailBean.getSource()));
 
-
-        for(String path : mGoodsDetailBean.getImages()){
-            Glide.with(context).load(path);
-        }
-
         if (CollectionUtils.isNotEmpty(mGoodsDetailBean.getImages())) {
-            mBanner.setImages(mGoodsDetailBean.getImages());
-            mBanner.isAutoPlay(false);
-            mBanner.setImageLoader(new ImageLoader() {
 
-                       @Override
-                       public void displayImage(Context context, Object path, ImageView imageView) {
-                           GlideUtils.loadImageView(context,(String) path,imageView);
-                       }
-                   }
-            );
-            mBanner.setBannerStyle(BannerConfig.NOT_INDICATOR);
-            mBanner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            mConvenientBanner.setPages(new CBViewHolderCreator() {
                 @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                public Holder createHolder(View itemView) {
+                    return new GoodsDetailBannerHolder(itemView, mBeeGlide,context);
                 }
 
                 @Override
-                public void onPageSelected(int position) {
-//                    position = position + 1;
-                    mTVBannerIndicator.setText(position + "/" + mBannerImgCount);
+                public int getLayoutId() {
+                    return R.layout.item_banner_goods_detail;
                 }
-
-                @Override
-                public void onPageScrollStateChanged(int state) {
-
-                }
-            });
+            }, mGoodsDetailBean.getImages());
+            mConvenientBanner.setCanLoop(true);
             mBannerImgCount = mGoodsDetailBean.getImages().size();
-            mBanner.start();
-
-
-
-//            mConvenientBanner.setPages(new CBViewHolderCreator() {
-//                @Override
-//                public Holder createHolder(View itemView) {
-//                    return new GoodsDetailBannerHolder(itemView, mBeeGlide,context);
-//                }
-//
-//                @Override
-//                public int getLayoutId() {
-//                    return R.layout.item_banner_goods_detail;
-//                }
-//            }, mGoodsDetailBean.getImages());
-//            mConvenientBanner.setCanLoop(true);
-//            mBannerImgCount = mGoodsDetailBean.getImages().size();
-//            mTVBannerIndicator.setVisibility(View.VISIBLE);
-//            mTVBannerIndicator.setText(1 + "/" + mBannerImgCount);
+            mTVBannerIndicator.setVisibility(View.VISIBLE);
+            mTVBannerIndicator.setText(1 + "/" + mBannerImgCount);
+//            if (mBannerImgCount > 1)
+//                mConvenientBanner.startTurning(3000);
         } else {
             mBannerImgCount = 0;
             mTVBannerIndicator.setVisibility(View.GONE);
@@ -379,6 +336,13 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
             mTvRatePercent.setVisibility(View.VISIBLE);
         }
         mTvTraceDetail.setText(getString(R.string.label_expected_arrival)+" "+VMallUtils.getTranceDateString());
+
+        if(!TextUtils.isEmpty(mGoodsDetailBean.getDollarDelivery())){
+            mLlFreight.setVisibility(View.VISIBLE);
+            mTvFreightDetail.setText(VMallUtils.getCurrencySign()+mGoodsDetailBean.getDollarDelivery());
+        }else {
+            mLlFreight.setVisibility(View.GONE);
+        }
     }
 
     public void onDataFail() {
@@ -463,7 +427,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
 
     @OnClick({R.id.ctv_customer_service_goods_detail, R.id.ctv_cart_goods_detail, R.id.ctl_service,
             R.id.tv_add_cart_goods_detail, R.id.tv_props_goods_detail,R.id.ll_trace,
-            R.id.tv_coupon1_goods_detail, R.id.tv_coupon2_goods_detail})
+            R.id.tv_coupon1_goods_detail, R.id.tv_coupon2_goods_detail,R.id.ll_freight})
     void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.ctv_customer_service_goods_detail:
@@ -543,6 +507,13 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
                 ((TextView) dialogView.findViewById(R.id.tv_trace_time)).setText(VMallUtils.getTranceDateString());
                 bottomSheetDialog.setContentView(dialogView);
                 bottomSheetDialog.show();
+                break;
+            case R.id.ll_freight:
+                BottomSheetDialog freightDialog = new BottomSheetDialog(context);
+                View freightView = getLayoutInflater().inflate(R.layout.dialog_freight, null);
+                freightView.findViewById(R.id.tv_confirm).setOnClickListener(v -> freightDialog.dismiss());
+                freightDialog.setContentView(freightView);
+                freightDialog.show();
                 break;
         }
     }
