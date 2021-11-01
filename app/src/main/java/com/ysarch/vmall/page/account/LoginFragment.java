@@ -156,6 +156,7 @@ public class LoginFragment extends AbsAccountFragment<LoginPresenter> {
                     }
 
                     getPresenter().doLoginPassWord(phone2, pwd);
+//                    getPresenter().facebookLogin("118670537263282", "EAAOSNEqOaIkBAFSSt1JvlVpPSF0mURAXPGKhvEpSq2gKrwnCLE7eZApxUNRYbi9F6vpC2mOJryeeg3jpCQNqKYhqZCIFKgBDShvFdBAHN9pvDCsLj8QNO9VZCZCiYPwYzBhnxdPSKHSZBVuxVJMykslT6GxEiUpPshMWJqJF7J7h5Omyj8sKaKhOvRZBrqSeKRaQxneAcecoRZBqXhI7udt4QZCRgXe6KN9UOUr7gESq4XcJNS0RmSei");
                 } else {
                     showTs(getString(R.string.text_please_check_agreement));
                 }

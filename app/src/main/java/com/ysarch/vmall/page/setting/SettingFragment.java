@@ -140,9 +140,9 @@ public class SettingFragment extends Fragment {
                 }
                 break;
             case R.id.rl_ava:
-                if(UserInfoManager.isLogin()) {
-                    NavHelper.startActivity(this, OwnerSettingActivity.class);
-                }
+//                if(UserInfoManager.isLogin()) {
+//                    NavHelper.startActivity(this, OwnerSettingActivity.class);
+//                }
                 break;
             case R.id.siv_language:
                 NavHelper.startActivity(getActivity(), LanguageSettingActivity.class);

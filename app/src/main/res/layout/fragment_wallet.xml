@@ -164,6 +164,7 @@
         style="@style/sumbitTvStyle"/>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv_pay_password"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"

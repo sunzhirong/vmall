@@ -68,6 +68,14 @@ public class AccountLoader extends ObjectLoader {
     public Flowable<SimpleResponse<LoginResult>> login(@Field("telephone") String phone, @Field("password") String password) {
         return mService.login(phone, password);
     }
+    public Flowable<SimpleResponse<LoginResult>> facebookLogin(@Field("outId") String outId, @Field("token") String token,@Field("nickname") String nickname) {
+        return mService.facebookLogin(outId, token,nickname);
+    }
+
+
+
+
+
 
     /**
      * 注册
@@ -140,6 +148,11 @@ public class AccountLoader extends ObjectLoader {
         @FormUrlEncoded
         @POST("sso/login")
         Flowable<SimpleResponse<LoginResult>> login(@Field("telephone") String phone, @Field("password") String password);
+
+
+        @FormUrlEncoded
+        @POST("sso/thirdPartyLogin")
+        Flowable<SimpleResponse<LoginResult>> facebookLogin(@Field("outId") String outId, @Field("token") String token,@Field("nickname") String nickname);
 
         @GET("sso/refreshToken")
         Flowable<SimpleResponse<LoginResult>> refreshToken();

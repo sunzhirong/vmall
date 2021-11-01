@@ -25,6 +25,7 @@ public class OwnerSettingActivity extends BaseTitleActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (mOwnerSettingFragment != null) {
             mOwnerSettingFragment.onActivityResult(requestCode, resultCode, data);
         }

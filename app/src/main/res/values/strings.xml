@@ -406,7 +406,7 @@
     <string name="load_failed_try_agian">加载失败,点击重新加载</string>
     <string name="label_facebook_login">Facebook登录</string>
 
-    <string name="facebook_app_id">[APP_ID]</string>
+    <string name="facebook_app_id">1005178216933513</string>
     <string name="dialog_think_again">我再想想</string>
     <string name="dialog_delete">删除</string>
     <string name="dialog_confirm_delete_cart">确定删除%d个商品？</string>

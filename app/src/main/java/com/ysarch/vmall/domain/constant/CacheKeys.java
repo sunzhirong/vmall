@@ -18,4 +18,6 @@ public class CacheKeys {
     public static final String KEY_ENV_VALUE = "key_env_value";
 
     public static final String KEY_LANGUAGE = "key_language";
+
+    public static final String KEY_FACEBOOK_PROFILE = "key_face_book_profile";
 }

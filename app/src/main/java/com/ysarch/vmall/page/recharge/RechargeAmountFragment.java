@@ -159,6 +159,7 @@ public class RechargeAmountFragment extends BaseFragment<RechargeAmountPresenter
                     ToastUtils.showShortToast(context, R.string.please_select_bank);
                     return;
                 }
+                amount = amount.replace("$", "");
                 if (!TextUtils.isEmpty(amount)&&Double.parseDouble(amount)>0) {
 //                    amount = amount.substring(1);
 //                    Log.e("niko bank", JSON.toJSONString(AppContext.getsInstance().getBankItemBeans()));

@@ -259,7 +259,7 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
 //                mTVAccount.setText(UserInfoManager.getUser().getAccount());
             }
 
-            if (!TextUtils.isEmpty(UserInfoManager.getUser().getAccount())) {
+            if (!TextUtils.isEmpty(UserInfoManager.getUser().getNickname())) {
 //                mTVNickname.setText(String.format(ResUtils.getString(R.string.format_nickname_mine,
 //                        UserInfoManager.getUser().getNickname())));
                 mTVNickname.setText(UserInfoManager.getUser().getNickname());
@@ -277,7 +277,7 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
             mTVUid.setVisibility(View.GONE);
 //            mVArrowAccount.setVisibility(View.GONE);
             mTVLogin.setVisibility(View.VISIBLE);
-            mTVRegister.setVisibility(View.VISIBLE);
+            mTVRegister.setVisibility(View.GONE);
             mRIVAvatar.setImageResource(R.drawable.ic_avatar_placeholder);
             mCtvWallet.setVisibility(View.INVISIBLE);
         }

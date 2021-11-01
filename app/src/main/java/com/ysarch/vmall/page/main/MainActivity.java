@@ -62,21 +62,21 @@ public class MainActivity extends AppCompatActivity {
 
         onTabChange(findViewById(R.id.tb_sy_main_tab));
 
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                new UpdateAppManager
-//                        .Builder()
-//                        //当前Activity
-//                        .setActivity(MainActivity.this)
-//                        //更新地址
-//                        .setUpdateUrl("https://www.baidu.com")
-//                        //实现httpManager接口的对象
-//                        .setHttpManager(new UpdateAppHttpUtil())
-//                        .build()
-//                        .update();
-//            }
-//        },5000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                new UpdateAppManager
+                        .Builder()
+                        //当前Activity
+                        .setActivity(MainActivity.this)
+                        //更新地址
+                        .setUpdateUrl("https://xyzq-static.oss-cn-shenzhen.aliyuncs.com/tdxStandard-XZGJ-dev-1.1.104-beta_sec_20211019162525_%E5%85%B4%E8%AF%81%E5%9B%BD%E9%99%85_signed.apk")
+                        //实现httpManager接口的对象
+                        .setHttpManager(new UpdateAppHttpUtil())
+                        .build()
+                        .update();
+            }
+        },5000);
     }
 
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.manager.SupportRequestManagerFragment;
+import com.hyphenate.helpdesk.easeui.ui.BaseFragment;
 import com.ysarch.uibase.textview.CompatTextView;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.UserInfoManager;
@@ -27,6 +28,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
 import androidx.annotation.IntDef;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -53,6 +55,13 @@ public class AccountActivity extends AppCompatActivity {
      * 重置密码
      */
     public static final int TYPE_RESET_PW = 0x04;
+
+
+    /**
+     * facebook登录
+     */
+    public static final int TYPE_FACEBOOK_LOGIN = 0x05;
+
     @BindView(R.id.ctv_protocol_check)
     CompatTextView mCTVChecker;
     @BindView(R.id.ly_protocol)
@@ -61,6 +70,9 @@ public class AccountActivity extends AppCompatActivity {
     private FunctionHasParamNoResult mProtocolListener;
     private FunctionNoParamHasResult mProtocolChecker;
     private int mPageType = 0;
+
+    private Fragment mFragment ;
+
 
     /**
      * @param type
@@ -91,6 +103,7 @@ public class AccountActivity extends AppCompatActivity {
         Intent intent = getIntent();
         mPageType = TYPE_LOGIN;
 
+
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             mPageType = bundle.getInt(BundleKey.ARG_ACCOUNT_LAUNCH_TYPE, TYPE_LOGIN);
@@ -104,6 +117,7 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
+        mPageType = TYPE_FACEBOOK_LOGIN;
         gotoFragment(mPageType);
     }
 
@@ -193,6 +207,13 @@ public class AccountActivity extends AppCompatActivity {
 //                }
 //
 //                break;
+            case TYPE_FACEBOOK_LOGIN:
+                tag = FacebookLoginFragment.TAG;
+                fragment = fragmentManager.findFragmentByTag(tag);
+                if (fragment == null) {
+                    fragment = FacebookLoginFragment.newInstance();
+                }
+                break;
             default:
                 break;
         }
@@ -201,6 +222,7 @@ public class AccountActivity extends AppCompatActivity {
             FragmentTransUtil.transFragment(fragmentManager, R.id.fl_account_container,
                     fragment, tag, true);
         }
+        mFragment = fragment;
     }
 
     public AbsAccountFragment.IAccountFragmentCallback getFragmentCallback() {
@@ -256,6 +278,14 @@ public class AccountActivity extends AppCompatActivity {
     @Retention(RetentionPolicy.SOURCE)
     public @interface PageType {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mFragment != null) {
+            mFragment.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
 }

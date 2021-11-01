@@ -111,6 +111,7 @@
 
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/tv_register_mine_main"
                     android:layout_width="84dp"
                     android:layout_height="34dp"

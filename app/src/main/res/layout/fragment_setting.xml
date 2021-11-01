@@ -38,6 +38,7 @@
             android:layout_centerVertical="true" />
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/iv_enter"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -66,16 +67,21 @@
     </com.ysarch.vmall.component.SettingItem>
 
     <com.ysarch.vmall.component.SettingItem
+        android:visibility="gone"
         android:id="@+id/siv_login_pwd"
         android:layout_marginTop="15dp"
         app:leftText="@string/label_modify_login_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <View
+        android:visibility="gone"
+
         android:layout_marginHorizontal="@dimen/margin_h_common"
         style="@style/horLineStyle"/>
 
     <com.ysarch.vmall.component.SettingItem
+        android:visibility="gone"
+
         android:id="@+id/siv_pay_pwd"
         app:leftText="@string/label_reset_pay_pwd"
         android:layout_width="match_parent"
