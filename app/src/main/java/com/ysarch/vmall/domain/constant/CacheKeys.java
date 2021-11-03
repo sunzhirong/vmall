@@ -20,4 +20,6 @@ public class CacheKeys {
     public static final String KEY_LANGUAGE = "key_language";
 
     public static final String KEY_FACEBOOK_PROFILE = "key_face_book_profile";
+
+    public static final String KEY_CHECK_UPDATE_DATE = "key_check_update_date";
 }

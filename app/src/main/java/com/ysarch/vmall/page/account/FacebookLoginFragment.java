@@ -72,7 +72,12 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
                 Log.d("onSuccess", "登录成功！");
 //                boolean enableButtons = AccessToken.getCurrentAccessToken() != null;
                 Profile profile = Profile.getCurrentProfile();
-                String name = profile.getName();
+                String name;
+                if(profile!=null){
+                     name = profile.getName();
+                }else {
+                    name = "";
+                }
 
                 getPresenter().facebookLogin(loginResult.getAccessToken().getUserId(), loginResult.getAccessToken().getToken(),name);
             }

@@ -1,6 +1,8 @@
 package com.ysarch.vmall.page.main.shoye;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,16 +12,25 @@ import com.ysarch.uibase.viewpager.FragmentPagerItem;
 import com.ysarch.uibase.viewpager.UnRecycleFragmentAdapter;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.AppContext;
+import com.ysarch.vmall.common.context.CustomActivityManager;
 import com.ysarch.vmall.common.context.UserInfoManager;
+import com.ysarch.vmall.component.dialog.TBShareCmdDialogNew;
+import com.ysarch.vmall.component.dialog.UpdateDialog;
 import com.ysarch.vmall.domain.bean.CateLevelBean;
+import com.ysarch.vmall.domain.bean.UpdateBean;
+import com.ysarch.vmall.domain.constant.CacheKeys;
 import com.ysarch.vmall.domain.constant.Constants;
+import com.ysarch.vmall.helper.CacheHelper;
+import com.ysarch.vmall.page.goods.GoodsDetailActivity;
 import com.ysarch.vmall.page.main.presenter.MainShouYePresenter;
 import com.ysarch.vmall.page.msg.MsgActivity;
 import com.ysarch.vmall.page.search.SearchActivity;
 import com.ysarch.vmall.utils.NavHelper;
+import com.ysarch.vmall.utils.TimeUtils;
 import com.yslibrary.utils.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import androidx.viewpager.widget.ViewPager;
@@ -41,6 +52,9 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
     @Override
     public void initData(Bundle savedInstanceState) {
         getPresenter().requestCateDatas();
+        String date = TimeUtils.formatDate(new Date());
+        if(date.equals(CacheHelper.getString(CacheKeys.KEY_CHECK_UPDATE_DATE))){return;}
+        new Handler().postDelayed(() -> getPresenter().checkUpdate(),2000);
     }
 
 
@@ -161,5 +175,17 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
     }
 
     public void onCateDatasFail() {
+    }
+
+    public void onCheckUpdateSucc(UpdateBean updateBean) {
+        if(updateBean.isCurrentVersionNewest()){return;}
+
+        UpdateDialog dialog = new UpdateDialog.Builder(getActivity())
+                .setUpdateBean(updateBean)
+                .build();
+        dialog.show();
+        dialog.setOnDismissListener(dialog1 -> {
+            CacheHelper.putString(CacheKeys.KEY_CHECK_UPDATE_DATE,TimeUtils.formatDate(new Date()));
+        });
     }
 }

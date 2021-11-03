@@ -406,10 +406,17 @@
     <string name="load_failed_try_agian">加载失败,点击重新加载</string>
     <string name="label_facebook_login">Facebook登录</string>
 
-    <string name="facebook_app_id">1005178216933513</string>
+    <string name="facebook_app_id">409513450402246</string>
     <string name="dialog_think_again">我再想想</string>
     <string name="dialog_delete">删除</string>
     <string name="dialog_confirm_delete_cart">确定删除%d个商品？</string>
     <string name="dialog_edit_order_title">请输入数量</string>
+    <string name="label_new_version">发现新版本</string>
+    <string name="label_update_now">立即升级</string>
+    <string name="label_freight">运费</string>
+    <string name="label_tb_freight_illustrate">淘宝运费说明</string>
+    <string name="tb_freight_illustrate_1">1.淘宝运费为购买单件运费价格。购买时，请提交审核后在付款</string>
+    <string name="tb_freight_illustrate_2">2.淘宝运费免服务费</string>
+    <string name="no_new_version">已是最新的版本</string>
 
 </resources>

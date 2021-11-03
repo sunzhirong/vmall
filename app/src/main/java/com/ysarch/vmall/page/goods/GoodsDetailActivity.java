@@ -101,6 +101,11 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
     @BindView(R.id.tv_cart_count)
     TextView mTVCartCount;
 
+    @BindView(R.id.ll_freight)
+    LinearLayout mLlFreight;
+    @BindView(R.id.tv_freight_detail)
+    TextView mTvFreightDetail;
+
 
     private boolean bLightMode = false;
     private BeeGlide mBeeGlide;
@@ -415,7 +420,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
 
     @OnClick({R.id.ctv_customer_service_goods_detail, R.id.ctv_cart_goods_detail, R.id.ctl_service,
             R.id.tv_add_cart_goods_detail, R.id.tv_props_goods_detail,R.id.ll_trace,
-            R.id.tv_coupon1_goods_detail, R.id.tv_coupon2_goods_detail})
+            R.id.tv_coupon1_goods_detail, R.id.tv_coupon2_goods_detail,R.id.ll_freight})
     void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.ctv_customer_service_goods_detail:
@@ -495,6 +500,13 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
                 ((TextView) dialogView.findViewById(R.id.tv_trace_time)).setText(VMallUtils.getTranceDateString());
                 bottomSheetDialog.setContentView(dialogView);
                 bottomSheetDialog.show();
+                break;
+            case R.id.ll_freight:
+                BottomSheetDialog freightDialog = new BottomSheetDialog(context);
+                View freightView = getLayoutInflater().inflate(R.layout.dialog_freight, null);
+                freightView.findViewById(R.id.tv_confirm).setOnClickListener(v -> freightDialog.dismiss());
+                freightDialog.setContentView(freightView);
+                freightDialog.show();
                 break;
         }
     }

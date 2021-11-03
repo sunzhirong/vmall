@@ -161,6 +161,44 @@
                     android:background="@color/bg_page_gray" />
 
                 <LinearLayout
+                    android:id="@+id/ll_freight"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/margin_h_common">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_freight"
+                        android:textColor="@color/blackA"
+                        android:textSize="@dimen/text_15pt"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_freight_detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_weight="1"
+                        android:textColor="#343434"
+                        android:textSize="@dimen/text_14pt"
+                        tools:text="运费" />
+
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="13dp"
+                        android:background="@drawable/ic_arrow_grey_right" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/horLineStyle"
+                    android:layout_marginHorizontal="@dimen/margin_h_common" />
+
+
+                <LinearLayout
                     android:id="@+id/ll_trace"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

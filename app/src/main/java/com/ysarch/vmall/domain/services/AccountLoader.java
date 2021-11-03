@@ -5,6 +5,7 @@ import com.ysarch.vmall.domain.bean.AddressItemBean;
 import com.ysarch.vmall.domain.bean.LoginResult;
 import com.ysarch.vmall.domain.bean.MemberBean;
 import com.ysarch.vmall.domain.bean.MsgBean;
+import com.ysarch.vmall.domain.bean.UpdateBean;
 import com.ysarch.vmall.domain.bean.UserInfoResult;
 import com.ysarch.vmall.domain.constant.Constants;
 
@@ -122,6 +123,9 @@ public class AccountLoader extends ObjectLoader {
     }
 
 
+    public Flowable<SimpleResponse<UpdateBean>> checkUpdate(@Query("versionCode") int versionCode){
+        return mService.checkUpdate(versionCode);
+    }
 
 
     /**
@@ -222,6 +226,9 @@ public class AccountLoader extends ObjectLoader {
 
         @GET("sso/hasNewMsg")
         Call<ResponseBody> checkHasNewMsg();
+
+        @GET("app/updateInfo")
+        Flowable<SimpleResponse<UpdateBean>> checkUpdate(@Query("versionCode") int versionCode);
 
 
     }

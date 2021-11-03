@@ -2,8 +2,11 @@ package com.ysarch.vmall.page.main.presenter;
 
 import com.alibaba.fastjson.JSON;
 import com.ysarch.uibase.base.BasePresenter;
+import com.ysarch.vmall.BuildConfig;
 import com.ysarch.vmall.common.context.AppContext;
 import com.ysarch.vmall.domain.bean.CateLevelBean;
+import com.ysarch.vmall.domain.bean.UpdateBean;
+import com.ysarch.vmall.domain.services.AccountLoader;
 import com.ysarch.vmall.domain.services.GoodsLoader;
 import com.ysarch.vmall.helper.CacheHelper;
 import com.ysarch.vmall.page.main.shoye.MainShouYeFragment;
@@ -36,6 +39,25 @@ public class MainShouYePresenter extends BasePresenter<MainShouYeFragment> {
                         AppContext.getsInstance().setCateHeaderBeans(cateLevelBeans);
 //                        CacheHelper.putString("nikotest", JSON.toJSONString(cateLevelBeans));
                         getV().onCateDatasSucc(cateLevelBeans);
+                    }
+
+
+                    @Override
+                    protected void onFail(NetError error) {
+                        super.onFail(error);
+                        getV().onCateDatasFail();
+                    }
+                });
+    }
+
+    public void checkUpdate(){
+        AccountLoader.getInstance().checkUpdate(BuildConfig.VERSION_CODE)
+                .compose(showLoadingDialog())
+                .compose(getV().bindToLifecycle())
+                .subscribe(new ApiSubscriber<UpdateBean>(getV()) {
+                    @Override
+                    public void onSuccess(UpdateBean updateBean) {
+                        getV().onCheckUpdateSucc(updateBean);
                     }
 
 

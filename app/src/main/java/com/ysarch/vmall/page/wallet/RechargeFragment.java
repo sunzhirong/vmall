@@ -44,6 +44,16 @@ import com.yslibrary.utils.CollectionUtils;
 //import org.devio.takephoto.permission.PermissionManager;
 //import org.devio.takephoto.permission.TakePhotoInvocationHandler;
 
+import org.devio.takephoto.app.TakePhoto;
+import org.devio.takephoto.app.TakePhotoImpl;
+import org.devio.takephoto.compress.CompressConfig;
+import org.devio.takephoto.model.InvokeParam;
+import org.devio.takephoto.model.TContextWrap;
+import org.devio.takephoto.model.TResult;
+import org.devio.takephoto.permission.InvokeListener;
+import org.devio.takephoto.permission.PermissionManager;
+import org.devio.takephoto.permission.TakePhotoInvocationHandler;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
@@ -57,12 +67,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 import static android.app.Activity.RESULT_OK;
+import static android.os.Environment.DIRECTORY_PICTURES;
 
 /**
  * Created by fysong on 2020/10/15
  **/
 public class RechargeFragment extends BaseFragment<RechargePresenter>
-//        implements InvokeListener,TakePhoto.TakeResultListener
+        implements InvokeListener, TakePhoto.TakeResultListener
 {
     private static final int TYPE_PIC_CAMERA = 1, TYPE_PIC_GALLERY = 2;
 
@@ -258,33 +269,53 @@ public class RechargeFragment extends BaseFragment<RechargePresenter>
      * 显示选择图片的dialog
      */
     private void showDialog2SelectPic() {
-        getRxPermissions().request(Manifest.permission.CAMERA,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(aBoolean -> {
-                    if (aBoolean) {
-                        ModifyUserPicDialog.showDialog(getActivity())
-                                .setOnPickerClickListener(new ModifyUserPicDialog.onPickerClickListener() {
-                                    @Override
-                                    public void onClickToTakePhone() {
-                                        mPublicPhotoPath = Kits.PHOTO.takePhoto(getActivity(), BuildConfig.APPLICATION_ID, TYPE_PIC_CAMERA);
-
-
+//        getRxPermissions().request(Manifest.permission.CAMERA,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                Manifest.permission.READ_EXTERNAL_STORAGE)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(aBoolean -> {
+//                    if (aBoolean) {
+//                        ModifyUserPicDialog.showDialog(getActivity())
+//                                .setOnPickerClickListener(new ModifyUserPicDialog.onPickerClickListener() {
+//                                    @Override
+//                                    public void onClickToTakePhone() {
+////                                        mPublicPhotoPath = Kits.PHOTO.takePhoto(getActivity(), BuildConfig.APPLICATION_ID, TYPE_PIC_CAMERA);
+//
+//
 //                                        getTakePhoto().onPickFromCapture(getImageUri());
-                                    }
-
-                                    @Override
-                                    public void onClickToFromAlbum() {
-                                        Kits.PHOTO.getImageFromAlbum(getActivity(), TYPE_PIC_GALLERY);
+//                                    }
+//
+//                                    @Override
+//                                    public void onClickToFromAlbum() {
+////                                        Kits.PHOTO.getImageFromAlbum(getActivity(), TYPE_PIC_GALLERY);
 //                                        getTakePhoto().onPickFromGallery();
-                                    }
-                                });
-                    } else {
-                        showAlert2AppInfo(getString(R.string.text_please_agree_to_authorize));
-                    }
-                });
+//                                    }
+//                                });
+//                    } else {
+//                        showAlert2AppInfo(getString(R.string.text_please_agree_to_authorize));
+//                    }
+//                });
+
+//        getTakePhoto().onPickFromCapture(getImageUri());
+//        getTakePhoto().onPickFromGallery();
+
+            ModifyUserPicDialog.showDialog(getActivity())
+            .setOnPickerClickListener(new ModifyUserPicDialog.onPickerClickListener() {
+                @Override
+                public void onClickToTakePhone() {
+    //                                        mPublicPhotoPath = Kits.PHOTO.takePhoto(getActivity(), BuildConfig.APPLICATION_ID, TYPE_PIC_CAMERA);
+
+
+                    getTakePhoto().onPickFromCapture(getImageUri());
+                }
+
+                @Override
+                public void onClickToFromAlbum() {
+    //                                        Kits.PHOTO.getImageFromAlbum(getActivity(), TYPE_PIC_GALLERY);
+                    getTakePhoto().onPickFromGallery();
+                }
+            });
     }
 
     @Override
@@ -300,38 +331,38 @@ public class RechargeFragment extends BaseFragment<RechargePresenter>
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        if (getTakePhoto() != null) {
-//            getTakePhoto().onActivityResult(requestCode, resultCode, data);
-//        }
-        switch (requestCode) {
-            case TYPE_PIC_CAMERA:
-                if (resultCode != RESULT_OK) return;
-                Uri uri = Uri.parse(mPublicPhotoPath);
-                mPicPath = uri.getPath();
-                mIVPic.setAdjustViewBounds(true);
-                mIVPic.setImageURI(uri);
-//                mLyPicUpload.setVisibility(View.GONE);
-                mIVAdd.setVisibility(View.GONE);
-                mIVPic.setVisibility(View.VISIBLE);
-                break;
-            case TYPE_PIC_GALLERY:
-                if (data == null) return;
-                Uri urlFrom = data.getData();
-                int sdkVersion = Build.VERSION.SDK_INT;
-                if (sdkVersion >= 19) {
-                    mPicPath = PictureUtils.getPath_above19(getActivity(), urlFrom);
-                } else {
-                    mPicPath = PictureUtils.getFilePath_below19(getActivity(), urlFrom);
-                }
-                mIVPic.setAdjustViewBounds(true);
-                mIVPic.setImageURI(Uri.parse(mPicPath));
-//                mLyPicUpload.setVisibility(View.GONE);
-                mIVAdd.setVisibility(View.GONE);
-                mIVPic.setVisibility(View.VISIBLE);
-                break;
-            default:
-                break;
+        if (getTakePhoto() != null) {
+            getTakePhoto().onActivityResult(requestCode, resultCode, data);
         }
+//        switch (requestCode) {
+//            case TYPE_PIC_CAMERA:
+//                if (resultCode != RESULT_OK) return;
+//                Uri uri = Uri.parse(mPublicPhotoPath);
+//                mPicPath = uri.getPath();
+//                mIVPic.setAdjustViewBounds(true);
+//                mIVPic.setImageURI(uri);
+////                mLyPicUpload.setVisibility(View.GONE);
+//                mIVAdd.setVisibility(View.GONE);
+//                mIVPic.setVisibility(View.VISIBLE);
+//                break;
+//            case TYPE_PIC_GALLERY:
+//                if (data == null) return;
+//                Uri urlFrom = data.getData();
+//                int sdkVersion = Build.VERSION.SDK_INT;
+//                if (sdkVersion >= 19) {
+//                    mPicPath = PictureUtils.getPath_above19(getActivity(), urlFrom);
+//                } else {
+//                    mPicPath = PictureUtils.getFilePath_below19(getActivity(), urlFrom);
+//                }
+//                mIVPic.setAdjustViewBounds(true);
+//                mIVPic.setImageURI(Uri.parse(mPicPath));
+////                mLyPicUpload.setVisibility(View.GONE);
+//                mIVAdd.setVisibility(View.GONE);
+//                mIVPic.setVisibility(View.VISIBLE);
+//                break;
+//            default:
+//                break;
+//        }
     }
 
     /**
@@ -391,75 +422,76 @@ public class RechargeFragment extends BaseFragment<RechargePresenter>
 
 
 
-//    public static int MAX_COMPRESS_SIZE = 1024 * 1024;
-//    public static int MAX_COMPRESS_PIXEL = 1920;
-//    private TakePhoto takePhoto;  //TakePhoto对象
-//    private InvokeParam invokeParam;
-//    /**
-//     * 获取takePhoto对象
-//     */
-//    public TakePhoto getTakePhoto() {
-//        if (takePhoto == null) {
-//            takePhoto = (TakePhoto) TakePhotoInvocationHandler.of(this).bind(new TakePhotoImpl(this, this));
-//        }
-//        takePhoto.onEnableCompress(getCompressConfig(), true);
-//        return takePhoto;
-//    }
-//
-//    /**
-//     * 获取图片压缩参数配置
-//     */
-//    public CompressConfig getCompressConfig() {
-//        return new CompressConfig.Builder()
-//                .setMaxSize(MAX_COMPRESS_SIZE)
-//                .setMaxPixel(MAX_COMPRESS_PIXEL)
-//                .create();
-//    }
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        try {
-//            PermissionManager.TPermissionType type = PermissionManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//            PermissionManager.handlePermissionsResult(getActivity(), type, invokeParam, this);
-//        } catch (Exception e) {
-//
-//        }
-//
-//    }
-//
-//    public Uri getImageUri() {
+    public static int MAX_COMPRESS_SIZE = 1024 * 1024;
+    public static int MAX_COMPRESS_PIXEL = 1920;
+    private TakePhoto takePhoto;  //TakePhoto对象
+    private InvokeParam invokeParam;
+    /**
+     * 获取takePhoto对象
+     */
+    public TakePhoto getTakePhoto() {
+        if (takePhoto == null) {
+            takePhoto = (TakePhoto) TakePhotoInvocationHandler.of(this).bind(new TakePhotoImpl(this, this));
+        }
+        takePhoto.onEnableCompress(getCompressConfig(), true);
+        return takePhoto;
+    }
+
+    /**
+     * 获取图片压缩参数配置
+     */
+    public CompressConfig getCompressConfig() {
+        return new CompressConfig.Builder()
+                .setMaxSize(MAX_COMPRESS_SIZE)
+                .setMaxPixel(MAX_COMPRESS_PIXEL)
+                .create();
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        try {
+            PermissionManager.TPermissionType type = PermissionManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            PermissionManager.handlePermissionsResult(getActivity(), type, invokeParam, this);
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    public Uri getImageUri() {
 //        File file = new File(Environment.getExternalStorageDirectory(), "/temp/" + System.currentTimeMillis() + ".jpg");
 //        if (!file.getParentFile().exists()) {
 //            file.getParentFile().mkdirs();
 //        }
-//        return Uri.fromFile(file);
-//    }
-//
-//    @Override
-//    public PermissionManager.TPermissionType invoke(InvokeParam invokeParam) {
-//        PermissionManager.TPermissionType type = PermissionManager.checkPermission(TContextWrap.of(this), invokeParam.getMethod());
-//        if (PermissionManager.TPermissionType.WAIT.equals(type)) {
-//            this.invokeParam = invokeParam;
-//        }
-//        return type;
-//    }
-//
-//    @Override
-//    public void takeSuccess(TResult result) {
-//        mPicPath = result.getImage().getCompressPath();
-//        GlideUtils.loadImageView(context,mPicPath,mIVPic);
-////        mIVPic.setImageURI(uri);
-//                mIVAdd.setVisibility(View.GONE);
-//                mIVPic.setVisibility(View.VISIBLE);
-//    }
-//
-//    @Override
-//    public void takeFail(TResult result, String msg) {
-//
-//    }
-//
-//    @Override
-//    public void takeCancel() {
-//
-//    }
+        File file = new File(context.getExternalFilesDir(DIRECTORY_PICTURES).getAbsolutePath(),  System.currentTimeMillis() + ".jpg");
+        return Uri.fromFile(file);
+    }
+
+    @Override
+    public PermissionManager.TPermissionType invoke(InvokeParam invokeParam) {
+        PermissionManager.TPermissionType type = PermissionManager.checkPermission(TContextWrap.of(this), invokeParam.getMethod());
+        if (PermissionManager.TPermissionType.WAIT.equals(type)) {
+            this.invokeParam = invokeParam;
+        }
+        return type;
+    }
+
+    @Override
+    public void takeSuccess(TResult result) {
+        mPicPath = result.getImage().getCompressPath();
+        GlideUtils.loadImageView(context,mPicPath,mIVPic);
+//        mIVPic.setImageURI(uri);
+                mIVAdd.setVisibility(View.GONE);
+                mIVPic.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void takeFail(TResult result, String msg) {
+        Log.e("takeFail",msg);
+    }
+
+    @Override
+    public void takeCancel() {
+
+    }
 }
