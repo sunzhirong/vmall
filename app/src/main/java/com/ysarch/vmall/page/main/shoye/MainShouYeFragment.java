@@ -52,8 +52,6 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
     @Override
     public void initData(Bundle savedInstanceState) {
         getPresenter().requestCateDatas();
-        String date = TimeUtils.formatDate(new Date());
-        if(date.equals(CacheHelper.getString(CacheKeys.KEY_CHECK_UPDATE_DATE))){return;}
         new Handler().postDelayed(() -> getPresenter().checkUpdate(),2000);
     }
 
@@ -71,6 +69,7 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
             for (int i = 0; i < AppContext.getsInstance().getCateHeaderBeans().size(); i++) {
                 CateLevelBean cateLevelBean = AppContext.getsInstance().getCateHeaderBeans().get(i);
                 String name ;
+                String keywords = cateLevelBean.getKeywords();
                 switch (AppContext.getsInstance().getLanguageEntity().getLanId()){
                     case Constants.ID_LAN_KM:
                         name = cateLevelBean.getKhName();
@@ -86,16 +85,9 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
                         break;
                 }
                 mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, name,
-                        ShouyeSubpageFragment.getBundle(name, cateLevelBean.getChildren())));
+                        ShouyeSubpageFragment.getBundle(name, cateLevelBean.getChildren(),keywords)));
             }
         }
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "本地发货"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "家居"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "女人"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "男人"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "儿童"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "电子产品"));
-//        mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, "哈哈哈"));
 
         mFragmentAdapter = new UnRecycleFragmentAdapter(getContext(), getChildFragmentManager(), mFragmentPagerItems);
         mViewPager.setAdapter(mFragmentAdapter);
@@ -179,6 +171,12 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
 
     public void onCheckUpdateSucc(UpdateBean updateBean) {
         if(updateBean.isCurrentVersionNewest()){return;}
+        if(!updateBean.isForceUpdate()) {
+            String date = TimeUtils.formatDate(new Date());
+            if (date.equals(CacheHelper.getString(CacheKeys.KEY_CHECK_UPDATE_DATE))) {
+                return;
+            }
+        }
 
         UpdateDialog dialog = new UpdateDialog.Builder(getActivity())
                 .setUpdateBean(updateBean)

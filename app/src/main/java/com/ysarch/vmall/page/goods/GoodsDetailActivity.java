@@ -336,6 +336,13 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
             mTvRatePercent.setVisibility(View.VISIBLE);
         }
         mTvTraceDetail.setText(getString(R.string.label_expected_arrival)+" "+VMallUtils.getTranceDateString());
+
+        if(!TextUtils.isEmpty(mGoodsDetailBean.getDollarDelivery())){
+            mLlFreight.setVisibility(View.VISIBLE);
+            mTvFreightDetail.setText(VMallUtils.getCurrencySign()+mGoodsDetailBean.getDollarDelivery());
+        }else {
+            mLlFreight.setVisibility(View.GONE);
+        }
     }
 
     public void onDataFail() {

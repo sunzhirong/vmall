@@ -53,10 +53,11 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
 //        return bundle;
 //    }
 
-    public static Bundle getBundle(String cateName, List<CateLevelBean> cateLevelBeans) {
+    public static Bundle getBundle(String cateName, List<CateLevelBean> cateLevelBeans,String keywords) {
         Bundle bundle = new Bundle();
         bundle.putString(BundleKey.ARG_CATE_NAME, cateName);
         bundle.putString(BundleKey.ARG_CATE_LIST, new Gson().toJson(cateLevelBeans));
+        bundle.putString(BundleKey.ARG_CATE_KEYWORDS, keywords);
         return bundle;
     }
 
@@ -154,7 +155,7 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
             }
         });
 
-        mCateName = getArguments().getString(BundleKey.ARG_CATE_NAME);
+        mCateName = getArguments().getString(BundleKey.ARG_CATE_KEYWORDS);
         String catesStr = getArguments().getString(BundleKey.ARG_CATE_LIST);
         if (!TextUtils.isEmpty(catesStr)) {
             mCateLevelBeans = new Gson().fromJson(catesStr, new TypeToken<List<CateLevelBean>>() {

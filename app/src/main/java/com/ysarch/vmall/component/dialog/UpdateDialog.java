@@ -62,7 +62,6 @@ public class UpdateDialog extends Dialog {
         Log.e("UpdateDialog","setUpdateBean");
         mTvUpdateVersion.setText("V"+updateBean.getVersionName());
         mTvUpdateInfo.setText(updateBean.getModifyContent());
-//        setCancelable(updateBean.isForceUpdate());
         mIvClose.setVisibility(updateBean.isForceUpdate()?View.GONE:View.VISIBLE);
     }
 

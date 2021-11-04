@@ -13,6 +13,7 @@ public class BundleKey {
     public static final String ARG_CATE_ID = "arg_cate_id";
     public static final String ARG_CATE_NAME = "arg_cate_name";
     public static final String ARG_CATE_LIST = "arg_cate_list";
+    public static final String ARG_CATE_KEYWORDS = "arg_cate_keywords";
     public static final String ARG_CACHE = "arg_cache";
 
     public static final String ARG_PAGE_LAUNCH_TYPE = "arg_page_launch_type";

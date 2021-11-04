@@ -46,6 +46,7 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:layout_marginTop="-3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_round_rect_r10_fill_white_bottom"
@@ -59,6 +60,7 @@
                 android:scrollbars="none">
 
                 <TextView
+                    android:layout_marginVertical="@dimen/margin_h_common"
                     android:gravity="center_horizontal"
                     android:id="@+id/tv_update_info"
                     android:layout_width="match_parent"

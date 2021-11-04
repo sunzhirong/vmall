@@ -45,6 +45,7 @@ import java.util.List;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -181,10 +182,10 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
                     if (!cartGoodsBean.isSelected()) {
                         mCTVSelAll.setSelected(false);
                         selectCount--;
-                    }else {
+                    } else {
                         selectCount++;
                     }
-                    if(selectCount == mCartGoodsBeans.size()){
+                    if (selectCount == mCartGoodsBeans.size()) {
                         mCTVSelAll.setSelected(true);
                     }
 
@@ -207,7 +208,7 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
 
                 @Override
                 public void onQuantityChange(int id, int quantity) {
-                    getPresenter().updateCartQuantity(id,quantity);
+                    getPresenter().updateCartQuantity(id, quantity);
                 }
             });
 
@@ -224,11 +225,13 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
             mTVEdit.setText(R.string.label_complete);
             mTVConfirm.setText(R.string.label_delete);
             mTVPrice.setVisibility(View.INVISIBLE);
+            mSwipeRefreshLayout.setEnabled(false);
         } else {
             mTVEdit.setText(R.string.label_edit);
             mTVConfirm.setText(R.string.label_create_order);
             mTVPrice.setVisibility(View.VISIBLE);
             calculatePrice();
+            mSwipeRefreshLayout.setEnabled(true);
         }
     }
 
@@ -283,49 +286,51 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
                     return;
                 }
 
-                if(selectCount == 0){
+                if (selectCount == 0) {
                     return;
                 }
 
-                new DeleteCartOrderDialog.Builder(context)
-                        .setTitle(String.format(getString(R.string.dialog_confirm_delete_cart),selectCount))
-                        .setCancelText(getString(R.string.dialog_delete))
-                        .setSubmitText(getString(R.string.dialog_think_again))
-                        .setDeleteCallback(new DeleteCartOrderDialog.DeleteCallback() {
-                    @Override
-                    public void onConfirm() {
-                        if (mStatus == 0) {
-                            List<String> ids = new ArrayList<>();
+                if (mStatus == 0) {
+                    List<String> ids = new ArrayList<>();
 
-                            for (int i = 0; i < mCartGoodsBeans.size(); i++) {
-                                if (mCartGoodsBeans.get(i).isSelected()) {
-                                    ids.add(mCartGoodsBeans.get(i).getId() + "");
-                                }
-                            }
-                            if (CollectionUtils.isNotEmpty(ids)) {
-                                getPresenter().generateConfirmOrder(ids);
-                            } else {
-                                showTs(ResUtils.getString(R.string.tip_no_goods_selected));
-                            }
-
-                        } else {
-                            if (mCTVSelAll.isSelected()) {
-                                getPresenter().clearCart();
-                            } else {
-                                List<CartGoodsBean> cartGoodsBeans = new ArrayList<>();
-
-                                for (int i = 0; i < mCartGoodsBeans.size(); i++) {
-                                    if (mCartGoodsBeans.get(i).isSelected()) {
-                                        cartGoodsBeans.add(mCartGoodsBeans.get(i));
-                                    }
-                                }
-                                if (CollectionUtils.isNotEmpty(cartGoodsBeans)) {
-                                    getPresenter().deleteCertainCartGoods(cartGoodsBeans);
-                                }
-                            }
+                    for (int i = 0; i < mCartGoodsBeans.size(); i++) {
+                        if (mCartGoodsBeans.get(i).isSelected()) {
+                            ids.add(mCartGoodsBeans.get(i).getId() + "");
                         }
                     }
-                }).build().show();
+                    if (CollectionUtils.isNotEmpty(ids)) {
+                        getPresenter().generateConfirmOrder(ids);
+                    } else {
+                        showTs(ResUtils.getString(R.string.tip_no_goods_selected));
+                    }
+
+                } else {
+                    new DeleteCartOrderDialog.Builder(context)
+                            .setTitle(String.format(getString(R.string.dialog_confirm_delete_cart), selectCount))
+                            .setCancelText(getString(R.string.dialog_delete))
+                            .setSubmitText(getString(R.string.dialog_think_again))
+                            .setDeleteCallback(new DeleteCartOrderDialog.DeleteCallback() {
+                                @Override
+                                public void onConfirm() {
+                                    if (mCTVSelAll.isSelected()) {
+                                        getPresenter().clearCart();
+                                    } else {
+                                        List<CartGoodsBean> cartGoodsBeans = new ArrayList<>();
+
+                                        for (int i = 0; i < mCartGoodsBeans.size(); i++) {
+                                            if (mCartGoodsBeans.get(i).isSelected()) {
+                                                cartGoodsBeans.add(mCartGoodsBeans.get(i));
+                                            }
+                                        }
+                                        if (CollectionUtils.isNotEmpty(cartGoodsBeans)) {
+                                            getPresenter().deleteCertainCartGoods(cartGoodsBeans);
+                                        }
+                                    }
+                                }
+                            }).build().show();
+
+                }
+
 
 
                 break;

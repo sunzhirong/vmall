@@ -25,6 +25,7 @@ public class BeeGlide {
 
     private GlideRequests mGlideRequests;
 
+
     private BeeGlide(Context context) {
         try {
             mGlideRequests = GlideApp.with(context);

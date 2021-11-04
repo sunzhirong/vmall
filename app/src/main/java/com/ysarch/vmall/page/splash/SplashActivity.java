@@ -16,6 +16,8 @@ import com.ysarch.vmall.domain.constant.CacheKeys;
 import com.ysarch.vmall.helper.CacheHelper;
 import com.ysarch.vmall.page.main.MainActivity;
 import com.ysarch.vmall.utils.NavHelper;
+import com.yslibrary.utils.NetUtils;
+import com.yslibrary.utils.qmui.QMUIDisplayHelper;
 
 import cn.droidlover.xdroidmvp.mvp.XActivity;
 
@@ -82,7 +84,7 @@ public class SplashActivity extends XActivity<SplashPresenter> {
         sendMsg(STATUS_TIMEOUT, DELAY);
         checkPermissions();
 
-        if(UserInfoManager.isLogin()){
+        if(UserInfoManager.isLogin()&& QMUIDisplayHelper.hasInternet(context)){
             getPresenter().refreshToken();
         } else {
             sendMsg(STATUS_TOKEN);

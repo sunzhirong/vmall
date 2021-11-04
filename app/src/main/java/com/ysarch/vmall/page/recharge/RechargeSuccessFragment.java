@@ -27,7 +27,7 @@ public class RechargeSuccessFragment extends BaseFragment {
 
     @OnClick(R.id.tv_confirm)
     public void onViewClicked() {
-        NavHelper.startActivity(getActivity(), WalletActivity.class);
-
+//        NavHelper.startActivity(getActivity(), WalletActivity.class);
+        context.finish();
     }
 }

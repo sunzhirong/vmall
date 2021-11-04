@@ -131,7 +131,7 @@ public class SettingFragment extends BaseFragment<SettingPresenter> {
 
     @OnClick({R.id.tv_logout_setting, R.id.ctl_lan_setting, R.id.ctv_about_us_setting,
             R.id.ctl_pay_pwd_setting,R.id.rl_ava, R.id.siv_language, R.id.siv_login_pwd,
-            R.id.siv_pay_pwd, R.id.siv_cache})
+            R.id.siv_pay_pwd, R.id.siv_cache,R.id.siv_version})
     void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.tv_logout_setting:
@@ -234,9 +234,6 @@ public class SettingFragment extends BaseFragment<SettingPresenter> {
                 .setUpdateBean(updateBean)
                 .build();
         dialog.show();
-        dialog.setOnDismissListener(dialog1 -> {
-            CacheHelper.putString(CacheKeys.KEY_CHECK_UPDATE_DATE, TimeUtils.formatDate(new Date()));
-        });
     }
 
     public void onCheckUpdateFail() {
