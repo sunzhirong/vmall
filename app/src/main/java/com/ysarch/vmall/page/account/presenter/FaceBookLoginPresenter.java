@@ -21,7 +21,7 @@ public class FaceBookLoginPresenter extends BasePresenter<FacebookLoginFragment>
 
 
 
-    public void facebookLogin( String outId, String token, String name) {
+    public void facebookLogin( String name, String token, String outId) {
         getV().showLoadingDialog();
         AccountLoader.getInstance().facebookLogin(outId, token,name)
                 .compose(dontShowDialog())

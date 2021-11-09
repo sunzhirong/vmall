@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,11 +22,18 @@ import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.ysarch.uibase.textview.CompatTextView;
 import com.ysarch.vmall.R;
+import com.ysarch.vmall.common.event.HailerFunctionDef;
 import com.ysarch.vmall.domain.constant.CacheKeys;
 import com.ysarch.vmall.helper.CacheHelper;
 import com.ysarch.vmall.page.account.presenter.FaceBookLoginPresenter;
 import com.ysarch.vmall.page.account.presenter.LoginPresenter;
+import com.ysarch.vmall.page.webview.CommonWebActivity;
+import com.ysarch.vmall.utils.NavHelper;
+import com.yslibrary.event.hailer.FunctionHasParamNoResult;
+import com.yslibrary.event.hailer.FunctionNoParamHasResult;
+import com.yslibrary.event.hailer.FunctionsManager;
 
 import java.util.Arrays;
 
@@ -37,6 +45,13 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 
     @BindView(R.id.login_button)
     LoginButton mLoginButton;
+    @BindView(R.id.ctv_protocol_check)
+    CompatTextView mCTVChecker;
+    @BindView(R.id.ly_protocol)
+    LinearLayout mLyProtocol;
+
+//    private FunctionHasParamNoResult mProtocolListener;
+//    private FunctionNoParamHasResult mProtocolChecker;
     private CallbackManager callbackManager;
 
     public static FacebookLoginFragment newInstance() {
@@ -48,6 +63,28 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
     protected void clearData() {
 
     }
+
+//    private void injectEvents() {
+//
+//        mProtocolChecker = new FunctionNoParamHasResult<Boolean>(HailerFunctionDef.CHECK_PROTOCOL) {
+//            @Override
+//            public Boolean invokeFunction() {
+//                return mCTVChecker.isSelected();
+//            }
+//        };
+//
+//        FunctionsManager.getInstance().addFunctionNoParamHasResult(mProtocolChecker);
+//
+//
+//        mProtocolListener = new FunctionHasParamNoResult<Boolean>(HailerFunctionDef.SWITCH_PROTOCOL_VISIBILITY) {
+//            @Override
+//            public void invokeFunction(Boolean visible) {
+//                mLyProtocol.setVisibility(visible ? View.VISIBLE : View.GONE);
+//            }
+//        };
+//        FunctionsManager.getInstance().addFunctionHasParamNoResult(
+//                mProtocolListener);
+//    }
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -69,28 +106,39 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("onSuccess", "登录成功！");
+                Log.d("onSuccess", "登录成功！" +JSON.toJSONString(loginResult));
 //                boolean enableButtons = AccessToken.getCurrentAccessToken() != null;
                 Profile profile = Profile.getCurrentProfile();
+                Log.d("onSuccess", "登录成功！" +JSON.toJSONString(profile));
+
                 String name;
                 if(profile!=null){
                      name = profile.getName();
                 }else {
                     name = "";
                 }
-
-                getPresenter().facebookLogin(loginResult.getAccessToken().getUserId(), loginResult.getAccessToken().getToken(),name);
+                getPresenter().facebookLogin(name, loginResult.getAccessToken().getToken(),loginResult.getAccessToken().getUserId());
             }
         });
+//        injectEvents();
 
 
+        mCTVChecker.setSelected(true);
 
     }
     @OnClick(R.id.tv_facebook_login)
     void onClick(View view) {
         LoginManager.getInstance().logInWithReadPermissions(getActivity(), Arrays.asList("public_profile", "email"));
     }
+    @OnClick(R.id.ctv_protocol_check)
+    void onProtocolClick(View view) {
+        view.setSelected(!view.isSelected());
+    }
 
+    @OnClick(R.id.tv_protocol_service)
+    void onProtocolServiceClick(View view) {
+        NavHelper.startActivity(this, CommonWebActivity .class, CommonWebActivity.getBundle("http://portal.sabayshop.club/PrivacyPolicy.html"));
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
@@ -114,4 +162,11 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
         getActivity().finish();
 
     }
+
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        FunctionsManager.getInstance().removeFunction(HailerFunctionDef.CHECK_PROTOCOL);
+//    }
+
 }

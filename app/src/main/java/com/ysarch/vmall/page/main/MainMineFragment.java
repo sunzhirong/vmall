@@ -5,6 +5,7 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -54,8 +55,8 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
     TextView mTVNickname;
     @BindView(R.id.tv_uid_mine_main)
     TextView mTVUid;
-//    @BindView(R.id.iv_frag_mine_main)
-//    ImageView mIVFrag;
+    @BindView(R.id.iv_frag_mine_main)
+    ImageView mIVFrag;
     @BindView(R.id.csv_mine_main)
     CustomScrollView mScrollView;
     @BindView(R.id.sv_status_bar_mine_main)
@@ -104,7 +105,7 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
 //            mCTVEnv.setOnClickListener(v -> switchEnv());
 //        }
 
-//        mIVFrag.setImageResource(AppContext.getsInstance().getLanguageEntity().getIconRes());
+        mIVFrag.setImageResource(AppContext.getsInstance().getLanguageEntity().getCircleRes());
         resetUserInfoUI();
 //        if (UserInfoManager.isLogin()) {
 //            getPresenter().requestUserInfo(UserInfoManager.getUser().getAccount());
@@ -155,7 +156,8 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
 
     @OnClick(R.id.tv_register_mine_main)
     void onRegisterClick() {
-        NavHelper.startActivity(getActivity(), AccountActivity.class, AccountActivity.getBundle(AccountActivity.TYPE_REGISTER));
+//        NavHelper.startActivity(getActivity(), AccountActivity.class, AccountActivity.getBundle(AccountActivity.TYPE_REGISTER));
+        NavHelper.startActivity(getActivity(), AccountActivity.class, AccountActivity.getBundle(AccountActivity.TYPE_LOGIN));
     }
 
     @OnClick({R.id.ctv_more_order_mine_main, R.id.tv_login_mine_main,
@@ -178,7 +180,11 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
                     NavHelper.startActivity(getActivity(), CouponActivity.class);
                     break;
                 case R.id.ctv_wallet_num_mine_main:
-                    NavHelper.startActivity(getActivity(), WalletActivity.class);
+                    if(UserInfoManager.isLogin()){
+                        NavHelper.startActivity(getActivity(), WalletActivity.class);
+                    }else {
+                        NavHelper.startActivity(getActivity(), AccountActivity.class, AccountActivity.getBundle(AccountActivity.TYPE_LOGIN));
+                    }
                     break;
                 case R.id.ctv_address_mine_main:
                     NavHelper.startActivity(getActivity(), AddressListActivity.class);
@@ -252,7 +258,7 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
             mTVUid.setVisibility(View.VISIBLE);
             mTVLogin.setVisibility(View.GONE);
             mTVRegister.setVisibility(View.GONE);
-            mCtvWallet.setVisibility(View.VISIBLE);
+//            mCtvWallet.setVisibility(View.VISIBLE);
             mCtvWallet.setText(VMallUtils.convertPriceString(UserInfoManager.getUser().getWallet()));
 
             if (!TextUtils.isEmpty(UserInfoManager.getUser().getAccount())) {
@@ -277,9 +283,10 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
             mTVUid.setVisibility(View.GONE);
 //            mVArrowAccount.setVisibility(View.GONE);
             mTVLogin.setVisibility(View.VISIBLE);
-            mTVRegister.setVisibility(View.GONE);
+            mTVRegister.setVisibility(View.VISIBLE);
             mRIVAvatar.setImageResource(R.drawable.ic_avatar_placeholder);
-            mCtvWallet.setVisibility(View.INVISIBLE);
+//            mCtvWallet.setVisibility(View.VISIBLE);
+            mCtvWallet.setText("");
         }
     }
 

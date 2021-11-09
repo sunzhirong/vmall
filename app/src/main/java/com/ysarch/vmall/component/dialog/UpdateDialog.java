@@ -33,6 +33,9 @@ public class UpdateDialog extends Dialog {
     TextView mTvUpdateInfo;
     @BindView(R.id.iv_close)
     ImageView mIvClose;
+    @BindView(R.id.tv_update_title)
+    TextView mTvUpdateTitle;
+
 
 
     private UpdateBean mUpdateBean;
@@ -63,6 +66,7 @@ public class UpdateDialog extends Dialog {
         mTvUpdateVersion.setText("V"+updateBean.getVersionName());
         mTvUpdateInfo.setText(updateBean.getModifyContent());
         mIvClose.setVisibility(updateBean.isForceUpdate()?View.GONE:View.VISIBLE);
+        mTvUpdateTitle.setText(updateBean.getTitle());
     }
 
     @OnClick({R.id.tv_update, R.id.iv_close})

@@ -6,6 +6,7 @@ package com.ysarch.vmall.domain.constant;
 public class BundleKey {
 
     public static final String ARG_ACCOUNT_LAUNCH_TYPE = "arg_account_launch_type";
+    public static final String ARG_ACCOUNT_FOR_TEST = "arg_account_for_test";
     public static final String ARG_REGISTER_PAGE_TYPE = "arg_register_page_type";
 
     public static final String ARG_KEYWORD = "arg_keyword";

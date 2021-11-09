@@ -5,6 +5,7 @@ public class UpdateBean {
     private boolean forceUpdate;
     private String modifyContent;
     private String versionName;
+    private String title;
     private int versionCode;
     private int os;
 
@@ -54,5 +55,13 @@ public class UpdateBean {
 
     public void setOs(int os) {
         this.os = os;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

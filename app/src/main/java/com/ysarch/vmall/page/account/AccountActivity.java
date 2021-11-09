@@ -62,13 +62,13 @@ public class AccountActivity extends AppCompatActivity {
      */
     public static final int TYPE_FACEBOOK_LOGIN = 0x05;
 
-    @BindView(R.id.ctv_protocol_check)
-    CompatTextView mCTVChecker;
-    @BindView(R.id.ly_protocol)
-    LinearLayout mLyProtocol;
+//    @BindView(R.id.ctv_protocol_check)
+//    CompatTextView mCTVChecker;
+//    @BindView(R.id.ly_protocol)
+//    LinearLayout mLyProtocol;
     private AbsAccountFragment.IAccountFragmentCallback mFragmentCallback;
-    private FunctionHasParamNoResult mProtocolListener;
-    private FunctionNoParamHasResult mProtocolChecker;
+//    private FunctionHasParamNoResult mProtocolListener;
+//    private FunctionNoParamHasResult mProtocolChecker;
     private int mPageType = 0;
 
     private Fragment mFragment ;
@@ -84,6 +84,14 @@ public class AccountActivity extends AppCompatActivity {
         return bundle;
     }
 
+
+    public static Bundle getBundle( boolean forTest,int type) {
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(BundleKey.ARG_ACCOUNT_FOR_TEST, forTest);
+        bundle.putInt(BundleKey.ARG_ACCOUNT_LAUNCH_TYPE, type);
+        return bundle;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,9 +101,9 @@ public class AccountActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        injectEvents();
+//        injectEvents();
 
-        mCTVChecker.setSelected(true);
+//        mCTVChecker.setSelected(true);
 
         StatusBarCompat.translucentStatusBar(this, true);
         StatusBarCompat.changeToLightStatusBar(this);
@@ -116,47 +124,52 @@ public class AccountActivity extends AppCompatActivity {
                 SystemUtil.hideKeyboard(view);
             }
         });
-
-        mPageType = TYPE_FACEBOOK_LOGIN;
+        if (bundle != null) {
+            boolean fortest = bundle.getBoolean(BundleKey.ARG_ACCOUNT_FOR_TEST, false);
+            if(!fortest){
+                mPageType = TYPE_FACEBOOK_LOGIN;
+            }
+        }
         gotoFragment(mPageType);
     }
 
-    private void injectEvents() {
-        mProtocolChecker = new FunctionNoParamHasResult<Boolean>(HailerFunctionDef.CHECK_PROTOCOL) {
-            @Override
-            public Boolean invokeFunction() {
-                return mCTVChecker.isSelected();
-            }
-        };
+//    private void injectEvents() {
+//        mProtocolChecker = new FunctionNoParamHasResult<Boolean>(HailerFunctionDef.CHECK_PROTOCOL) {
+//            @Override
+//            public Boolean invokeFunction() {
+//                return mCTVChecker.isSelected();
+//            }
+//        };
+//
+//        FunctionsManager.getInstance().addFunctionNoParamHasResult(mProtocolChecker);
+//
+//
+//        mProtocolListener = new FunctionHasParamNoResult<Boolean>(HailerFunctionDef.SWITCH_PROTOCOL_VISIBILITY) {
+//            @Override
+//            public void invokeFunction(Boolean visible) {
+//                mLyProtocol.setVisibility(visible ? View.VISIBLE : View.GONE);
+//            }
+//        };
+//        FunctionsManager.getInstance().addFunctionHasParamNoResult(
+//                mProtocolListener);
+//    }
 
-        FunctionsManager.getInstance().addFunctionNoParamHasResult(mProtocolChecker);
 
-
-        mProtocolListener = new FunctionHasParamNoResult<Boolean>(HailerFunctionDef.SWITCH_PROTOCOL_VISIBILITY) {
-            @Override
-            public void invokeFunction(Boolean visible) {
-                mLyProtocol.setVisibility(visible ? View.VISIBLE : View.GONE);
-            }
-        };
-        FunctionsManager.getInstance().addFunctionHasParamNoResult(
-                mProtocolListener);
-    }
-
-
-    @OnClick({R.id.tv_protocol_bee, R.id.tv_protocol_service, R.id.ctv_protocol_check,
+    @OnClick({
+//            R.id.tv_protocol_bee, R.id.tv_protocol_service, R.id.ctv_protocol_check,
             R.id.iv_close_account})
     void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ctv_protocol_check:
-                view.setSelected(!view.isSelected());
-                break;
-            case R.id.tv_protocol_bee:
-//                UserAgreementActivity.toUserAgreementActivity(this);
-                break;
-            case R.id.tv_protocol_service:
-//                UserAgreementActivity.toUserAgreementActivity(this, UserAgreementActivity.screct);
-                NavHelper.startActivity(this, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/PrivacyPolicy.html"));
-                break;
+//            case R.id.ctv_protocol_check:
+//                view.setSelected(!view.isSelected());
+//                break;
+//            case R.id.tv_protocol_bee:
+////                UserAgreementActivity.toUserAgreementActivity(this);
+//                break;
+//            case R.id.tv_protocol_service:
+////                UserAgreementActivity.toUserAgreementActivity(this, UserAgreementActivity.screct);
+//                NavHelper.startActivity(this, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/PrivacyPolicy.html"));
+//                break;
             case R.id.iv_close_account:
                 setResult(Activity.RESULT_CANCELED);
                 if (mPageType == TYPE_LOGIN && UserInfoManager.isLogin()) {

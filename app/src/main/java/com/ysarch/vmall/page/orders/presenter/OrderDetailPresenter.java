@@ -24,8 +24,6 @@ import com.yslibrary.utils.CollectionUtils;
 import java.io.IOException;
 import java.util.List;
 
-import cn.droidlover.xdroidmvp.net.ApiException;
-import cn.droidlover.xdroidmvp.net.ApiPaySubscriber;
 import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
 import okhttp3.ResponseBody;

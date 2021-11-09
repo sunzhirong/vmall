@@ -99,11 +99,12 @@
                         android:id="@+id/tv_rate_percent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
                         android:layout_below="@+id/tv_cur_price_goods_detail"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="8dp"
                         android:layout_toRightOf="@+id/tv_ori_price_goods_detail"
-                        android:background="@drawable/ic_goods_rate_bg"
+                        android:background="@drawable/ic_goods_rate_bg1"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 

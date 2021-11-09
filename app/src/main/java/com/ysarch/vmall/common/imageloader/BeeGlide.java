@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.request.RequestOptions;
+import com.ysarch.vmall.utils.GlideUtils;
 import com.yslibrary.utils.ArrayUtils;
 
 
@@ -25,10 +26,17 @@ public class BeeGlide {
 
     private GlideRequests mGlideRequests;
 
+    private Context context;
+
+    public Context getContext(){
+        return context;
+    }
+
 
     private BeeGlide(Context context) {
         try {
             mGlideRequests = GlideApp.with(context);
+            this.context = context.getApplicationContext();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,6 +45,7 @@ public class BeeGlide {
     public BeeGlide(Fragment fragment) {
         try {
             mGlideRequests = GlideApp.with(fragment);
+            this.context = fragment.getActivity().getApplicationContext();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,6 +54,7 @@ public class BeeGlide {
     public BeeGlide(android.app.Fragment fragment) {
         try {
             mGlideRequests = GlideApp.with(fragment);
+            this.context = fragment.getActivity().getApplicationContext();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,6 +63,7 @@ public class BeeGlide {
     public BeeGlide(Activity activity) {
         try {
             mGlideRequests = GlideApp.with(activity);
+            this.context = activity.getApplicationContext();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,6 +72,7 @@ public class BeeGlide {
     public BeeGlide(FragmentActivity activity) {
         try {
             mGlideRequests = GlideApp.with(activity);
+            this.context = activity.getApplicationContext();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,6 +81,7 @@ public class BeeGlide {
     public BeeGlide(View view) {
         try {
             mGlideRequests = GlideApp.with(view);
+            this.context = view.getContext().getApplicationContext();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -152,6 +165,12 @@ public class BeeGlide {
     public void load(ImageLoadConfig loadConfig, ImageView imageView) {
         GlideRequest glideRequest = load(loadConfig);
         glideRequest.into(imageView);
+
+//        if(loadConfig.getPlaceholder()!=null) {
+//            GlideUtils.loadImageView(context, loadConfig.getUrl(), imageView,loadConfig.getPlaceholder());
+//        }else {
+//            GlideUtils.loadImageView(context, loadConfig.getUrl(), imageView);
+//        }
     }
 
     /**

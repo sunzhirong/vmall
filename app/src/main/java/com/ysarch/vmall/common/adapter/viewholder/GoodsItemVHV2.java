@@ -63,8 +63,8 @@ public class GoodsItemVHV2 extends AbsViewHolder {
                     && !TextUtils.isEmpty(mGoodsItemBean.getImageUrls().get(0))
                     && !mGoodsItemBean.getImageUrls().get(0).equals(mImageUrl)) {
                 mImageUrl = mGoodsItemBean.getImageUrls().get(0);
-                mBeeGlide.load(ImageLoadConfig.create(mGoodsItemBean.getImageUrls().get(0)).randomPlaceHolder(), mRivCover);
-
+//                mBeeGlide.load(ImageLoadConfig.create(mGoodsItemBean.getImageUrls().get(0)).randomPlaceHolder(), mRivCover);
+                GlideUtils.loadImageView(mBeeGlide.getContext(),mGoodsItemBean.getImageUrls().get(0),mRivCover);
             } else
                 mBeeGlide.load(ImageLoadConfig.create("").randomPlaceHolder(), mRivCover);
 
@@ -77,20 +77,6 @@ public class GoodsItemVHV2 extends AbsViewHolder {
                 mTVOriPrice.setVisibility(View.GONE);
             }
 
-//            switch (AppContext.getsInstance().getLanguageEntity().getLanId()){
-//                case Constants.ID_LAN_KM:
-//                    mTVDec.setText(mCateLevelBean.getKhName());
-//                    break;
-//                case Constants.ID_LAN_ZH:
-//                    mTVDec.setText(mCateLevelBean.getName());
-//                    break;
-//                case Constants.ID_LAN_EN:
-//                    mTVDec.setText(mCateLevelBean.getEnName());
-//                    break;
-//                default:
-//                    mTVDec.setText(mCateLevelBean.getName());
-//                    break;
-//            }
         }
     }
 }

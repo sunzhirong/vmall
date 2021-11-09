@@ -71,8 +71,8 @@ public class VMallApplication extends MultiDexApplication {
                 //返回自己本地保存选择的语言设置
                 Log.e("language333",LocalManageUtil.getSystemLocale(context).getCountry());
 //                return LocalManageUtil.getSetLanguageLocale(context);
-
                 int lanId = CacheHelper.getInt(CacheKeys.KEY_LAN_ID, -1);
+                initNetError();
 //                int lanId = -1;
                 if(lanId == -1){
                     //未设置过语言
@@ -105,6 +105,13 @@ public class VMallApplication extends MultiDexApplication {
             }
         });
         MultiLanguage.setApplicationLanguage(this);
+    }
+
+    private void initNetError(){
+        NetError.NoConnectError_Msg = getString(R.string.no_connect_error_msg);
+        NetError.AuthError_Msg = getString(R.string.auth_error_msg);
+        NetError.NoDataError_Msg = getString(R.string.nodata_error_msg);
+        NetError.InsufficientError_Msg = getString(R.string.insufficient_error_msg);
     }
 
     @Override

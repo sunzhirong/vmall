@@ -26,16 +26,14 @@
                 android:orientation="vertical">
 
                 <TextView
-
+                    android:id="@+id/tv_update_title"
                     android:textStyle="bold"
-                    android:text="@string/label_new_version"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_17pt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/tv_update_version"
-                    android:text="V1.0"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_14pt"
                     android:layout_width="wrap_content"
@@ -60,7 +58,6 @@
                 android:scrollbars="none">
 
                 <TextView
-                    android:layout_marginVertical="@dimen/margin_h_common"
                     android:gravity="center_horizontal"
                     android:id="@+id/tv_update_info"
                     android:layout_width="match_parent"

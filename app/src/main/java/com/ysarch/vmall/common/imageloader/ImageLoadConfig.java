@@ -55,6 +55,10 @@ public class ImageLoadConfig {
         mUrl = url;
     }
 
+    public String getUrl(){
+        return this.mUrl;
+    }
+
     private static int getRandomColor() {
         int color = sPresetColor[sLastIdx];
 

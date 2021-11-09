@@ -39,8 +39,8 @@ public class XApi {
     private Map<String, Retrofit> retrofitMap = new HashMap<>();
     private Map<String, OkHttpClient> clientMap = new HashMap<>();
 
-    public static final long connectTimeoutMills = 20 * 1000l;
-    public static final long readTimeoutMills = 10 * 1000l;
+    public static final long connectTimeoutMills = 25 * 1000l;
+    public static final long readTimeoutMills = 25 * 1000l;
 
     private static XApi instance;
 
@@ -215,7 +215,7 @@ public class XApi {
                     @Override
                     public Publisher<T> apply(T model) throws Exception {
                         if (model == null) {
-                            return Flowable.error(new NetError("数据为空", NetError.NoDataError));
+                            return Flowable.error(new NetError(NetError.NoDataError_Msg, NetError.NoDataError));
                         } else {
                             return Flowable.just(model);
                         }
