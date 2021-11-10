@@ -336,6 +336,13 @@ public class CommonWebActivity extends XActivity<CommonWebPresenter> {
                 }
                 CommonWebActivity.this.onProgressChanged(view, newProgress);
             }
+
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                mTVTitle.setText(title);
+            }
+
         });
 
     }

@@ -41,6 +41,7 @@ import com.yslibrary.utils.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -82,6 +83,7 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
      */
     private int mStatus;
     private List<CartGoodsBean> mCartGoodsBeans = new ArrayList<>();
+    private List<CartGoodsBean> mSelectCartGoodsBeans = new ArrayList<>();
     private double mPrice;
     private SkuDialogV1 mSkuDialog;
     private boolean isRefreshing = false;
@@ -181,9 +183,11 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
                 public void onItemSelectStatusChange(int position, CartGoodsBean cartGoodsBean) {
                     if (!cartGoodsBean.isSelected()) {
                         mCTVSelAll.setSelected(false);
+                        mSelectCartGoodsBeans.remove(cartGoodsBean);
                         selectCount--;
                     } else {
                         selectCount++;
+                        mSelectCartGoodsBeans.add(cartGoodsBean);
                     }
                     if (selectCount == mCartGoodsBeans.size()) {
                         mCTVSelAll.setSelected(true);
@@ -192,6 +196,7 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
                     if (mStatus == 0) {
                         calculatePrice();
                     }
+                    Log.d("onItemSelect", "onItemSelectStatusChange: "+selectCount);
                 }
 
                 @Override
@@ -210,11 +215,13 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
                 public void onQuantityChange(int id, int quantity) {
                     getPresenter().updateCartQuantity(id, quantity);
                 }
-            });
 
-            mAdapter.setOnItemClickListener((position, data) -> {
-                NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                        GoodsDetailActivity.getBundle(((CartGoodsBean) data).getProductId(), ((CartGoodsBean) data).getSource()));
+                @Override
+                public void onItemClick(int position, CartGoodsBean cartGoodsBean) {
+
+                    NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
+                            GoodsDetailActivity.getBundle(cartGoodsBean.getProductId(),cartGoodsBean.getSource()));
+                }
             });
         }
     }
@@ -423,7 +430,12 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
             }
             mCartGoodsBeans = cartGoodsBeans;
             initAdapter();
-            mAdapter.refreshData(cartGoodsBeans);
+            for (CartGoodsBean cartGoodsBean :mCartGoodsBeans){
+                if(mSelectCartGoodsBeans.contains(cartGoodsBean)){
+                    cartGoodsBean.setSelected(true);
+                }
+            }
+            mAdapter.refreshData(mCartGoodsBeans);
         }
     }
 

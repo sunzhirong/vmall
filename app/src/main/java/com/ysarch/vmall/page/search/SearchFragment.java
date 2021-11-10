@@ -16,6 +16,7 @@ import com.ysarch.vmall.domain.enums.SearchPageTag;
 import com.ysarch.vmall.page.goods.GoodsDetailActivity;
 import com.ysarch.vmall.page.search.presenter.SearchPresenter;
 import com.ysarch.vmall.utils.NavHelper;
+import com.ysarch.vmall.utils.SoftInputUtil;
 import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.event.hailer.FunctionHasParamNoResult;
 import com.yslibrary.event.hailer.FunctionsManager;
@@ -66,8 +67,11 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
                 if (mSearchVPFragment == null) {
                     gotoPage(SearchPageTag.SEARCH_CONTENT_PAGE);
                 } else {
+                    gotoPage(SearchPageTag.SEARCH_CONTENT_PAGE);
                     mSearchVPFragment.resetKeyword(mKeyword);
                 }
+
+
             }
         }
     }
@@ -158,14 +162,6 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
         FragmentManager fragmentManager = getChildFragmentManager();
         String tag = targetTag.getValue();
         Fragment fragment = fragmentManager.findFragmentByTag(tag);
-
-        /**
-         *   MAIN_PAGE_FIRST_PAGE_TAG("main_page_first_page_tag"),
-         *     MAIN_PAGE_CATE_TAG("main_page_cate_tag"),
-         *     MAIN_PAGE_DISCOVER_TAG("main_page_discover_tag"),
-         *     MAIN_PAGE_CART_TAG("main_page_cart_tag"),
-         *     MAIN_PAGE_MINE_TAG("main_page_mine_tag");
-         */
         if (fragment == null) {
             switch (targetTag.getValue()) {
                 case "search_history_page":
@@ -186,6 +182,11 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
         }
 
         if (fragment != null) {
+            if(targetTag.getValue().equals("search_content_page")) {
+                mETKeyword.setFocusableInTouchMode(false);
+                mETKeyword.setFocusable(false);
+                SoftInputUtil.hideSoftInput(context, mETKeyword);
+            }
             FragmentTransUtil.transFragment(fragmentManager, R.id.fl_container_search,
                     fragment, tag, false);
         }
@@ -195,6 +196,14 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
     @OnClick(R.id.iv_back_search)
     void onViewClick(View view) {
         getActivity().finish();
+    }
+
+    @OnClick(R.id.et_search)
+    void onEtClick(View view) {
+        mETKeyword.setFocusableInTouchMode(true);
+        mETKeyword.setFocusable(true);
+        mETKeyword.requestFocus();
+        gotoPage(SearchPageTag.SEARCH_HISTORY_PAGE);
     }
 
     @Override

@@ -422,8 +422,8 @@ public class RechargeFragment extends BaseFragment<RechargePresenter>
 
 
 
-    public static int MAX_COMPRESS_SIZE = 1024 * 1024;
-    public static int MAX_COMPRESS_PIXEL = 1920;
+    public static int MAX_COMPRESS_SIZE = 100 * 1024;
+    public static int MAX_COMPRESS_PIXEL = 960;
     private TakePhoto takePhoto;  //TakePhoto对象
     private InvokeParam invokeParam;
     /**

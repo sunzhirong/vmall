@@ -29,18 +29,18 @@
                     app:layout_collapseMode="parallax"
                     app:layout_collapseParallaxMultiplier="0.9">
 
-<!--                    <com.bigkoo.convenientbanner.ConvenientBanner-->
-<!--                        android:visibility="gone"-->
-<!--                        android:id="@+id/cb_goods_detail"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="375dp"-->
-<!--                        android:background="@color/colorPrimary" />-->
-
-                    <com.youth.banner.Banner
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/banner"
+                    <com.bigkoo.convenientbanner.ConvenientBanner
+                        android:visibility="gone"
+                        android:id="@+id/cb_goods_detail"
                         android:layout_width="match_parent"
-                        android:layout_height="375dp" />
+                        android:layout_height="375dp"
+                        android:background="@color/colorPrimary" />
+
+<!--                    <com.youth.banner.Banner-->
+<!--                        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                        android:id="@+id/banner"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="375dp" />-->
 
 
 

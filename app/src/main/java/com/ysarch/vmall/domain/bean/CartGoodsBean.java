@@ -1,6 +1,7 @@
 package com.ysarch.vmall.domain.bean;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Created by fysong on 25/09/2020
@@ -239,4 +240,13 @@ public class CartGoodsBean implements Serializable {
     public void setSource(int source) {
         this.source = source;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CartGoodsBean that = (CartGoodsBean) o;
+        return this.id == that.id;
+    }
+
 }

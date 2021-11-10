@@ -7,6 +7,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -58,6 +59,7 @@ public class EditCartOrderDialog extends Dialog {
 
     private void setNum(String num) {
         mEtNum.setText(num);
+        mEtNum.setSelection(num.length());
     }
 
     private void init() {
@@ -66,9 +68,16 @@ public class EditCartOrderDialog extends Dialog {
         ButterKnife.bind(this, view);
 
         mEtNum.setInputType(InputType.TYPE_CLASS_NUMBER);
+        setFocus();
         new WinSoftKeyboardManager((ViewGroup) view).registEditTexts();
     }
 
+    private void setFocus(){
+        mEtNum.setFocusable(true);
+        mEtNum.setFocusableInTouchMode(true);
+        mEtNum.requestFocus();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+    }
 
     @OnClick({R.id.tv_dialog_cancel, R.id.tv_dialog_confirm})
     void onViewClick(View view) {

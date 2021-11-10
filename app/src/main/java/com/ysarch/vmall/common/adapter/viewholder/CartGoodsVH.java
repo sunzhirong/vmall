@@ -133,7 +133,7 @@ public class CartGoodsVH extends AbsViewHolder {
     }
 
     @OnClick({R.id.iv_radio_goods_cart, R.id.iv_plus_goods_cart, R.id.iv_minus_goods_cart,
-            R.id.ctv_sku_goods_cart,R.id.tv_num_goods_cart})
+            R.id.ctv_sku_goods_cart,R.id.tv_num_goods_cart,R.id.cl_container})
     void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.iv_radio_goods_cart:
@@ -199,6 +199,11 @@ public class CartGoodsVH extends AbsViewHolder {
                             }
                         }).build().show();
                 break;
+            case R.id.cl_container:
+                if(mCallback!=null){
+                    mCallback.onItemClick(mPosition,mCartGoodsBean);
+                }
+                break;
         }
     }
 
@@ -218,6 +223,8 @@ public class CartGoodsVH extends AbsViewHolder {
         void onItemNumChange(int position, CartGoodsBean cartGoodsBean);
 
         void onQuantityChange(int id,int quantity);
+
+        void onItemClick(int position, CartGoodsBean cartGoodsBean);
     }
 
 }
