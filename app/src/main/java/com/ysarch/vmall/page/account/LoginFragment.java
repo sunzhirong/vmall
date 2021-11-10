@@ -136,30 +136,47 @@ public class LoginFragment extends AbsAccountFragment<LoginPresenter> {
                 ((AccountActivity) getActivity()).gotoFragment(AccountActivity.TYPE_FORGET_PW);
                 break;
             case R.id.tv_confirm_login:
-                Boolean protocol = FunctionsManager.getInstance().invokeFunction(HailerFunctionDef.CHECK_PROTOCOL, Boolean.class);
-                if (protocol != null && protocol.booleanValue()) {
-                    String phone2 = mETAccount.getText().toString().trim();
-                    if (StringUtil.isTrimEmpty(phone2)) {
-                        showTs(getString(R.string.tip_input_phone));
-                        return;
-                    }
-
-                    if(!VMallUtils.checkPhoneLegal(phone2)){
-                        showTs(getString(R.string.tip_input_phone_correctly));
-                        return;
-                    }
-
-                    String pwd = mETPassword.getText().toString().trim();
-                    if(!VMallUtils.checkPwdLegal(pwd)){
-                        showTs(getString(R.string.tip_input_legal_password));
-                        return;
-                    }
-
-                    getPresenter().doLoginPassWord(phone2, pwd);
-//                    getPresenter().facebookLogin("118670537263282", "EAAOSNEqOaIkBAFSSt1JvlVpPSF0mURAXPGKhvEpSq2gKrwnCLE7eZApxUNRYbi9F6vpC2mOJryeeg3jpCQNqKYhqZCIFKgBDShvFdBAHN9pvDCsLj8QNO9VZCZCiYPwYzBhnxdPSKHSZBVuxVJMykslT6GxEiUpPshMWJqJF7J7h5Omyj8sKaKhOvRZBrqSeKRaQxneAcecoRZBqXhI7udt4QZCRgXe6KN9UOUr7gESq4XcJNS0RmSei");
-                } else {
-                    showTs(getString(R.string.text_please_check_agreement));
+//                Boolean protocol = FunctionsManager.getInstance().invokeFunction(HailerFunctionDef.CHECK_PROTOCOL, Boolean.class);
+//                if (protocol != null && protocol.booleanValue()) {
+//                    String phone2 = mETAccount.getText().toString().trim();
+//                    if (StringUtil.isTrimEmpty(phone2)) {
+//                        showTs(getString(R.string.tip_input_phone));
+//                        return;
+//                    }
+//
+//                    if(!VMallUtils.checkPhoneLegal(phone2)){
+//                        showTs(getString(R.string.tip_input_phone_correctly));
+//                        return;
+//                    }
+//
+//                    String pwd = mETPassword.getText().toString().trim();
+//                    if(!VMallUtils.checkPwdLegal(pwd)){
+//                        showTs(getString(R.string.tip_input_legal_password));
+//                        return;
+//                    }
+//
+//                    getPresenter().doLoginPassWord(phone2, pwd);
+//                } else {
+//                    showTs(getString(R.string.text_please_check_agreement));
+//                }
+                String phone2 = mETAccount.getText().toString().trim();
+                if (StringUtil.isTrimEmpty(phone2)) {
+                    showTs(getString(R.string.tip_input_phone));
+                    return;
                 }
+
+                if(!VMallUtils.checkPhoneLegal(phone2)){
+                    showTs(getString(R.string.tip_input_phone_correctly));
+                    return;
+                }
+
+                String pwd = mETPassword.getText().toString().trim();
+                if(!VMallUtils.checkPwdLegal(pwd)){
+                    showTs(getString(R.string.tip_input_legal_password));
+                    return;
+                }
+
+                getPresenter().doLoginPassWord(phone2, pwd);
                 break;
             case R.id.iv_password_eye_login:
                 view.setSelected(!view.isSelected());

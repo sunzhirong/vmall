@@ -128,7 +128,11 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
     }
     @OnClick(R.id.tv_facebook_login)
     void onClick(View view) {
-        LoginManager.getInstance().logInWithReadPermissions(getActivity(), Arrays.asList("public_profile", "email"));
+        if(!mCTVChecker.isSelected()) {
+            showTs(getString(R.string.text_please_check_agreement));
+        }else {
+            LoginManager.getInstance().logInWithReadPermissions(getActivity(), Arrays.asList("public_profile", "email"));
+        }
     }
     @OnClick(R.id.ctv_protocol_check)
     void onProtocolClick(View view) {

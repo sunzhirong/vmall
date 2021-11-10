@@ -181,11 +181,11 @@
     <string name="label_amount_recharge">Transfer amount</string>
     <string name="label_upload_recharge_evidence">Upload certificate</string>
     <string name="text_take_photo">Take photos</string>
-    <string name="text_from_album" >Photo album</string>
+    <string name="text_from_album">Photo album</string>
     <string name="text_please_agree_to_authorize">Please agree to use photo albums and other functions</string>
     <string name="tip_pls_select_bank">请选择充值到的银行账户</string>
     <string name="tip_pls_upload_recharge_proof">请上传充值证明的图片</string>
-    <string name="label_my_balance" >Balance</string>
+    <string name="label_my_balance">Balance</string>
     <string name="title_input_password_pls">Enter payment password</string>
     <string name="hint_forget_password_ask">Forget password</string>
     <string name="label_order_remark_prefix">Remarks</string>
@@ -222,15 +222,14 @@
     <string name="label_recharge_history">Bill</string>
 
 
-
     <string name="label_goods_id_prefix">ID </string>
     <string name="label_exchange_rate_prefix">Rate：</string>
     <string name="tip_input_phone">Enter phone number</string>
     <string name="tip_input_phone_correctly">Enter right phone number</string>
     <string name="tip_add_cart_succ">Successfully Added</string>
     <string name="em_notice_sending">发送中</string>
-    <string name="tip_msg_looking_goods" >我正在看商品</string>
-    <string name="tip_msg_looking_order" >我正在看订单</string>
+    <string name="tip_msg_looking_goods">我正在看商品</string>
+    <string name="tip_msg_looking_order">我正在看订单</string>
     <string name="format_order_sn">Order Number：%s</string>
     <string name="tip_img_upload_fail">图片上传失败</string>
     <string name="label_msg">Message</string>
@@ -244,7 +243,6 @@
     <string name="tip_input_nickname">请输入昵称</string>
     <string name="tips_delete_address">确定删除？</string>
     <string name="tip_password_un_same">前后密码不一致</string>
-
 
 
     <string name="format_order_total">%d items,total：</string>
@@ -380,8 +378,6 @@
     <string name="label_app_version">Version</string>
     <string name="label_log_out">Log out</string>
     <string name="label_find">Find</string>
-
-
 
 
     <string name="loading">加载中</string>
