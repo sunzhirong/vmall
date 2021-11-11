@@ -175,7 +175,7 @@ public class RechargeFragment extends BaseFragment<RechargePresenter>
                 break;
             case R.id.tv_clip_name:
                 if (mBankItemBeanSelected != null) {
-                    SystemUtil.copy(context, mBankItemBeanSelected.getBankNo());
+                    SystemUtil.copy(context, mBankItemBeanSelected.getBankAccount());
                 }
                 break;
             case R.id.tv_clip_account:

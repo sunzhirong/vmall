@@ -6,7 +6,9 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.fastjson.JSON;
 import com.ysarch.uibase.recyclerview.AbsFRecyclerAdapter;
+import com.ysarch.vmall.utils.Log;
 
 /**
  * Created by fysong on 19/09/2020
@@ -56,17 +58,37 @@ public class FRcyGridLayoutDecoration extends RecyclerView.ItemDecoration {
             } else {
                 position = position - mHeadCount;
                 int column = (position - mAdapter.getHeaderViewsSize()) % mSpanCount;
-                outRect.left = column * mGapH / mSpanCount;
+//                outRect.left = column * mGapH / mSpanCount;
+//                if (column == 0) {
+//                    outRect.left = outRect.left + mMarginH;
+//                }
+//
+//                if (position >= mSpanCount) {
+//                    outRect.top = mGapV; // item top
+//                }
                 if (column == 0) {
-                    outRect.left = outRect.left + mMarginH;
+                    outRect.left = outRect.left + mGapH;
+                    outRect.right = outRect.right + mGapH / 2;
+                }else {
+                    outRect.right = outRect.right + mGapH;
+                    outRect.left = outRect.left + mGapH / 2;
                 }
-
-                if (position >= mSpanCount) {
-                    outRect.top = mGapV; // item top
-                }
+                outRect.top = outRect.top + mGapH;
+//                if(position==mHeadCount){
+//                    outRect.top = outRect.top + mGapH ;
+//                }else {
+//                    outRect.top = outRect.top + mGapH / 2;
+//                }
+//                if(position == mAdapter.getItemCount()-1){
+//                    outRect.bottom = outRect.bottom + mGapH ;
+//                }else {
+//                    outRect.bottom = outRect.bottom + mGapH / 2;
+//                }
             }
 
         }
+
+        Log.e("getItemOffsets", JSON.toJSONString(outRect)+"position="+position);
 
     }
 

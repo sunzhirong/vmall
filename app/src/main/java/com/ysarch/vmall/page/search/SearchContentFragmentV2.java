@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ysarch.uibase.fragment.CommonPureListFragment;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutDecoration;
+import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutNormalDecoration;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.adapter.ShouYeSubpageRcyAdapter;
 import com.ysarch.vmall.common.adapter.ShouYeSubpageRcyAdapterV2;
@@ -86,9 +87,12 @@ public class SearchContentFragmentV2 extends CommonPureListFragment<SearchConten
         });
 
         int marginH = ResUtils.getDimeI(R.dimen.margin_h_common);
-        int gap = SizeUtils.dp2px(11);
-        initRecyclerView(new FRcyGridLayoutDecoration(gap, gap, marginH, 2, mRcyAdapter)
+        int gap = SizeUtils.dp2px(10);
+//        initRecyclerView(new FRcyGridLayoutDecoration(gap, gap, marginH, 2, mRcyAdapter)
+//                .setGridPlaceViewType(ShouYeSubpageRcyAdapter.TYPE_GOODS));
+        initRecyclerView(new FRcyGridLayoutNormalDecoration(gap,  2, mRcyAdapter)
                 .setGridPlaceViewType(ShouYeSubpageRcyAdapter.TYPE_GOODS));
+
     }
 
 

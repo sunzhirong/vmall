@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ysarch.uibase.fragment.CommonPureListFragment;
+import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutDecoration;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.adapter.ShouYeSubpageRcyAdapter;
 import com.ysarch.vmall.common.adapter.ShouYeSubpageRcyAdapterV2;
@@ -162,10 +163,10 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
             }.getType());
         }
         int marginH = ResUtils.getDimeI(R.dimen.margin_h_common);
-        int gap = SizeUtils.dp2px(11);
-//        initRecyclerView(new FRcyGridLayoutDecoration(gap, gap, marginH, 2, mRcyAdapter)
-//                .setGridPlaceViewType(ShouYeSubpageRcyAdapter.TYPE_GOODS).setHeadCount((mCateLevelBeans==null||mCateLevelBeans.size()==0)?0:1));
-        initRecyclerView(null);
+        int gap = SizeUtils.dp2px(10);
+        initRecyclerView(new FRcyGridLayoutDecoration(gap, gap, marginH, 2, mRcyAdapter)
+                .setGridPlaceViewType(ShouYeSubpageRcyAdapter.TYPE_GOODS).setHeadCount((mCateLevelBeans==null||mCateLevelBeans.size()==0)?0:1));
+//        initRecyclerView(null);
         getRecycleView().setFRcySpanLookUp(position -> {
             if (mRcyAdapter.getItemViewType(position) != ShouYeSubpageRcyAdapter.TYPE_GOODS) {
                 return 2;
