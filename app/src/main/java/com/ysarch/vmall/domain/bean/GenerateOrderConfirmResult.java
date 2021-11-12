@@ -19,6 +19,15 @@ public class GenerateOrderConfirmResult implements Serializable {
     private CalcAmountBean calcAmount;
     private List<CartPromotionItemListBean> cartPromotionItemList;
     private List<ConfirmOrderAvailableCouponBean> couponHistoryDetailList;
+    private List<SameSellerCartPromotionBean> sameSellerCartPromotionItemList;
+
+    public List<SameSellerCartPromotionBean> getSameSellerCartPromotionItemList() {
+        return sameSellerCartPromotionItemList;
+    }
+
+    public void setSameSellerCartPromotionItemList(List<SameSellerCartPromotionBean> sameSellerCartPromotionItemList) {
+        this.sameSellerCartPromotionItemList = sameSellerCartPromotionItemList;
+    }
 
     @SerializedName("umsMemberReceiveAddress")
     private AddressItemBean mAddressItemBean;
@@ -27,6 +36,75 @@ public class GenerateOrderConfirmResult implements Serializable {
     public WmsWarehouseInfoBean getWmsWarehouseInfo() {
         return wmsWarehouseInfo;
     }
+
+
+    public static class SameSellerCartPromotionBean implements Serializable {
+
+        /**
+         * amount : 0
+         * delivery : 0
+         * dollorDelivery : 0
+         * sellerId : 0
+         * source : 0
+         */
+
+        private double amount;
+        private String delivery;
+        private String dollorDelivery;
+        private int sellerId;
+        private int source;
+        private List<CartPromotionItemListBean> cartPromotionItemList;
+
+        public List<CartPromotionItemListBean> getCartPromotionItemList() {
+            return cartPromotionItemList;
+        }
+
+        public void setCartPromotionItemList(List<CartPromotionItemListBean> cartPromotionItemList) {
+            this.cartPromotionItemList = cartPromotionItemList;
+        }
+
+        public double getAmount() {
+            return amount;
+        }
+
+        public void setAmount(double amount) {
+            this.amount = amount;
+        }
+
+        public String getDelivery() {
+            return delivery;
+        }
+
+        public void setDelivery(String delivery) {
+            this.delivery = delivery;
+        }
+
+        public String getDollorDelivery() {
+            return dollorDelivery;
+        }
+
+        public void setDollorDelivery(String dollorDelivery) {
+            this.dollorDelivery = dollorDelivery;
+        }
+
+        public int getSellerId() {
+            return sellerId;
+        }
+
+        public void setSellerId(int sellerId) {
+            this.sellerId = sellerId;
+        }
+
+        public int getSource() {
+            return source;
+        }
+
+        public void setSource(int source) {
+            this.source = source;
+        }
+    }
+
+
 
     public void setWmsWarehouseInfo(WmsWarehouseInfoBean wmsWarehouseInfo) {
         this.wmsWarehouseInfo = wmsWarehouseInfo;
