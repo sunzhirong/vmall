@@ -50,7 +50,7 @@ public class GenerateOrderConfirmResult implements Serializable {
 
         private double amount;
         private String delivery;
-        private String dollorDelivery;
+        private double dollorDelivery;
         private int sellerId;
         private int source;
         private List<CartPromotionItemListBean> cartPromotionItemList;
@@ -79,11 +79,11 @@ public class GenerateOrderConfirmResult implements Serializable {
             this.delivery = delivery;
         }
 
-        public String getDollorDelivery() {
+        public double getDollorDelivery() {
             return dollorDelivery;
         }
 
-        public void setDollorDelivery(String dollorDelivery) {
+        public void setDollorDelivery(double dollorDelivery) {
             this.dollorDelivery = dollorDelivery;
         }
 
@@ -252,6 +252,44 @@ public class GenerateOrderConfirmResult implements Serializable {
         private int integration;
         private int growth;
 
+
+        private int number;
+        private double dollorDelivery;
+        private int type;
+        private double amount;
+
+        public double getAmount() {
+            return amount;
+        }
+
+        public void setAmount(double amount) {
+            this.amount = amount;
+        }
+
+        public int getNumber() {
+            return number;
+        }
+
+        public void setNumber(int number) {
+            this.number = number;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public void setType(int type) {
+            this.type = type;
+        }
+
+
+        public double getDollorDelivery() {
+            return dollorDelivery;
+        }
+
+        public void setDollorDelivery(double dollorDelivery) {
+            this.dollorDelivery = dollorDelivery;
+        }
 
         public long getId() {
             return id;

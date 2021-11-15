@@ -5,10 +5,12 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ysarch.uibase.base.BasePresenter;
+import com.ysarch.vmall.common.adapter.viewholder.CartPromotionGoodsVH;
 import com.ysarch.vmall.common.context.AppContext;
 import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.common.event.NotificationDef;
 import com.ysarch.vmall.domain.bean.EnumBean;
+import com.ysarch.vmall.domain.bean.GenerateOrderConfirmResult;
 import com.ysarch.vmall.domain.bean.GenerateOrderResult;
 import com.ysarch.vmall.domain.bean.UpdateCartBean;
 import com.ysarch.vmall.domain.bean.WholeGenerateOrderResult;
@@ -106,7 +108,21 @@ public class OrderConfirmPresenter extends BasePresenter<OrderConfirmFragment> {
                                 try {
                                     String content = response.body().string();
                                     WholeGenerateOrderResult result = new Gson().fromJson(content, WholeGenerateOrderResult.class);
-
+                                    List<GenerateOrderConfirmResult.SameSellerCartPromotionBean> sameList = result.getData().getSameSellerCartPromotionItemList();
+                                    for (GenerateOrderConfirmResult.SameSellerCartPromotionBean bean : sameList){
+                                        List<GenerateOrderConfirmResult.CartPromotionItemListBean> cartList = bean.getCartPromotionItemList();
+                                        for (int i = 0;i<cartList.size();i++){
+                                            GenerateOrderConfirmResult.CartPromotionItemListBean cartBean = cartList.get(i);
+                                            cartBean.setNumber(cartList.size());
+                                            cartBean.setAmount(bean.getAmount());
+                                            cartBean.setDollorDelivery(bean.getDollorDelivery());
+                                            cartBean.setType(CartPromotionGoodsVH.TYPE_NORMAL);
+                                            if(cartList.size()-1==i){
+                                                //最后一个
+                                                cartBean.setType(CartPromotionGoodsVH.TYPE_END);
+                                            }
+                                        }
+                                    }
                                     if (result.getCode() != 200) {
                                         getV().showTs(result.getMessage());
                                     } else {

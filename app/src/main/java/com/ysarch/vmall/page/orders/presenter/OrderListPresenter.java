@@ -9,7 +9,6 @@ import com.ysarch.vmall.common.event.NotificationDef;
 import com.ysarch.vmall.domain.bean.BaseResult;
 import com.ysarch.vmall.domain.bean.ListResult;
 import com.ysarch.vmall.domain.bean.OrderBean;
-import com.ysarch.vmall.domain.bean.WholeGenerateOrderResult;
 import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.services.OrderLoader;
 import com.ysarch.vmall.domain.services.WalletLoader;

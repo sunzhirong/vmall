@@ -1,5 +1,9 @@
 package com.ysarch.vmall.common.adapter.viewholder;
 
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,16 +15,23 @@ import com.ysarch.vmall.common.imageloader.BeeGlide;
 import com.ysarch.vmall.common.imageloader.ImageLoadConfig;
 import com.ysarch.vmall.domain.bean.CartGoodsBean;
 import com.ysarch.vmall.domain.bean.GenerateOrderConfirmResult;
+import com.ysarch.vmall.utils.ResUtils;
 import com.ysarch.vmall.utils.VMallUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.ysarch.vmall.utils.ResUtils.getString;
+
 /**
  * Created by fysong on 16/09/2020
  **/
 public class CartPromotionGoodsVH extends AbsViewHolder {
+
+    public static final int TYPE_NORMAL = 0;
+    public static final int TYPE_END = 1;
+
     @BindView(R.id.riv_cover_order_goods_item)
     RoundedImageView mRoundedImageView;
     @BindView(R.id.tv_name_order_goods_item)
@@ -35,6 +46,20 @@ public class CartPromotionGoodsVH extends AbsViewHolder {
     ImageView mIVPlus;
     @BindView(R.id.iv_minus_goods_cart)
     ImageView mIVMinus;
+    @BindView(R.id.tv_account_order_goods_item)
+    TextView mTVCountOrderGoods;
+    @BindView(R.id.tv_delivery_order_goods_item)
+    TextView mTVDeliveryOrderGoods;
+    @BindView(R.id.tv_total_price_order_goods_item)
+    TextView mTVTotalPrice;
+
+    @BindView(R.id.view_line)
+    View mLine;
+    @BindView(R.id.ll_bottom)
+    View mLlBottom;
+
+
+
 
     private BeeGlide mBeeGlide;
     private int mCurNum;
@@ -68,6 +93,25 @@ public class CartPromotionGoodsVH extends AbsViewHolder {
         mTVCount.setText(mBean.getQuantity() + "");
         mCurNum = mBean.getQuantity();
         mIVMinus.setEnabled(mCurNum > 1);
+
+        if(mBean.getType()==TYPE_NORMAL){
+            mLlBottom.setVisibility(View.GONE);
+            mLine.setVisibility(View.GONE);
+        }else {
+            mLlBottom.setVisibility(View.VISIBLE);
+            mLine.setVisibility(View.VISIBLE);
+            mTVTotalPrice.setText(VMallUtils.convertPriceString(mBean.getAmount()));
+            String numString = String.format(ResUtils.getString(R.string.format_order_total), mBean.getNumber());
+            SpannableStringBuilder builder = new SpannableStringBuilder(numString);
+            ForegroundColorSpan span = new ForegroundColorSpan(Color.parseColor("#f94956"));
+            builder.setSpan(span, 1, 1 + String.valueOf(mBean.getNumber()).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            mTVCountOrderGoods.setText(builder);
+//            mTVCountOrderGoods.setText(String.format(ResUtils.getString(R.string.format_order_total), mBean.getNumber()));
+            mTVDeliveryOrderGoods.setText(VMallUtils.convertPriceString(mBean.getDollorDelivery()));
+        }
+
+
+
     }
 
     @OnClick({R.id.iv_minus_goods_cart, R.id.iv_plus_goods_cart})
