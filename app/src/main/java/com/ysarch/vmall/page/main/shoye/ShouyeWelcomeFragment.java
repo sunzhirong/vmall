@@ -11,6 +11,7 @@ import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.adapter.ShouYeSubpageRcyAdapter;
 import com.ysarch.vmall.common.adapter.ShouYeSubpageRcyAdapterV2;
 import com.ysarch.vmall.common.adapter.viewholder.HomeBannerVH;
+import com.ysarch.vmall.common.context.AppContext;
 import com.ysarch.vmall.component.dialog.TBShareCmdDialog;
 import com.ysarch.vmall.domain.bean.GoodsItemBeanV2;
 import com.ysarch.vmall.domain.bean.HomeBannerBean;
@@ -39,6 +40,7 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
     private HomeContentResult mHomeContentResult;
     private FRcyGridLayoutDecoration mLayoutDecoration;
     private boolean isFirstLoad = true;
+    private boolean mHasMore;
 
     @Override
     protected RecyclerView.Adapter createAdapter() {
@@ -98,6 +100,18 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
 //                            NavHelper.startActivity(getActivity(), AccountActivity.class, AccountActivity.getBundle(AccountActivity.TYPE_LOGIN));
                         break;
                     case Constants.OPERATETYPE_HELP:
+                        int lanId = AppContext.getsInstance().getLanguageEntity().getLanId();
+                        switch (lanId){
+                            case Constants.ID_LAN_KM:
+                                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/km/index.html"));
+                                break;
+                            case Constants.ID_LAN_ZH:
+                                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/zh/index.html"));
+                                break;
+                            default:
+                                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(" http://portal.sabayshop.club/help/en/index.html"));
+                                break;
+                        }
                         break;
                     case Constants.OPERATETYPE_SEARCH_BY_KEYWORD:
                         NavHelper.startActivity(getActivity(), SearchActivity.class, SearchActivity.getBundle(data.getKeyword(), true));
@@ -129,29 +143,46 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
                     NavHelper.startActivity(getActivity(), RechargeAmountActivity.class);
                     break;
                 case Constants.OPERATETYPE_CUSTOMER_SERVICE:
-//                    if (UserInfoManager.judeIsLogin(context))
-//                        EaseHelper.getInstance().navKefu(context, this);
-//                    else
-//                        NavHelper.startActivity(getActivity(), AccountActivity.class, AccountActivity.getBundle(AccountActivity.TYPE_LOGIN));
-//                    NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("https://m.me/105800634679932?ref=sabayshop"));
-                    NavHelper.startWeb(context,"https://m.me/105800634679932?ref=sabayshop");
+//                        NavHelper.startWeb(context,"https://m.me/105800634679932?ref=sabayshop");
+                    NavHelper.startWeb(context,data.getUrl());
+//                        NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("https://m.me/105800634679932?ref=sabayshop"));
+//                        if (UserInfoManager.judeIsLogin(context))
+//                            EaseHelper.getInstance().navKefu(context, ShouyeWelcomeFragment.this);
+//                        else
+//                            NavHelper.startActivity(getActivity(), AccountActivity.class, AccountActivity.getBundle(AccountActivity.TYPE_LOGIN));
                     break;
                 case Constants.OPERATETYPE_HELP:
+                    int lanId = AppContext.getsInstance().getLanguageEntity().getLanId();
+                    switch (lanId){
+                        case Constants.ID_LAN_KM:
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/km/index.html"));
+                            break;
+                        case Constants.ID_LAN_ZH:
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/zh/index.html"));
+                            break;
+                        default:
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(" http://portal.sabayshop.club/help/en/index.html"));
+                            break;
+                    }
                     break;
                 case Constants.OPERATETYPE_SEARCH_BY_KEYWORD:
                     NavHelper.startActivity(getActivity(), SearchActivity.class, SearchActivity.getBundle(data.getKeyword(), true));
                     break;
                 case Constants.OPERATETYPE_GOODS_H5:
                 case Constants.OPERATETYPE_H5:
-                    if("https://m.me/105800634679932?ref=sabayshop".equals(data.getUrl())){
-                        NavHelper.startWeb(context,data.getUrl());
-                        return;
-                    }
-                    if(data.getUrl().contains("http://")||data.getUrl().contains("https://")){
-                        NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(data.getUrl()));
-                    }else {
-                        NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://"+data.getUrl()));
-                    }
+//                        if("https://m.me/105800634679932?ref=sabayshop".equals(data.getUrl())){
+//                            NavHelper.startWeb(context,data.getUrl());
+//                            return;
+//                        }
+//                        if(data.getUrl().contains("http://")||data.getUrl().contains("https://")){
+//                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(data.getUrl()));
+//                        }else {
+//                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://"+data.getUrl()));
+//                        }
+                    NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(data.getUrl()));
+                    break;
+                case Constants.OPERATETYPE_OUT_H5:
+                    NavHelper.startWeb(context,data.getUrl());
                     break;
 
             }
@@ -223,6 +254,7 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
             mRcyAdapter.appendWelcomeDatas(homeRecResult.getList());
         }
 
+        mHasMore = homeRecResult.getTotalPage() > mPage;
 
     }
 
@@ -247,6 +279,6 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
 
     @Override
     protected boolean hasMore() {
-        return mPage < 2;
+        return mHasMore;
     }
 }

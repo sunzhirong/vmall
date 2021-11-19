@@ -45,6 +45,8 @@ public class SkuItemVH extends AbsViewHolder {
         mTextView.setText(mLocalSkuEntity.getSkuLabel());
         mTextView.setSelected(mLocalSkuEntity.isSelected());
         mLlView.setSelected(mLocalSkuEntity.isSelected());
+        mLlView.setEnabled(mLocalSkuEntity.isEnable());
+        mTextView.setEnabled(mLocalSkuEntity.isEnable());
         Log.e("onBindData",mLocalSkuEntity.getSkuLabel()+mLocalSkuEntity.getImage());
 
         if(!TextUtils.isEmpty(mLocalSkuEntity.getImage())){

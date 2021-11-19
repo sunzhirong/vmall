@@ -7,8 +7,6 @@ import androidx.fragment.app.FragmentManager;
 
 import com.ysarch.uibase.viewpager.DynamicFragmentAdapter;
 import com.ysarch.uibase.viewpager.FragmentPagerItem;
-import com.ysarch.vmall.common.adapter.viewholder.MultiSkuVH;
-import com.ysarch.vmall.component.dialog.multisku.MultiSkuFragment;
 import com.ysarch.vmall.domain.constant.BundleKey;
 
 import java.util.List;

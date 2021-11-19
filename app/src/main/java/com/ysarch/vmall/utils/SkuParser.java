@@ -98,7 +98,7 @@ public class SkuParser implements Serializable {
                         GoodsDetailItemBean.PropsBean.ValuesBean valuesBean = valuesBeans.get(j);
                         String skuPropCode = valuesBean.getVid();//propId + ":" + valuesBean.getVid();
                         boolean existSkuGoods = false;
-
+                        boolean enable = false;
                         //判断库存,只要存在就展示
                         loop1:
                         for (int k = 0; k < skuBeanV2s.size(); k++) {
@@ -106,6 +106,7 @@ public class SkuParser implements Serializable {
                             if (skuBeanV2.getPropPath()!=null&&skuBeanV2.getPropPath().contains(skuPropCode)) {
 //                            if (skuBeanV2.getPropPath().contains(skuPropCode)) {
                                 existSkuGoods = true;
+                                enable = skuBeanV2.getQuantityInt()!=0;
                                 break loop1;
                             }
                         }
@@ -118,6 +119,7 @@ public class SkuParser implements Serializable {
 //                            localSkuEntity.setImage(valuesBean.getImage());
                             localSkuEntity.setSkuBelong(propName);
                             localSkuEntity.setSkuBelongId(propId);
+                            localSkuEntity.setEnable(enable);
                             localSkuEntities.add(localSkuEntity);
                         }
                     }

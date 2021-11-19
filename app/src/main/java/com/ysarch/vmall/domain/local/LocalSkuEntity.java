@@ -12,6 +12,15 @@ public class LocalSkuEntity implements Serializable {
     private String skuBelongId;
     private boolean selected;
     private String image;
+    private boolean enable;
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
 
     public String getImage() {
         return image;
