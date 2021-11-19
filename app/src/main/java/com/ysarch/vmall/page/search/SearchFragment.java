@@ -24,8 +24,12 @@ import com.yslibrary.utils.FragmentTransUtil;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.ysarch.vmall.domain.enums.SearchPageTag.SEARCH_CONTENT_PAGE;
+import static com.ysarch.vmall.domain.enums.SearchPageTag.SEARCH_HISTORY_PAGE;
 
 /**
  * Created by fysong on 17/09/2020
@@ -42,6 +46,7 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
     private int mPageLaunchType;
     private int mCateId;
 
+    private String fragmentTag;
 
     private FunctionHasParamNoResult<String> searchEvent = new FunctionHasParamNoResult<String>(HailerFunctionDef.SEARCH_KEYWORD) {
         @Override
@@ -65,9 +70,9 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
             getPresenter().refreshHistoryCache(mKeyword);
             if (!checkCmdKeyword(mKeyword)) {
                 if (mSearchVPFragment == null) {
-                    gotoPage(SearchPageTag.SEARCH_CONTENT_PAGE);
+                    gotoPage(SEARCH_CONTENT_PAGE);
                 } else {
-                    gotoPage(SearchPageTag.SEARCH_CONTENT_PAGE);
+                    gotoPage(SEARCH_CONTENT_PAGE);
                     mSearchVPFragment.resetKeyword(mKeyword);
                 }
 
@@ -93,11 +98,13 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
                     getPresenter().refreshHistoryCache(mKeyword);
 
                     if (!checkCmdKeyword(mKeyword)) {
-                        if (mSearchVPFragment == null) {
-                            gotoPage(SearchPageTag.SEARCH_CONTENT_PAGE);
-                        } else {
-                            mSearchVPFragment.resetKeyword(mKeyword);
-                        }
+                        gotoPage(SEARCH_CONTENT_PAGE);
+                        mSearchVPFragment.resetKeyword(mKeyword);
+//                        if (mSearchVPFragment == null) {
+//                            gotoPage(SEARCH_CONTENT_PAGE);
+//                        } else {
+//                            mSearchVPFragment.resetKeyword(mKeyword);
+//                        }
                     }
                 }
             }
@@ -121,12 +128,12 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
         }
 
         if (mPageLaunchType != SearchActivity.TYPE_NOR) {
-            gotoPage(SearchPageTag.SEARCH_CONTENT_PAGE);
+            gotoPage(SEARCH_CONTENT_PAGE);
         } else {
-            gotoPage(SearchPageTag.SEARCH_HISTORY_PAGE);
+            gotoPage(SEARCH_HISTORY_PAGE);
         }
 
-        if(mShowKeyboard) {
+        if (mShowKeyboard) {
             mETKeyword.setFocusable(true);
             mETKeyword.setFocusableInTouchMode(true);
             mETKeyword.requestFocus();
@@ -161,6 +168,7 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
     private void gotoPage(SearchPageTag targetTag) {
         FragmentManager fragmentManager = getChildFragmentManager();
         String tag = targetTag.getValue();
+        fragmentTag = tag;
         Fragment fragment = fragmentManager.findFragmentByTag(tag);
         if (fragment == null) {
             switch (targetTag.getValue()) {
@@ -182,10 +190,15 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
         }
 
         if (fragment != null) {
-            if(targetTag.getValue().equals("search_content_page")) {
+            if (fragmentTag.equals(SEARCH_CONTENT_PAGE.getValue())) {
                 mETKeyword.setFocusableInTouchMode(false);
                 mETKeyword.setFocusable(false);
                 SoftInputUtil.hideSoftInput(context, mETKeyword);
+            }else {
+                mETKeyword.setFocusableInTouchMode(true);
+                mETKeyword.setFocusable(true);
+                mETKeyword.requestFocus();
+                SoftInputUtil.showSoftInput(context, mETKeyword);
             }
             FragmentTransUtil.transFragment(fragmentManager, R.id.fl_container_search,
                     fragment, tag, false);
@@ -195,15 +208,19 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
 
     @OnClick(R.id.iv_back_search)
     void onViewClick(View view) {
-        getActivity().finish();
+        if(SEARCH_CONTENT_PAGE.getValue().equals(fragmentTag)){
+            gotoPage(SEARCH_HISTORY_PAGE);
+        }else {
+            getActivity().finish();
+        }
     }
 
     @OnClick(R.id.et_search)
     void onEtClick(View view) {
-        mETKeyword.setFocusableInTouchMode(true);
-        mETKeyword.setFocusable(true);
-        mETKeyword.requestFocus();
-        gotoPage(SearchPageTag.SEARCH_HISTORY_PAGE);
+//        mETKeyword.setFocusableInTouchMode(true);
+//        mETKeyword.setFocusable(true);
+//        mETKeyword.requestFocus();
+        gotoPage(SEARCH_HISTORY_PAGE);
     }
 
     @Override

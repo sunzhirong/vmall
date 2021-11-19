@@ -100,5 +100,6 @@ public class Constants {
     public static final int OPERATETYPE_SEARCH_BY_KEYWORD = 4;
     public static final int OPERATETYPE_GOODS_H5 = 5;
     public static final int OPERATETYPE_H5 = 6;
+    public static final int OPERATETYPE_OUT_H5 = 7;
 }
 

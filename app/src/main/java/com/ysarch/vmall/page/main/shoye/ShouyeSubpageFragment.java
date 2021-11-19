@@ -164,7 +164,9 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
         }
         int marginH = ResUtils.getDimeI(R.dimen.margin_h_common);
         int gap = SizeUtils.dp2px(10);
-        initRecyclerView(new FRcyGridLayoutDecoration(gap, gap, marginH, 2, mRcyAdapter)
+//        int marginH = 0;
+//        int gap = 0;
+        initRecyclerView(new FRcyGridLayoutDecoration(gap, gap, marginH, 2, mRcyAdapter).setHeadCount(1)
                 .setGridPlaceViewType(ShouYeSubpageRcyAdapter.TYPE_GOODS).setHeadCount((mCateLevelBeans==null||mCateLevelBeans.size()==0)?0:1));
 //        initRecyclerView(null);
         getRecycleView().setFRcySpanLookUp(position -> {
@@ -176,8 +178,8 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
 
         getPresenter().requestCateGoods(mCateName, 1, getUserVisibleHint());
 
-        int gaps = SizeUtils.dp2px(5);
-        getRecycleView().setPadding(gaps,0,gaps,gaps);
+//        int gaps = SizeUtils.dp2px(5);
+//        getRecycleView().setPadding(gaps,0,gaps,gaps);
     }
 
     @Override

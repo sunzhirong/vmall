@@ -33,6 +33,7 @@ import com.ysarch.vmall.helper.DialogHelper;
 import com.ysarch.vmall.page.address.AddressEditActivity;
 import com.ysarch.vmall.page.address.AddressListActivity;
 import com.ysarch.vmall.page.orders.presenter.OrderConfirmPresenter;
+import com.ysarch.vmall.page.recharge.RechargeSuccessActivity;
 import com.ysarch.vmall.utils.LanguageUtils;
 import com.ysarch.vmall.utils.NavHelper;
 import com.ysarch.vmall.utils.ResUtils;
@@ -570,7 +571,7 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
             getPresenter().checkWallet();
         }else if(result.getData().getOrder().getStatus()==5){
             getActivity().finish();
-            NavHelper.startActivity(this, OrderPaidActivity.class);
+            NavHelper.startActivity(this, RechargeSuccessActivity.class);
         }
 
 

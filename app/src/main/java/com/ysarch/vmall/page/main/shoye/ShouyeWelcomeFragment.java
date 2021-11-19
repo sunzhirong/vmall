@@ -89,7 +89,8 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
                         NavHelper.startActivity(getActivity(), RechargeAmountActivity.class);
                         break;
                     case Constants.OPERATETYPE_CUSTOMER_SERVICE:
-                        NavHelper.startWeb(context,"https://m.me/105800634679932?ref=sabayshop");
+//                        NavHelper.startWeb(context,"https://m.me/105800634679932?ref=sabayshop");
+                        NavHelper.startWeb(context,data.getUrl());
 //                        NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("https://m.me/105800634679932?ref=sabayshop"));
 //                        if (UserInfoManager.judeIsLogin(context))
 //                            EaseHelper.getInstance().navKefu(context, ShouyeWelcomeFragment.this);
@@ -103,15 +104,19 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
                         break;
                     case Constants.OPERATETYPE_GOODS_H5:
                     case Constants.OPERATETYPE_H5:
-                        if("https://m.me/105800634679932?ref=sabayshop".equals(data.getUrl())){
-                            NavHelper.startWeb(context,data.getUrl());
-                            return;
-                        }
-                        if(data.getUrl().contains("http://")||data.getUrl().contains("https://")){
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(data.getUrl()));
-                        }else {
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://"+data.getUrl()));
-                        }
+//                        if("https://m.me/105800634679932?ref=sabayshop".equals(data.getUrl())){
+//                            NavHelper.startWeb(context,data.getUrl());
+//                            return;
+//                        }
+//                        if(data.getUrl().contains("http://")||data.getUrl().contains("https://")){
+//                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(data.getUrl()));
+//                        }else {
+//                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://"+data.getUrl()));
+//                        }
+                        NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(data.getUrl()));
+                        break;
+                    case Constants.OPERATETYPE_OUT_H5:
+                        NavHelper.startWeb(context,data.getUrl());
                         break;
 
                 }
@@ -217,6 +222,7 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
         } else {
             mRcyAdapter.appendWelcomeDatas(homeRecResult.getList());
         }
+
 
     }
 
