@@ -153,8 +153,8 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
         });
         super.bindUI(mRootView);
         int marginH = ResUtils.getDimeI(R.dimen.margin_h_common);
-        int gap = SizeUtils.dp2px(11);
-        initRecyclerView(mLayoutDecoration = new FRcyGridLayoutDecoration(0, 0, 0, 2, mRcyAdapter)
+        int gap = SizeUtils.dp2px(10);
+        initRecyclerView(mLayoutDecoration = new FRcyGridLayoutDecoration(gap, 0, 0, 2, mRcyAdapter)
                 .setGridPlaceViewType(ShouYeSubpageRcyAdapter.TYPE_GOODS).setHeadCount(3));
 //        initRecyclerView(mLayoutDecoration = new FRcyGridLayoutDecoration(gap, gap, marginH, 2, mRcyAdapter)
 //                .setGridPlaceViewType(ShouYeSubpageRcyAdapter.TYPE_GOODS).setHeadCount(3));
@@ -208,10 +208,10 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
 
         if(mPage == 1){
             if(mHomeContentResult != null && CollectionUtils.isNotEmpty(mHomeContentResult.getHomeBannerBeans())) {
-                mLayoutDecoration.setHeadCount(2);
+//                mLayoutDecoration.setHeadCount(2);
                 mRcyAdapter.refreshWelcomeDatas(mHomeContentResult.getHomeBannerBeans(),mHomeContentResult.getHomeRecommend(), homeRecResult.getList());
             } else {
-                mLayoutDecoration.setHeadCount(1);
+//                mLayoutDecoration.setHeadCount(1);
                 mRcyAdapter.refreshWelcomeDatas(null,null, homeRecResult.getList());
             }
         } else {

@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+<RelativeLayout
+    android:layout_width="match_parent"
     android:background="@color/white"
-    android:paddingBottom="10dp"
     android:layout_height="wrap_content">
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:layout_margin="@dimen/padding_h_order_item"
+        android:layout_margin="@dimen/margin_h_common"
         android:id="@+id/riv_cover_order_goods_item"
         android:layout_width="88dp"
         android:layout_height="88dp"
@@ -41,6 +47,7 @@
             android:text="测试"
             android:textColor="@color/grayA"
             android:textSize="@dimen/text_12pt" />
+
 
 
 
@@ -105,6 +112,57 @@
 
 </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:paddingRight="@dimen/padding_h_order_item"
+        android:paddingVertical="5dp"
+        android:gravity="end"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_account_order_goods_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tool:text="共1件"
+            android:textColor="@color/blackA"
+            android:textSize="@dimen/text_14pt" />
+
+        <TextView
+            android:id="@+id/tv_total_price_order_goods_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tool:text="$111"
+            android:textColor="@color/redA"
+            android:textSize="@dimen/text_14pt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tool:text="@string/tb_delivery"
+            android:textColor="@color/blackA"
+            android:textSize="@dimen/text_14pt"/>
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:text="$123"
+            android:id="@+id/tv_delivery_order_goods_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/redA"
+            android:textSize="@dimen/text_14pt" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:background="@color/bg_page_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"/>
+
+
+</LinearLayout>
     <!--<?xml version="1.0" encoding="utf-8"?>-->
 <!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
 <!--    android:layout_width="match_parent"-->

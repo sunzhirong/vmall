@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ysarch.uibase.fragment.CommonPureListFragment;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutDecoration;
-import com.ysarch.uibase.recyclerview.itemDecoration.GridLayoutDecoration;
+import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutNormalDecoration;
 import com.ysarch.vmall.R;
-import com.ysarch.vmall.common.adapter.SearchContentRcyAdapterV2;
 import com.ysarch.vmall.common.adapter.ShouYeSubpageRcyAdapter;
 import com.ysarch.vmall.common.adapter.ShouYeSubpageRcyAdapterV2;
 import com.ysarch.vmall.common.event.NotificationDef;
@@ -36,8 +35,7 @@ public class SearchContentFragmentV2 extends CommonPureListFragment<SearchConten
 
     private int mCateId = -1;
     private String mKeyword = null;
-//    private ShouYeSubpageRcyAdapterV2 mRcyAdapter;
-    private SearchContentRcyAdapterV2 mRcyAdapter;
+    private ShouYeSubpageRcyAdapterV2 mRcyAdapter;
     private String mCurKeyword;
     private boolean mHasMore;
     private int mPlatformType = Constants.TYPE_PLATFORM_TB;
@@ -81,7 +79,7 @@ public class SearchContentFragmentV2 extends CommonPureListFragment<SearchConten
     @Override
     public void bindUI(View mRootView) {
         super.bindUI(mRootView);
-        mRcyAdapter = new SearchContentRcyAdapterV2(getContext());
+        mRcyAdapter = new ShouYeSubpageRcyAdapterV2(getContext());
         mRcyAdapter.setOnItemClickListener((position, data) -> {
 //            GoodsItemBean goodsItemBean = (GoodsItemBean) data;
             NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
@@ -89,10 +87,12 @@ public class SearchContentFragmentV2 extends CommonPureListFragment<SearchConten
         });
 
         int marginH = ResUtils.getDimeI(R.dimen.margin_h_common);
-        int gap = SizeUtils.dp2px(11);
+        int gap = SizeUtils.dp2px(10);
 //        initRecyclerView(new FRcyGridLayoutDecoration(gap, gap, marginH, 2, mRcyAdapter)
 //                .setGridPlaceViewType(ShouYeSubpageRcyAdapter.TYPE_GOODS));
-        initRecyclerView( null);
+        initRecyclerView(new FRcyGridLayoutNormalDecoration(gap,  2, mRcyAdapter)
+                .setGridPlaceViewType(ShouYeSubpageRcyAdapter.TYPE_GOODS));
+
     }
 
 

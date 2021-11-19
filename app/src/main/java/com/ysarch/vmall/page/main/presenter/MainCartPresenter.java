@@ -5,8 +5,10 @@ import android.util.SparseArray;
 
 import com.google.gson.Gson;
 import com.ysarch.uibase.base.BasePresenter;
+import com.ysarch.vmall.common.adapter.viewholder.CartPromotionGoodsVH;
 import com.ysarch.vmall.domain.bean.CartGoodsBean;
 import com.ysarch.vmall.domain.bean.CateLevelBean;
+import com.ysarch.vmall.domain.bean.GenerateOrderConfirmResult;
 import com.ysarch.vmall.domain.bean.GoodsDetailBean;
 import com.ysarch.vmall.domain.bean.GoodsDetailResult;
 import com.ysarch.vmall.domain.bean.SkuBean;
@@ -271,6 +273,23 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
                                 if (generateOrderResult.getCode() != 200) {
                                     getV().showTs(generateOrderResult.getMessage());
                                 } else {
+                                    GenerateOrderConfirmResult data = generateOrderResult.getData();
+                                    List<GenerateOrderConfirmResult.SameSellerCartPromotionBean> sameList = data.getSameSellerCartPromotionItemList();
+                                    for (GenerateOrderConfirmResult.SameSellerCartPromotionBean bean : sameList){
+                                        List<GenerateOrderConfirmResult.CartPromotionItemListBean> cartList = bean.getCartPromotionItemList();
+                                        for (int i = 0;i<cartList.size();i++){
+                                            GenerateOrderConfirmResult.CartPromotionItemListBean cartBean = cartList.get(i);
+
+                                            cartBean.setNumber(cartList.size());
+                                            cartBean.setAmount(bean.getAmount());
+                                            cartBean.setDollorDelivery(bean.getDollorDelivery());
+                                            cartBean.setType(CartPromotionGoodsVH.TYPE_NORMAL);
+                                            if(cartList.size()-1==i){
+                                                //最后一个
+                                                cartBean.setType(CartPromotionGoodsVH.TYPE_END);
+                                            }
+                                        }
+                                    }
                                     getV().onGenerateConfirmOrderSucc(generateOrderResult.getData());
                                 }
 

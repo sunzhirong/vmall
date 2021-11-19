@@ -162,11 +162,20 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
     }
 
     private void updateCartUI() {
+        if(mCartPromotionItemList==null){
+            mCartPromotionItemList = new ArrayList<>();
+        }else {
+            mCartPromotionItemList.clear();
+        }
         mAddressItemBean = mGenerateOrderConfirmResult.getAddressItemBean();
         mWarehouseSelected = mGenerateOrderConfirmResult.getWmsWarehouseInfo();
         updateAddressInfo();
 
-        mCartPromotionItemList = mGenerateOrderConfirmResult.getCartPromotionItemList();
+//        mCartPromotionItemList = mGenerateOrderConfirmResult.getCartPromotionItemList();
+        List<GenerateOrderConfirmResult.SameSellerCartPromotionBean> sameList = mGenerateOrderConfirmResult.getSameSellerCartPromotionItemList();
+        for (GenerateOrderConfirmResult.SameSellerCartPromotionBean sameBean : sameList){
+            mCartPromotionItemList.addAll(sameBean.getCartPromotionItemList());
+        }
         if (CollectionUtils.isNotEmpty(mCartPromotionItemList)) {
             initAdapter();
             mAdapter.requestData(mCartPromotionItemList);
@@ -556,10 +565,13 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
      * @param result
      */
     public void onOrderConfirmSucc(GenerateOrderResult result) {
-        mOrderBean = result.getData().getOrder();
-        getPresenter().checkWallet();
-
-
+        if(result.getData().getOrder().getStatus()==0){
+            mOrderBean = result.getData().getOrder();
+            getPresenter().checkWallet();
+        }else if(result.getData().getOrder().getStatus()==5){
+            getActivity().finish();
+            NavHelper.startActivity(this, OrderPaidActivity.class);
+        }
 
 
     }

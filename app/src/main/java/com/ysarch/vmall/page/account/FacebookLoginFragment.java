@@ -19,6 +19,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -110,6 +111,17 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 //                boolean enableButtons = AccessToken.getCurrentAccessToken() != null;
                 Profile profile = Profile.getCurrentProfile();
                 Log.d("onSuccess", "登录成功！" +JSON.toJSONString(profile));
+
+                ProfileTracker profileTracker = new ProfileTracker() {
+                    @Override
+                    protected void onCurrentProfileChanged(
+                            Profile oldProfile,
+                            Profile currentProfile) {
+                        // App code
+                        Log.d("profileTracker", "登录成功！" +JSON.toJSONString(oldProfile)+JSON.toJSONString(currentProfile));
+                    }
+                };
+
 
                 String name;
                 if(profile!=null){
