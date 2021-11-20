@@ -51,7 +51,7 @@ public class GenerateOrderConfirmResult implements Serializable {
         private double amount;
         private String delivery;
         private double dollorDelivery;
-        private int sellerId;
+//        private int sellerId;
         private int source;
         private List<CartPromotionItemListBean> cartPromotionItemList;
 
@@ -87,13 +87,13 @@ public class GenerateOrderConfirmResult implements Serializable {
             this.dollorDelivery = dollorDelivery;
         }
 
-        public int getSellerId() {
-            return sellerId;
-        }
-
-        public void setSellerId(int sellerId) {
-            this.sellerId = sellerId;
-        }
+//        public int getSellerId() {
+//            return sellerId;
+//        }
+//
+//        public void setSellerId(int sellerId) {
+//            this.sellerId = sellerId;
+//        }
 
         public int getSource() {
             return source;
