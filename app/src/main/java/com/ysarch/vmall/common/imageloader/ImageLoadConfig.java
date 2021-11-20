@@ -181,11 +181,11 @@ public class ImageLoadConfig {
         return this;
     }
 
-    public ImageLoadConfig placeHolder(Drawable drawable) {
-        mPlaceholder = drawable;
-        mPlaceHolderColor = EMPTY_COLOR;
-        return this;
-    }
+//    public ImageLoadConfig placeHolder(Drawable drawable) {
+//        mPlaceholder = drawable;
+//        mPlaceHolderColor = EMPTY_COLOR;
+//        return this;
+//    }
 
     /**
      * 压缩图片

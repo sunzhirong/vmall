@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.request.RequestOptions;
+import com.ysarch.vmall.R;
 import com.ysarch.vmall.utils.GlideUtils;
 import com.yslibrary.utils.ArrayUtils;
 
@@ -166,11 +167,12 @@ public class BeeGlide {
 //        GlideRequest glideRequest = load(loadConfig);
 //        glideRequest.into(imageView);
 
-        if(loadConfig.getPlaceholder()!=null) {
-            GlideUtils.loadImageView(context, loadConfig.getUrl(), imageView,loadConfig.getPlaceholder());
-        }else {
-            GlideUtils.loadImageView(context, loadConfig.getUrl(), imageView);
-        }
+//        if(loadConfig.getPlaceholder()!=null) {
+//            GlideUtils.loadImageView(context, loadConfig.getUrl(), imageView,loadConfig.getPlaceholder());
+//        }else {
+//            GlideUtils.loadImageView(context, loadConfig.getUrl(), imageView,context.getDrawable(R.drawable.shape_round_rect_fill_efefef));
+//        }
+        GlideUtils.loadImageView(context, loadConfig.getUrl(), imageView,context.getDrawable(R.drawable.shape_round_rect_fill_efefef));
     }
 
     public void loadOld(ImageLoadConfig loadConfig, ImageView imageView) {

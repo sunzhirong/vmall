@@ -28,6 +28,7 @@ import com.ysarch.vmall.page.orders.OrderHistoryActivity;
 import com.ysarch.vmall.page.setting.SettingActivity;
 import com.ysarch.vmall.page.wallet.WalletActivity;
 import com.ysarch.vmall.page.webview.CommonWebActivity;
+import com.ysarch.vmall.utils.GlideUtils;
 import com.ysarch.vmall.utils.NavHelper;
 import com.ysarch.vmall.utils.ResUtils;
 import com.ysarch.vmall.utils.SizeUtils;
@@ -274,9 +275,10 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
             mTVUid.setText(String.format(ResUtils.getString(R.string.format_uid_mine,
                     UserInfoManager.getUser().getId())));
 
-            BeeGlide.with(this)
-                    .load(ImageLoadConfig.create(UserInfoManager.getUser().getIcon())
-                            .placeHolder(R.drawable.ic_avatar_placeholder), mRIVAvatar);
+//            BeeGlide.with(this)
+//                    .load(ImageLoadConfig.create(UserInfoManager.getUser().getIcon())
+//                            .placeHolder(R.drawable.ic_avatar_placeholder), mRIVAvatar);
+            GlideUtils.loadImageView(context,UserInfoManager.getUser().getIcon(),mRIVAvatar,context.getDrawable(R.drawable.ic_avatar_placeholder));
         } else {
             mTVNickname.setVisibility(View.GONE);
 //            mTVAccount.setVisibility(View.GONE);
