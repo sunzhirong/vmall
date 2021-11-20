@@ -30,6 +30,7 @@ import com.ysarch.vmall.utils.ResUtils;
 import com.ysarch.vmall.utils.SizeUtils;
 import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.utils.CollectionUtils;
+import com.yslibrary.utils.ToastUtils;
 
 import java.util.List;
 
@@ -200,7 +201,15 @@ public class SkuDialog extends Dialog {
                     }
                 }
 
-
+                if(mSkuBeanSelected.getQuantityInt()==0){
+                    mTVConfirm.setText(R.string.label_no_quality);
+                    mTVConfirm.setEnabled(false);
+//                    ToastUtils.showShortToast(getContext(),"缺货中");
+                }else {
+                    mTVConfirm.setText(R.string.label_add_to_cart);
+                    mTVConfirm.setEnabled(true);
+//                    ToastUtils.showShortToast(getContext(),"可以下单");
+                }
 
 
             }

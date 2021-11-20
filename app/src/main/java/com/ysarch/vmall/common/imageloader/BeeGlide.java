@@ -163,6 +163,17 @@ public class BeeGlide {
     }
 
     public void load(ImageLoadConfig loadConfig, ImageView imageView) {
+//        GlideRequest glideRequest = load(loadConfig);
+//        glideRequest.into(imageView);
+
+        if(loadConfig.getPlaceholder()!=null) {
+            GlideUtils.loadImageView(context, loadConfig.getUrl(), imageView,loadConfig.getPlaceholder());
+        }else {
+            GlideUtils.loadImageView(context, loadConfig.getUrl(), imageView);
+        }
+    }
+
+    public void loadOld(ImageLoadConfig loadConfig, ImageView imageView) {
         GlideRequest glideRequest = load(loadConfig);
         glideRequest.into(imageView);
 

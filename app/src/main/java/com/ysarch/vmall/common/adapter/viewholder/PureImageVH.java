@@ -39,7 +39,8 @@ public class PureImageVH extends AbsViewHolder {
 
         if (url != null && !url.equals(mImage)) {
             mImage = url;
-            mBeeGlide.load(ImageLoadConfig.create(mImage).randomPlaceHolder(), mImageView);
+//            mBeeGlide.load(ImageLoadConfig.create(mImage).randomPlaceHolder(), mImageView);
+            mBeeGlide.loadOld(ImageLoadConfig.create(mImage).randomPlaceHolder(), mImageView);
         }
     }
 }

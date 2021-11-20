@@ -457,4 +457,6 @@
 
     <string name="tb_delivery">,taobao shipping：</string>
 
+    <string name="label_no_quality">缺货中</string>
+
 </resources>

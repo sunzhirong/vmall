@@ -763,4 +763,7 @@
     <string name="insufficient_error_msg">暂时无法使用此功能(103)</string>
 
     <string name="tb_delivery">,淘宝运费：</string>
+
+    <string name="label_no_quality">缺货中</string>
+
 </resources>
