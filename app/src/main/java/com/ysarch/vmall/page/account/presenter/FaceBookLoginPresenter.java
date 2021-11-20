@@ -13,6 +13,7 @@ import com.ysarch.vmall.utils.Log;
 
 import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
+import retrofit2.http.Field;
 
 /**
  * Created by fysong on 13/09/2020
@@ -21,9 +22,9 @@ public class FaceBookLoginPresenter extends BasePresenter<FacebookLoginFragment>
 
 
 
-    public void facebookLogin( String name, String token, String outId) {
+    public void facebookLogin( String name, String token, String outId,String headUrl,String email) {
         getV().showLoadingDialog();
-        AccountLoader.getInstance().facebookLogin(outId, token,name)
+        AccountLoader.getInstance().facebookLogin(outId, token,name,headUrl,email)
                 .compose(dontShowDialog())
                 .compose(getV().bindToLifecycle())
                 .subscribe(new ApiSubscriber<LoginResult>(getV()) {
