@@ -23,6 +23,7 @@ import com.ysarch.vmall.component.SettingItem;
 import com.ysarch.vmall.component.dialog.ModifyUserPicDialog;
 import com.ysarch.vmall.domain.bean.UserInfoBean;
 import com.ysarch.vmall.domain.constant.RequestCode;
+import com.ysarch.vmall.utils.GlideUtils;
 import com.ysarch.vmall.utils.NavHelper;
 import com.ysarch.vmall.utils.VMallUtils;
 
@@ -72,9 +73,10 @@ public class OwnerSettingFragment extends BaseFragment<OwnerSettingPresenter> {
         }
 //        Glide.with(this).load(UserInfoManager.getUser().getIcon()).into(mIvAva);
 
-        BeeGlide.with(this)
-                .load(ImageLoadConfig.create(UserInfoManager.getUser().getIcon())
-                        .placeHolder(R.drawable.ic_avatar_placeholder), mIvAva);
+//        BeeGlide.with(this)
+//                .load(ImageLoadConfig.create(UserInfoManager.getUser().getIcon())
+//                        .placeHolder(R.drawable.ic_avatar_placeholder), mIvAva);
+        GlideUtils.loadImageView(context,UserInfoManager.getUser().getIcon(),mIvAva,context.getDrawable(R.drawable.ic_avatar_placeholder));
     }
 
     @Override

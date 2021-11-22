@@ -18,6 +18,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
@@ -35,6 +36,8 @@ import com.ysarch.vmall.utils.NavHelper;
 import com.yslibrary.event.hailer.FunctionHasParamNoResult;
 import com.yslibrary.event.hailer.FunctionNoParamHasResult;
 import com.yslibrary.event.hailer.FunctionsManager;
+
+import org.json.JSONObject;
 
 import java.util.Arrays;
 
@@ -110,32 +113,54 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
                 Log.d("onSuccess", "登录成功！" +JSON.toJSONString(loginResult));
 //                boolean enableButtons = AccessToken.getCurrentAccessToken() != null;
                 Profile profile = Profile.getCurrentProfile();
-                Log.d("onSuccess", "登录成功！" +JSON.toJSONString(profile));
 
-                ProfileTracker profileTracker = new ProfileTracker() {
+
+
+
+
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
-                    protected void onCurrentProfileChanged(
-                            Profile oldProfile,
-                            Profile currentProfile) {
-                        // App code
-                        Log.d("profileTracker", "登录成功！" +JSON.toJSONString(oldProfile)+JSON.toJSONString(currentProfile));
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+
+//                        String id = object.optString("id");
+                        String name = object.optString("name");
+//                        String gender = object.optString("gender");
+                        String email = object.optString("email");
+//                        String locale = object.optString("locale");
+                        //获取用户头像
+                        JSONObject object_pic = object.optJSONObject("picture");
+                        JSONObject object_data = object_pic.optJSONObject("data");
+                        String headUrl = object_data.optString("url");
+
+
+//                        String name;
+//                        String headUrl;
+//                        if(profile!=null){
+//                            name = profile.getName();
+//                            headUrl = profile.getProfilePictureUri(150, 150).toString();
+//                            Log.d("onSuccess",headUrl);
+//                        }else {
+//                            name = "";
+//                            headUrl = "";
+//                        }
+                        getPresenter().facebookLogin(name, loginResult.getAccessToken().getToken(),loginResult.getAccessToken().getUserId(),headUrl,email);
                     }
-                };
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,email,link,gender,birthday,picture,locale,updated_time,timezone,age_range,first_name,last_name");
+
+                request.setParameters(parameters);
+                request.executeAsync();
 
 
-                String name;
-                if(profile!=null){
-                     name = profile.getName();
-                }else {
-                    name = "";
-                }
-                getPresenter().facebookLogin(name, loginResult.getAccessToken().getToken(),loginResult.getAccessToken().getUserId());
             }
         });
 //        injectEvents();
 
 
         mCTVChecker.setSelected(true);
+
+
 
     }
     @OnClick(R.id.tv_facebook_login)

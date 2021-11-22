@@ -765,4 +765,7 @@
     <string name="tb_delivery">,淘宝运费：</string>
 
     <string name="net_error_msg">网络未连接(104)</string>
+
+    <string name="label_no_quality">缺货中</string>
+
 </resources>

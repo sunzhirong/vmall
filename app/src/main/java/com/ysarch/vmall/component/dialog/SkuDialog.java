@@ -44,7 +44,6 @@ import butterknife.OnClick;
 
 /**
  * Created by fysong on 24/09/2020
- *
  **/
 public class SkuDialog extends Dialog {
     @BindView(R.id.iv_cover_sku_dialog)
@@ -124,10 +123,10 @@ public class SkuDialog extends Dialog {
                     for (int j = 0; j < localPropSkuEntity.getLocalSkuEntities().size(); j++) {
                         LocalSkuEntity localSkuEntity = localPropSkuEntity.getLocalSkuEntities().get(j);
                         if (selectedSkuBean.getPropPath().indexOf(localSkuEntity.getSkuCode()) != -1) {
-//                            localSkuEntity.setSelected(true);
+                            localSkuEntity.setSelected(true);
                             mLocalSkuEntities[i] = localSkuEntity;
                         } else {
-//                            localSkuEntity.setSelected(false);
+                            localSkuEntity.setSelected(false);
                         }
                     }
                 }
@@ -200,6 +199,18 @@ public class SkuDialog extends Dialog {
                         mBeeGlide.load(ImageLoadConfig.create(mDefaultImg).randomPlaceHolder(), mIVCover);
                     }
                 }
+
+                if(mSkuBeanSelected.getQuantityInt()==0){
+                    mTVConfirm.setText(R.string.label_no_quality);
+                    mTVConfirm.setEnabled(false);
+//                    ToastUtils.showShortToast(getContext(),"缺货中");
+                }else {
+                    mTVConfirm.setText(R.string.label_add_to_cart);
+                    mTVConfirm.setEnabled(true);
+//                    ToastUtils.showShortToast(getContext(),"可以下单");
+                }
+
+
             }
 
         } else {

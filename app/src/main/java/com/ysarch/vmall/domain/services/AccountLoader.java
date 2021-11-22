@@ -69,8 +69,8 @@ public class AccountLoader extends ObjectLoader {
     public Flowable<SimpleResponse<LoginResult>> login(@Field("telephone") String phone, @Field("password") String password) {
         return mService.login(phone, password);
     }
-    public Flowable<SimpleResponse<LoginResult>> facebookLogin(@Field("outId") String outId, @Field("token") String token,@Field("nickname") String nickname) {
-        return mService.facebookLogin(outId, token,nickname);
+    public Flowable<SimpleResponse<LoginResult>> facebookLogin(@Field("outId") String outId, @Field("token") String token,@Field("nickname") String nickname,@Field("headUrl") String headUrl,@Field("email") String email) {
+        return mService.facebookLogin(outId, token,nickname,headUrl,email);
     }
 
 
@@ -156,7 +156,7 @@ public class AccountLoader extends ObjectLoader {
 
         @FormUrlEncoded
         @POST("sso/thirdPartyLogin")
-        Flowable<SimpleResponse<LoginResult>> facebookLogin(@Field("outId") String outId, @Field("token") String token,@Field("nickname") String nickname);
+        Flowable<SimpleResponse<LoginResult>> facebookLogin(@Field("outId") String outId, @Field("token") String token,@Field("nickname") String nickname,@Field("headUrl") String headUrl,@Field("email") String email);
 
         @GET("sso/refreshToken")
         Flowable<SimpleResponse<LoginResult>> refreshToken();

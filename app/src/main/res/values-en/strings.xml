@@ -458,4 +458,6 @@
     <string name="tb_delivery">,taobao shipping：</string>
 
     <string name="net_error_msg">Disconnected(104)</string>
+    <string name="label_no_quality">缺货中</string>
+
 </resources>
