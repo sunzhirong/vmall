@@ -18,6 +18,7 @@ import com.ysarch.vmall.common.context.AppContext;
 import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
 import com.ysarch.vmall.component.dialog.CancelOrderDialog;
+import com.ysarch.vmall.component.dialog.DeleteOrderDialog;
 import com.ysarch.vmall.component.dialog.PayDialog;
 import com.ysarch.vmall.domain.bean.AddressItemBean;
 import com.ysarch.vmall.domain.bean.EnumBean;
@@ -219,7 +220,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
                 List<OrderItemListBean> omsOrderItems = bean.getOmsOrderItems();
                 for (int i = 0;i<omsOrderItems.size();i++){
                     OrderItemListBean orderItemListBean = omsOrderItems.get(i);
-                    orderItemListBean.setNumber(omsOrderItems.size());
+                    orderItemListBean.setNumber(bean.getProductQuantity());
                     orderItemListBean.setAmount(bean.getAmount());
                     orderItemListBean.setDollorDelivery(bean.getDollorDelivery());
                     orderItemListBean.setType(CartPromotionGoodsVH.TYPE_NORMAL);
@@ -480,7 +481,12 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
                 cancelOrderDialog.show();
                 break;
             case Constants.STATUS_ORDER_CLOSED:
-                getPresenter().deleteOrder(mOrderBean);
+                new DeleteOrderDialog.Builder(context).setDeleteCallback(new DeleteOrderDialog.DeleteCallback() {
+                    @Override
+                    public void onConfirm() {
+                        getPresenter().deleteOrder(mOrderBean);
+                    }
+                }).build().show();
                 break;
         }
     }

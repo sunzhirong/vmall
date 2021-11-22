@@ -746,7 +746,7 @@
 
     <string name="dialog_delete">删除</string>
 
-    <string name="dialog_confirm_delete_cart">确定删除%d个商品？</string>
+    <string name="dialog_confirm_delete_cart">确定删除所选商品？</string>
 
     <string name="dialog_edit_order_title">请输入数量</string>
 

@@ -196,11 +196,20 @@ public class OrderBean implements Serializable {
          */
 
         private double amount;
+        private int productQuantity;
         private String delivery;
         private double dollorDelivery;
         private int source;
         private List<OrderItemListBean> omsOrderItems;
         private int type;
+
+        public int getProductQuantity() {
+            return productQuantity;
+        }
+
+        public void setProductQuantity(int productQuantity) {
+            this.productQuantity = productQuantity;
+        }
 
         public int getType() {
             return type;

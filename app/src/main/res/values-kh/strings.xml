@@ -444,7 +444,7 @@
     <string name="facebook_app_id">409513450402246</string>
     <string name="dialog_think_again">បោះបង់</string>
     <string name="dialog_delete">លុប</string>
-    <string name="dialog_confirm_delete_cart">សម្រេចលុបចោល%dទំនិញ？</string>
+    <string name="dialog_confirm_delete_cart">តើអ្នកសម្រេចលុបទំនិញនេះ?</string>
     <string name="dialog_edit_order_title">សូមបញ្ចូលបរិមាណ</string>
     <string name="label_update_now">ធ្វើបច្ចុប្បន្នភាពភ្លាម</string>
 

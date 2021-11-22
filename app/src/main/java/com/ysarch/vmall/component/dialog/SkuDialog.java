@@ -80,9 +80,11 @@ public class SkuDialog extends Dialog {
     private SkuBeanV2 mSkuBeanSelected;
     private GoodsDetailItemBean mGoodsDetailBean;
     private int selectPos = -1;
+//    private boolean isFirst = true;
     private SkuFlowAdapter.Callback mCallback = new SkuFlowAdapter.Callback() {
         @Override
         public void onSkuChanged(int position, LocalSkuEntity entity,int selectPosition) {
+//            isFirst = false;
             mLocalSkuEntities[position] = entity;
 
             if(!TextUtils.isEmpty(entity.getImage())){
@@ -161,8 +163,10 @@ public class SkuDialog extends Dialog {
                 }
             }
 
-
             if (skuBean != null) {
+//                if(!isFirst){
+//                    mSkuBeanSelected = skuBean;
+//                }
                 mSkuBeanSelected = skuBean;
 //                mTVPrice.setText(mSkuPricePrefix + ": $" + VMallUtils.convertTo2String(skuBean.getFloatPrice()));
                 mTVPrice.setText(VMallUtils.convertPriceString(skuBean.getFloatPrice()));
@@ -200,14 +204,12 @@ public class SkuDialog extends Dialog {
                     }
                 }
 
-                if(mSkuBeanSelected.getQuantityInt()==0){
+                if(mSkuBeanSelected!=null&&mSkuBeanSelected.getQuantityInt()==0){
                     mTVConfirm.setText(R.string.label_no_quality);
                     mTVConfirm.setEnabled(false);
-//                    ToastUtils.showShortToast(getContext(),"缺货中");
                 }else {
                     mTVConfirm.setText(R.string.label_add_to_cart);
                     mTVConfirm.setEnabled(true);
-//                    ToastUtils.showShortToast(getContext(),"可以下单");
                 }
 
 

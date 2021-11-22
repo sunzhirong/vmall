@@ -19,7 +19,6 @@ import com.ysarch.vmall.common.adapter.viewholder.CartGoodsVH;
 import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.common.event.NotificationDef;
 import com.ysarch.vmall.component.dialog.DeleteCartOrderDialog;
-import com.ysarch.vmall.component.dialog.DeleteOrderDialog;
 import com.ysarch.vmall.component.dialog.SkuDialogV1;
 import com.ysarch.vmall.domain.bean.CartGoodsBean;
 import com.ysarch.vmall.domain.bean.GenerateOrderConfirmResult;
@@ -88,7 +87,7 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
     private double mPrice;
     private SkuDialogV1 mSkuDialog;
     private boolean isRefreshing = false;
-    private int selectCount = 0;
+//    private int selectCount = 0;
 
     //是否独立页面
     private boolean isSeparatePage;
@@ -185,19 +184,27 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
                     if (!cartGoodsBean.isSelected()) {
                         mCTVSelAll.setSelected(false);
                         mSelectCartGoodsBeans.remove(cartGoodsBean);
-                        selectCount--;
+//                        selectCount--;
                     } else {
-                        selectCount++;
+//                        selectCount++;
                         mSelectCartGoodsBeans.add(cartGoodsBean);
                     }
-                    if (selectCount == mCartGoodsBeans.size()) {
-                        mCTVSelAll.setSelected(true);
+//                    if (selectCount == mCartGoodsBeans.size()) {
+//                        mCTVSelAll.setSelected(true);
+//                    }
+                    boolean isAll = true;
+                    for(CartGoodsBean bean:mCartGoodsBeans){
+                        boolean selected = bean.isSelected();
+                        if (!bean.isSelected()){
+                            isAll = false;
+                            break;
+                        }
                     }
-
+                    mCTVSelAll.setSelected(isAll);
                     if (mStatus == 0) {
                         calculatePrice();
                     }
-                    Log.d("onItemSelect", "onItemSelectStatusChange: "+selectCount);
+
                 }
 
                 @Override
@@ -294,9 +301,9 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
                     return;
                 }
 
-                if (selectCount == 0) {
-                    return;
-                }
+//                if (selectCount == 0) {
+//                    return;
+//                }
 
                 if (mStatus == 0) {
                     List<String> ids = new ArrayList<>();
@@ -314,7 +321,7 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
 
                 } else {
                     new DeleteCartOrderDialog.Builder(context)
-                            .setTitle(String.format(getString(R.string.dialog_confirm_delete_cart), selectCount))
+                            .setTitle(getString(R.string.dialog_confirm_delete_cart))
                             .setCancelText(getString(R.string.dialog_delete))
                             .setSubmitText(getString(R.string.dialog_think_again))
                             .setDeleteCallback(new DeleteCartOrderDialog.DeleteCallback() {
@@ -445,7 +452,7 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
 //        for (CartGoodsBean cartGoodsBean :mCartGoodsBeans){
 //            cartGoodsBean.setSelected(mSelectCartGoodsBeans.contains(cartGoodsBean));
 //        }
-        selectCount = mSelectCartGoodsBeans.size();
+//        selectCount = mSelectCartGoodsBeans.size();
     }
 
     public void onCartDataFail() {
@@ -456,7 +463,7 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
     }
 
     public void onClearCartSucc() {
-        selectCount = 0;
+//        selectCount = 0;
         mSelectCartGoodsBeans.clear();
         mAdapter.refreshData(null);
         mTVPrice.setText(VMallUtils.convertPriceString(0));

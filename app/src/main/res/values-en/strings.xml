@@ -444,7 +444,7 @@
     <string name="facebook_app_id">409513450402246</string>
     <string name="dialog_think_again">cancel</string>
     <string name="dialog_delete">delete</string>
-    <string name="dialog_confirm_delete_cart">Are you sure to delete%dproducts？</string>
+    <string name="dialog_confirm_delete_cart">Delete the selected?</string>
     <string name="dialog_edit_order_title">Please enter quantity</string>
     <string name="label_update_now">Upgrade Now</string>
 

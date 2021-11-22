@@ -155,8 +155,8 @@
         <item name="android:background">@drawable/shape_round_rect_r20_fill_tra_stroke_graya</item>
         <item name="android:textColor">@color/grayA</item>
         <item name="android:textSize">@dimen/text_14pt</item>
-        <item name="android:paddingLeft">38dp</item>
-        <item name="android:paddingRight">38dp</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingRight">30dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">40dp</item>
     </style>
@@ -167,8 +167,8 @@
         <item name="android:textSize">@dimen/text_14pt</item>
         <item name="android:background">@drawable/shape_round_rect_r20_fill_primary</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:paddingLeft">38dp</item>
-        <item name="android:paddingRight">38dp</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingRight">30dp</item>
         <item name="android:layout_height">40dp</item>
     </style>
 
