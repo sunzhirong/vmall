@@ -457,4 +457,5 @@
 
     <string name="tb_delivery">,taobao shipping：</string>
 
+    <string name="net_error_msg">Disconnected(104)</string>
 </resources>

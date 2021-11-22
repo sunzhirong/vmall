@@ -4,20 +4,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.ysarch.uibase.recyclerview.AbsViewHolder;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
 import com.ysarch.vmall.common.imageloader.ImageLoadConfig;
-import com.ysarch.vmall.domain.bean.KeyValueBean;
-import com.ysarch.vmall.domain.bean.OrderBean;
 import com.ysarch.vmall.domain.bean.OrderItemListBean;
 import com.ysarch.vmall.utils.VMallUtils;
-
-import org.json.JSONArray;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +18,7 @@ import butterknife.ButterKnife;
 /**
  * Created by fysong on 16/09/2020
  **/
-public class HistoryOrderGoodsVH extends AbsViewHolder {
+public class HistoryOrderGoodsDetailsVH extends AbsViewHolder {
     @BindView(R.id.riv_cover_order_goods_item)
     RoundedImageView mRoundedImageView;
     @BindView(R.id.tv_name_order_goods_item)
@@ -37,18 +30,19 @@ public class HistoryOrderGoodsVH extends AbsViewHolder {
     @BindView(R.id.tv_count_order_goods_item)
     TextView mTVCount;
 
+
     private BeeGlide mBeeGlide;
 
     private OrderItemListBean mOrderItemListBean;
     private String mLastImage;
-    public HistoryOrderGoodsVH(View itemView, BeeGlide beeGlide) {
+    public HistoryOrderGoodsDetailsVH(View itemView, BeeGlide beeGlide) {
         super(itemView);
         mBeeGlide = beeGlide;
         ButterKnife.bind(this, itemView);
     }
 
     public static int getLayoutRes() {
-        return R.layout.item_order_history_goods;
+        return R.layout.item_order_history_details_goods;
     }
 
     @Override
@@ -69,6 +63,7 @@ public class HistoryOrderGoodsVH extends AbsViewHolder {
         }else {
             mTVSku.setVisibility(View.GONE);
         }
+
 
         mTVCount.setText("x" + mOrderItemListBean.getProductQuantity());
     }

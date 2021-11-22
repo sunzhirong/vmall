@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_cover_order_goods_item"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_margin="@dimen/padding_h_order_item"
+            app:riv_corner_radius="5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_h_order_item"
+            android:layout_toRightOf="@+id/riv_cover_order_goods_item"
+            android:orientation="vertical"
+            android:paddingRight="@dimen/padding_h_order_item">
+
+            <TextView
+                android:id="@+id/tv_name_order_goods_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="沙世漫画"
+                android:textColor="@color/blackA"
+                android:textSize="@dimen/text_13pt" />
+
+
+            <TextView
+                android:id="@+id/tv_sku_order_goods_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/grayb_2dp_bg"
+                android:drawablePadding="12dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="测试"
+                android:textColor="@color/grayA"
+                android:textSize="@dimen/text_12pt" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tv_price_order_goods_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KHR 234"
+                    android:textColor="@color/redA"
+                    android:textSize="@dimen/text_14pt"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_count_order_goods_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/grayA"
+                    android:textSize="@dimen/text_13pt" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingVertical="5dp"
+        android:paddingRight="@dimen/padding_h_order_item">
+
+        <TextView
+            android:id="@+id/tv_account_order_goods_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blackA"
+            android:textSize="@dimen/text_14pt"
+            tool:text="共1件" />
+
+        <TextView
+            android:id="@+id/tv_total_price_order_goods_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/redA"
+            android:textSize="@dimen/text_14pt"
+            tool:text="$111" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blackA"
+            android:textSize="@dimen/text_14pt"
+            tool:text="@string/tb_delivery" />
+
+        <TextView
+            android:id="@+id/tv_delivery_order_goods_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="$123"
+            android:textColor="@color/redA"
+            android:textSize="@dimen/text_14pt" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:background="@color/bg_page_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"/>
+
+</LinearLayout>

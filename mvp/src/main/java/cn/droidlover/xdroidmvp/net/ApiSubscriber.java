@@ -77,12 +77,14 @@ public abstract class ApiSubscriber<T> extends ResourceSubscriber<T> {
                 if ("1002".equals(responseError.getErrorCode())) {
                     error = new NetError(NetError.AuthError_Msg, NetError.AuthError);
                 } else if ("2002".equals(responseError.getErrorCode())) {
-                    error = new NetError(responseError.getErrorMsg(), 2002);
+//                    error = new NetError(responseError.getErrorMsg(), 2002);
+                    error = new NetError(NetError.NetError_Msg, 2002);
                 } else if ("6002".equals(responseError.getErrorCode())) {
                     view.showTs(NetError.InsufficientError_Msg);
                     view.closeSelf();
                 } else {
-                    error = new NetError(responseError.getErrorMsg(), NetError.OtherError);
+                    error = new NetError(NetError.NetError_Msg, NetError.OtherError);
+//                    error = new NetError(responseError.getErrorMsg(), NetError.OtherError);
                 }
             } else if (e instanceof ApiException) {
                 ApiException apiException = (ApiException) e;

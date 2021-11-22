@@ -29,15 +29,13 @@
     <TextView
         style="@style/blackA14sp"
         android:layout_marginHorizontal="16dp"
-        android:text="@string/tb_freight_illustrate_1"
-        android:textStyle="bold" />
+        android:text="@string/tb_freight_illustrate_1" />
     <TextView
         android:layout_marginTop="10dp"
         android:layout_marginBottom="50dp"
         style="@style/blackA14sp"
         android:layout_marginHorizontal="16dp"
-        android:text="@string/tb_freight_illustrate_2"
-        android:textStyle="bold" />
+        android:text="@string/tb_freight_illustrate_2" />
 
     <View
         style="@style/horLineStyle"

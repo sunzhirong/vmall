@@ -40,6 +40,7 @@ import com.yslibrary.event.IEventListener;
 import com.yslibrary.utils.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -430,13 +431,21 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
             }
             mCartGoodsBeans = cartGoodsBeans;
             initAdapter();
-            for (CartGoodsBean cartGoodsBean :mCartGoodsBeans){
-                if(mSelectCartGoodsBeans.contains(cartGoodsBean)){
-                    cartGoodsBean.setSelected(true);
-                }
-            }
+            refreshSelectCount();
             mAdapter.refreshData(mCartGoodsBeans);
         }
+    }
+    private void refreshSelectCount(){
+        for(Iterator<CartGoodsBean> it = mSelectCartGoodsBeans.iterator(); it.hasNext();){
+            CartGoodsBean next = it.next();
+            if(!mCartGoodsBeans.contains(next)){
+                mSelectCartGoodsBeans.remove(next);
+            }
+        }
+//        for (CartGoodsBean cartGoodsBean :mCartGoodsBeans){
+//            cartGoodsBean.setSelected(mSelectCartGoodsBeans.contains(cartGoodsBean));
+//        }
+        selectCount = mSelectCartGoodsBeans.size();
     }
 
     public void onCartDataFail() {
@@ -447,6 +456,8 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
     }
 
     public void onClearCartSucc() {
+        selectCount = 0;
+        mSelectCartGoodsBeans.clear();
         mAdapter.refreshData(null);
         mTVPrice.setText(VMallUtils.convertPriceString(0));
         mCartGoodsBeans.clear();
@@ -460,6 +471,7 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
     public void onDeleteCartSucc(List<CartGoodsBean> cartGoodsBeans) {
         if (CollectionUtils.isEmpty(cartGoodsBeans))
             return;
+        refreshSelectCount();
         if (cartGoodsBeans.size() == 1) {
             int index = mCartGoodsBeans.indexOf(cartGoodsBeans.get(0));
             mAdapter.deleteCart(index);
@@ -547,11 +559,11 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
 
     private void clearDatas() {
         if (CollectionUtils.isNotEmpty(mCartGoodsBeans)) {
+            refreshSelectCount();
             mCartGoodsBeans.clear();
             if (mAdapter != null) {
                 mAdapter.refreshData(mCartGoodsBeans);
             }
-
         }
         switchEditMode(0);
         mCTVSelAll.setSelected(false);

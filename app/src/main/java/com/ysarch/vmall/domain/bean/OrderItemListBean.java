@@ -56,6 +56,52 @@ public class OrderItemListBean implements Serializable {
     private double realAmount;
     private int source;
 
+    private double amount;
+    private String delivery;
+    private double dollorDelivery;
+    private int number;
+    private int type;
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(String delivery) {
+        this.delivery = delivery;
+    }
+
+    public double getDollorDelivery() {
+        return dollorDelivery;
+    }
+
+    public void setDollorDelivery(double dollorDelivery) {
+        this.dollorDelivery = dollorDelivery;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public int getSource() {
         return source;
     }

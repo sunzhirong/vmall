@@ -208,11 +208,12 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
 
     @OnClick(R.id.iv_back_search)
     void onViewClick(View view) {
-        if(SEARCH_CONTENT_PAGE.getValue().equals(fragmentTag)){
-            gotoPage(SEARCH_HISTORY_PAGE);
-        }else {
-            getActivity().finish();
-        }
+//        if(SEARCH_CONTENT_PAGE.getValue().equals(fragmentTag)){
+//            gotoPage(SEARCH_HISTORY_PAGE);
+//        }else {
+//            getActivity().finish();
+//        }
+        getActivity().finish();
     }
 
     @OnClick(R.id.et_search)

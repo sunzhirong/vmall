@@ -112,6 +112,7 @@ public class VMallApplication extends MultiDexApplication {
         NetError.AuthError_Msg = getString(R.string.auth_error_msg);
         NetError.NoDataError_Msg = getString(R.string.nodata_error_msg);
         NetError.InsufficientError_Msg = getString(R.string.insufficient_error_msg);
+        NetError.NetError_Msg = getString(R.string.net_error_msg);
     }
 
     @Override

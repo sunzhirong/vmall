@@ -456,4 +456,7 @@
     <string name="insufficient_error_msg">មុខងារនេះមិនអាចប្រើជាបណ្តោះអាសន្ន(103)</string>
 
     <string name="tb_delivery">លៃដឹកជញ្ជូនtaobao：</string>
+
+    <string name="net_error_msg">បណ្តាញមិនត្រូវបានភ្ជាប់(104)</string>
+
 </resources>

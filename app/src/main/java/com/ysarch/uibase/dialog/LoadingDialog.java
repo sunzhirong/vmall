@@ -50,13 +50,9 @@ public class LoadingDialog extends Dialog {
     }
 
     public LoadingDialog show(String loadingText, boolean cancelable) {
-        setCancelable(cancelable);
-//        if (TextUtils.isEmpty(loadingText)) {
-////            tvLoadingText.setVisibility(View.GONE);
-//        } else {
-//            tvLoadingText.setVisibility(View.VISIBLE);
-////            tvLoadingText.setText(loadingText);
-//        }
+//        setCancelable(cancelable);
+        setCancelable(true);
+
         this.show();
         return this;
     }

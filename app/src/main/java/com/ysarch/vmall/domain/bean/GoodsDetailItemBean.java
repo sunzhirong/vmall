@@ -36,7 +36,7 @@ public class GoodsDetailItemBean implements Serializable {
     private String dollarPrice;
     private String marketPriceRange;
     private String dollarMarketPrice;
-    private String dollarDelivery;
+    private double dollarDelivery;
     private String title;
     private String subTitle;
     private String descUrl;
@@ -56,11 +56,11 @@ public class GoodsDetailItemBean implements Serializable {
     private List<PriceRangeItemBean> showPriceRanges;
     private double discount;
 
-    public String getDollarDelivery() {
+    public double getDollarDelivery() {
         return dollarDelivery;
     }
 
-    public void setDollarDelivery(String dollarDelivery) {
+    public void setDollarDelivery(double dollarDelivery) {
         this.dollarDelivery = dollarDelivery;
     }
 

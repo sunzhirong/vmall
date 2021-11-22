@@ -337,7 +337,8 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
         }
         mTvTraceDetail.setText(getString(R.string.label_expected_arrival)+" "+VMallUtils.getTranceDateString());
 
-        if(!TextUtils.isEmpty(mGoodsDetailBean.getDollarDelivery())){
+
+        if(mGoodsDetailBean.getDollarDelivery()==0){
             mLlFreight.setVisibility(View.VISIBLE);
             mTvFreightDetail.setText(VMallUtils.getCurrencySign()+mGoodsDetailBean.getDollarDelivery());
         }else {

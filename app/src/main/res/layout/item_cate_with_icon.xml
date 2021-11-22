@@ -7,10 +7,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_horizontal">
 
+<!--    app:riv_oval="true"-->
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/riv_cate_home"
         android:layout_width="49dp"
-        app:riv_oval="true"
         android:scaleType="centerCrop"
         android:layout_height="49dp"/>
 

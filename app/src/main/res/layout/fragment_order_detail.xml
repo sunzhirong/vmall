@@ -178,25 +178,26 @@
                 android:layout_marginTop="10dp" />
 
             <LinearLayout
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:paddingRight="12dp"
-                android:gravity="end"
-                android:background="@color/white"
-                android:orientation="horizontal"
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:paddingTop="15dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="15dp">
 
                 <TextView
                     android:id="@+id/tv_total_num"
-                    tools:text="2"
-                    style="@style/blackA14sp"/>
+                    style="@style/blackA14sp"
+                    tools:text="2" />
 
                 <TextView
-                    android:textStyle="bold"
                     android:id="@+id/tv_total_price"
-                    tools:text="$2"
-                    style="@style/redA14sp"/>
+                    style="@style/redA14sp"
+                    android:textStyle="bold"
+                    tools:text="$2" />
 
             </LinearLayout>
 

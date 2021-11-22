@@ -28,6 +28,8 @@ import com.yslibrary.event.EventCenter;
 import com.yslibrary.event.IEventListener;
 import com.yslibrary.utils.CollectionUtils;
 
+import java.util.ArrayList;
+
 /**
  * Created by fysong on 17/09/2020
  **/
@@ -155,10 +157,14 @@ public class SearchContentFragmentV2 extends CommonPureListFragment<SearchConten
             mCurKeyword = keyword;
             if (page == 1) {
                 mRcyAdapter.refreshGoods(goodsItemBeanListResult.getList());
+                getRecycleView().smoothScrollToPosition(0);
             } else {
                 mRcyAdapter.appendGoods(goodsItemBeanListResult.getList());
             }
             mHasMore = goodsItemBeanListResult.getTotalPage() > page;
+        }
+        if (goodsItemBeanListResult != null && CollectionUtils.isEmpty(goodsItemBeanListResult.getList())) {
+            mRcyAdapter.refreshGoods(new ArrayList<>());
         }
         resetUIStatus(page, true);
     }

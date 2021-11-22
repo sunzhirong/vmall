@@ -12,15 +12,20 @@ import com.ysarch.uibase.recyclerview.AbsViewHolder;
 import com.ysarch.uibase.recyclerview.FRecyclerView;
 import com.ysarch.uibase.recyclerview.ItemDataWrapper;
 import com.ysarch.vmall.R;
+import com.ysarch.vmall.common.adapter.HistoryOrderGoodsAdapter;
 import com.ysarch.vmall.common.adapter.OrderGoodsAdapter;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
 import com.ysarch.vmall.component.dialog.DeleteOrderDialog;
 import com.ysarch.vmall.domain.bean.OrderBean;
+import com.ysarch.vmall.domain.bean.OrderItemListBean;
 import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.utils.LPUtils;
 import com.ysarch.vmall.utils.ResUtils;
 import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.utils.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by fysong on 16/09/2020
@@ -35,7 +40,7 @@ public class OrderHistoryItemVH extends AbsViewHolder {
     private  TextView mTvGoodsPrice;
     private  TextView mTvFreightPrice;
     private FRecyclerView mFRecyclerView;
-    private OrderGoodsAdapter mOrderGoodsAdapter;
+    private HistoryOrderGoodsAdapter mOrderGoodsAdapter;
     private OrderBean mOrderBean;
     private TextView mTVOrderSn;
     private TextView mTVStatusLabel;
@@ -49,7 +54,7 @@ public class OrderHistoryItemVH extends AbsViewHolder {
     public OrderHistoryItemVH(View itemView, Context context, BeeGlide beeGlide) {
         super(itemView);
         mFRecyclerView = (FRecyclerView) itemView;
-        mOrderGoodsAdapter = new OrderGoodsAdapter(context, beeGlide);
+        mOrderGoodsAdapter = new HistoryOrderGoodsAdapter(context, beeGlide);
         mOrderGoodsAdapter.setOnItemClickListener(getOnItemClickListener());
         mFRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mFRecyclerView.setAdapter(mOrderGoodsAdapter);

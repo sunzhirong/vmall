@@ -23,6 +23,7 @@ public class NetError extends Exception {
     public static String AuthError_Msg = "The account has been logged in from other places, please log in again";
     public static String NoDataError_Msg = "数据为空";
     public static String InsufficientError_Msg = "Insufficient authority";
+    public static String NetError_Msg = "网络未连接(104)";
 
 
 

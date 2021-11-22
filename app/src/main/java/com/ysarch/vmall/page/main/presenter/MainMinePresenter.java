@@ -17,7 +17,7 @@ import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 public class MainMinePresenter extends BasePresenter<MainMineFragment> {
     public void requestUserInfo() {
         AccountLoader.getInstance().requestUserInfo()
-                .compose(showLoadingDialog())
+                .compose(dontShowDialog())
                 .compose(getV().bindToLifecycle())
                 .subscribe(new ApiSubscriber<MemberBean>(getV()) {
                     @Override

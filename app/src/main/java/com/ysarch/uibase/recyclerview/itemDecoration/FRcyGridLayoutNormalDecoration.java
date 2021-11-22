@@ -58,11 +58,11 @@ public class FRcyGridLayoutNormalDecoration extends RecyclerView.ItemDecoration 
         }else {
             outRect.top = outRect.top + mGapH / 2;
         }
-//        if(position == mAdapter.getItemCount()-1){
-//            outRect.bottom = outRect.bottom + mGapH ;
-//        }else {
-//            outRect.bottom = outRect.bottom + mGapH / 2;
-//        }
+        if(position == mAdapter.getItemCount()-1){
+            outRect.bottom = outRect.bottom + mGapH ;
+        }else {
+            outRect.bottom = outRect.bottom + mGapH / 2;
+        }
 
 
     }

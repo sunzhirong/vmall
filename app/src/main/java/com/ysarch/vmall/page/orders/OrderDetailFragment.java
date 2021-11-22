@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.ysarch.uibase.base.BaseFragment;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.adapter.OrderGoodsAdapter;
+import com.ysarch.vmall.common.adapter.viewholder.CartPromotionGoodsVH;
 import com.ysarch.vmall.common.context.AppContext;
 import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
@@ -20,6 +21,7 @@ import com.ysarch.vmall.component.dialog.CancelOrderDialog;
 import com.ysarch.vmall.component.dialog.PayDialog;
 import com.ysarch.vmall.domain.bean.AddressItemBean;
 import com.ysarch.vmall.domain.bean.EnumBean;
+import com.ysarch.vmall.domain.bean.GenerateOrderConfirmResult;
 import com.ysarch.vmall.domain.bean.OrderBean;
 import com.ysarch.vmall.domain.bean.OrderItemListBean;
 import com.ysarch.vmall.domain.bean.WmsWarehouseInfoBean;
@@ -34,6 +36,7 @@ import com.ysarch.vmall.utils.SystemUtil;
 import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.utils.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -115,6 +118,8 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
     TextView mTvChinaFreightDetail;
     @BindView(R.id.tv_international_freight_detail)
     TextView mTvInternationalFreightDetail;
+    @BindView(R.id.tv_delivery_fee)
+    TextView mTvDeliveryFee;
     @BindView(R.id.tv_delivery_fee_detail)
     TextView mTvDeliveryFeeDetail;
     @BindView(R.id.tv_freight_coupon_detail)
@@ -204,7 +209,32 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
     }
 
     private void updateData() {
-        mOrderItemListBeans = mOrderBean.getOrderItemList();
+//        mOrderItemListBeans = mOrderBean.getOrderItemList();
+        List<OrderItemListBean> list = new ArrayList<>();
+        List<OrderBean.SameSellerCartPromotionBean> sameList = mOrderBean.getSameSellerOrderItemList();
+        if(sameList == null){
+            mOrderItemListBeans = mOrderBean.getOrderItemList();
+        }else {
+            for (OrderBean.SameSellerCartPromotionBean bean : sameList){
+                List<OrderItemListBean> omsOrderItems = bean.getOmsOrderItems();
+                for (int i = 0;i<omsOrderItems.size();i++){
+                    OrderItemListBean orderItemListBean = omsOrderItems.get(i);
+                    orderItemListBean.setNumber(omsOrderItems.size());
+                    orderItemListBean.setAmount(bean.getAmount());
+                    orderItemListBean.setDollorDelivery(bean.getDollorDelivery());
+                    orderItemListBean.setType(CartPromotionGoodsVH.TYPE_NORMAL);
+                    if(omsOrderItems.size()-1==i){
+                        //最后一个
+                        orderItemListBean.setType(CartPromotionGoodsVH.TYPE_END);
+                    }
+                    list.add(orderItemListBean);
+                }
+            }
+
+            mOrderItemListBeans = list;
+        }
+
+
         if (CollectionUtils.isNotEmpty(mOrderBean.getOrderItemList())) {
             initAdapter();
             mAdapter.requestData(mOrderItemListBeans);
@@ -255,6 +285,8 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         mTvOrderDisMode.setText(String.format(ResUtils.getString(R.string.format_order_dis_mode), mOrderBean.getShippingMethod()==1?"自提":"快递配送"));
 
         //商品信息
+        mTvTotalCouponDetail.setVisibility(needShow(mOrderBean.getCouponAmount()));
+        mTvTotalCoupon.setVisibility(needShow(mOrderBean.getCouponAmount()));
         mTvTotalCouponDetail.setText("-"+VMallUtils.convertPriceString(mOrderBean.getCouponAmount()));
         mTVCoupon.setText(VMallUtils.convertPriceString(mOrderBean.getServiceAmount()));
         mTvOrderPickCode.setText(String.format(ResUtils.getString(R.string.format_order_pick_code), !TextUtils.isEmpty(mOrderBean.getPickUpCode())?mOrderBean.getRemark():""));
@@ -270,6 +302,8 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         //运费相关
         mTvChinaFreightDetail.setText(VMallUtils.convertPriceString(mOrderBean.getCnFreight()));
         mTvInternationalFreightDetail.setText(VMallUtils.convertPriceString(mOrderBean.getOverseasFreight()));
+        mTvDeliveryFeeDetail.setVisibility(needShow(mOrderBean.getLocalFreight()));
+        mTvDeliveryFee.setVisibility(needShow(mOrderBean.getLocalFreight()));
         mTvDeliveryFeeDetail.setText(VMallUtils.convertPriceString(mOrderBean.getLocalFreight()));
         mTvFreightCouponDetail.setText(VMallUtils.convertPriceString(mOrderBean.getFreightCouponAmount()));
         mTvFreightPrepaidDetail.setText(VMallUtils.convertPriceString(mOrderBean.getPredictFreightAmount()));
@@ -289,6 +323,11 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         updateWarehouse();
         //状态信息
         updateStatusUI();
+    }
+
+    private int needShow(double number){
+        return number==0?View.GONE:View.VISIBLE;
+
     }
 
 

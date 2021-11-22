@@ -174,7 +174,84 @@ public class OrderBean implements Serializable {
     private int useIntegration;
     private int warehouse;
     private List<OrderItemListBean> orderItemList;
+    private List<SameSellerCartPromotionBean> sameSellerOrderItemList;
     private WmsWarehouseInfoBean wmsWarehouseInfo;
+
+    public List<SameSellerCartPromotionBean> getSameSellerOrderItemList() {
+        return sameSellerOrderItemList;
+    }
+
+    public void setSameSellerOrderItemList(List<SameSellerCartPromotionBean> sameSellerOrderItemList) {
+        this.sameSellerOrderItemList = sameSellerOrderItemList;
+    }
+
+    public static class SameSellerCartPromotionBean implements Serializable {
+
+        /**
+         * amount : 0
+         * delivery : 0
+         * dollorDelivery : 0
+         * sellerId : 0
+         * source : 0
+         */
+
+        private double amount;
+        private String delivery;
+        private double dollorDelivery;
+        private int source;
+        private List<OrderItemListBean> omsOrderItems;
+        private int type;
+
+        public int getType() {
+            return type;
+        }
+
+        public void setType(int type) {
+            this.type = type;
+        }
+
+        public List<OrderItemListBean> getOmsOrderItems() {
+            return omsOrderItems;
+        }
+
+        public void setOmsOrderItems(List<OrderItemListBean> omsOrderItems) {
+            this.omsOrderItems = omsOrderItems;
+        }
+
+        public double getAmount() {
+            return amount;
+        }
+
+        public void setAmount(double amount) {
+            this.amount = amount;
+        }
+
+        public String getDelivery() {
+            return delivery;
+        }
+
+        public void setDelivery(String delivery) {
+            this.delivery = delivery;
+        }
+
+        public double getDollorDelivery() {
+            return dollorDelivery;
+        }
+
+        public void setDollorDelivery(double dollorDelivery) {
+            this.dollorDelivery = dollorDelivery;
+        }
+
+
+        public int getSource() {
+            return source;
+        }
+
+        public void setSource(int source) {
+            this.source = source;
+        }
+    }
+
 
     private String pickUpCode;
 

@@ -107,6 +107,7 @@ public class CartPromotionGoodsVH extends AbsViewHolder {
             builder.setSpan(span, 1, 1 + String.valueOf(mBean.getNumber()).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             mTVCountOrderGoods.setText(builder);
 //            mTVCountOrderGoods.setText(String.format(ResUtils.getString(R.string.format_order_total), mBean.getNumber()));
+            mTVDeliveryOrderGoods.setVisibility(mBean.getDollorDelivery()==0?View.GONE:View.VISIBLE);
             mTVDeliveryOrderGoods.setText(VMallUtils.convertPriceString(mBean.getDollorDelivery()));
         }
 
