@@ -20,6 +20,7 @@ import com.ysarch.vmall.domain.services.WalletLoader;
 import com.ysarch.vmall.page.wallet.RechargeFragment;
 import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.ResUtils;
+import com.ysarch.vmall.utils.UploadUtils;
 import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.event.EventCenter;
 import com.yslibrary.utils.CollectionUtils;
@@ -152,10 +153,12 @@ public class RechargePresenter extends BasePresenter<RechargeFragment> {
 
     public void rechargeLogParam(String fail_reason,String visit_time,String visit_result_time,boolean operation_result){
         Map<String,Object> map = new HashMap<>();
-        map.put("fail_reason",fail_reason);
-        map.put("visit_time",visit_time);
-        map.put("visit_result_time",visit_result_time);
-        map.put("operation_result",operation_result);
+        map.put("failReason",fail_reason);
+        map.put("visitTime",visit_time);
+        map.put("visitResultTime",visit_result_time);
+        map.put("operationResult",operation_result);
+        map.put("serverErrorCode",0);
+        map.put("deviceBaseInfo", UploadUtils.getUploadRequest());
         UploadLogLoader.getInstance().rechargeLogParam(map)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override

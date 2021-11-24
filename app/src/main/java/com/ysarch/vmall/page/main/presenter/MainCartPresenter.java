@@ -19,6 +19,7 @@ import com.ysarch.vmall.domain.services.GoodsLoader;
 import com.ysarch.vmall.domain.services.OrderLoader;
 import com.ysarch.vmall.domain.services.UploadLogLoader;
 import com.ysarch.vmall.page.main.MainCartFragment;
+import com.ysarch.vmall.utils.UploadUtils;
 import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.utils.CollectionUtils;
 
@@ -331,10 +332,11 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
 
     public void generateOrderLog(String fail_reason,String visit_time,String visit_result_time,boolean operation_result){
         Map<String,Object> map = new HashMap<>();
-        map.put("fail_reason",fail_reason);
-        map.put("visit_time",visit_time);
-        map.put("visit_result_time",visit_result_time);
-        map.put("operation_result",operation_result);
+        map.put("failReason",fail_reason);
+        map.put("visitTime",visit_time);
+        map.put("visitResultTime",visit_result_time);
+        map.put("operationResult",operation_result);
+        map.put("deviceBaseInfo", UploadUtils.getUploadRequest());
         UploadLogLoader.getInstance().generateOrderLog(map)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override

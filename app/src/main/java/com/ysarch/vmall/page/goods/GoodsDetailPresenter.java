@@ -20,6 +20,7 @@ import com.ysarch.vmall.domain.services.GoodsLoader;
 import com.ysarch.vmall.domain.services.UploadLogLoader;
 import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.ResUtils;
+import com.ysarch.vmall.utils.UploadUtils;
 import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.utils.CollectionUtils;
 
@@ -94,7 +95,9 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
                     @Override
                     public void onSuccess(GoodsDetailResultV2 goodsDetailResult) {
                         String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
-                        productDetailLog(entryType,"",VMallUtils.getNowTime(visitTime),visit_result_time,String.valueOf(goodsId),true);
+                        String title = goodsDetailResult.getData().getItem().getTitle();
+                        String dollarPrice = goodsDetailResult.getData().getItem().getDollarPrice();
+                        productDetailLog(entryType,"",VMallUtils.getNowTime(visitTime),visit_result_time,String.valueOf(goodsId),title,dollarPrice,true);
                         correctUrl(goodsDetailResult);
                         getV().onDataSuccess(goodsDetailResult);
                     }
@@ -105,20 +108,24 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
                         super.onFail(error);
                         String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
                         if(error.getType()!=NetError.OtherError)
-                            productDetailLog(entryType,error.getMessage(),VMallUtils.getNowTime(visitTime),visit_result_time,String.valueOf(goodsId),false);
+                            productDetailLog(entryType,error.getMessage(),VMallUtils.getNowTime(visitTime),visit_result_time,String.valueOf(goodsId),"","",false);
                         getV().onDataFail();
                     }
                 });
     }
 
-    private void productDetailLog(String entry,String fail_reason,String visit_time,String visit_result_time,String commodity_id,boolean operation_result){
+    private void productDetailLog(String entry,String fail_reason,String visit_time,String visit_result_time,String commodity_id,String commodityName,String commodityPrice,boolean operation_result){
         Map<String,Object> map = new HashMap<>();
         map.put("entry",entry);
-        map.put("fail_reason",fail_reason);
-        map.put("visit_time",visit_time);
-        map.put("visit_result_time",visit_result_time);
-        map.put("commodity_id",commodity_id);
-        map.put("operation_result",operation_result);
+        map.put("failReason",fail_reason);
+        map.put("visitTime",visit_time);
+        map.put("visitResultTime",visit_result_time);
+        map.put("commodityId",commodity_id);
+        map.put("commodityName",commodityName);
+        map.put("commodityPrice",commodityPrice);
+        map.put("operationResult",operation_result);
+        map.put("serverErrorCode",0);
+        map.put("deviceBaseInfo", UploadUtils.getUploadRequest());
         UploadLogLoader.getInstance().productDetailLog(map)
                 .enqueue(new Callback<ResponseBody>() {
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

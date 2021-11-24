@@ -11,6 +11,7 @@ import com.ysarch.vmall.helper.CacheHelper;
 import com.ysarch.vmall.page.account.FacebookLoginFragment;
 import com.ysarch.vmall.page.account.LoginFragment;
 import com.ysarch.vmall.utils.Log;
+import com.ysarch.vmall.utils.UploadUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -55,9 +56,11 @@ public class FaceBookLoginPresenter extends BasePresenter<FacebookLoginFragment>
 
     public void loginLog(String visitTime,String failReason,boolean result){
         Map<String,Object> map = new HashMap<>();
-        map.put("visit_time",visitTime);
-        map.put("fail_reason",failReason);
-        map.put("operation_result",result);
+        map.put("visitTime",visitTime);
+        map.put("failReason",failReason);
+        map.put("operationResult",result);
+        map.put("serverErrorCode",0);
+        map.put("deviceBaseInfo", UploadUtils.getUploadRequest());
         UploadLogLoader.getInstance().loginLog(map)
                 .enqueue(new Callback<ResponseBody>() {
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
