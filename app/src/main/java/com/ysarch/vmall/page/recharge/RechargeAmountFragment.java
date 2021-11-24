@@ -211,4 +211,9 @@ public class RechargeAmountFragment extends BaseFragment<RechargeAmountPresenter
             selectBankId = payChannelBeans.get(0).getRelateBank();
         }
     }
+
+    @Override
+    protected String getPageName() {
+        return "充值页";
+    }
 }

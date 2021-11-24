@@ -102,4 +102,9 @@ public class OrderTraceFragment extends BaseFragment<OrderTracePresenter> {
     public void onDataFail() {
 
     }
+
+    @Override
+    protected String getPageName() {
+        return "物流信息页";
+    }
 }

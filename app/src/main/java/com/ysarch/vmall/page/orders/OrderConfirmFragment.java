@@ -571,7 +571,7 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
             getPresenter().checkWallet();
         }else if(result.getData().getOrder().getStatus()==5){
             getActivity().finish();
-            NavHelper.startActivity(this, RechargeSuccessActivity.class);
+            NavHelper.startActivity(this, RechargeSuccessActivity.class,RechargeSuccessActivity.getBundle("订单提交待审核成功页"));
         }
 
 
@@ -680,4 +680,8 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
         mPayDialog.show(getFragmentManager(),"test");
     }
 
+    @Override
+    protected String getPageName() {
+        return "提交订单页";
+    }
 }

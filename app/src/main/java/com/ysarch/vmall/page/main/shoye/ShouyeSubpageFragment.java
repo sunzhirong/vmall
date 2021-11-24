@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.fragment.CommonPureListFragment;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutDecoration;
 import com.ysarch.vmall.R;
@@ -37,6 +38,7 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
 
     private int mCateId;
     private String mCateName;
+    private String mPageName;
 
     private List<CateLevelBean> mCateLevelBeans;
     private ShouYeSubpageRcyAdapterV2 mRcyAdapter;
@@ -54,11 +56,12 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
 //        return bundle;
 //    }
 
-    public static Bundle getBundle(String cateName, List<CateLevelBean> cateLevelBeans,String keywords) {
+    public static Bundle getBundle(String cateName, List<CateLevelBean> cateLevelBeans,String keywords,String pageName) {
         Bundle bundle = new Bundle();
         bundle.putString(BundleKey.ARG_CATE_NAME, cateName);
         bundle.putString(BundleKey.ARG_CATE_LIST, new Gson().toJson(cateLevelBeans));
         bundle.putString(BundleKey.ARG_CATE_KEYWORDS, keywords);
+        bundle.putString(BundleKey.ARG_PAGE_NAME, pageName);
         return bundle;
     }
 
@@ -117,7 +120,7 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
                 NavHelper.startActivity(getActivity(), GoodsDetailActivity.class);
             else
                 NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                        GoodsDetailActivity.getBundle(((GoodsItemBeanV2) data).getId()));
+                        GoodsDetailActivity.getBundle(((GoodsItemBeanV2) data).getId(),Constants.TYPE_ENTRY_SHOUYE));
         });
 
 
@@ -157,6 +160,7 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
         });
 
         mCateName = getArguments().getString(BundleKey.ARG_CATE_KEYWORDS);
+        mPageName = getArguments().getString(BundleKey.ARG_PAGE_NAME);
         String catesStr = getArguments().getString(BundleKey.ARG_CATE_LIST);
         if (!TextUtils.isEmpty(catesStr)) {
             mCateLevelBeans = new Gson().fromJson(catesStr, new TypeToken<List<CateLevelBean>>() {
@@ -241,4 +245,10 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
             mHasMore = false;
         }
     }
+
+    @Override
+    protected String getPageName() {
+        return "首页"+mPageName;
+    }
+
 }

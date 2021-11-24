@@ -59,10 +59,11 @@ public class SkuBeanV2 implements Serializable {
     }
 
     public double getFloatPrice() {
-        if(TextUtils.isEmpty(price)){
-          return 0;
-        }
-        return Double.valueOf(price);
+        return 0;
+//        if(TextUtils.isEmpty(price)){
+//          return 0;
+//        }
+//        return Double.valueOf(price);
     }
 
     public SkuBeanV2 clone(){

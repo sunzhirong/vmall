@@ -1,6 +1,7 @@
 package com.ysarch.vmall.page.msg;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.viewpager.DynamicFragmentAdapter;
 import com.ysarch.uibase.viewpager.FragmentPagerItem;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.event.NotificationDef;
 import com.ysarch.vmall.domain.constant.BundleKey;
 import com.ysarch.vmall.domain.constant.Constants;
-import com.ysarch.vmall.page.search.SearchContentFragmentV2;
-import com.ysarch.vmall.page.search.SearchFragmentAdapter;
 import com.ysarch.vmall.utils.ResUtils;
 import com.yslibrary.event.EventCenter;
 
@@ -81,4 +81,27 @@ public class MsgVPFragment extends Fragment {
 
         mTabLayout.setupWithViewPager(mViewPager);
     }
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(!TextUtils.isEmpty(getPageName()))
+            TCAgent.onPageEnd(getContext(),getPageName());
+    }
+
+    /**
+     * 获取当前界面的埋点名字
+     * @return
+     */
+    protected String getPageName(){
+        return "消息页";
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(!TextUtils.isEmpty(getPageName()))
+            TCAgent.onPageStart(getContext(),getPageName());
+    }
+
 }

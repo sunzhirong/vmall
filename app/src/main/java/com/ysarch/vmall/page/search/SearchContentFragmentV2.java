@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.fragment.CommonPureListFragment;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutDecoration;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutNormalDecoration;
@@ -85,7 +86,7 @@ public class SearchContentFragmentV2 extends CommonPureListFragment<SearchConten
         mRcyAdapter.setOnItemClickListener((position, data) -> {
 //            GoodsItemBean goodsItemBean = (GoodsItemBean) data;
             NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                    GoodsDetailActivity.getBundle(((GoodsItemBeanV2) data).getId(), mPlatformType));
+                    GoodsDetailActivity.getBundle(((GoodsItemBeanV2) data).getId(), mPlatformType,Constants.TYPE_ENTRY_SEARCH));
         });
 
         int marginH = ResUtils.getDimeI(R.dimen.margin_h_common);
@@ -191,4 +192,10 @@ public class SearchContentFragmentV2 extends CommonPureListFragment<SearchConten
             }
         }
     }
+
+    @Override
+    protected String getPageName() {
+        return "搜索结果页";
+    }
+
 }

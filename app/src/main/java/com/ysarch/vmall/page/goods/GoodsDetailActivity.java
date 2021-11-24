@@ -15,6 +15,7 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.bigkoo.convenientbanner.listener.OnPageChangeListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.base.BaseActivity;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.adapter.PureImageAdapter;
@@ -22,6 +23,7 @@ import com.ysarch.vmall.common.banner.GoodsDetailBannerHolder;
 import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
 import com.ysarch.vmall.component.GoodsDetailTitleBar;
+import com.ysarch.vmall.component.dialog.CusBottomSheetDialog;
 import com.ysarch.vmall.component.dialog.SkuDialog;
 import com.ysarch.vmall.component.dialog.multisku.MultiSelSkuDialog;
 import com.ysarch.vmall.domain.bean.CouponBean;
@@ -31,9 +33,12 @@ import com.ysarch.vmall.domain.bean.SkuBeanV2;
 import com.ysarch.vmall.domain.constant.BundleKey;
 import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.local.LocalPropSkuEntity;
+import com.ysarch.vmall.page.account.AccountActivity;
 import com.ysarch.vmall.page.cart.CartActivity;
 import com.ysarch.vmall.page.coupon.CouponDrawActivity;
+import com.ysarch.vmall.page.wallet.WalletActivity;
 import com.ysarch.vmall.page.webview.CommonWebActivity;
+import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.NavHelper;
 import com.ysarch.vmall.utils.SkuParser;
 import com.ysarch.vmall.utils.VMallUtils;
@@ -120,16 +125,23 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
     private PureImageAdapter mAdapter;
 
     private int mPlatformType;
+    private String mEntryType;
     private MultiSelSkuDialog mMultiSkuDialog;
 
-    public static Bundle getBundle(long goodsId) {
-        return getBundle(goodsId, Constants.TYPE_PLATFORM_TB);
+
+//    public static Bundle getBundle(long goodsId) {
+//        return getBundle(goodsId, Constants.TYPE_PLATFORM_TB);
+//    }
+
+    public static Bundle getBundle(long goodsId,String entryType) {
+        return getBundle(goodsId, Constants.TYPE_PLATFORM_TB,entryType);
     }
 
-    public static Bundle getBundle(long goodsId, int platform) {
+    public static Bundle getBundle(long goodsId, int platform , String entryType) {
         Bundle bundle = new Bundle();
         bundle.putLong(BundleKey.ARG_GOODS_ID, goodsId);
         bundle.putInt(BundleKey.ARG_PLATFORM_TYPE, platform);
+        bundle.putString(BundleKey.ARG_ENTRY_TYPE, entryType);
         return bundle;
     }
 
@@ -144,17 +156,26 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        if(!UserInfoManager.isLogin()){
+            NavHelper.startActivity(context, AccountActivity.class, AccountActivity.getBundle(AccountActivity.TYPE_LOGIN));
+            finish();
+            return;
+        }
+
+
         if (getIntent().getExtras() != null) {
             mGoodsId = getIntent().getExtras().getLong(BundleKey.ARG_GOODS_ID, -1);
             mPlatformType = getIntent().getExtras().getInt(BundleKey.ARG_PLATFORM_TYPE, Constants.TYPE_PLATFORM_TB);
+            mEntryType = getIntent().getExtras().getString(BundleKey.ARG_ENTRY_TYPE, "");
+            Log.e("GoodsDetailActivity","mEntryType = "+mEntryType);
             if (mGoodsId != -1) {
-                getPresenter().requestGoodsDetail(mGoodsId, mPlatformType);
+                getPresenter().requestGoodsDetail(mGoodsId, mPlatformType,mEntryType);
                 mBeeGlide = BeeGlide.with(this);
                 getPresenter().requestCouponList(mGoodsId);
             }
         } else {
             mGoodsId = mTestId;
-            getPresenter().requestGoodsDetail(mGoodsId, mPlatformType);
+            getPresenter().requestGoodsDetail(mGoodsId, mPlatformType,"");
             mBeeGlide = BeeGlide.with(this);
             getPresenter().requestCouponList(mGoodsId);
         }
@@ -250,7 +271,12 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
         if (goodsDetailResult == null || goodsDetailResult.getData() == null
                 || goodsDetailResult.getData().getItem() == null)
             return;
+
+
         mGoodsDetailBean = goodsDetailResult.getData().getItem();
+        double aDouble = Double.parseDouble(mGoodsDetailBean.getDollarPrice())*100;
+        TCAgent.onAddItemToShoppingCart(String.valueOf(mGoodsDetailBean.getItemId()), mGoodsDetailBean.getCategoryId()==null?"0":mGoodsDetailBean.getCategoryId(), mGoodsDetailBean.getTitle(), (int) aDouble, 1);
+
 
         if (CollectionUtils.isNotEmpty(mGoodsDetailBean.getDescImgs())) {
             initAdapter();
@@ -299,8 +325,8 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
             mBannerImgCount = mGoodsDetailBean.getImages().size();
             mTVBannerIndicator.setVisibility(View.VISIBLE);
             mTVBannerIndicator.setText(1 + "/" + mBannerImgCount);
-            if (mBannerImgCount > 1)
-                mConvenientBanner.startTurning(3000);
+//            if (mBannerImgCount > 1)
+//                mConvenientBanner.startTurning(3000);
         } else {
             mBannerImgCount = 0;
             mTVBannerIndicator.setVisibility(View.GONE);
@@ -338,11 +364,11 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
         mTvTraceDetail.setText(getString(R.string.label_expected_arrival)+" "+VMallUtils.getTranceDateString());
 
 
-        if(mGoodsDetailBean.getDollarDelivery()==0){
-            mLlFreight.setVisibility(View.GONE);
+        if(mGoodsDetailBean.getDollarDelivery()!=0){
+            mLlFreight.setVisibility(View.VISIBLE);
             mTvFreightDetail.setText(VMallUtils.getCurrencySign()+mGoodsDetailBean.getDollarDelivery());
         }else {
-            mLlFreight.setVisibility(View.VISIBLE);
+            mLlFreight.setVisibility(View.GONE);
         }
     }
 
@@ -494,7 +520,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
                 break;
 
             case R.id.ctl_service:
-                BottomSheetDialog serviceDialog = new BottomSheetDialog(context);
+                CusBottomSheetDialog serviceDialog = new CusBottomSheetDialog(context,"详情页_服务弹窗");
                 View serviceView = getLayoutInflater().inflate(R.layout.dialog_goods_service, null);
                 serviceView.findViewById(R.id.tv_confirm).setOnClickListener(v -> serviceDialog.dismiss());
                 serviceDialog.setContentView(serviceView);
@@ -502,7 +528,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
                 break;
 
             case R.id.ll_trace:
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+                CusBottomSheetDialog bottomSheetDialog = new CusBottomSheetDialog(context,"详情页_规格弹窗");
                 View dialogView = getLayoutInflater().inflate(R.layout.dialog_trace, null);
                 dialogView.findViewById(R.id.tv_confirm).setOnClickListener(v -> bottomSheetDialog.dismiss());
                 ((TextView) dialogView.findViewById(R.id.tv_trace_time)).setText(VMallUtils.getTranceDateString());
@@ -510,12 +536,24 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
                 bottomSheetDialog.show();
                 break;
             case R.id.ll_freight:
-                BottomSheetDialog freightDialog = new BottomSheetDialog(context);
+                CusBottomSheetDialog freightDialog = new CusBottomSheetDialog(context,"详情页_淘宝运费弹窗");
                 View freightView = getLayoutInflater().inflate(R.layout.dialog_freight, null);
                 freightView.findViewById(R.id.tv_confirm).setOnClickListener(v -> freightDialog.dismiss());
                 freightDialog.setContentView(freightView);
                 freightDialog.show();
                 break;
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        TCAgent.onPageEnd(context,"商详页");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        TCAgent.onPageStart(context,"商详页");
     }
 }

@@ -6,13 +6,21 @@ import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.domain.bean.LoginResult;
 import com.ysarch.vmall.domain.constant.CacheKeys;
 import com.ysarch.vmall.domain.services.AccountLoader;
+import com.ysarch.vmall.domain.services.UploadLogLoader;
 import com.ysarch.vmall.helper.CacheHelper;
 import com.ysarch.vmall.page.account.FacebookLoginFragment;
 import com.ysarch.vmall.page.account.LoginFragment;
 import com.ysarch.vmall.utils.Log;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.http.Field;
 
 /**
@@ -22,7 +30,7 @@ public class FaceBookLoginPresenter extends BasePresenter<FacebookLoginFragment>
 
 
 
-    public void facebookLogin( String name, String token, String outId,String headUrl,String email) {
+    public void facebookLogin( String name, String token, String outId,String headUrl,String email,String visitTime) {
         getV().showLoadingDialog();
         AccountLoader.getInstance().facebookLogin(outId, token,name,headUrl,email)
                 .compose(dontShowDialog())
@@ -30,15 +38,33 @@ public class FaceBookLoginPresenter extends BasePresenter<FacebookLoginFragment>
                 .subscribe(new ApiSubscriber<LoginResult>(getV()) {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
+                        loginLog(visitTime,"",true);
                         UserInfoManager.updateToken("", loginResult.getToken(), loginResult.getTokenHead(),
                                 loginResult.getMember(),loginResult.getMember().isHasPayPassword());
-                        Log.e("onSuccess", JSON.toJSONString(loginResult));
                         getV().onLoginSuccess();
                     }
 
                     @Override
                     protected void onFail(NetError error) {
                         super.onFail(error);
+                        if(error.getType()!=NetError.OtherError)
+                            loginLog(visitTime,error.getMessage(),false);
+                    }
+                });
+    }
+
+    public void loginLog(String visitTime,String failReason,boolean result){
+        Map<String,Object> map = new HashMap<>();
+        map.put("visit_time",visitTime);
+        map.put("fail_reason",failReason);
+        map.put("operation_result",result);
+        UploadLogLoader.getInstance().loginLog(map)
+                .enqueue(new Callback<ResponseBody>() {
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
                     }
                 });
     }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.recyclerview.AbsViewHolder;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.AppContext;
@@ -14,6 +15,7 @@ import com.ysarch.vmall.common.imageloader.ImageLoadConfig;
 import com.ysarch.vmall.domain.bean.GoodsItemBeanV2;
 import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.utils.GlideUtils;
+import com.ysarch.vmall.utils.Log;
 import com.yslibrary.utils.CollectionUtils;
 
 import butterknife.BindView;
@@ -55,6 +57,21 @@ public class GoodsItemVHV2 extends AbsViewHolder {
         GoodsItemBeanV2 goodsItemBean = (GoodsItemBeanV2) data;
         if (mGoodsItemBean == null || mGoodsItemBean.getId() != goodsItemBean.getId()) {
             mGoodsItemBean = goodsItemBean;
+
+            if(!mGoodsItemBean.isOnItemView()) {
+                Log.e("GoodsItemVHV2 1","isOnItemView");
+                try {
+                    double aDouble = Double.parseDouble(mGoodsItemBean.getDollarPrice())*100;
+                    TCAgent.onViewItem(String.valueOf(mGoodsItemBean.getId()), mGoodsItemBean.getCategory(), mGoodsItemBean.getShopName(), (int) aDouble);
+                    mGoodsItemBean.setOnItemView(true);
+                    Log.e("GoodsItemVHV2 2","isOnItemView");
+                }catch (Exception e){
+                    Log.e("GoodsItemVHV2 3","isOnItemView");
+                }
+            }else {
+                Log.e("GoodsItemVHV2 4","isOnItemView");
+            }
+
             mTVDec.setText(mGoodsItemBean.getTitle());
             mTVMUnit.setText("$");
             mTVPrice.setText(mGoodsItemBean.getDollarPrice());
@@ -76,7 +93,6 @@ public class GoodsItemVHV2 extends AbsViewHolder {
             } else {
                 mTVOriPrice.setVisibility(View.GONE);
             }
-
         }
     }
 }

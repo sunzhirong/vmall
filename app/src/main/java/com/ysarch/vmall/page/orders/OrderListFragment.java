@@ -254,4 +254,25 @@ public class OrderListFragment extends CommonPureListFragment<OrderListPresenter
 
         mPayDialog.show(getFragmentManager(),"test");
     }
+
+    @Override
+    protected String getPageName() {
+        switch (mOrderStatus){
+            case Constants.STATUS_ORDER_ALL:
+                return "全部订单页";
+            case Constants.STATUS_ORDER_UNPAY:
+                return "订单_待付款页";
+            case Constants.STATUS_ORDER_DELIVER_WAITING:
+                return "订单_备货中页";
+            case Constants.STATUS_ORDER_DELIVERED:
+                return "订单_待收货页";
+            case Constants.STATUS_ORDER_COMPLETE:
+                return "订单_已完成页";
+            case Constants.STATUS_ORDER_CLOSED:
+                return "订单_已关闭页";
+            case Constants.STATUS_ORDER_AUDIT_WAITING:
+                return "订单_审核中页";
+        }
+        return super.getPageName();
+    }
 }

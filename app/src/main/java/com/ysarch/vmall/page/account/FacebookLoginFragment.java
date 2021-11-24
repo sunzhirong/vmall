@@ -33,6 +33,7 @@ import com.ysarch.vmall.page.account.presenter.FaceBookLoginPresenter;
 import com.ysarch.vmall.page.account.presenter.LoginPresenter;
 import com.ysarch.vmall.page.webview.CommonWebActivity;
 import com.ysarch.vmall.utils.NavHelper;
+import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.event.hailer.FunctionHasParamNoResult;
 import com.yslibrary.event.hailer.FunctionNoParamHasResult;
 import com.yslibrary.event.hailer.FunctionsManager;
@@ -58,6 +59,8 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 //    private FunctionNoParamHasResult mProtocolChecker;
     private CallbackManager callbackManager;
 
+    private String visitTime;
+
     public static FacebookLoginFragment newInstance() {
         FacebookLoginFragment fragment = new FacebookLoginFragment();
         return fragment;
@@ -68,27 +71,6 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 
     }
 
-//    private void injectEvents() {
-//
-//        mProtocolChecker = new FunctionNoParamHasResult<Boolean>(HailerFunctionDef.CHECK_PROTOCOL) {
-//            @Override
-//            public Boolean invokeFunction() {
-//                return mCTVChecker.isSelected();
-//            }
-//        };
-//
-//        FunctionsManager.getInstance().addFunctionNoParamHasResult(mProtocolChecker);
-//
-//
-//        mProtocolListener = new FunctionHasParamNoResult<Boolean>(HailerFunctionDef.SWITCH_PROTOCOL_VISIBILITY) {
-//            @Override
-//            public void invokeFunction(Boolean visible) {
-//                mLyProtocol.setVisibility(visible ? View.VISIBLE : View.GONE);
-//            }
-//        };
-//        FunctionsManager.getInstance().addFunctionHasParamNoResult(
-//                mProtocolListener);
-//    }
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -105,19 +87,13 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 
             @Override
             public void onError(FacebookException arg0) {
-                Log.d("onError", arg0.toString());
+//                Log.d("onError", arg0.toString());
+                getPresenter().loginLog(visitTime,arg0.getMessage(),false);
             }
 
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d("onSuccess", "登录成功！" +JSON.toJSONString(loginResult));
-//                boolean enableButtons = AccessToken.getCurrentAccessToken() != null;
-                Profile profile = Profile.getCurrentProfile();
-
-
-
-
-
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
@@ -131,19 +107,7 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
                         JSONObject object_pic = object.optJSONObject("picture");
                         JSONObject object_data = object_pic.optJSONObject("data");
                         String headUrl = object_data.optString("url");
-
-
-//                        String name;
-//                        String headUrl;
-//                        if(profile!=null){
-//                            name = profile.getName();
-//                            headUrl = profile.getProfilePictureUri(150, 150).toString();
-//                            Log.d("onSuccess",headUrl);
-//                        }else {
-//                            name = "";
-//                            headUrl = "";
-//                        }
-                        getPresenter().facebookLogin(name, loginResult.getAccessToken().getToken(),loginResult.getAccessToken().getUserId(),headUrl,email);
+                        getPresenter().facebookLogin(name, loginResult.getAccessToken().getToken(),loginResult.getAccessToken().getUserId(),headUrl,email,visitTime);
                     }
                 });
                 Bundle parameters = new Bundle();
@@ -155,8 +119,6 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 
             }
         });
-//        injectEvents();
-
 
         mCTVChecker.setSelected(true);
 
@@ -168,6 +130,7 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
         if(!mCTVChecker.isSelected()) {
             showTs(getString(R.string.text_please_check_agreement));
         }else {
+            visitTime = VMallUtils.getNowTime();
             LoginManager.getInstance().logInWithReadPermissions(getActivity(), Arrays.asList("public_profile", "email"));
         }
     }
@@ -210,4 +173,9 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 //        FunctionsManager.getInstance().removeFunction(HailerFunctionDef.CHECK_PROTOCOL);
 //    }
 
+
+    @Override
+    protected String getPageName() {
+        return "facebook登录页";
+    }
 }

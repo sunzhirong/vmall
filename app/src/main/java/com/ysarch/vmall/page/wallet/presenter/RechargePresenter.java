@@ -2,24 +2,39 @@ package com.ysarch.vmall.page.wallet.presenter;
 
 import android.text.TextUtils;
 
+import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 import com.ysarch.uibase.base.BasePresenter;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.AppContext;
+import com.ysarch.vmall.common.event.NotificationDef;
 import com.ysarch.vmall.component.oss.OSSHelper;
 import com.ysarch.vmall.domain.bean.BankItemBean;
+import com.ysarch.vmall.domain.bean.BaseResult;
 import com.ysarch.vmall.domain.bean.OssBean;
+import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.services.ConfigLoader;
+import com.ysarch.vmall.domain.services.OrderLoader;
+import com.ysarch.vmall.domain.services.UploadLogLoader;
 import com.ysarch.vmall.domain.services.WalletLoader;
 import com.ysarch.vmall.page.wallet.RechargeFragment;
+import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.ResUtils;
+import com.ysarch.vmall.utils.VMallUtils;
+import com.yslibrary.event.EventCenter;
 import com.yslibrary.utils.CollectionUtils;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by fysong on 2020/10/15
@@ -66,18 +81,24 @@ public class RechargePresenter extends BasePresenter<RechargeFragment> {
      */
     private void postRechargeInfo(String amount, long bankId,
                                   String rechargePic, String rechargeTime, String remark) {
+        long visitTime = System.currentTimeMillis();
         WalletLoader.getInstance().postRechargeInfo(amount, bankId, rechargePic, rechargeTime, remark)
                 .compose(showLoadingDialog())
                 .compose(getV().bindToLifecycle())
                 .subscribe(new ApiSubscriber<String>(getV()) {
                     @Override
                     public void onSuccess(String msg) {
+                        String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
+                        rechargeLogParam("",VMallUtils.getNowTime(visitTime),visit_result_time,true);
                         getV().onSubmitSucc(msg);
                     }
 
                     @Override
                     protected void onFail(NetError error) {
                         super.onFail(error);
+                        String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
+                        if(error.getType()!=NetError.OtherError)
+                            rechargeLogParam(error.getMessage(), VMallUtils.getNowTime(visitTime),visit_result_time,false);
                     }
                 });
     }
@@ -128,6 +149,28 @@ public class RechargePresenter extends BasePresenter<RechargeFragment> {
                     }
                 });
     }
+
+    public void rechargeLogParam(String fail_reason,String visit_time,String visit_result_time,boolean operation_result){
+        Map<String,Object> map = new HashMap<>();
+        map.put("fail_reason",fail_reason);
+        map.put("visit_time",visit_time);
+        map.put("visit_result_time",visit_result_time);
+        map.put("operation_result",operation_result);
+        UploadLogLoader.getInstance().rechargeLogParam(map)
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        Log.e("niko", JSON.toJSONString(response));
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.e("niko", JSON.toJSONString(t));
+                    }
+                });
+    }
+
+
 
 
 }

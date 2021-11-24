@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.fragment.CommonPureListFragment;
 import com.ysarch.uibase.recyclerview.FRecyclerView;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutDecoration;
@@ -77,7 +78,7 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
                 builder.build().show();
             } else {
                 NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                        GoodsDetailActivity.getBundle(((GoodsItemBeanV2) data).getId()));
+                        GoodsDetailActivity.getBundle(((GoodsItemBeanV2) data).getId(),Constants.TYPE_ENTRY_SHOUYE));
             }
         });
         mRcyAdapter.setBannerCallback(new HomeBannerVH.Callback() {
@@ -281,4 +282,11 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
     protected boolean hasMore() {
         return mHasMore;
     }
+
+
+    @Override
+    protected String getPageName() {
+        return "首页最受欢迎";
+    }
+
 }

@@ -151,12 +151,12 @@ public class SearchFragment extends BaseFragment<SearchPresenter> {
             if (!TextUtils.isEmpty(id)) {
                 if (keyword.startsWith("tid")) {
                     NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                            GoodsDetailActivity.getBundle(Long.parseLong(id), Constants.TYPE_PLATFORM_TB));
+                            GoodsDetailActivity.getBundle(Long.parseLong(id), Constants.TYPE_PLATFORM_TB,Constants.TYPE_ENTRY_SEARCH));
                     return true;
                 }
                 if (keyword.startsWith("aid")) {
                     NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                            GoodsDetailActivity.getBundle(Long.parseLong(id), Constants.TYPE_PLATFORM_1688));
+                            GoodsDetailActivity.getBundle(Long.parseLong(id), Constants.TYPE_PLATFORM_1688,Constants.TYPE_ENTRY_SEARCH));
                     return true;
                 }
             }

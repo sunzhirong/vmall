@@ -101,5 +101,14 @@ public class Constants {
     public static final int OPERATETYPE_GOODS_H5 = 5;
     public static final int OPERATETYPE_H5 = 6;
     public static final int OPERATETYPE_OUT_H5 = 7;
+
+
+    //进入商品详情页标识
+    public static final String TYPE_ENTRY_CLIP = "1";                            //复制黏贴弹窗
+    public static final String TYPE_ENTRY_SHOUYE = "2";                          //首页相关
+    public static final String TYPE_ENTRY_SEARCH = "3";                          //搜索页
+    public static final String TYPE_ENTRY_CART = "4";                            //购物车
+    public static final String TYPE_ENTRY_ORDER_DETAIL = "5";                    //订单详情
+
 }
 

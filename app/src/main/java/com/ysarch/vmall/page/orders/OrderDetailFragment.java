@@ -360,7 +360,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
             mAdapter.setOnItemClickListener((position, data) -> {
                 OrderItemListBean bean = (OrderItemListBean) data;
                 NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                        GoodsDetailActivity.getBundle(bean.getProductId(), bean.getSource()));
+                        GoodsDetailActivity.getBundle(bean.getProductId(), bean.getSource(),Constants.TYPE_ENTRY_ORDER_DETAIL));
             });
         }
     }
@@ -611,5 +611,10 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
     public void onPwdError() {
         mPayDialog.setPwdError(true);
         mPayDialog.show(getFragmentManager(),"test");
+    }
+
+    @Override
+    protected String getPageName() {
+        return "订单详情页";
     }
 }

@@ -2,6 +2,7 @@ package com.ysarch.uibase.base;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.dialog.LoadingDialog;
 import com.ysarch.uibase.dialog.SimpleDialogWithTwoBtn;
 import com.ysarch.vmall.BuildConfig;
@@ -168,6 +170,24 @@ public abstract class BaseFragment<P extends IPresent> extends XFragment<P> {
     public void onPause() {
         super.onPause();
         clearFocus();
+        if(!TextUtils.isEmpty(getPageName()))
+            TCAgent.onPageEnd(context,getPageName());
+    }
+
+    /**
+     * 获取当前界面的埋点名字
+     * @return
+     */
+    protected String getPageName(){
+        return null;
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(!TextUtils.isEmpty(getPageName()))
+            TCAgent.onPageStart(context,getPageName());
     }
 
 }

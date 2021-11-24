@@ -169,7 +169,8 @@ public class SkuDialog extends Dialog {
 //                }
                 mSkuBeanSelected = skuBean;
 //                mTVPrice.setText(mSkuPricePrefix + ": $" + VMallUtils.convertTo2String(skuBean.getFloatPrice()));
-                mTVPrice.setText(VMallUtils.convertPriceString(skuBean.getFloatPrice()));
+//                mTVPrice.setText(VMallUtils.convertPriceString(skuBean.getFloatPrice()));
+                mTVPrice.setText(VMallUtils.getCurrencySign()+skuBean.getPrice());
 
                 StringBuilder stringBuilder = new StringBuilder(mSkuSelectedPrefix + ": ");
                 StringBuilder skuCodeStringBuilder = new StringBuilder();

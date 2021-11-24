@@ -1,463 +1,860 @@
+<?xml version="1.0"?>
+
 <resources>
+
     <!--系统-->
+
+
     <string name="label_cancel">Cancel</string>
+
     <string name="label_next">Next</string>
+
     <string name="app_name">SabayShop</string>
 
     <string name="label_sy_tab">Home</string>
+
     <string name="label_fl_tab">Category</string>
+
     <string name="label_discover_tab">Discovery</string>
+
     <string name="label_cart_tab">Cart</string>
+
     <string name="label_mine_tab">Account</string>
 
-    <!--我的页面相关-->
-    <string name="label_my_wallet">My Wallet</string>
-
-    <string name="label_coupon">Coupons</string>
-    <string name="label_can_use_coupon">可用优惠券</string>
-    <string name="label_coupon_used">Used</string>
-    <string name="label_coupon_unused">Available</string>
-    <string name="label_coupon_overtime">Expired</string>
-
-    <string name="label_address_manage">Address</string>
-    <string name="label_my_collection">WishList</string>
-    <string name="label_app_help">Help</string>
-    <string name="label_setting">Settings</string>
-    <string name="label_owner_setting">Profile</string>
-    <string name="label_select_reason">Select reason</string>
-
-    <!--手机注册登录页，页面暂时隐藏-->
-    <string name="label_facebook_login">Facebook</string>
-    <string name="label_login">Login</string>
-    <string name="label_logout">Logout</string>
-    <string name="label_register">Sign up</string>
-
-    <string name="protocol_prefix">I have read and agree to the </string>
-    <string name="protocol_bee">《Privacy Policy》</string>
-    <string name="protocol_service">《Privacy Policy》</string>
-    <string name="text_please_check_agreement">Read and agree to the《Privacy Policy》</string>
-
-    <string name="hint_input_phone_number">Phone number</string>
-    <string name="hint_input_password">Password(6-16)</string>
-    <string name="hint_input_pay_password">Enter payment password</string>
-    <string name="hint_input_pay_password2">Confirm payment password</string>
-    <string name="hint_input_auth_code">Verification code</string>
-    <string name="hint_input_nickname">Username</string>
-    <string name="hint_input_new_password">New password(6-16)</string>
-    <string name="text_forget_password">Forget password?</string>
-    <string name="label_forget_password">Forget password</string>
-    <string name="label_auth_code">Get code</string>
-
-    <string name="tip_pwd_set_succ">Password reset successfully, please log in again</string>
-
-    <!--订单-->
-    <string name="label_order_num_prefix">Order Number:</string>
-
-    <string name="label_order_to_pay">Submit Order</string>
-    <string name="label_order_cancel">Cancel</string>
-    <string name="label_order_delete">Delete Order</string>
-    <string name="label_order_confirm_received">Received</string>
-
-    <string name="label_history_order">My Orders</string>
-
-    <!--设置-->
-    <string name="label_about_us">About us</string>
-
-    <string name="label_pay_password_modify">Payment Pin</string>
-    <string name="label_pay_password">Payment Pin</string>
-
-    <string name="label_app_language">Language</string>
-    <string name="label_language_choice">Language</string>
-    <string name="label_lan_english">English</string>
-    <string name="label_lan_chinese">中文</string>
-    <string name="label_lan_cambodia">មែរ</string>
-
-    <!--搜索-->
-    <string name="hint_search_goods">Search goods</string>
-    <string name="label_search_history">Search History</string>
-
     <!--首页-->
+
+
     <string name="label_home_taobao">Tabao Purchase</string>
+
     <string name="label_national_transport">Logistics tracking</string>
+
     <string name="label_home_return_back">72h After-sales</string>
 
     <string name="label_hot_goods">RECOMMEND</string>
 
+    <string name="label_most_popular">Popular</string>
+
+    <!--复制粘贴弹窗-->
+
+
+    <string name="label_intelligent_search">Search</string>
+
+    <string name="label_intelligent_search_tips">You might like</string>
+
+    <string name="label_search_now">Search Now</string>
+
+    <string name="label_open_now">Open Now</string>
+
+    <!--搜索-->
+
+
+    <string name="label_home_search">Search</string>
+
+    <string name="hint_search_goods">Search goods in Chinese</string>
+
+    <string name="label_search_history">Search History</string>
+
     <!--商品详情页-->
+
+
     <string name="label_get_coupon">Coupons</string>
 
-    <string name="label_goods_id_prefix">ID </string>
-    <string name="label_exchange_rate_prefix">Rate：</string>
+    <string name="label_goods_id_prefix">TaobaoID </string>
+
+    <string name="label_exchange_rate_prefix">Rate </string>
 
     <string name="label_freight">Taobao shipping</string>
+
     <string name="label_tb_freight_illustrate">Taobao shipping</string>
+
     <string name="tb_freight_illustrate_1">1. Taobao freight is the express freight charged by Taobao. Please submit for review when purchasing, and the customer service will check Taobao shipping before payment.</string>
+
     <string name="tb_freight_illustrate_2">2. Taobao shipping is free of service charge.</string>
 
     <string name="label_service">Service</string>
+
     <string name="label_service_1">Tabao Purchase</string>
+
     <string name="label_service_2">Nationwide Delivery</string>
+
     <string name="label_service_3">72h After-sales</string>
+
     <string name="label_service_4">Full logistics tracking</string>
 
     <string name="label_prop">Options</string>
+
     <string name="label_logistics">Ship</string>
 
     <string name="label_trace_title">Ship from Global to Cambodia</string>
+
     <string name="label_stock_up">Prepare</string>
+
     <string name="label_1_3_day">1-3 days</string>
+
     <string name="label_logistics_transportation">Ship</string>
+
     <string name="label_5_7_day">5-7 days</string>
+
     <string name="label_delivery">Send</string>
+
     <string name="label_2_3_day">2-3 days</string>
 
     <string name="label_customer_service">Contact</string>
+
     <string name="label_cart">Cart</string>
+
     <string name="label_add_to_cart">Add to Cart</string>
+
     <string name="tip_add_cart_succ">Successfully Added</string>
 
     <string name="label_count">Quantity</string>
+
     <string name="label_goods_detail">Detail</string>
 
     <string name="no_worry_shopping">Service</string>
+
     <string name="label_taobao_purchasing">Tabao Purchase</string>
+
     <string name="label_taobao_tips">Purchasing through Taobao. Selecting quality products carefully.</string>
+
     <string name="label_national_transport_tips">Express delivery over 25 cities.</string>
+
     <string name="label_deliver_goods">Full logistics tracking</string>
+
     <string name="label_deliver_goods_tips">Arranging purchase and stocking immediately after payment, and you can track your shipping status in detail on the order page.</string>
+
     <string name="label_service_3_tips">After receiving the goods, contacting customer service for 72 hours to solve the abnormal problem.</string>
 
-    <!--未知：商品详情页-->
-    <string name="label_confirm">OK</string>
-    <string name="label_already_selected_prefix">Item</string>
-    <string name="label_price_prefix">Price</string>
+    <string name="label_no_quality">Out of stock</string>
 
-    <string name="tip_draw_succ">Received successfully</string>
-    <string name="tip_no_goods_selected">select a item</string>
+    <!--购物车-->
 
-    <!--地址管理-->
-    <string name="label_address_manager">Address</string>
-    <string name="label_default">Default</string>
-    <string name="label_set_default">Default</string>
-    <string name="label_add_address">Add</string>
-    <string name="label_add_new_address">Edit address</string>
+    <string name="dialog_think_again">cancel</string>
 
-    <string name="label_consignee_address">Name</string>
-    <string name="label_contact_phone_address">Mobile Number</string>
-    <string name="label_region_belong_address">Area</string>
-    <string name="label_detail_address">Street</string>
-    <string name="label_locate">Position</string>
+    <string name="dialog_delete">delete</string>
 
+    <string name="dialog_confirm_delete_cart">Are you sure to delete%dproducts？</string>
 
-    <string name="hint_fill_consignee_name">Enter the receiver\'s full name</string>
-    <string name="hint_fill_consignee_phone">Enter your mobile number</string>
-    <string name="hint_fill_region">Select your area</string>
-    <string name="hint_fill_detail_address">Enter street and building number</string>
+    <string name="label_complete">Done</string>
 
-    <string name="tip_fill_region_belong">Select your area</string>
-    <string name="tip_phone_illegal">Enter phone number</string>
+    <string name="label_delete">Delete</string>
 
-    <string name="tip_add_address_succ">Submitted successfully</string>
-    <string name="tip_modify_address_succ">Submitted successfully</string>
+    <string name="label_edit">Edit</string>
 
-    <string name="label_save">Done</string>
+    <string name="label_create_order">Check Out</string>
+
+    <string name="dialog_edit_order_title">Please enter quantity</string>
 
     <!--提交订单页面-->
+
+
     <string name="label_fill_order_info">Confirm Order</string>
 
     <string name="order_dis_mode">Delivery Method</string>
+
     <string name="label_pick_by_yourself">Pick up at store(Phnom Penh)</string>
+
     <string name="label_express_delivery">Delivery to door</string>
-    <string name="label_confirm_order_tips_hint">Optional, confirm with customer service first</string>
+
+    <string name="label_confirm_order_tips_hint">confirm with customer service first</string>
+
     <string name="label_order_receive_address">Shipping Address</string>
+
     <string name="label_order_pick_address">Pickup Address</string>
+
     <string name="label_submit_order">Submit</string>
-    <string name="label_goods_price">Item price</string>
+
+    <string name="label_goods_price">Item(s)</string>
+
     <string name="format_use_coupon">%scoupons</string>
+
     <string name="format_coupon_drop_off"> -%s</string>
+
     <string name="label_freight_tips">▲Reminder: Freight charges after delivery, In order to speed up the delivery, please top up yuto pay the Shipping Fee</string>
 
     <string name="label_international_mode_of_transport">Shipping Method</string>
+
     <string name="label_land_transportation">Land transportation</string>
 
     <string name="label_coupon_empty_to_use">No coupons</string>
+
     <string name="label_total">Total</string>
+
     <!--提交订单页面 暂时隐藏了-->
+
+
     <string name="label_total_price_goods">Commodity Total</string>
+
     <string name="label_amount_freight_goods">Commodity Shipping</string>
+
     <string name="label_amount_freight">Shipping Fee</string>
+
     <string name="label_pay_online">Online Payment</string>
+
     <string name="label_pay_on_delivery">Pay on delivery</string>
+
     <string name="label_pay_amount">Price</string>
+
     <string name="label_submit">Submit</string>
+
     <string name="label_total_amount">Items Tatal</string>
+
     <string name="label_coupon_amount_reduce"> </string>
+
     <string name="label_pay_amount_order_detail">Item total</string>
+
     <string name="label_server_tips_detail">Service fee</string>
 
     <string name="tip_pls_select_address">Shipping Address</string>
 
-    <!--订单列表-->
-    <string name="label_order_all">ALL</string>
-    <string name="label_order_unpay">To Pay</string>
-    <string name="label_order_deliver_waiting">Preparing</string>
-    <string name="label_order_delivered">To Receive</string>
-    <string name="label_order_complete">Completed</string>
-    <string name="label_order_close">Closed</string>
-    <string name="label_order_audit_waiting">Pending Review</string>
+    <!--提交成功页-->
 
-    <!--订单详情-->
-    <string name="label_order_detail">Order details</string>
-
-    <!--其他-->
-    <string name="tips_data_error">Incorrect data,try again later</string>
-    <string name="format_tip_num_coupon_available">%dcoupons</string>
-
-    <string name="label_availabel_time_prefix_coupon"> </string>
-    <string name="label_draw_coupon">Coupons</string>
-
-
-    <string name="tip_need_login">Please log in again</string>
-
-    <string name="format_uid_mine">ID : %d</string>
-    <string name="label_city_choose">Please select an address</string>
-
-    <string name="label_platform_tb">Taobao</string>
-    <string name="label_platform_jd">JD</string>
-    <string name="label_platform_pdd">PDD</string>
-    <string name="label_platform_1688">1688</string>
-
-    <string name="label_storage">库存</string>
-    <string name="label_share_to_you">给你分享了</string>
-
-    <string name="label_setting_succ">Submitted successfully</string>
-    <string name="label_modify_pwd_error">Two passwords are different</string>
-
-    <!--我的钱包-->
-    <string name="label_recharge">Top up</string>
-
-    <string name="label_recharge_success">Recharge completed</string>
-    <string name="label_bank_account_tips">Choose account</string>
-    <string name="label_bank">Bank</string>
-    <string name="label_clip">Copy</string>
-    <string name="label_account">Account</string>
-    <string name="label_name">Name</string>
-    <string name="label_recharge_tips">*Note: Please transfer before submitting the order</string>
-    <string name="label_recharge_amount">Transfer amount</string>
-
-    <string name="label_recharge_bank">Transfer</string>
-    <string name="label_record">Bill</string>
-    <string name="label_amount_recharge">Transfer amount</string>
-    <string name="label_upload_recharge_evidence">Upload certificate</string>
-    <string name="text_take_photo">Take photos</string>
-    <string name="text_from_album">Photo album</string>
-    <string name="text_please_agree_to_authorize">Please agree to use photo albums and other functions</string>
-    <string name="tip_pls_select_bank">Please select a bank account</string>
-    <string name="tip_pls_upload_recharge_proof">Upload certificate</string>
-    <string name="label_my_balance">Balance</string>
-
-    <string name="label_recharge_payable">Total</string>
     <string name="label_submit_succ">Submitted successfully</string>
-    <string name="label_rechage_succ_tips">Submitted successfully, waiting for review</string>
-    <string name="label_recharge_by_self">Enter any</string>
-    <string name="please_input_recharge_amount">Please enter the recharge amount</string>
-    <string name="please_select_bank">Choose account</string>
-    <string name="label_select_bank">Choose account</string>
 
-    <!--其他，可能已取消的-->
-    <string name="title_input_password_pls">Enter payment password</string>
-    <string name="hint_forget_password_ask">Forget password</string>
-    <string name="label_order_remark_prefix">Remarks</string>
-    <string name="label_mode_delivery">Delivery</string>
-    <string name="label_mode_delivery_choose">Delivery</string>
+    <string name="label_rechage_succ_tips">Submitted and under review</string>
 
-    <string name="label_type_delivery_on_all_ready">到齐发货</string>
-    <string name="label_type_delivery_on_arrive">货到即发</string>
+    <!--确认付款弹窗-->
 
-    <string name="label_mode_transport_land">陆路运输(5~7天)</string>
-    <string name="label_mode_transport_sea">海运</string>
-    <string name="label_mode_transport_fright">空运</string>
+    <string name="label_confirm_pay">Confirm payment</string>
 
-    <string name="label_mode_transport_choose">选择运输方式</string>
-    <string name="tip_check_embargo_list">( 查看禁运物品 )</string>
-    <string name="tip_delivery_time">备注：以中国仓库发往柬埔寨仓库的时间开始计算，不包含中国采购时间，如果遇到节假日，顺延到节假日后</string>
-    <string name="label_mode_pay">支付方式</string>
-    <string name="label_mode_pay_balance">余额</string>
-    <string name="tip_mode_pay_order">备注：预付商品费用，中国运费、国际运费及进口税费到付</string>
-    <string name="tip_commercial_insurance_order">商业保险费（非人为破损100%退款）</string>
-    <string name="label_orthers">其他</string>
+    <string name="label_pay_wallet">Wallet</string>
 
-    <!--支付成功页面-->
-    <string name="label_pay_succ">Payment successful</string>
-    <string name="label_confirm_succ">Successfully received</string>
-    <!--其他-->
-    <string name="label_warehouse_choose">提货仓库选择</string>
-    <string name="label_mode_transport">运输方式</string>
-    <string name="label_express_cn_amount">中国运费</string>
-    <string name="label_express_oversea_amount">柬埔寨运费</string>
+    <!--钱包余额不足弹窗-->
 
     <string name="tip_balance_not_enought">Insufficient balance, Please Top UP</string>
-    <string name="label_recharge_status_reject">Review rejected</string>
-    <string name="label_recharge_status_audit_waiting">Review</string>
-    <string name="label_recharge_status_succ">Top up successfully></string>
-    <string name="label_wallet_logs">Bill</string>
-    <string name="label_recharge_history">Bill</string>
+
+    <!--是否放弃本次交易弹窗-->
+
+    <string name="label_give_up_pay">Are you sure to cancel the order？</string>
+
+    <!--支付成功页-->
+
+    <string name="label_pay_succ">Payment successful</string>
+
+    <string name="label_back_to_home">Home</string>
+
+    <string name="label_view_order">Order</string>
+
+    <!--我的页面-->
 
 
+    <string name="label_order">My Orders</string>
 
-    <string name="tip_input_phone">Enter phone number</string>
-    <string name="tip_input_phone_correctly">Enter right phone number</string>
+    <string name="label_all_orders">All</string>
 
-    <string name="em_notice_sending">发送中</string>
-    <string name="tip_msg_looking_goods">我正在看商品</string>
-    <string name="tip_msg_looking_order">我正在看订单</string>
-    <string name="format_order_sn">Order Number：%s</string>
-    <string name="tip_img_upload_fail">图片上传失败</string>
-    <!--消息-->
-    <string name="label_msg">Message</string>
-    <string name="label_msg_order">Orders</string>
-    <string name="label_msg_recharge">Top Up</string>
-    <string name="label_msg_delivery">Pick up</string>
-    <string name="label_looking_at">Watching</string>
-    <string name="label_title_chat"> </string>
-    <!--其他-->
-    <string name="tip_input_legal_password">请输入6-16位密码</string>
-    <string name="tip_input_nickname">请输入昵称</string>
-    <string name="tips_delete_address">确定删除？</string>
-    <string name="tip_password_un_same">前后密码不一致</string>
+    <string name="label_my_wallet">Wallet</string>
 
-    <!--订单详情-->
-    <string name="format_order_total">%d items，total：</string>
-    <string name="format_order_create_time">Order Time：%s</string>
-    <string name="format_order_remarks">Remark：%s</string>
-    <string name="format_order_pick_code">Pickup code：%s</string>
-    <string name="format_order_dis_mode">Delivery Method：%s</string>
+    <string name="label_coupon">Coupons</string>
 
-    <string name="format_order_pay_total">total%1$s，Paid%2$s，To pay</string>
-    <string name="format_count_down">Cancel after %s</string>
-    <string name="label_home_search">Search goods</string>
+    <string name="label_address_manage">Address</string>
+
+    <string name="label_my_collection">WishList</string>
+
+    <string name="label_app_help">Help</string>
+
+    <string name="label_setting">Settings</string>
+
+    <string name="label_owner_setting">Profile</string>
+
+    <string name="label_select_reason">Select reason</string>
+
+    <!--订单列表-->
+
+
+    <string name="label_order_all">ALL</string>
+
+    <string name="label_order_unpay">To Pay</string>
+
+    <string name="label_order_deliver_waiting">Preparing</string>
+
+    <string name="label_order_delivered">To Receive</string>
+
+    <string name="label_order_complete">Completed</string>
+
+    <string name="label_order_close">Closed</string>
+
+    <string name="label_order_audit_waiting">Review</string>
+
+
+    <string name="format_item_goods_price">Item(s)%s，</string>
+
+    <string name="format_item_goods_freight">Ship%s，</string>
+
+    <string name="format_item_goods_total">Total%s</string>
+
+    <string name="format_item_goods_paid">Paid%s</string>
+
+
+    <string name="label_order_to_pay">Submit</string>
+
+    <string name="label_order_cancel">Cancel</string>
+
+    <string name="label_order_delete">Delete Order</string>
+
+    <string name="label_order_confirm_received">Received</string>
+
+    <string name="label_history_order">My Orders</string>
+
+
+    <!--取消订单、删除订单弹窗-->
+
     <string name="label_cancel_order_1">Incorrect delivery address or mobile phone number</string>
+
     <string name="label_cancel_order_2">Forgot payment password / insufficient balance</string>
+
     <string name="label_cancel_order_3">Unable to pay</string>
+
     <string name="label_cancel_order_4">Don\'t want to buy</string>
+
     <string name="label_cancel_order_5">Other reasons</string>
+
     <string name="dialog_delete_order_title">Delete the order?</string>
+
     <string name="dialog_delete_order_content">Deleted orders cannot be restored, please consider carefully</string>
 
 
-    <string name="label_open_now">Open Now</string>
-    <string name="format_item_goods_price">Item%s，</string>
-    <string name="format_item_goods_freight">Ship%s，</string>
-    <string name="format_item_goods_total">Total%s</string>
-    <string name="format_item_goods_paid">Paid%s</string>
-    <string name="label_input_password">Enter payment password</string>
-    <string name="label_confirm_pay">Confirm payment</string>
-    <string name="label_pwd_safe_tips">For your account security, please set a payment password.</string>
-    <string name="label_pwd_modify">Set up payment password</string>
-    <string name="label_pwd_confirm_tips">Enter the password again</string>
-    <string name="label_give_up_pay">Are you sure to cancel the order？</string>
-    <string name="set_now">Set now</string>
+    <!--我的钱包-->
 
-    <string name="label_trace_info">Shipping information</string>
-    <string name="label_expected_arrival">Estimated Time of Arrival</string>
-    <string name="label_choose_pay_way">Select Payment Method</string>
-    <string name="label_recharge_now">Top Up</string>
+    <string name="label_recharge">Top up</string>
+
+    <string name="label_my_balance">Balance</string>
+
     <string name="label_bill">Bill</string>
-    <string name="label_order">Orders</string>
-    <string name="label_order_audit">ពិនិត្យ​ឡើង​វិញ</string>
+
+    <string name="label_wallet_logs">Bill</string>
+
+    <!--充值页-->
+
+    <string name="label_amount_recharge">Top-up amount</string>
+
+    <string name="label_recharge_payable">Total</string>
+
+    <string name="label_recharge_by_self">custom fill</string>
+
+    <string name="label_choose_pay_way">Payment Method</string>
+
+    <string name="label_recharge_now">Next</string>
 
 
-    <!--其他-->
+    <!--银行卡转账页-->
+
+    <string name="label_recharge_bank">Bank card transfer</string>
+
+    <string name="label_recharge_success">Succeed</string>
+
+    <string name="label_bank_account_tips">Choose account</string>
+
+    <string name="label_bank">Bank</string>
+
+    <string name="label_clip">Copy</string>
+
+    <string name="label_account">Account</string>
+
+    <string name="label_name">Name</string>
+
+    <string name="label_recharge_tips">*Please transfer before submitting the order</string>
+
+    <string name="label_recharge_amount">Transfer amount</string>
+
+    <string name="label_record">Bill</string>
+
+    <string name="label_recharge_status_reject">Rejected</string>
+
+    <string name="label_recharge_status_audit_waiting">Review</string>
+
+    <string name="label_recharge_status_succ">Successfully></string>
+
+    <string name="label_recharge_history">Bill</string>
+
+    <string name="label_upload_recharge_evidence">Upload certificate</string>
+
+    <string name="text_take_photo">Take photos</string>
+
+    <string name="text_from_album">Photo album</string>
+
+    <string name="text_please_agree_to_authorize">Please agree to use photo albums</string>
+
+    <string name="tip_pls_select_bank">Receiving account</string>
+
+    <string name="tip_pls_upload_recharge_proof">Upload certificate</string>
+
+    <string name="please_input_recharge_amount">Please enter the recharge amount</string>
+
+    <string name="please_select_bank">Choose account</string>
+
+    <string name="label_select_bank">Choose account</string>
+
+    <string name="label_order_audit">Review</string>
+
+
+    <!--优惠券-->
+
+    <string name="label_can_use_coupon">Coupons</string>
+
+    <string name="label_coupon_used">Used</string>
+
+    <string name="label_coupon_unused">Available</string>
+
+    <string name="label_coupon_overtime">Expired</string>
+
+    <!--地址管理-->
+
+
+    <string name="label_address_manager">Address</string>
+
+    <string name="label_default">default</string>
+
+    <string name="label_set_default">default</string>
+
+    <string name="label_add_address">Add</string>
+
+    <string name="label_add_new_address">Edit address</string>
+
+    <!--添加/编辑地址-->
+
+    <string name="label_consignee_address">Name</string>
+
+    <string name="label_contact_phone_address">Mobile Number</string>
+
+    <string name="label_region_belong_address">Area</string>
+
+    <string name="label_detail_address">Street</string>
+
+    <string name="label_locate">Position</string>
+
+    <string name="hint_fill_consignee_name">Enter the receiver\'s full name</string>
+
+    <string name="hint_fill_consignee_phone">Enter your mobile number</string>
+
+    <string name="hint_fill_region">Select your area</string>
+
+    <string name="hint_fill_detail_address">Enter street and building number</string>
+
+    <string name="tip_fill_region_belong">Select your area</string>
+
+    <string name="tip_phone_illegal">Enter right phone number</string>
+
+    <string name="tip_add_address_succ">Submitted successfully</string>
+
+    <string name="tip_modify_address_succ">Submitted successfully</string>
+
+    <string name="label_save">Done</string>
+
+    <string name="label_city_choose">Choose</string>
+
+    <string name="tips_delete_address">Delete the address?</string>
+
+    <!--手机注册登录页，页面暂时隐藏-->
+
+
+    <string name="label_facebook_login">Facebook</string>
+
+    <string name="label_login">Login</string>
+
+    <string name="label_logout">Logout</string>
+
+    <string name="label_register">Sign up</string>
+
+    <string name="protocol_prefix">I have read and agree to the </string>
+
+    <string name="protocol_bee">《Privacy Policy》</string>
+
+    <string name="protocol_service">《Privacy Policy》</string>
+
+    <string name="text_please_check_agreement">Read and agree to the《Privacy Policy》</string>
+
+    <string name="hint_input_phone_number">Phone number</string>
+
+    <string name="hint_input_password">Password(6-16)</string>
+
+    <string name="hint_input_pay_password">Enter payment password</string>
+
+    <string name="hint_input_pay_password2">Confirm payment password</string>
+
+    <string name="hint_input_auth_code">Verification code</string>
+
+    <string name="hint_input_nickname">Username</string>
+
+    <string name="hint_input_new_password">New password(6-16)</string>
+
+    <string name="text_forget_password">Forget password?</string>
+
+    <string name="label_forget_password">Forget password</string>
+
+    <string name="label_auth_code">Get code</string>
+
+    <string name="tip_pwd_set_succ">Password reset successfully, please log in again</string>
+
+
+
+
+
+    <!--设置-->
+
+
+    <string name="label_about_us">About us</string>
+
+    <string name="label_pay_password_modify">Payment Pin</string>
+
+    <string name="label_pay_password">Payment Pin</string>
+
+    <string name="label_app_language">Language</string>
+
+    <string name="label_language_choice">Language</string>
+
+    <string name="label_lan_english">English</string>
+
+    <string name="label_lan_chinese">中文</string>
+
+    <string name="label_lan_cambodia">មែរ</string>
+
     <string name="label_modify_password">Change payment pin</string>
 
     <string name="label_clear_cache_tips">Clear cache？</string>
-    <string name="label_most_popular">Popular</string>
-    <string name="label_all_orders">All</string>
-    <string name="label_all">All</string>
 
-
-    <string name="label_freight_after_delivery">Shipping charges after delivery</string>
-    <string name="label_my_nickname">Name</string>
-    <string name="label_phone_number">Phone number</string>
-    <string name="label_gender">Gender</string>
-    <string name="label_birthday">Birthday</string>
-    <string name="label_my_ava">Profile photo</string>
-    <string name="label_app_not_use">app does not work properly</string>
-    <string name="label_reset_premissions">Reset permissions</string>
-    <string name="male">Man</string>
-    <string name="female">Woman</string>
-    <string name="label_edit_nickname">Edit name</string>
-    <string name="input_your_nickname">Enter name</string>
-
-    <string name="tip_copy_succ">Copied</string>
-    <string name="tip_copy_failed">Copy failed</string>
-    <string name="label_wait_handler">To be processed</string>
-    <string name="url_is_null">Empty site</string>
-    <string name="exit_app_tips">Press again to exit the app</string>
-    <string name="label_complete">Done</string>
-    <string name="label_delete">Delete</string>
-    <string name="label_edit">Edit</string>
-    <string name="label_create_order">Check Out</string>
-
-    <!--复制粘贴弹窗-->
-    <string name="label_intelligent_search">Search</string>
-    <string name="label_intelligent_search_tips">You might like</string>
-    <string name="label_search_now">Search Now</string>
-
-    <string name="label_no_coupons">No coupons</string>
-
-
-    <!--其他-->
-    <string name="label_pay_wallet">Wallet</string>
-    <string name="label_pay_ali">支付宝支付</string>
-    <string name="label_pay_ali_tips">按当天汇率自动换算，免手续费</string>
-
-    <string name="aeon_card">AEON Card</string>
-    <string name="aba_pay">ABA PAY</string>
-    <string name="tap_to_pay_with_aba_mobile">Tap to pay with ABA Mobile</string>
-
-    <!--订单详情-->
-    <string name="label_express_volume">Volume</string>
-    <string name="label_billing_weight">Weight</string>
-    <string name="label_china_freight">China Shipping</string>
-    <string name="label_international_freight">International Shipping</string>
-    <string name="label_delivery_fee">Delivery fee</string>
-    <string name="label_freight_voucher">Shipping Coupons</string>
-    <string name="label_freight_paid_in">Shipping total</string>
-    <string name="label_back_to_home">Home</string>
-    <string name="label_view_order">Order</string>
     <string name="label_nickname">Name</string>
 
     <string name="label_modify_login_pwd">Change password</string>
+
     <string name="label_reset_pay_pwd">Reset password</string>
+
     <string name="label_clear_cache">Clear cache</string>
+
     <string name="label_app_version">Version</string>
+
     <string name="label_log_out">Log out</string>
+
     <string name="label_find">Find</string>
 
-
     <string name="loading">loading...</string>
+
     <string name="no_more">no more data</string>
+
     <string name="load_failed_try_agian">load failed, click to reload</string>
 
-
     <string name="facebook_app_id">409513450402246</string>
-    <string name="dialog_think_again">cancel</string>
-    <string name="dialog_delete">delete</string>
-    <string name="dialog_confirm_delete_cart">Delete the selected?</string>
-    <string name="dialog_edit_order_title">Please enter quantity</string>
+
+
+
+
+
     <string name="label_update_now">Upgrade Now</string>
 
     <string name="no_new_version">Already the latest version</string>
 
     <string name="no_connect_error_msg">Network timeout, request failed(100)</string>
+
     <string name="auth_error_msg">The account has been logged in from other places, please log in again(101)</string>
+
     <string name="nodata_error_msg">no data(102)</string>
+
     <string name="insufficient_error_msg">Insufficient authority(103)</string>
 
-    <string name="tb_delivery">,taobao shipping：</string>
-
     <string name="net_error_msg">Disconnected(104)</string>
-    <string name="label_no_quality">缺货中</string>
+
+    <!--未知：商品详情页-->
+
+
+    <string name="label_confirm">OK</string>
+
+    <string name="label_already_selected_prefix">Item</string>
+
+    <string name="label_price_prefix">Price</string>
+
+    <string name="tip_draw_succ">Received successfully</string>
+
+    <string name="tip_no_goods_selected">select a item</string>
+
+
+
+
+
+
+
+    <!--订单详情-->
+
+
+    <string name="label_order_detail">Order details</string>
+
+    <string name="format_tip_num_coupon_available">%dcoupons</string>
+
+    <string name="label_availabel_time_prefix_coupon"> </string>
+
+    <string name="label_draw_coupon">Coupons</string>
+
+    <string name="tip_need_login">Please log in again</string>
+
+    <string name="format_uid_mine">ID %d</string>
+
+    <string name="label_order_num_prefix">Order ID </string>
+
+    <string name="format_order_total">%d item(s) </string>
+
+    <string name="format_order_create_time">Order Time %s</string>
+
+    <string name="format_order_remarks">Message %s</string>
+
+    <string name="format_order_pick_code">Pickup code %s</string>
+
+    <string name="format_order_dis_mode">Delivery Method %s</string>
+
+    <string name="format_order_pay_total">Total%1$s Paid%2$s To pay</string>
+
+    <string name="format_count_down">Cancel after %s</string>
+
+    <string name="label_express_volume">Volume</string>
+
+    <string name="label_billing_weight">Weight</string>
+
+    <string name="label_china_freight">China Shipping</string>
+
+    <string name="label_international_freight">International Shipping</string>
+
+    <string name="label_delivery_fee">Delivery fee</string>
+
+    <string name="label_freight_voucher">Shipping Coupons</string>
+
+    <string name="label_freight_paid_in">Shipping total</string>
+
+    <string name="tb_delivery"> Taobao shipping </string>
+
+    <!--其他-->
+
+    <string name="label_platform_tb">Taobao</string>
+
+    <string name="label_platform_jd">JD</string>
+
+    <string name="label_platform_pdd">PDD</string>
+
+    <string name="label_platform_1688">1688</string>
+
+    <string name="label_storage">库存</string>
+
+    <string name="label_share_to_you">给你分享了</string>
+
+    <string name="label_setting_succ">Submitted successfully</string>
+
+    <string name="label_modify_pwd_error">Two passwords are different</string>
+
+    <string name="tips_data_error">Incorrect data,try again later</string>
+
+
+
+    <!--其他，可能已取消的-->
+
+
+    <string name="title_input_password_pls">Enter payment password</string>
+
+    <string name="hint_forget_password_ask">Forget password</string>
+
+    <string name="label_order_remark_prefix">Message</string>
+
+    <string name="label_mode_delivery">Delivery</string>
+
+    <string name="label_mode_delivery_choose">Delivery</string>
+
+    <string name="label_type_delivery_on_all_ready">到齐发货</string>
+
+    <string name="label_type_delivery_on_arrive">货到即发</string>
+
+    <string name="label_mode_transport_land">陆路运输(5~7天)</string>
+
+    <string name="label_mode_transport_sea">海运</string>
+
+    <string name="label_mode_transport_fright">空运</string>
+
+    <string name="label_mode_transport_choose">选择运输方式</string>
+
+    <string name="tip_check_embargo_list">( 查看禁运物品 )</string>
+
+    <string name="tip_delivery_time">备注：以中国仓库发往柬埔寨仓库的时间开始计算，不包含中国采购时间，如果遇到节假日，顺延到节假日后</string>
+
+    <string name="label_mode_pay">支付方式</string>
+
+    <string name="label_mode_pay_balance">余额</string>
+
+    <string name="tip_mode_pay_order">备注：预付商品费用，中国运费、国际运费及进口税费到付</string>
+
+    <string name="tip_commercial_insurance_order">商业保险费（非人为破损100%退款）</string>
+
+    <string name="label_orthers">其他</string>
+
+
+
+
+
+
+    <string name="label_confirm_succ">Successfully received</string>
+
+    <!--其他-->
+
+
+    <string name="label_warehouse_choose">提货仓库选择</string>
+
+    <string name="label_mode_transport">运输方式</string>
+
+    <string name="label_express_cn_amount">中国运费</string>
+
+    <string name="label_express_oversea_amount">柬埔寨运费</string>
+
+
+
+
+
+
+
+
+    <string name="tip_input_phone">Enter phone number</string>
+
+    <string name="tip_input_phone_correctly">Enter right phone number</string>
+
+    <string name="em_notice_sending">发送中</string>
+
+    <string name="tip_msg_looking_goods">我正在看商品</string>
+
+    <string name="tip_msg_looking_order">我正在看订单</string>
+
+    <string name="format_order_sn">Order Number：%s</string>
+
+    <string name="tip_img_upload_fail">图片上传失败</string>
+
+    <!--消息-->
+
+
+    <string name="label_msg">Message</string>
+
+    <string name="label_msg_order">Orders</string>
+
+    <string name="label_msg_recharge">Top Up</string>
+
+    <string name="label_msg_delivery">Pick up</string>
+
+    <string name="label_looking_at">Watching</string>
+
+    <string name="label_title_chat"> </string>
+
+    <!--其他-->
+
+
+    <string name="tip_input_legal_password">请输入6-16位密码</string>
+
+    <string name="tip_input_nickname">请输入昵称</string>
+
+
+
+    <string name="tip_password_un_same">前后密码不一致</string>
+
+
+
+
+
+
+
+
+
+
+
+    <string name="label_input_password">Enter payment password</string>
+
+
+
+    <string name="label_pwd_safe_tips">For your account security, please set a payment password.</string>
+
+    <string name="label_pwd_modify">Set up payment password</string>
+
+    <string name="label_pwd_confirm_tips">Enter the password again</string>
+
+
+
+    <string name="set_now">Set now</string>
+
+    <string name="label_trace_info">Shipping information</string>
+
+    <string name="label_expected_arrival">Estimated Time of Arrival</string>
+
+
+
+
+
+
+
+
+
+
+
+    <!--其他-->
+
+
+
+
+
+
+
+
+    <string name="label_all">All</string>
+
+    <string name="label_freight_after_delivery">Shipping charges after delivery</string>
+
+    <string name="label_my_nickname">Name</string>
+
+    <string name="label_phone_number">Phone number</string>
+
+    <string name="label_gender">Gender</string>
+
+    <string name="label_birthday">Birthday</string>
+
+    <string name="label_my_ava">Profile photo</string>
+
+    <string name="label_app_not_use">app does not work properly</string>
+
+    <string name="label_reset_premissions">Reset permissions</string>
+
+    <string name="male">Man</string>
+
+    <string name="female">Woman</string>
+
+    <string name="label_edit_nickname">Edit name</string>
+
+    <string name="input_your_nickname">Enter name</string>
+
+    <string name="tip_copy_succ">Copied</string>
+
+    <string name="tip_copy_failed">Copy failed</string>
+
+    <string name="label_wait_handler">To be processed</string>
+
+    <string name="url_is_null">Empty site</string>
+
+    <string name="exit_app_tips">Press again to exit the app</string>
+
+
+
+
+
+    <string name="label_no_coupons">No coupons</string>
+
+    <!--其他-->
+
+
+
+
+    <string name="label_pay_ali">支付宝支付</string>
+
+    <string name="label_pay_ali_tips">按当天汇率自动换算，免手续费</string>
+
+    <string name="aeon_card">AEON Card</string>
+
+    <string name="aba_pay">ABA PAY</string>
+
+    <string name="tap_to_pay_with_aba_mobile">Tap to pay with ABA Mobile</string>
+
+    <!--订单详情-->
+
+
+
+
+
+
+
 
 </resources>

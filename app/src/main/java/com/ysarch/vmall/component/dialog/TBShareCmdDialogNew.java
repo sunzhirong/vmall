@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
 import com.ysarch.vmall.common.imageloader.ImageLoadConfig;
@@ -55,6 +56,17 @@ public class TBShareCmdDialogNew extends Dialog {
         getWindow().setAttributes(attributes);
     }
 
+    @Override
+    public void show() {
+        super.show();
+        TCAgent.onPageStart(getContext(),"复制粘贴链接弹窗");
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        TCAgent.onPageEnd(getContext(),"复制粘贴链接弹窗");
+    }
 
     public void setCallback(Callback callback) {
         mCallback = callback;

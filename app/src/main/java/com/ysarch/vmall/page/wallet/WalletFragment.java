@@ -56,4 +56,9 @@ public class WalletFragment extends BaseFragment<WalletPresenter> {
     public void onUserInfoSucc() {
         mTVBalance.setText(UserInfoManager.getUser().getWallet() + "");
     }
+
+    @Override
+    protected String getPageName() {
+        return "我的钱包页";
+    }
 }

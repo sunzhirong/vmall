@@ -52,6 +52,16 @@ public class GoodsItemBeanV2 implements Serializable {
 
     private String dollarMarketPrice;
 
+    private boolean onItemView;
+
+    public boolean isOnItemView() {
+        return onItemView;
+    }
+
+    public void setOnItemView(boolean onItemView) {
+        this.onItemView = onItemView;
+    }
+
     public String getDollarMarketPrice() {
         return dollarMarketPrice;
     }

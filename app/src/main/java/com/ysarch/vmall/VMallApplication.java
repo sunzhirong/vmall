@@ -12,6 +12,7 @@ import androidx.multidex.MultiDexApplication;
 import com.github.jokar.multilanguages.library.LanguageLocalListener;
 import com.github.jokar.multilanguages.library.MultiLanguage;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.vmall.common.context.ActivityLifeCallback;
 import com.ysarch.vmall.common.context.AppContext;
 import com.ysarch.vmall.common.net.GlobalParamInterceptor;
@@ -58,7 +59,7 @@ public class VMallApplication extends MultiDexApplication {
         SizeUtils.init(this);
         ResUtils.init(this);
         VersionHelper.init();
-
+        TCAgent.init(this);
         EaseHelper.getInstance().init(this);
 
         registerActivityLifecycleCallbacks(new ActivityLifeCallback());

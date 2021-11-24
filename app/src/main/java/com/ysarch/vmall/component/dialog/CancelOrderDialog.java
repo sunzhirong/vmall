@@ -3,12 +3,14 @@ package com.ysarch.vmall.component.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.vmall.R;
 
 import butterknife.BindView;
@@ -111,5 +113,17 @@ public class CancelOrderDialog extends Dialog {
             dialog.setCallback(mCallback);
             return dialog;
         }
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        TCAgent.onPageStart(getContext(), "取消订单弹窗");
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        TCAgent.onPageEnd(getContext(), "取消订单弹窗");
     }
 }

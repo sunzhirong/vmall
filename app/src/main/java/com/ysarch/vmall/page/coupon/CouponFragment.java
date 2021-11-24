@@ -66,4 +66,9 @@ public class CouponFragment extends BaseFragment<CouponPresenter> {
     public CouponPresenter newPresenter() {
         return new CouponPresenter();
     }
+
+    @Override
+    protected String getPageName() {
+        return "优惠券页";
+    }
 }

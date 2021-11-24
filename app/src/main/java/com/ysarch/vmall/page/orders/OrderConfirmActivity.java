@@ -17,11 +17,12 @@ import com.ysarch.vmall.domain.constant.BundleKey;
 public class OrderConfirmActivity extends BaseTitleActivity {
 
     private OrderConfirmFragment mFragment;
-   public static Bundle getBundle(GenerateOrderConfirmResult generateOrderConfirmResult){
-       Bundle bundle = new Bundle();
-       bundle.putSerializable(BundleKey.ARG_ORDER_GENERATE_RESULT, generateOrderConfirmResult);
-       return bundle;
-   }
+
+    public static Bundle getBundle(GenerateOrderConfirmResult generateOrderConfirmResult) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(BundleKey.ARG_ORDER_GENERATE_RESULT, generateOrderConfirmResult);
+        return bundle;
+    }
 
     @Override
     protected String getCustomTitle() {
@@ -31,7 +32,7 @@ public class OrderConfirmActivity extends BaseTitleActivity {
     @Override
     protected Fragment createFragment() {
         mFragment = new OrderConfirmFragment();
-        if(getIntent().getExtras() != null){
+        if (getIntent().getExtras() != null) {
             mFragment.setArguments(getIntent().getExtras());
         }
         return mFragment;
@@ -41,7 +42,7 @@ public class OrderConfirmActivity extends BaseTitleActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(mFragment!= null){
+        if (mFragment != null) {
             mFragment.onActivityResult(requestCode, resultCode, data);
         }
     }

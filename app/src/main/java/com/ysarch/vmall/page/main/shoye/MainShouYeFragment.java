@@ -85,7 +85,7 @@ public class MainShouYeFragment extends BaseFragment<MainShouYePresenter> {
                         break;
                 }
                 mFragmentPagerItems.add(new FragmentPagerItem(ShouyeSubpageFragment.class, name,
-                        ShouyeSubpageFragment.getBundle(name, cateLevelBean.getChildren(),keywords)));
+                        ShouyeSubpageFragment.getBundle(name, cateLevelBean.getChildren(),keywords,cateLevelBean.getName())));
             }
         }
 

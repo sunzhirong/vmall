@@ -17,6 +17,7 @@ import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.local.MultiSkuEntity;
 import com.ysarch.vmall.domain.services.CouponLoader;
 import com.ysarch.vmall.domain.services.GoodsLoader;
+import com.ysarch.vmall.domain.services.UploadLogLoader;
 import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.ResUtils;
 import com.ysarch.vmall.utils.VMallUtils;
@@ -24,8 +25,10 @@ import com.yslibrary.utils.CollectionUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
@@ -82,13 +85,16 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
     }
 
 
-    public void requestGoodsDetail(long goodsId, int platformType) {
+    public void requestGoodsDetail(long goodsId, int platformType,String entryType) {
+        long visitTime = System.currentTimeMillis();
         GoodsLoader.getInstance().requestGoodsDetailV2(platformType, goodsId)
                 .compose(showLoadingDialog())
                 .compose(getV().bindToLifecycle())
                 .subscribe(new ApiSubscriber<GoodsDetailResultV2>(getV()) {
                     @Override
                     public void onSuccess(GoodsDetailResultV2 goodsDetailResult) {
+                        String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
+                        productDetailLog(entryType,"",VMallUtils.getNowTime(visitTime),visit_result_time,String.valueOf(goodsId),true);
                         correctUrl(goodsDetailResult);
                         getV().onDataSuccess(goodsDetailResult);
                     }
@@ -97,7 +103,31 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
                     @Override
                     protected void onFail(NetError error) {
                         super.onFail(error);
+                        String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
+                        if(error.getType()!=NetError.OtherError)
+                            productDetailLog(entryType,error.getMessage(),VMallUtils.getNowTime(visitTime),visit_result_time,String.valueOf(goodsId),false);
                         getV().onDataFail();
+                    }
+                });
+    }
+
+    private void productDetailLog(String entry,String fail_reason,String visit_time,String visit_result_time,String commodity_id,boolean operation_result){
+        Map<String,Object> map = new HashMap<>();
+        map.put("entry",entry);
+        map.put("fail_reason",fail_reason);
+        map.put("visit_time",visit_time);
+        map.put("visit_result_time",visit_result_time);
+        map.put("commodity_id",commodity_id);
+        map.put("operation_result",operation_result);
+        UploadLogLoader.getInstance().productDetailLog(map)
+                .enqueue(new Callback<ResponseBody>() {
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        Log.e("niko", JSON.toJSONString(response));
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.e("niko", JSON.toJSONString(t));
                     }
                 });
     }

@@ -26,7 +26,6 @@ import com.ysarch.vmall.page.account.AccountActivity;
 import com.ysarch.vmall.page.account.presenter.LoginPresenter;
 import com.ysarch.vmall.page.setting.language.LanguageSettingActivity;
 import com.ysarch.vmall.page.wallet.PayPwdModifyActivity;
-import com.ysarch.vmall.page.wallet.RechargeActivity;
 import com.ysarch.vmall.utils.CleanDataUtils;
 import com.ysarch.vmall.utils.NavHelper;
 import com.ysarch.vmall.utils.TimeUtils;
@@ -238,5 +237,10 @@ public class SettingFragment extends BaseFragment<SettingPresenter> {
 
     public void onCheckUpdateFail() {
 
+    }
+
+    @Override
+    protected String getPageName() {
+        return "设置页";
     }
 }

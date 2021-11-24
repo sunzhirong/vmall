@@ -2,6 +2,7 @@ package com.ysarch.uibase.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.vmall.R;
 
 
@@ -20,6 +22,7 @@ public class SimpleDialogWithTwoBtn extends Dialog {
     OnSubmitListener mOnSubmitListener;
     private Context context;
     private boolean mAutoDismissWhileClick = true;
+    private String pageName;
 
     public SimpleDialogWithTwoBtn(@NonNull Context context, OnSubmitListener mOnSubmitListener) {
         this(context, R.style.CustomDialog);
@@ -55,6 +58,9 @@ public class SimpleDialogWithTwoBtn extends Dialog {
         addBtnClickListener();
     }
 
+    public void setPageName(String pageName){
+        this.pageName = pageName;
+    }
 
     public void setContent(String content) {
         mTVWarning.setText(content);
@@ -99,6 +105,20 @@ public class SimpleDialogWithTwoBtn extends Dialog {
         void onRightBtnClick();
     }
 
+    @Override
+    public void show() {
+        super.show();
+        if(!TextUtils.isEmpty(pageName))
+            TCAgent.onPageStart(getContext(),pageName);
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        if(!TextUtils.isEmpty(pageName))
+            TCAgent.onPageEnd(getContext(),pageName);
+    }
+
     public static class Builder {
         private Context mContext;
         private String mWarning;
@@ -109,6 +129,7 @@ public class SimpleDialogWithTwoBtn extends Dialog {
         private int mThemeResId = R.style.CustomDialog;
         private boolean mWithinCloseBtn;
         private boolean mAutoDismissWhileClick = true;
+        private String pageName;
 
         public Builder(Context context) {
             mContext = context;
@@ -155,6 +176,10 @@ public class SimpleDialogWithTwoBtn extends Dialog {
             mCancelable = cancelable;
             return this;
         }
+        public Builder setPageName(String pageName) {
+            this.pageName = pageName;
+            return this;
+        }
 
 
         public SimpleDialogWithTwoBtn build() {
@@ -163,6 +188,7 @@ public class SimpleDialogWithTwoBtn extends Dialog {
             dialog.setOnSubmitListener(mOnSubmitListener);
             dialog.setCancelable(mCancelable);
             dialog.setAutoDismissWhileClick(mAutoDismissWhileClick);
+            dialog.setPageName(this.pageName);
             dialog.setLeftLabel(mLeftLabel)
                     .setRightLabel(mRightLabel)
                     .setWarning(mWarning);
@@ -170,6 +196,7 @@ public class SimpleDialogWithTwoBtn extends Dialog {
         }
 
     }
+
 
 
 }

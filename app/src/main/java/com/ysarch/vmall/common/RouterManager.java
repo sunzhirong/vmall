@@ -70,7 +70,7 @@ public class RouterManager {
                         int source = stringMap.containsKey("source") ? Integer.parseInt(stringMap.get("source"))
                                 : Constants.TYPE_PLATFORM_TB;
                         NavHelper.startActivity(activity, GoodsDetailActivity.class,
-                                GoodsDetailActivity.getBundle(Long.parseLong(id), source));
+                                GoodsDetailActivity.getBundle(Long.parseLong(id), source,"-1"));
                     }
                     break;
                 case GOTO_ORDER_DETAIL:
