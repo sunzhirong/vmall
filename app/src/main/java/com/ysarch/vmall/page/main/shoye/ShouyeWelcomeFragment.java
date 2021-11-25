@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.fragment.CommonPureListFragment;
 import com.ysarch.uibase.recyclerview.FRecyclerView;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutDecoration;
@@ -280,5 +281,18 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
     @Override
     protected boolean hasMore() {
         return mHasMore;
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        TCAgent.onPageEnd(context,"首页最受欢迎");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        TCAgent.onPageStart(context,"首页最受欢迎");
     }
 }

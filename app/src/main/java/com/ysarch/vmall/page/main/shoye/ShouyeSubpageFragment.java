@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.fragment.CommonPureListFragment;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutDecoration;
 import com.ysarch.vmall.R;
@@ -37,6 +38,7 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
 
     private int mCateId;
     private String mCateName;
+    private String mPageName;
 
     private List<CateLevelBean> mCateLevelBeans;
     private ShouYeSubpageRcyAdapterV2 mRcyAdapter;
@@ -54,11 +56,12 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
 //        return bundle;
 //    }
 
-    public static Bundle getBundle(String cateName, List<CateLevelBean> cateLevelBeans,String keywords) {
+    public static Bundle getBundle(String cateName, List<CateLevelBean> cateLevelBeans,String keywords,String pageName) {
         Bundle bundle = new Bundle();
         bundle.putString(BundleKey.ARG_CATE_NAME, cateName);
         bundle.putString(BundleKey.ARG_CATE_LIST, new Gson().toJson(cateLevelBeans));
         bundle.putString(BundleKey.ARG_CATE_KEYWORDS, keywords);
+        bundle.putString(BundleKey.ARG_PAGE_NAME, pageName);
         return bundle;
     }
 
@@ -157,6 +160,7 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
         });
 
         mCateName = getArguments().getString(BundleKey.ARG_CATE_KEYWORDS);
+        mPageName = getArguments().getString(BundleKey.ARG_PAGE_NAME);
         String catesStr = getArguments().getString(BundleKey.ARG_CATE_LIST);
         if (!TextUtils.isEmpty(catesStr)) {
             mCateLevelBeans = new Gson().fromJson(catesStr, new TypeToken<List<CateLevelBean>>() {
@@ -240,5 +244,17 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
             mCurCateDataId = cateId;
             mHasMore = false;
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        TCAgent.onPageEnd(context,"首页"+mPageName);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        TCAgent.onPageStart(context,"首页"+mPageName);
     }
 }
