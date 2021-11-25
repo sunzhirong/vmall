@@ -3,6 +3,7 @@ package com.ysarch.vmall.page.main.presenter;
 import android.util.Log;
 import android.util.SparseArray;
 
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.ysarch.uibase.base.BasePresenter;
 import com.ysarch.vmall.common.adapter.viewholder.CartPromotionGoodsVH;
@@ -16,6 +17,7 @@ import com.ysarch.vmall.domain.bean.WholeGenerateOrderResult;
 import com.ysarch.vmall.domain.services.CartLoader;
 import com.ysarch.vmall.domain.services.GoodsLoader;
 import com.ysarch.vmall.domain.services.OrderLoader;
+import com.ysarch.vmall.domain.services.UploadLogLoader;
 import com.ysarch.vmall.page.main.MainCartFragment;
 import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.utils.CollectionUtils;
@@ -23,6 +25,7 @@ import com.yslibrary.utils.CollectionUtils;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -256,13 +259,16 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
 
 
     public void generateConfirmOrder(List<String> ids) {
+        long visitTime = System.currentTimeMillis();
         getV().showLoadingDialog();
         OrderLoader.getInstance().generateConfirmOrder(ids)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         getV().dismissLoadingDialog();
+                        String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
                         if(response.errorBody() != null){
+                            generateOrderLog(response.errorBody().toString(),VMallUtils.getNowTime(visitTime),visit_result_time,false);
                             getV().showTs(response.errorBody().toString());
                             return;
                         }
@@ -271,15 +277,16 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
                                 String content = response.body().string();
                                 WholeGenerateOrderResult generateOrderResult = new Gson().fromJson(content, WholeGenerateOrderResult.class);
                                 if (generateOrderResult.getCode() != 200) {
+                                    generateOrderLog(generateOrderResult.getMessage(),VMallUtils.getNowTime(visitTime),visit_result_time,false);
                                     getV().showTs(generateOrderResult.getMessage());
                                 } else {
+                                    generateOrderLog("",VMallUtils.getNowTime(visitTime),visit_result_time,true);
                                     GenerateOrderConfirmResult data = generateOrderResult.getData();
                                     List<GenerateOrderConfirmResult.SameSellerCartPromotionBean> sameList = data.getSameSellerCartPromotionItemList();
                                     for (GenerateOrderConfirmResult.SameSellerCartPromotionBean bean : sameList){
                                         List<GenerateOrderConfirmResult.CartPromotionItemListBean> cartList = bean.getCartPromotionItemList();
                                         for (int i = 0;i<cartList.size();i++){
                                             GenerateOrderConfirmResult.CartPromotionItemListBean cartBean = cartList.get(i);
-
                                             cartBean.setNumber(cartList.size());
                                             cartBean.setAmount(bean.getAmount());
                                             cartBean.setDollorDelivery(bean.getDollorDelivery());
@@ -296,7 +303,7 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
                             } catch (IOException e) {
                                 e.printStackTrace();
                                 getV().showTs(e.getMessage());
-                                Log.i(TAG, "deleteCartByIds2 error: " + e.getMessage());
+                                generateOrderLog(e.getMessage(),VMallUtils.getNowTime(visitTime),visit_result_time,false);
 //                                getV().showTs(e.getMessage());
                             }
                         }
@@ -320,5 +327,25 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
                 img.put(key, VMallUtils.correctUrl(img.get(key)));
             }
         }
+    }
+
+    public void generateOrderLog(String fail_reason,String visit_time,String visit_result_time,boolean operation_result){
+        Map<String,Object> map = new HashMap<>();
+        map.put("fail_reason",fail_reason);
+        map.put("visit_time",visit_time);
+        map.put("visit_result_time",visit_result_time);
+        map.put("operation_result",operation_result);
+        UploadLogLoader.getInstance().generateOrderLog(map)
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                    }
+                });
     }
 }

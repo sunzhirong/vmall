@@ -34,6 +34,7 @@ import com.ysarch.vmall.domain.local.LocalPropSkuEntity;
 import com.ysarch.vmall.page.cart.CartActivity;
 import com.ysarch.vmall.page.coupon.CouponDrawActivity;
 import com.ysarch.vmall.page.webview.CommonWebActivity;
+import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.NavHelper;
 import com.ysarch.vmall.utils.SkuParser;
 import com.ysarch.vmall.utils.VMallUtils;
@@ -120,16 +121,23 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
     private PureImageAdapter mAdapter;
 
     private int mPlatformType;
+    private String mEntryType;
     private MultiSelSkuDialog mMultiSkuDialog;
 
-    public static Bundle getBundle(long goodsId) {
-        return getBundle(goodsId, Constants.TYPE_PLATFORM_TB);
+
+//    public static Bundle getBundle(long goodsId) {
+//        return getBundle(goodsId, Constants.TYPE_PLATFORM_TB);
+//    }
+
+    public static Bundle getBundle(long goodsId,String entryType) {
+        return getBundle(goodsId, Constants.TYPE_PLATFORM_TB,entryType);
     }
 
-    public static Bundle getBundle(long goodsId, int platform) {
+    public static Bundle getBundle(long goodsId, int platform , String entryType) {
         Bundle bundle = new Bundle();
         bundle.putLong(BundleKey.ARG_GOODS_ID, goodsId);
         bundle.putInt(BundleKey.ARG_PLATFORM_TYPE, platform);
+        bundle.putString(BundleKey.ARG_ENTRY_TYPE, entryType);
         return bundle;
     }
 
@@ -147,14 +155,16 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
         if (getIntent().getExtras() != null) {
             mGoodsId = getIntent().getExtras().getLong(BundleKey.ARG_GOODS_ID, -1);
             mPlatformType = getIntent().getExtras().getInt(BundleKey.ARG_PLATFORM_TYPE, Constants.TYPE_PLATFORM_TB);
+            mEntryType = getIntent().getExtras().getString(BundleKey.ARG_ENTRY_TYPE, "");
+            Log.e("GoodsDetailActivity","mEntryType = "+mEntryType);
             if (mGoodsId != -1) {
-                getPresenter().requestGoodsDetail(mGoodsId, mPlatformType);
+                getPresenter().requestGoodsDetail(mGoodsId, mPlatformType,mEntryType);
                 mBeeGlide = BeeGlide.with(this);
                 getPresenter().requestCouponList(mGoodsId);
             }
         } else {
             mGoodsId = mTestId;
-            getPresenter().requestGoodsDetail(mGoodsId, mPlatformType);
+            getPresenter().requestGoodsDetail(mGoodsId, mPlatformType,"");
             mBeeGlide = BeeGlide.with(this);
             getPresenter().requestCouponList(mGoodsId);
         }

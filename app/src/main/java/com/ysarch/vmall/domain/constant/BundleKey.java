@@ -67,4 +67,6 @@ public class BundleKey {
     public static final String ARG_GOODS_LIST = "arg_goods_list";
     public static final String ARG_GOODS = "arg_goods";
 
+    public static final String ARG_ENTRY_TYPE = "arg_entry_type";
+
 }

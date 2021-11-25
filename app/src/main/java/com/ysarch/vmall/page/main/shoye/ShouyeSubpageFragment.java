@@ -117,7 +117,7 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
                 NavHelper.startActivity(getActivity(), GoodsDetailActivity.class);
             else
                 NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                        GoodsDetailActivity.getBundle(((GoodsItemBeanV2) data).getId()));
+                        GoodsDetailActivity.getBundle(((GoodsItemBeanV2) data).getId(),Constants.TYPE_ENTRY_SHOUYE));
         });
 
 

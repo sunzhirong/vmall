@@ -72,7 +72,7 @@ public class SearchContentFragment extends CommonPureListFragment<SearchContentP
                 NavHelper.startActivity(getActivity(), GoodsDetailActivity.class);
             else
                 NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                        GoodsDetailActivity.getBundle (((GoodsItemBean)data).getId()));
+                        GoodsDetailActivity.getBundle (((GoodsItemBean)data).getId(),Constants.TYPE_ENTRY_SEARCH));
         });
 
         int marginH = ResUtils.getDimeI(R.dimen.margin_h_common);

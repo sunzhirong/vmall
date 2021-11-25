@@ -25,6 +25,7 @@ import com.ysarch.vmall.domain.bean.CartGoodsBean;
 import com.ysarch.vmall.domain.bean.GenerateOrderConfirmResult;
 import com.ysarch.vmall.domain.bean.GoodsDetailBean;
 import com.ysarch.vmall.domain.bean.SkuBean;
+import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.local.LocalPropSkuEntity;
 import com.ysarch.vmall.page.goods.GoodsDetailActivity;
 import com.ysarch.vmall.page.main.presenter.MainCartPresenter;
@@ -221,7 +222,7 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
                 public void onItemClick(int position, CartGoodsBean cartGoodsBean) {
 
                     NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                            GoodsDetailActivity.getBundle(cartGoodsBean.getProductId(),cartGoodsBean.getSource()));
+                            GoodsDetailActivity.getBundle(cartGoodsBean.getProductId(),cartGoodsBean.getSource(), Constants.TYPE_ENTRY_CART));
                 }
             });
         }

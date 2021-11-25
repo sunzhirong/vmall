@@ -12,6 +12,7 @@ import com.ysarch.vmall.common.context.CustomActivityManager;
 import com.ysarch.vmall.component.dialog.ClipSearchDialog;
 import com.ysarch.vmall.component.dialog.TBShareCmdDialogNew;
 import com.ysarch.vmall.domain.bean.TBShareCmdResult;
+import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.services.GoodsLoader;
 import com.ysarch.vmall.page.goods.GoodsDetailActivity;
 import com.ysarch.vmall.page.search.SearchActivity;
@@ -93,7 +94,7 @@ public class ClipContentHelper {
                                                 @Override
                                                 public void onNavGoodsDetail(long goodsId) {
                                                     NavHelper.startActivity(CustomActivityManager.getInstance().getCurrentActivity(), GoodsDetailActivity.class,
-                                                            GoodsDetailActivity.getBundle(goodsId));
+                                                            GoodsDetailActivity.getBundle(goodsId, Constants.TYPE_ENTRY_CLIP));
                                                 }
                                             })
                                             .build();

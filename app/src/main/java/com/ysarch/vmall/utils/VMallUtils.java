@@ -322,4 +322,17 @@ public class VMallUtils {
         String end  = sdf.format(date2);
         return next + "-" + end;
     }
+
+    public static String getNowTime(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(System.currentTimeMillis());
+        return simpleDateFormat.format(date);
+    }
+
+    public static String getNowTime(long time){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(time);
+        return simpleDateFormat.format(date);
+    }
+
 }

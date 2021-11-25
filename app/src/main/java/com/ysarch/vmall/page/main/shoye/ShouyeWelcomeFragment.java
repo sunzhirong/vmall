@@ -77,7 +77,7 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
                 builder.build().show();
             } else {
                 NavHelper.startActivity(getActivity(), GoodsDetailActivity.class,
-                        GoodsDetailActivity.getBundle(((GoodsItemBeanV2) data).getId()));
+                        GoodsDetailActivity.getBundle(((GoodsItemBeanV2) data).getId(),Constants.TYPE_ENTRY_SHOUYE));
             }
         });
         mRcyAdapter.setBannerCallback(new HomeBannerVH.Callback() {
