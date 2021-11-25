@@ -15,6 +15,7 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.bigkoo.convenientbanner.listener.OnPageChangeListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.base.BaseActivity;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.adapter.PureImageAdapter;
@@ -260,7 +261,12 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
         if (goodsDetailResult == null || goodsDetailResult.getData() == null
                 || goodsDetailResult.getData().getItem() == null)
             return;
+
+
         mGoodsDetailBean = goodsDetailResult.getData().getItem();
+        double aDouble = Double.parseDouble(mGoodsDetailBean.getDollarPrice())*100;
+        TCAgent.onAddItemToShoppingCart(String.valueOf(mGoodsDetailBean.getItemId()), mGoodsDetailBean.getCategoryId(), mGoodsDetailBean.getTitle(), (int) aDouble, 1);
+
 
         if (CollectionUtils.isNotEmpty(mGoodsDetailBean.getDescImgs())) {
             initAdapter();

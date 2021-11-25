@@ -225,6 +225,8 @@
         <!--facebook-->
 
 
+        <meta-data android:name="TD_APP_ID" android:value="DB12B1CA79294DB5A1607B4D7E19053B" />
+
     </application>
 
 </manifest>
