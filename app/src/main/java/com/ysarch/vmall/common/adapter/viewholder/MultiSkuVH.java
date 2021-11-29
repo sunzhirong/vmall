@@ -56,13 +56,11 @@ public class MultiSkuVH extends AbsViewHolder {
         mMultiSkuEntity = (MultiSkuEntity) data;
         mCallback = (Callback) callback;
         checkQuantity();
-        if(mMultiSkuEntity.getSkuBeanV2().getFloatPrice() != 0){
+        if(!TextUtils.isEmpty(mMultiSkuEntity.getSkuBeanV2().getPrice())){
             mTVPrice.setText("$" + mMultiSkuEntity.getSkuBeanV2().getPrice());
-//            mTVPrice.setVisibility(View.VISIBLE);
             mVGap.setVisibility(View.VISIBLE);
         } else {
             mTVPrice.setText("");
-//            mTVPrice.setVisibility(View.GONE);
             mVGap.setVisibility(View.GONE);
         }
 //        mTVPrice.setText("$" + mMultiSkuEntity.getSkuBeanV2().getPrice());
