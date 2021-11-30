@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.fragment.CommonPureListFragment;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutDecoration;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutNormalDecoration;
@@ -191,4 +192,10 @@ public class SearchContentFragmentV2 extends CommonPureListFragment<SearchConten
             }
         }
     }
+
+    @Override
+    protected String getPageName() {
+        return "搜索结果页";
+    }
+
 }

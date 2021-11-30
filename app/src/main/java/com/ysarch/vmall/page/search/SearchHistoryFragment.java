@@ -2,6 +2,7 @@ package com.ysarch.vmall.page.search;
 
 import android.os.Bundle;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.base.BaseFragment;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.adapter.SearchHistoryAdapter;
@@ -65,4 +66,10 @@ public class SearchHistoryFragment extends BaseFragment<SearchHistoryPresenter> 
     void onViewClick() {
         getPresenter().clearKeywords();
     }
+
+    @Override
+    protected String getPageName() {
+        return "搜索页";
+    }
+
 }

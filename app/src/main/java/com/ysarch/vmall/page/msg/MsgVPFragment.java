@@ -17,8 +17,6 @@ import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.event.NotificationDef;
 import com.ysarch.vmall.domain.constant.BundleKey;
 import com.ysarch.vmall.domain.constant.Constants;
-import com.ysarch.vmall.page.search.SearchContentFragmentV2;
-import com.ysarch.vmall.page.search.SearchFragmentAdapter;
 import com.ysarch.vmall.utils.ResUtils;
 import com.yslibrary.event.EventCenter;
 

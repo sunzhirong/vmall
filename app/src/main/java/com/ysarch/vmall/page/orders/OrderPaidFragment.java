@@ -52,4 +52,9 @@ public class OrderPaidFragment extends BaseFragment {
                 break;
         }
     }
+
+    @Override
+    protected String getPageName() {
+        return "支付成功页";
+    }
 }

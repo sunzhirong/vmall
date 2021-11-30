@@ -574,4 +574,10 @@ public class MainCartFragment extends BaseFragment<MainCartPresenter> implements
 //    private void checkEmpty(){
 //        if(mAdapter ==)
 //    }
+
+
+    @Override
+    protected String getPageName() {
+        return "购物车页";
+    }
 }

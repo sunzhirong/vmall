@@ -23,6 +23,7 @@ import com.ysarch.vmall.common.banner.GoodsDetailBannerHolder;
 import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
 import com.ysarch.vmall.component.GoodsDetailTitleBar;
+import com.ysarch.vmall.component.dialog.CusBottomSheetDialog;
 import com.ysarch.vmall.component.dialog.SkuDialog;
 import com.ysarch.vmall.component.dialog.multisku.MultiSelSkuDialog;
 import com.ysarch.vmall.domain.bean.CouponBean;
@@ -510,7 +511,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
                 break;
 
             case R.id.ctl_service:
-                BottomSheetDialog serviceDialog = new BottomSheetDialog(context);
+                CusBottomSheetDialog serviceDialog = new CusBottomSheetDialog(context,"详情页_服务弹窗");
                 View serviceView = getLayoutInflater().inflate(R.layout.dialog_goods_service, null);
                 serviceView.findViewById(R.id.tv_confirm).setOnClickListener(v -> serviceDialog.dismiss());
                 serviceDialog.setContentView(serviceView);
@@ -518,7 +519,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
                 break;
 
             case R.id.ll_trace:
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+                CusBottomSheetDialog bottomSheetDialog = new CusBottomSheetDialog(context,"详情页_规格弹窗");
                 View dialogView = getLayoutInflater().inflate(R.layout.dialog_trace, null);
                 dialogView.findViewById(R.id.tv_confirm).setOnClickListener(v -> bottomSheetDialog.dismiss());
                 ((TextView) dialogView.findViewById(R.id.tv_trace_time)).setText(VMallUtils.getTranceDateString());
@@ -526,12 +527,24 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
                 bottomSheetDialog.show();
                 break;
             case R.id.ll_freight:
-                BottomSheetDialog freightDialog = new BottomSheetDialog(context);
+                CusBottomSheetDialog freightDialog = new CusBottomSheetDialog(context,"详情页_淘宝运费弹窗");
                 View freightView = getLayoutInflater().inflate(R.layout.dialog_freight, null);
                 freightView.findViewById(R.id.tv_confirm).setOnClickListener(v -> freightDialog.dismiss());
                 freightDialog.setContentView(freightView);
                 freightDialog.show();
                 break;
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        TCAgent.onPageEnd(context,"商详页");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        TCAgent.onPageStart(context,"商详页");
     }
 }

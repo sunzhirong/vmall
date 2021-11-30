@@ -285,14 +285,8 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
 
 
     @Override
-    public void onPause() {
-        super.onPause();
-        TCAgent.onPageEnd(context,"首页最受欢迎");
+    protected String getPageName() {
+        return "首页最受欢迎";
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        TCAgent.onPageStart(context,"首页最受欢迎");
-    }
 }

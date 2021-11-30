@@ -173,4 +173,9 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 //        FunctionsManager.getInstance().removeFunction(HailerFunctionDef.CHECK_PROTOCOL);
 //    }
 
+
+    @Override
+    protected String getPageName() {
+        return "facebook登录页";
+    }
 }

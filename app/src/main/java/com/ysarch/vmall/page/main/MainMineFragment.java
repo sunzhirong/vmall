@@ -397,4 +397,9 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
 //        pvOptions.show();
 //    }
 
+
+    @Override
+    protected String getPageName() {
+        return "我的页";
+    }
 }

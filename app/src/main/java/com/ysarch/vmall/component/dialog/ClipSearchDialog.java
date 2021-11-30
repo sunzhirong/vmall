@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.vmall.R;
 
 import butterknife.BindView;
@@ -49,6 +50,18 @@ public class ClipSearchDialog extends Dialog {
         attributes.height = WindowManager.LayoutParams.MATCH_PARENT;
         attributes.width = WindowManager.LayoutParams.MATCH_PARENT;
         getWindow().setAttributes(attributes);
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        TCAgent.onPageStart(getContext(),"复制粘贴搜索弹窗");
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        TCAgent.onPageEnd(getContext(),"复制粘贴搜索弹窗");
     }
 
 

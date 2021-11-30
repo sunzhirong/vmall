@@ -2,6 +2,7 @@ package com.ysarch.vmall.page.main;
 
 import android.os.Bundle;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.base.BaseFragment;
 import com.ysarch.uibase.recyclerview.scroller.LinearTopSnapSmoothScroller;
 import com.ysarch.vmall.R;
@@ -214,4 +215,10 @@ public class MainCateFragment extends BaseFragment<MainCatePresenter> {
 
     public void onCateDatasFail() {
     }
+
+    @Override
+    protected String getPageName() {
+        return "分类页";
+    }
+
 }

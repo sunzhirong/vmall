@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.dialog.SimpleDialogWithTwoBtn;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.UserInfoManager;
@@ -133,6 +134,14 @@ public class PayDialog extends DialogFragment {
             mLlPayConfirm.setVisibility(View.GONE);
             mLlPayPassword.setVisibility(View.VISIBLE);
         }
+        TCAgent.onPageEnd(getContext(),"确认付款弹窗");
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        TCAgent.onPageEnd(getContext(),"确认付款弹窗");
     }
 
     public void setPwdError(boolean pwdError) {
@@ -198,6 +207,7 @@ public class PayDialog extends DialogFragment {
                 .setWarning(getString(R.string.label_give_up_pay))
                 .setAutoDismissWhileClick(true)
                 .setCancelable(true)
+                .setPageName("是否放弃本次交易弹窗")
                 .setOnSubmitListener(new SimpleDialogWithTwoBtn.OnSubmitListener() {
                     @Override
                     public void onLeftBtnClick() {
@@ -221,6 +231,7 @@ public class PayDialog extends DialogFragment {
                 .setWarning(getString(R.string.tip_balance_not_enought))
                 .setAutoDismissWhileClick(true)
                 .setCancelable(true)
+                .setPageName("钱包余额不足弹窗")
                 .setOnSubmitListener(new SimpleDialogWithTwoBtn.OnSubmitListener() {
                     @Override
                     public void onLeftBtnClick() {

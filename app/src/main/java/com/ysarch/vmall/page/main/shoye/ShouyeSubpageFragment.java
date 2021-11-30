@@ -247,14 +247,8 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        TCAgent.onPageEnd(context,"首页"+mPageName);
+    protected String getPageName() {
+        return "首页"+mPageName;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        TCAgent.onPageStart(context,"首页"+mPageName);
-    }
 }

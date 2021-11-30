@@ -69,5 +69,6 @@ public class BundleKey {
     public static final String ARG_GOODS = "arg_goods";
 
     public static final String ARG_ENTRY_TYPE = "arg_entry_type";
+    public static final String ARG_TALKINGDATA_PAGE_NAME = "arg_talkingdata_page_name";
 
 }

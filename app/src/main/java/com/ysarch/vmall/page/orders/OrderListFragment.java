@@ -254,4 +254,9 @@ public class OrderListFragment extends CommonPureListFragment<OrderListPresenter
 
         mPayDialog.show(getFragmentManager(),"test");
     }
+
+    @Override
+    protected String getPageName() {
+        return super.getPageName();
+    }
 }
