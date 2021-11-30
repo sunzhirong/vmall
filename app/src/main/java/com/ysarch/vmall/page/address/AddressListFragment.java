@@ -44,6 +44,7 @@ public class AddressListFragment extends CommonPureListFragment<AddressListPrese
                 new SimpleDialogWithTwoBtn.Builder(getContext())
                         .setCancelable(true)
                         .setAutoDismissWhileClick(true)
+                        .setPageName("删除地址弹窗")
                         .setOnSubmitListener(new SimpleDialogWithTwoBtn.OnSubmitListener() {
                             @Override
                             public void onLeftBtnClick() {
@@ -104,6 +105,7 @@ public class AddressListFragment extends CommonPureListFragment<AddressListPrese
 
 
 
+
         setEmptyOpt(getString(R.string.label_add_new_address), () -> {
             NavHelper.startActivity(getActivity(), AddressEditActivity.class,
                     AddressEditActivity.getNoShowDefaultOptBundle(),
@@ -148,5 +150,10 @@ public class AddressListFragment extends CommonPureListFragment<AddressListPrese
     public void onAddressDefaultSetSucc(int position, AddressItemBean addressItemBean) {
         addressItemBean.setDefaultStatus(1 - addressItemBean.getDefaultStatus());
         mAdapter.changeDefaultAddress(position, addressItemBean);
+    }
+
+    @Override
+    protected String getPageName() {
+        return "地址管理页";
     }
 }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.vmall.BuildConfig;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
@@ -131,5 +132,17 @@ public class UpdateDialog extends Dialog {
 
 
     }
+    @Override
+    public void show() {
+        super.show();
+        TCAgent.onPageStart(getContext(),"版本升级弹窗");
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        TCAgent.onPageEnd(getContext(),"版本升级弹窗");
+    }
+
 
 }

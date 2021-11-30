@@ -378,9 +378,8 @@ public class RechargeFragment extends BaseFragment<RechargePresenter>
 //        dialogWithSingleBtn.setOnDismissListener(dialog -> getActivity().finish());
 //        dialogWithSingleBtn.show();
 
-
+        NavHelper.startActivity(getActivity(), RechargeSuccessActivity.class,RechargeSuccessActivity.getBundle("充值提交成功页"));
         getActivity().finish();
-        NavHelper.startActivity(getActivity(), RechargeSuccessActivity.class);
 
     }
 
@@ -493,5 +492,10 @@ public class RechargeFragment extends BaseFragment<RechargePresenter>
     @Override
     public void takeCancel() {
 
+    }
+
+    @Override
+    protected String getPageName() {
+        return "银行卡汇款页";
     }
 }

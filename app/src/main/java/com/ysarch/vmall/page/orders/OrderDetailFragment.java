@@ -606,4 +606,9 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         mPayDialog.setPwdError(true);
         mPayDialog.show(getFragmentManager(),"test");
     }
+
+    @Override
+    protected String getPageName() {
+        return "订单详情页";
+    }
 }

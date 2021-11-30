@@ -215,13 +215,13 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
                     int lanId = AppContext.getsInstance().getLanguageEntity().getLanId();
                     switch (lanId){
                         case Constants.ID_LAN_KM:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/km/index.html"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/km/index.html","使用帮助页"));
                             break;
                         case Constants.ID_LAN_ZH:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/zh/index.html"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/zh/index.html","使用帮助页"));
                             break;
                         default:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(" http://portal.sabayshop.club/help/en/index.html"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(" http://portal.sabayshop.club/help/en/index.html","使用帮助页"));
                             break;
                     }
 

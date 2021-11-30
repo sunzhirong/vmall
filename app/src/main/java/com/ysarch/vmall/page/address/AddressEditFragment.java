@@ -354,4 +354,14 @@ public class AddressEditFragment extends BaseFragment<AddressEditPresenter> {
         getActivity().setResult(Activity.RESULT_OK, intent);
         getActivity().finish();
     }
+
+    @Override
+    protected String getPageName() {
+        if (mAddressItemBean != null) {
+            return "编辑地址页";
+        } else {
+            return "添加地址页";
+        }
+
+    }
 }

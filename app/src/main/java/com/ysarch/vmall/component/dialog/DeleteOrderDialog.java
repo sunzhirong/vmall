@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jungly.gridpasswordview.GridPasswordView;
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.vmall.R;
 
 import androidx.annotation.NonNull;
@@ -172,6 +173,18 @@ public class DeleteOrderDialog extends Dialog {
             }
             return dialog;
         }
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        TCAgent.onPageStart(getContext(), "删除订单弹窗");
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        TCAgent.onPageEnd(getContext(), "删除订单弹窗");
     }
 
 

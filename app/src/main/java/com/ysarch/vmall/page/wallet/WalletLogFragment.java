@@ -59,4 +59,9 @@ public class WalletLogFragment extends CommonPureListFragment<WalletLogPresenter
     protected boolean hasMore() {
         return getPresenter().hasMore;
     }
+
+    @Override
+    protected String getPageName() {
+        return "账单页";
+    }
 }

@@ -55,4 +55,9 @@ public class RechargeHistoryFragment extends CommonPureListFragment<RechargeHist
     public RechargeHistoryPresenter newPresenter() {
         return new RechargeHistoryPresenter();
     }
+
+    @Override
+    protected String getPageName() {
+        return "充值明细页";
+    }
 }

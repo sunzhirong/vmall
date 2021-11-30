@@ -25,12 +25,15 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.dialog.LoadingDialog;
 import com.ysarch.uibase.recyclerview.FRecyclerView;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.ThreadManager;
 import com.ysarch.vmall.component.web.VideoChromClient;
 import com.ysarch.vmall.component.web.VideoImpl;
+import com.ysarch.vmall.domain.constant.BundleKey;
+import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.page.webview.presenter.CommonWebPresenter;
 import com.ysarch.vmall.utils.StatusBarUtil;
 
@@ -74,6 +77,7 @@ public class CommonWebActivity extends XActivity<CommonWebPresenter> {
     ArrayList<String> mListSelectImg = new ArrayList<>();
     private String mTitle;
     private String mUrl;
+    private String mPageName;
     private ViewStub mViewStub;
     private LoadingDialog loadingDialog;
 
@@ -85,13 +89,13 @@ public class CommonWebActivity extends XActivity<CommonWebPresenter> {
 
     /**
      * @param title
-     * @param url
+     * @param pagename
      * @return
      */
-    public static Bundle getBundle(String title, String url) {
+    public static Bundle getBundle(String title, String pagename) {
         Bundle bundle = new Bundle();
         bundle.putString(ARG_TITLE, title);
-        bundle.putString(ARG_URL, url);
+        bundle.putString(BundleKey.ARG_TALKINGDATA_PAGE_NAME, pagename);
         return bundle;
     }
 
@@ -195,6 +199,7 @@ public class CommonWebActivity extends XActivity<CommonWebPresenter> {
         if (intent != null) {
             mTitle = intent.getStringExtra(ARG_TITLE);
             mUrl = intent.getStringExtra(ARG_URL);
+            mPageName = intent.getStringExtra(BundleKey.ARG_TALKINGDATA_PAGE_NAME);
 
             resetViewProperties();
         }
@@ -386,6 +391,8 @@ public class CommonWebActivity extends XActivity<CommonWebPresenter> {
         if (mWebView != null) {
             mWebView.onResume();
         }
+        if(!TextUtils.isEmpty(mPageName))
+            TCAgent.onPageStart(context,mPageName);
     }
 
 
@@ -395,6 +402,8 @@ public class CommonWebActivity extends XActivity<CommonWebPresenter> {
         if (mWebView != null) {
             mWebView.onPause();
         }
+        if(!TextUtils.isEmpty(mPageName))
+            TCAgent.onPageEnd(context,mPageName);
     }
 
     @Override
@@ -491,5 +500,6 @@ public class CommonWebActivity extends XActivity<CommonWebPresenter> {
 //            reloadWebWithUserInfo();
 //        }
 //    }
+
 
 }

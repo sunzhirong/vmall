@@ -1,6 +1,7 @@
 package com.ysarch.vmall.page.setting.language;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.vmall.R;
 import com.ysarch.vmall.common.context.AppContext;
 import com.ysarch.vmall.domain.constant.CacheKeys;
@@ -111,5 +113,28 @@ public class LanguageSettingFragment extends Fragment {
         LocalManageUtil.saveSelectLanguage(getContext(), select);
         MainActivity.reStart(getContext());
         getActivity().finish();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(!TextUtils.isEmpty(getPageName()))
+            TCAgent.onPageEnd(getContext(),getPageName());
+    }
+
+    /**
+     * 获取当前界面的埋点名字
+     * @return
+     */
+    protected String getPageName(){
+        return "APP语言设置页";
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(!TextUtils.isEmpty(getPageName()))
+            TCAgent.onPageStart(getContext(),getPageName());
     }
 }
