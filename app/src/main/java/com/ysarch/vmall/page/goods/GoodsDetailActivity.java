@@ -33,8 +33,10 @@ import com.ysarch.vmall.domain.bean.SkuBeanV2;
 import com.ysarch.vmall.domain.constant.BundleKey;
 import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.local.LocalPropSkuEntity;
+import com.ysarch.vmall.page.account.AccountActivity;
 import com.ysarch.vmall.page.cart.CartActivity;
 import com.ysarch.vmall.page.coupon.CouponDrawActivity;
+import com.ysarch.vmall.page.wallet.WalletActivity;
 import com.ysarch.vmall.page.webview.CommonWebActivity;
 import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.NavHelper;
@@ -154,6 +156,13 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        if(!UserInfoManager.isLogin()){
+            NavHelper.startActivity(context, AccountActivity.class, AccountActivity.getBundle(AccountActivity.TYPE_LOGIN));
+            finish();
+            return;
+        }
+
+
         if (getIntent().getExtras() != null) {
             mGoodsId = getIntent().getExtras().getLong(BundleKey.ARG_GOODS_ID, -1);
             mPlatformType = getIntent().getExtras().getInt(BundleKey.ARG_PLATFORM_TYPE, Constants.TYPE_PLATFORM_TB);
@@ -355,7 +364,7 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
         mTvTraceDetail.setText(getString(R.string.label_expected_arrival)+" "+VMallUtils.getTranceDateString());
 
 
-        if(mGoodsDetailBean.getDollarDelivery()==0){
+        if(mGoodsDetailBean.getDollarDelivery()!=0){
             mLlFreight.setVisibility(View.VISIBLE);
             mTvFreightDetail.setText(VMallUtils.getCurrencySign()+mGoodsDetailBean.getDollarDelivery());
         }else {
