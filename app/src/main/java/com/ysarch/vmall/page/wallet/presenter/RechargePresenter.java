@@ -89,17 +89,17 @@ public class RechargePresenter extends BasePresenter<RechargeFragment> {
                 .subscribe(new ApiSubscriber<String>(getV()) {
                     @Override
                     public void onSuccess(String msg) {
-                        String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
-                        rechargeLogParam("",VMallUtils.getNowTime(visitTime),visit_result_time,true);
+                        long visit_result_time = System.currentTimeMillis() - visitTime;
+                        rechargeLogParam("",visitTime,visit_result_time,true);
                         getV().onSubmitSucc(msg);
                     }
 
                     @Override
                     protected void onFail(NetError error) {
                         super.onFail(error);
-                        String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
+                        long visit_result_time = System.currentTimeMillis() - visitTime;
                         if(error.getType()!=NetError.OtherError)
-                            rechargeLogParam(error.getMessage(), VMallUtils.getNowTime(visitTime),visit_result_time,false);
+                            rechargeLogParam(error.getMessage(), visitTime,visit_result_time,false);
                     }
                 });
     }
@@ -151,7 +151,7 @@ public class RechargePresenter extends BasePresenter<RechargeFragment> {
                 });
     }
 
-    public void rechargeLogParam(String fail_reason,String visit_time,String visit_result_time,boolean operation_result){
+    public void rechargeLogParam(String fail_reason,long visit_time,long visit_result_time,boolean operation_result){
         Map<String,Object> map = new HashMap<>();
         map.put("failReason",fail_reason);
         map.put("visitTime",visit_time);

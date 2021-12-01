@@ -2,6 +2,7 @@ package com.ysarch.vmall.utils;
 
 import android.content.Context;
 import android.os.Build;
+import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
 import com.ysarch.vmall.BuildConfig;
@@ -21,10 +22,16 @@ public class UploadUtils {
     public static Map<String,Object> getUploadRequest(){
         Map<String,Object> deviceBaseInfoMap = new HashMap<String,Object>();
         deviceBaseInfoMap.put("appVersion",BuildConfig.VERSION_NAME);
-        deviceBaseInfoMap.put("carrier","");
-        deviceBaseInfoMap.put("language", AppContext.getsInstance().getLanguageEntity().getLabel());
+        TelephonyManager manager = (TelephonyManager)VMallApplication.sApplication.getSystemService(Context.TELEPHONY_SERVICE);
+        String carrierName = manager.getSimOperatorName();
+        deviceBaseInfoMap.put("carrier",carrierName);
+        deviceBaseInfoMap.put("language", AppContext.getsInstance().getLanguageEntity().getShortCut());
         deviceBaseInfoMap.put("manufacturer",DeviceUtil.getDeviceName());
-        deviceBaseInfoMap.put("memberId",UserInfoManager.getUser().getId());
+        if(UserInfoManager.getUser()==null){
+            deviceBaseInfoMap.put("memberId",0);
+        }else {
+            deviceBaseInfoMap.put("memberId",UserInfoManager.getUser().getId());
+        }
         deviceBaseInfoMap.put("model",DeviceUtil.getDeviceModel());
         deviceBaseInfoMap.put("os","Android");
         deviceBaseInfoMap.put("osVersion", Build.VERSION.RELEASE);

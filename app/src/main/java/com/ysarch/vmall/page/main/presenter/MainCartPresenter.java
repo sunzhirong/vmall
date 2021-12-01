@@ -267,9 +267,9 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         getV().dismissLoadingDialog();
-                        String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
+                        long visit_result_time = System.currentTimeMillis() - visitTime;
                         if(response.errorBody() != null){
-                            generateOrderLog(response.errorBody().toString(),VMallUtils.getNowTime(visitTime),visit_result_time,false);
+                            generateOrderLog(response.errorBody().toString(),visitTime,visit_result_time,false);
                             getV().showTs(response.errorBody().toString());
                             return;
                         }
@@ -278,10 +278,10 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
                                 String content = response.body().string();
                                 WholeGenerateOrderResult generateOrderResult = new Gson().fromJson(content, WholeGenerateOrderResult.class);
                                 if (generateOrderResult.getCode() != 200) {
-                                    generateOrderLog(generateOrderResult.getMessage(),VMallUtils.getNowTime(visitTime),visit_result_time,false);
+                                    generateOrderLog(generateOrderResult.getMessage(),visitTime,visit_result_time,false);
                                     getV().showTs(generateOrderResult.getMessage());
                                 } else {
-                                    generateOrderLog("",VMallUtils.getNowTime(visitTime),visit_result_time,true);
+                                    generateOrderLog("",visitTime,visit_result_time,true);
                                     GenerateOrderConfirmResult data = generateOrderResult.getData();
                                     List<GenerateOrderConfirmResult.SameSellerCartPromotionBean> sameList = data.getSameSellerCartPromotionItemList();
                                     for (GenerateOrderConfirmResult.SameSellerCartPromotionBean bean : sameList){
@@ -304,7 +304,7 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
                             } catch (IOException e) {
                                 e.printStackTrace();
                                 getV().showTs(e.getMessage());
-                                generateOrderLog(e.getMessage(),VMallUtils.getNowTime(visitTime),visit_result_time,false);
+                                generateOrderLog(e.getMessage(),visitTime,visit_result_time,false);
 //                                getV().showTs(e.getMessage());
                             }
                         }
@@ -330,7 +330,7 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
         }
     }
 
-    public void generateOrderLog(String fail_reason,String visit_time,String visit_result_time,boolean operation_result){
+    public void generateOrderLog(String fail_reason,long visit_time,long visit_result_time,boolean operation_result){
         Map<String,Object> map = new HashMap<>();
         map.put("failReason",fail_reason);
         map.put("visitTime",visit_time);

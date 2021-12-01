@@ -31,7 +31,7 @@ public class FaceBookLoginPresenter extends BasePresenter<FacebookLoginFragment>
 
 
 
-    public void facebookLogin( String name, String token, String outId,String headUrl,String email,String visitTime) {
+    public void facebookLogin( String name, String token, String outId,String headUrl,String email,long visitTime) {
         getV().showLoadingDialog();
         AccountLoader.getInstance().facebookLogin(outId, token,name,headUrl,email)
                 .compose(dontShowDialog())
@@ -39,9 +39,9 @@ public class FaceBookLoginPresenter extends BasePresenter<FacebookLoginFragment>
                 .subscribe(new ApiSubscriber<LoginResult>(getV()) {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        loginLog(visitTime,"",true);
                         UserInfoManager.updateToken("", loginResult.getToken(), loginResult.getTokenHead(),
                                 loginResult.getMember(),loginResult.getMember().isHasPayPassword());
+                        loginLog(visitTime,"",true);
                         getV().onLoginSuccess();
                     }
 
@@ -54,7 +54,7 @@ public class FaceBookLoginPresenter extends BasePresenter<FacebookLoginFragment>
                 });
     }
 
-    public void loginLog(String visitTime,String failReason,boolean result){
+    public void loginLog(long visitTime,String failReason,boolean result){
         Map<String,Object> map = new HashMap<>();
         map.put("visitTime",visitTime);
         map.put("failReason",failReason);

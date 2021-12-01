@@ -59,7 +59,7 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 //    private FunctionNoParamHasResult mProtocolChecker;
     private CallbackManager callbackManager;
 
-    private String visitTime;
+    private long visitTime;
 
     public static FacebookLoginFragment newInstance() {
         FacebookLoginFragment fragment = new FacebookLoginFragment();
@@ -130,7 +130,7 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
         if(!mCTVChecker.isSelected()) {
             showTs(getString(R.string.text_please_check_agreement));
         }else {
-            visitTime = VMallUtils.getNowTime();
+            visitTime = System.currentTimeMillis();
             LoginManager.getInstance().logInWithReadPermissions(getActivity(), Arrays.asList("public_profile", "email"));
         }
     }

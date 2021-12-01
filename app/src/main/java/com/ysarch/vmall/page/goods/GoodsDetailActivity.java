@@ -274,8 +274,14 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
 
 
         mGoodsDetailBean = goodsDetailResult.getData().getItem();
-        double aDouble = Double.parseDouble(mGoodsDetailBean.getDollarPrice())*100;
-        TCAgent.onAddItemToShoppingCart(String.valueOf(mGoodsDetailBean.getItemId()), mGoodsDetailBean.getCategoryId()==null?"0":mGoodsDetailBean.getCategoryId(), mGoodsDetailBean.getTitle(), (int) aDouble, 1);
+//        try {
+//            double aDouble = Double.parseDouble(mGoodsDetailBean.getDollarPrice())*100;
+//            TCAgent.onAddItemToShoppingCart(String.valueOf(mGoodsDetailBean.getItemId()), mGoodsDetailBean.getCategoryId()==null?"0":mGoodsDetailBean.getCategoryId(), mGoodsDetailBean.getTitle(), (int) aDouble, 1);
+//        }catch (Exception e){
+//            TCAgent.onAddItemToShoppingCart(String.valueOf(mGoodsDetailBean.getItemId()), mGoodsDetailBean.getCategoryId()==null?"0":mGoodsDetailBean.getCategoryId(), mGoodsDetailBean.getTitle(), 0, 1);
+//        }
+        TCAgent.onAddItemToShoppingCart(String.valueOf(mGoodsDetailBean.getItemId()), mGoodsDetailBean.getCategoryId()==null?"0":mGoodsDetailBean.getCategoryId(), mGoodsDetailBean.getTitle(), 0, 1);
+
 
 
         if (CollectionUtils.isNotEmpty(mGoodsDetailBean.getDescImgs())) {

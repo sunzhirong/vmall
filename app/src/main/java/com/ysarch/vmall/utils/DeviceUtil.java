@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
@@ -71,7 +72,7 @@ public class DeviceUtil {
      * 获取设备名称
      */
     public static String getDeviceName() {
-        return android.os.Build.DEVICE;
+        return Build.BRAND;
     }
 
     /**

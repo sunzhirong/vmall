@@ -94,10 +94,10 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
                 .subscribe(new ApiSubscriber<GoodsDetailResultV2>(getV()) {
                     @Override
                     public void onSuccess(GoodsDetailResultV2 goodsDetailResult) {
-                        String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
+                        long visit_result_time = System.currentTimeMillis() - visitTime;
                         String title = goodsDetailResult.getData().getItem().getTitle();
                         String dollarPrice = goodsDetailResult.getData().getItem().getDollarPrice();
-                        productDetailLog(entryType,"",VMallUtils.getNowTime(visitTime),visit_result_time,String.valueOf(goodsId),title,dollarPrice,true);
+                        productDetailLog(entryType,"",visitTime,visit_result_time,String.valueOf(goodsId),title,dollarPrice,true);
                         correctUrl(goodsDetailResult);
                         getV().onDataSuccess(goodsDetailResult);
                     }
@@ -106,15 +106,15 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
                     @Override
                     protected void onFail(NetError error) {
                         super.onFail(error);
-                        String visit_result_time = String.valueOf(System.currentTimeMillis() - visitTime);
+                        long visit_result_time = System.currentTimeMillis() - visitTime;
                         if(error.getType()!=NetError.OtherError)
-                            productDetailLog(entryType,error.getMessage(),VMallUtils.getNowTime(visitTime),visit_result_time,String.valueOf(goodsId),"","",false);
+                            productDetailLog(entryType,error.getMessage(),visitTime,visit_result_time,String.valueOf(goodsId),"","",false);
                         getV().onDataFail();
                     }
                 });
     }
 
-    private void productDetailLog(String entry,String fail_reason,String visit_time,String visit_result_time,String commodity_id,String commodityName,String commodityPrice,boolean operation_result){
+    private void productDetailLog(String entry,String fail_reason,long visit_time,long visit_result_time,String commodity_id,String commodityName,String commodityPrice,boolean operation_result){
         Map<String,Object> map = new HashMap<>();
         map.put("entry",entry);
         map.put("failReason",fail_reason);
