@@ -333,7 +333,7 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
     public void generateOrderLog(String fail_reason,long visit_time,long visit_result_time,boolean operation_result){
         Map<String,Object> map = new HashMap<>();
         map.put("failReason",fail_reason);
-        map.put("visitTime",visit_time);
+        map.put("visitTime",visit_time/1000);
         map.put("visitResultTime",visit_result_time);
         map.put("operationResult",operation_result);
         map.put("deviceBaseInfo", UploadUtils.getUploadRequest());

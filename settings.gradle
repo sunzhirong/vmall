@@ -1,2 +1,2 @@
-include  ":mvp",':app',':yslibrary',':gridpassword'
+include  ":mvp",':app',':yslibrary',':gridpassword',"takephoto_library"
 rootProject.name = "vmall"

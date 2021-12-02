@@ -50,6 +50,9 @@ public class CartPromotionGoodsVH extends AbsViewHolder {
     TextView mTVCountOrderGoods;
     @BindView(R.id.tv_delivery_order_goods_item)
     TextView mTVDeliveryOrderGoods;
+    @BindView(R.id.tv_delivery_order_goods)
+    TextView mTVDeliveryGoods;
+
     @BindView(R.id.tv_total_price_order_goods_item)
     TextView mTVTotalPrice;
 
@@ -108,6 +111,7 @@ public class CartPromotionGoodsVH extends AbsViewHolder {
             mTVCountOrderGoods.setText(builder);
 //            mTVCountOrderGoods.setText(String.format(ResUtils.getString(R.string.format_order_total), mBean.getNumber()));
             mTVDeliveryOrderGoods.setVisibility(mBean.getDollorDelivery()==0?View.GONE:View.VISIBLE);
+            mTVDeliveryGoods.setVisibility(mBean.getDollorDelivery()==0?View.GONE:View.VISIBLE);
             mTVDeliveryOrderGoods.setText(VMallUtils.convertPriceString(mBean.getDollorDelivery()));
         }
 

@@ -110,11 +110,12 @@
             tool:text="$111" />
 
         <TextView
+            android:id="@+id/tv_delivery_order_goods"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/blackA"
             android:textSize="@dimen/text_14pt"
-            tool:text="@string/tb_delivery" />
+            android:text="@string/tb_delivery" />
 
         <TextView
             android:id="@+id/tv_delivery_order_goods_item"

@@ -165,6 +165,15 @@ public class GenerateOrderConfirmResult implements Serializable {
         private double promotionAmount;
         private double payAmount;
         private double serviceFeeAmount;
+        private double cnFreight;
+
+        public double getCnFreight() {
+            return cnFreight;
+        }
+
+        public void setCnFreight(double cnFreight) {
+            this.cnFreight = cnFreight;
+        }
 
         public double getServiceFeeAmount() {
             return serviceFeeAmount;

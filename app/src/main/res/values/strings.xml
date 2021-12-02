@@ -5,485 +5,485 @@
     <!--系统-->
 
 
-    <string name="label_cancel">បោះបង់</string>
+    <string name="label_cancel">取消</string>
 
-    <string name="label_next">ជំហ៊ាន​បន្ទាប់​</string>
+    <string name="label_next">下一步</string>
 
     <string name="app_name">SabayShop</string>
 
-    <string name="label_sy_tab">ទំព័រដើម</string>
+    <string name="label_sy_tab">首页</string>
 
-    <string name="label_fl_tab">ប្រភេទ</string>
+    <string name="label_fl_tab">分类</string>
 
-    <string name="label_discover_tab">បានឃើញ</string>
+    <string name="label_discover_tab">发现</string>
 
-    <string name="label_cart_tab">កន្រ្តកទំនិញ</string>
+    <string name="label_cart_tab">购物车</string>
 
-    <string name="label_mine_tab">គណនី​របស់​ខ្ញុំ</string>
+    <string name="label_mine_tab">我的</string>
 
     <!--首页-->
 
 
-    <string name="label_home_taobao">ការ​បញ្ជា​ទិញTaobao</string>
+    <string name="label_home_taobao">淘宝采购</string>
 
-    <string name="label_national_transport">តាមដាន​ការ​ដឹកជញ្ជូន</string>
+    <string name="label_national_transport">物流跟踪</string>
 
-    <string name="label_home_return_back">ក្នុងរយះពេល72ម៉ោងដោះស្រាយបញ្ហា</string>
+    <string name="label_home_return_back">72h售后</string>
 
-    <string name="label_hot_goods">ផលិតផល​ពេញនិយម</string>
+    <string name="label_hot_goods">热门商品</string>
 
-    <string name="label_most_popular">ពេញនិយមបំផុត</string>
+    <string name="label_most_popular">最受欢迎</string>
 
     <!--复制粘贴弹窗-->
 
 
-    <string name="label_intelligent_search">ស្វែងរក​ផលិតផល</string>
+    <string name="label_intelligent_search">智能搜索</string>
 
-    <string name="label_intelligent_search_tips">អ្នកប្រហែលជាចូលចិត្ត</string>
+    <string name="label_intelligent_search_tips">是否想搜索以下商品</string>
 
-    <string name="label_search_now">ស្វែងរកឥឡូវនេះ</string>
+    <string name="label_search_now">立即搜索</string>
 
-    <string name="label_open_now">បើកឥឡូវនេះ</string>
+    <string name="label_open_now">立即打开</string>
 
     <!--搜索-->
 
 
-    <string name="label_home_search">ស្វែងរក​ផលិតផល</string>
+    <string name="label_home_search">搜索您心仪的商品</string>
 
-    <string name="hint_search_goods">ស្វែងរកមុខទំនិញជាភាសាចិន</string>
+    <string name="hint_search_goods">搜索商品</string>
 
-    <string name="label_search_history">ធ្លាប់​ស្វែងរក</string>
+    <string name="label_search_history">搜索历史</string>
 
     <!--商品详情页-->
 
 
-    <string name="label_get_coupon">ប័ណ្ណ​បញ្ចុះ​តម្លៃ</string>
+    <string name="label_get_coupon">领券</string>
 
-    <string name="label_goods_id_prefix">TaobaoID </string>
+    <string name="label_goods_id_prefix">淘宝ID </string>
 
-    <string name="label_exchange_rate_prefix">អត្រា​ប្តូ​រ​ប្រាក់ </string>
+    <string name="label_exchange_rate_prefix">汇率 </string>
 
-    <string name="label_freight">ថ្លៃដឹកជញ្ជូនTaobao</string>
+    <string name="label_freight">淘宝运费</string>
 
-    <string name="label_tb_freight_illustrate">ថ្លៃដឹកជញ្ជូនTaobao</string>
+    <string name="label_tb_freight_illustrate">淘宝运费说明</string>
 
-    <string name="tb_freight_illustrate_1">1.ថ្លៃដឹកជញ្ជូនTaobaoគឺជាការដឹកជញ្ជូនទំនិញដែលគិតថ្លៃដោយ Taobao។ ពេលបញ្ជាទិញសូមដាក់ស្នើសម្រាប់ការពិនិត្យឡើងវិញ​ សេវាកម្មអតិថិជននឹងពិនិត្យមើលថ្លៃដឹកជញ្ជូន Taobao ទើបបង់ប្រាក់បញ្ជាទិញ។</string>
+    <string name="tb_freight_illustrate_1">1.淘宝运费是淘宝收取的快递运费。购买时请先提交审核，客服核对淘宝运费后，再付款。</string>
 
-    <string name="tb_freight_illustrate_2">2.ថ្លៃដឹកជញ្ជូនTaobao មិនគិតចូលថ្លៃសេវាកម្ម។</string>
+    <string name="tb_freight_illustrate_2">2.淘宝运费免服务费。</string>
 
-    <string name="label_service">សេវាកម្ម</string>
+    <string name="label_service">服务</string>
 
-    <string name="label_service_1">ការ​បញ្ជា​ទិញTaobao</string>
+    <string name="label_service_1">淘宝采购</string>
 
-    <string name="label_service_2">បញ្ញេីគ្រប់ដំបន់</string>
+    <string name="label_service_2">全国配送</string>
 
-    <string name="label_service_3">ក្នុងរយះពេល72ម៉ោងដោះស្រាយបញ្ហា</string>
+    <string name="label_service_3">72小时售后</string>
 
-    <string name="label_service_4">តាមដាន​ការ​ដឹកជញ្ជូន</string>
+    <string name="label_service_4">物流跟踪</string>
 
-    <string name="label_prop">បានជ្រេីសរេីស</string>
+    <string name="label_prop">规格</string>
 
-    <string name="label_logistics">ដឹកជញ្ជូន</string>
+    <string name="label_logistics">物流</string>
 
-    <string name="label_trace_title">រយះពេលដឹកជញ្ជូន</string>
+    <string name="label_trace_title">从 海外仓 至 柬埔寨</string>
 
-    <string name="label_stock_up">រៀប​ចំ​ទំនិញ</string>
+    <string name="label_stock_up">备货</string>
 
-    <string name="label_1_3_day">1-3ថ្ងៃ</string>
+    <string name="label_1_3_day">1-3日</string>
 
-    <string name="label_logistics_transportation">ដឹកជញ្ជូន</string>
+    <string name="label_logistics_transportation">物流运输</string>
 
-    <string name="label_5_7_day">5-7ថ្ងៃ</string>
+    <string name="label_5_7_day">5-7日</string>
 
-    <string name="label_delivery">ការដឹកជញ្ជូន</string>
+    <string name="label_delivery">派送</string>
 
-    <string name="label_2_3_day">2-3ថ្ងៃ</string>
+    <string name="label_2_3_day">2-3日</string>
 
-    <string name="label_customer_service">ទំនាក់ទំនង</string>
+    <string name="label_customer_service">客服</string>
 
-    <string name="label_cart">កន្រ្តកទំនិញ</string>
+    <string name="label_cart">购物车</string>
 
-    <string name="label_add_to_cart">បញ្ចូល​ក្នុង​កន្ត្រក</string>
+    <string name="label_add_to_cart">加入购物车</string>
 
-    <string name="tip_add_cart_succ">ការបន្ថែមជោគជ័យ</string>
+    <string name="tip_add_cart_succ">加入购物车成功</string>
 
-    <string name="label_count">ចំនួន</string>
+    <string name="label_count">数量</string>
 
-    <string name="label_goods_detail">ព​ត៌​មាន​លម្អិត​ពី​ទំនិញ</string>
+    <string name="label_goods_detail">商品详情</string>
 
-    <string name="no_worry_shopping">សេវាកម្ម</string>
+    <string name="no_worry_shopping">无忧购</string>
 
-    <string name="label_taobao_purchasing">ការ​បញ្ជា​ទិញTaobao</string>
+    <string name="label_taobao_purchasing">淘宝采购</string>
 
-    <string name="label_taobao_tips">បញ្ជាទិញពីTaobaoផ្ទាល់​​ ជ្រើសរើសនូវទំនិញមានគុណភាពខ្ពស់​ ទុកចិត្តក្នុងការបញ្ជាទិញ។</string>
+    <string name="label_taobao_tips">淘宝直接采购，精心挑选值得买的平直好物，请放心购买。</string>
 
-    <string name="label_national_transport_tips">ដឹកជញ្ជូនទូទាំង25ខេត្ត/ក្រុង</string>
+    <string name="label_national_transport_tips">全国25个省市配送。</string>
 
-    <string name="label_deliver_goods">100%ផ្ញេីទំនិញ តាមដាន​ការ​ដឹកជញ្ជូន</string>
+    <string name="label_deliver_goods">100%发货，物流跟踪</string>
 
-    <string name="label_deliver_goods_tips">បន្ទាប់ពីការទូទាត់ប្រាក់រួច​នឹងធ្វើការបញ្ជាទិញជូន អាចតាមដានទំនិញក្នុងទំព័រ ការបញ្ជាទិញព័ត៌មានលម្អិត​ និង ស្ថានភាពដឹកជញ្ជូន។</string>
+    <string name="label_deliver_goods_tips">付款后立刻安排采购备货，在订单页面可详细跟踪您的运输状态。</string>
 
-    <string name="label_service_3_tips">បន្ទាប់ពីទទួលបានទំនិញ​ បើមានបញ្ហា សូមទាក់ទងផ្នែកសេវាកម្មក្នុងរយះពេល72ម៉ោង​។</string>
+    <string name="label_service_3_tips">收到货后，异常问题，联系客服72小时解决。</string>
 
-    <string name="label_no_quality">ដាច់ស្តុក​</string>
+    <string name="label_no_quality">缺货中</string>
 
     <!--购物车-->
 
-    <string name="dialog_think_again">បោះបង់</string>
+    <string name="dialog_think_again">我再想想</string>
 
-    <string name="dialog_delete">លុប</string>
+    <string name="dialog_delete">删除</string>
 
-    <string name="dialog_confirm_delete_cart">សម្រេចលុបចោល%dទំនិញ？</string>
+    <string name="dialog_confirm_delete_cart">确定删除%d个商品？</string>
 
-    <string name="label_complete">រួចរាល់</string>
+    <string name="label_complete">完成</string>
 
-    <string name="label_delete">លុប</string>
+    <string name="label_delete">删除</string>
 
-    <string name="label_edit">កែសម្រួល</string>
+    <string name="label_edit">编辑</string>
 
-    <string name="label_create_order">ទូទាត់​លុយ</string>
+    <string name="label_create_order">生成订单</string>
 
-    <string name="dialog_edit_order_title">សូមបញ្ចូលបរិមាណ</string>
+    <string name="dialog_edit_order_title">请输入数量</string>
 
     <!--提交订单页面-->
 
 
-    <string name="label_fill_order_info">បញ្ជីទិញទំនិញ</string>
+    <string name="label_fill_order_info">确认订单</string>
 
-    <string name="order_dis_mode">វិធីសាស្ត្រ​ដឹកជញ្ជូន</string>
+    <string name="order_dis_mode">配送方式</string>
 
-    <string name="label_pick_by_yourself">មកយកនៅហាង(ភ្នំពេញ​)</string>
+    <string name="label_pick_by_yourself">到店自取（金边区域）</string>
 
-    <string name="label_express_delivery">ដឹកជញ្ជូន​រហ័ស</string>
+    <string name="label_express_delivery">快递配送</string>
 
-    <string name="label_confirm_order_tips_hint">ចូលបំពេញ​ សូមចរចារជាមួយសេវាកម្មអតិថិជនជាមុនសិន</string>
+    <string name="label_confirm_order_tips_hint">选填，请先与客服协商一致</string>
 
-    <string name="label_order_receive_address">អាស័យដ្ឋាន​ទទួល​ជញ្ជូន</string>
+    <string name="label_order_receive_address">收货地址</string>
 
-    <string name="label_order_pick_address">អាស័យដ្ឋាន​យកទំនិញ</string>
+    <string name="label_order_pick_address">取货地址</string>
 
-    <string name="label_submit_order">បន្តទិញ​</string>
+    <string name="label_submit_order">提交订单</string>
 
-    <string name="label_goods_price">តម្លៃទំនិញសរុប</string>
+    <string name="label_goods_price">商品金额</string>
 
-    <string name="format_use_coupon">%sអាចប្រេី</string>
+    <string name="format_use_coupon">%s张可用</string>
 
-    <string name="format_coupon_drop_off"> -%s</string>
+    <string name="format_coupon_drop_off">优惠-%s</string>
 
-    <string name="label_freight_tips">▲រំលឹកៈការគិតថ្លៃដឹកទំនិញក្រោយពេលដឹកជញ្ជូន​ ដើម្បីបង្កើនពេលវេលាដឹកជញ្ជូន សូមបញ្ចូលទឹកប្រាក់ជាមុនទៅកាបូបដើម្បីបង់ថ្លៃដឹកជញ្ជូន</string>
+    <string name="label_freight_tips">▲提示：发货后付运费，为加快派件时间，请提前充值金额到钱包支付运费</string>
 
-    <string name="label_international_mode_of_transport">វិធី​ដឹកជញ្ជូន</string>
+    <string name="label_international_mode_of_transport">国际运输方式</string>
 
-    <string name="label_land_transportation">ផ្លូវ​គោក</string>
+    <string name="label_land_transportation">陆路运输</string>
 
-    <string name="label_coupon_empty_to_use">គ្មាន</string>
+    <string name="label_coupon_empty_to_use">暂无可用优惠券</string>
 
-    <string name="label_total">សរុប</string>
+    <string name="label_total">合计</string>
 
     <!--提交订单页面 暂时隐藏了-->
 
 
-    <string name="label_total_price_goods">ទំនិញសរុប</string>
+    <string name="label_total_price_goods">商品合计</string>
 
-    <string name="label_amount_freight_goods">ការដឹកជញ្ជូនទំនិញ</string>
+    <string name="label_amount_freight_goods">商品运费</string>
 
-    <string name="label_amount_freight">ការដឹកជញ្ជូនទំនិញ</string>
+    <string name="label_amount_freight">运费</string>
 
-    <string name="label_pay_online">ការទូទាត់តាមអ៊ីនធឺណិត</string>
+    <string name="label_pay_online">在线支付</string>
 
-    <string name="label_pay_on_delivery">សាច់ប្រាក់នៅពេលដឹកជញ្ជូន</string>
+    <string name="label_pay_on_delivery">货到付款</string>
 
-    <string name="label_pay_amount">តម្លៃ​សរុប</string>
+    <string name="label_pay_amount">实付款</string>
 
-    <string name="label_submit">ស្នេីសុំ</string>
+    <string name="label_submit">提交</string>
 
-    <string name="label_total_amount">តម្លៃទំនិញសរុប</string>
+    <string name="label_total_amount">商品总额</string>
 
-    <string name="label_coupon_amount_reduce"> </string>
+    <string name="label_coupon_amount_reduce">优惠减免</string>
 
-    <string name="label_pay_amount_order_detail">តម្លៃ​សរុប</string>
+    <string name="label_pay_amount_order_detail">商品实付</string>
 
-    <string name="label_server_tips_detail">ថ្លៃសេវា</string>
+    <string name="label_server_tips_detail">服务费</string>
 
-    <string name="tip_pls_select_address">អាស័យដ្ឋាន​ទទួល​ជញ្ជូន</string>
+    <string name="tip_pls_select_address">请确认收货地址</string>
 
     <!--提交成功页-->
 
-    <string name="label_submit_succ">ស្នេីសុំបានសម្រេច</string>
+    <string name="label_submit_succ">提交成功</string>
 
-    <string name="label_rechage_succ_tips">ស្ស្នេីសុំបានសម្រេច​ រង់ចាំ​ពិនិត្យ</string>
+    <string name="label_rechage_succ_tips">提交成功，等待审核</string>
 
     <!--确认付款弹窗-->
 
-    <string name="label_confirm_pay">បញ្ជាក់ការបង់ប្រាក់</string>
+    <string name="label_confirm_pay">确认付款</string>
 
-    <string name="label_pay_wallet">កាបូប</string>
+    <string name="label_pay_wallet">钱包支付</string>
 
     <!--钱包余额不足弹窗-->
 
-    <string name="tip_balance_not_enought">ទឹកប្រាក់មិនគ្រប់គ្រាន់សូមបញ្ចូលទឹកប្រាក់</string>
+    <string name="tip_balance_not_enought">余额不足，请充值</string>
 
     <!--是否放弃本次交易弹窗-->
 
-    <string name="label_give_up_pay">តើអ្នកចង់បោះបង់ប្រតិបត្តិការនេះមែនទេ?</string>
+    <string name="label_give_up_pay">是否放弃本次交易？</string>
 
     <!--支付成功页-->
 
-    <string name="label_pay_succ">ការទូទាត់ជោគជ័យ</string>
+    <string name="label_pay_succ">支付成功</string>
 
-    <string name="label_back_to_home">ទំព័រដើម</string>
+    <string name="label_back_to_home">回到首页</string>
 
-    <string name="label_view_order">បញ្ជីទិញទំនិញ</string>
+    <string name="label_view_order">查看订单</string>
 
     <!--我的页面-->
 
 
-    <string name="label_order">បញ្ជីទិញទំនិញ</string>
+    <string name="label_order">订单</string>
 
-    <string name="label_all_orders">ទាំងអស់</string>
+    <string name="label_all_orders">全部订单</string>
 
-    <string name="label_my_wallet">កាបូប</string>
+    <string name="label_my_wallet">我的钱包</string>
 
-    <string name="label_coupon">ប័ណ្ណ​បញ្ចុះ​តម្លៃ</string>
+    <string name="label_coupon">优惠券</string>
 
-    <string name="label_address_manage">អាស័យដ្ឋាន​ទទួល</string>
+    <string name="label_address_manage">地址管理</string>
 
-    <string name="label_my_collection">ពេញចិត្ត</string>
+    <string name="label_my_collection">我的收藏</string>
 
-    <string name="label_app_help">ជំនួយក្នុងការប្រើប្រាស់</string>
+    <string name="label_app_help">使用帮助</string>
 
-    <string name="label_setting">ការកំណត់</string>
+    <string name="label_setting">设置</string>
 
-    <string name="label_owner_setting">ពត៌មាន​ផ្ទាល់ខ្លួន</string>
+    <string name="label_owner_setting">个人资料</string>
 
-    <string name="label_select_reason">សូម​ជ្រើសរើស</string>
+    <string name="label_select_reason">请选择原因</string>
 
     <!--订单列表-->
 
 
-    <string name="label_order_all">ទាំងអស់</string>
+    <string name="label_order_all">全部</string>
 
-    <string name="label_order_unpay">រង់ចាំ​ទូទាត់</string>
+    <string name="label_order_unpay">待付款</string>
 
-    <string name="label_order_deliver_waiting">រៀប​ចំ​ទំនិញ</string>
+    <string name="label_order_deliver_waiting">备货中</string>
 
-    <string name="label_order_delivered">កំពុងដឹកជញ្ជូន</string>
+    <string name="label_order_delivered">待收货</string>
 
-    <string name="label_order_complete">បានបញ្ចប់</string>
+    <string name="label_order_complete">已完成</string>
 
-    <string name="label_order_close">បានបោះបង់</string>
+    <string name="label_order_close">已关闭</string>
 
-    <string name="label_order_audit_waiting">ពិនិត្យ​ឡើង​វិញ</string>
-
-
-    <string name="format_item_goods_price">ផលិត​ផល%s，</string>
-
-    <string name="format_item_goods_freight">ដឹកជញ្ជូន%s，</string>
-
-    <string name="format_item_goods_total">សរុប%s</string>
-
-    <string name="format_item_goods_paid">បានទូទាត់រួច%s</string>
+    <string name="label_order_audit_waiting">审核中</string>
 
 
-    <string name="label_order_to_pay">ទូទាត់​ប្រាក់</string>
+    <string name="format_item_goods_price">商品%s，</string>
 
-    <string name="label_order_cancel">បោះបង់ការបញ្ជាទិញ</string>
+    <string name="format_item_goods_freight">运费%s，</string>
 
-    <string name="label_order_delete">លុបការបញ្ជាទិញ</string>
+    <string name="format_item_goods_total">总计%s</string>
 
-    <string name="label_order_confirm_received">បញ្ជាក់ការទទួល</string>
+    <string name="format_item_goods_paid">已付款%s</string>
 
-    <string name="label_history_order">ការបញ្ជាទិញរបស់ខ្ញុំ</string>
+
+    <string name="label_order_to_pay">立即支付</string>
+
+    <string name="label_order_cancel">取消订单</string>
+
+    <string name="label_order_delete">删除订单</string>
+
+    <string name="label_order_confirm_received">确认收货</string>
+
+    <string name="label_history_order">我的订单</string>
 
 
     <!--取消订单、删除订单弹窗-->
 
-    <string name="label_cancel_order_1">អាស័យដ្ឋាន​ ឬ លេខទូរស័ព្ទដៃមិនត្រឹមត្រូវ</string>
+    <string name="label_cancel_order_1">收货地址或手机号填错</string>
 
-    <string name="label_cancel_order_2">ភ្លេចលេខកូដ​បញ្ជាក់ / ទឹកប្រាក់មិនគ្រប់គ្រាន់</string>
+    <string name="label_cancel_order_2">忘记支付密码/余额不足</string>
 
-    <string name="label_cancel_order_3">មិនអាចបង់ប្រាក់តាមធម្មតា</string>
+    <string name="label_cancel_order_3">无法正常支付</string>
 
-    <string name="label_cancel_order_4">មិនចង់ទិញ</string>
+    <string name="label_cancel_order_4">不想买了</string>
 
-    <string name="label_cancel_order_5">ហេតុផលផ្សេងទៀត</string>
+    <string name="label_cancel_order_5">其他原因</string>
 
-    <string name="dialog_delete_order_title">លុបការបញ្ជាទិញ？</string>
+    <string name="dialog_delete_order_title">确定删除订单？</string>
 
-    <string name="dialog_delete_order_content">ការបញ្ជាទិញត្រូវបានលុបចោល​មិនអាចកំណត់ឡើងវិញបានទេ សូមពិចារណាដោយយកចិត្តទុកដាក់</string>
+    <string name="dialog_delete_order_content">订单删除后将无法回复，无法为您处理售后问题，请谨慎考虑</string>
 
 
     <!--我的钱包-->
 
-    <string name="label_recharge">បញ្ចូល​ទឹកប្រាក់</string>
+    <string name="label_recharge">充值</string>
 
-    <string name="label_my_balance">សមតុល្យ</string>
+    <string name="label_my_balance">余额</string>
 
-    <string name="label_bill">វិក័យប័ត្រ</string>
+    <string name="label_bill">账单</string>
 
-    <string name="label_wallet_logs">ទិន្នន័យ</string>
+    <string name="label_wallet_logs">交易明细</string>
 
     <!--充值页-->
 
-    <string name="label_amount_recharge">បញ្ចូលទឹកប្រាក់</string>
+    <string name="label_amount_recharge">充值金额</string>
 
-    <string name="label_recharge_payable">ទឹកប្រាក់</string>
+    <string name="label_recharge_payable">应付</string>
 
-    <string name="label_recharge_by_self">បំពេញទឹកប្រាក់</string>
+    <string name="label_recharge_by_self">自定义金额</string>
 
-    <string name="label_choose_pay_way">ជ្រើសរើស​របៀបបញ្ចូល</string>
+    <string name="label_choose_pay_way">选择支付方式</string>
 
-    <string name="label_recharge_now">ជំហ៊ាន​បន្ទាប់​</string>
+    <string name="label_recharge_now">立即充值</string>
 
 
     <!--银行卡转账页-->
 
-    <string name="label_recharge_bank">បញ្ចូល​ទឹកប្រាក់</string>
+    <string name="label_recharge_bank">银行卡汇款</string>
 
-    <string name="label_recharge_success">បញ្ចូលជោគជ័យ</string>
+    <string name="label_recharge_success">充值完成</string>
 
-    <string name="label_bank_account_tips">ជ្រើសរើស​កាតធនាគារ</string>
+    <string name="label_bank_account_tips">请转账到以下账号</string>
 
-    <string name="label_bank">ធនាគារ</string>
+    <string name="label_bank">银行</string>
 
-    <string name="label_clip">ចម្លង</string>
+    <string name="label_clip">复制</string>
 
-    <string name="label_account">គណនី</string>
+    <string name="label_account">账号</string>
 
-    <string name="label_name">ឈ្មោះ</string>
+    <string name="label_name">姓名</string>
 
-    <string name="label_recharge_tips">*សូមធ្វេីការផ្ទេរប្រាក់​រួចរាល់​មុននឹង​ធ្វេីការស្នេីសុំ</string>
+    <string name="label_recharge_tips">*注：请转账后再提交订单，请勿多次提交</string>
 
-    <string name="label_recharge_amount">ទឹកប្រាក់​ដែលបានផ្ទេរ</string>
+    <string name="label_recharge_amount">汇款金额</string>
 
-    <string name="label_record">ទិន្នន័យ​</string>
+    <string name="label_record">记录</string>
 
-    <string name="label_recharge_status_reject">ការស្នើសុំបានបរាជ័យ</string>
+    <string name="label_recharge_status_reject">已驳回</string>
 
-    <string name="label_recharge_status_audit_waiting">ពិនិត្យ​ឡើង​វិញ</string>
+    <string name="label_recharge_status_audit_waiting">审核中</string>
 
-    <string name="label_recharge_status_succ">បញ្ចូលជោគជ័យ</string>
+    <string name="label_recharge_status_succ">充值成功</string>
 
-    <string name="label_recharge_history">ទិន្នន័យ</string>
+    <string name="label_recharge_history">充值明细</string>
 
-    <string name="label_upload_recharge_evidence">ចែករំលែករូបភាព​ដែលបានផ្ទេរប្រាក់</string>
+    <string name="label_upload_recharge_evidence">上传凭证</string>
 
-    <string name="text_take_photo">រូបថត</string>
+    <string name="text_take_photo">拍照</string>
 
-    <string name="text_from_album">អាល់ប៊ុមរូបថត</string>
+    <string name="text_from_album">从相册选择</string>
 
-    <string name="text_please_agree_to_authorize">ដើម្បីធានាបាននូវមុខងារសូមយល់ព្រមលើការប្រើប្រាស់អាល់ប៊ុមរូបថតនិងមុខងារផ្សេងទៀត</string>
+    <string name="text_please_agree_to_authorize">为了确保功能，请同意读取手机存储权限</string>
 
-    <string name="tip_pls_select_bank">ជ្រើសរើស​កាតធនាគារ</string>
+    <string name="tip_pls_select_bank">请选择银行账户</string>
 
-    <string name="tip_pls_upload_recharge_proof">ចែករំលែករូបភាព​ដែលបានផ្ទេរប្រាក់</string>
+    <string name="tip_pls_upload_recharge_proof">请上传充值证明的图片</string>
 
-    <string name="please_input_recharge_amount">ទឹកប្រាក់​បញ្ចូល</string>
+    <string name="please_input_recharge_amount">请输入充值金额</string>
 
-    <string name="please_select_bank">ជ្រើសរើស​កាតធនាគារ</string>
+    <string name="please_select_bank">请选择银行</string>
 
-    <string name="label_select_bank">ជ្រើសរើស​កាតធនាគារ</string>
+    <string name="label_select_bank">请选择银行卡</string>
 
-    <string name="label_order_audit">ពិនិត្យ​ឡើង​វិញ</string>
+    <string name="label_order_audit">订单审核</string>
 
 
     <!--优惠券-->
 
-    <string name="label_can_use_coupon">ប័ណ្ណ​បញ្ចុះ​តម្លៃ</string>
+    <string name="label_can_use_coupon">可用优惠券</string>
 
-    <string name="label_coupon_used">ប្រើប្រាស់រួច</string>
+    <string name="label_coupon_used">已使用</string>
 
-    <string name="label_coupon_unused">មិនទាន់ប្រើ</string>
+    <string name="label_coupon_unused">未使用</string>
 
-    <string name="label_coupon_overtime">ផុតកំណត់</string>
+    <string name="label_coupon_overtime">已过期</string>
 
     <!--地址管理-->
 
 
-    <string name="label_address_manager">អាស័យដ្ឋាន​ទទួល</string>
+    <string name="label_address_manager">地址管理</string>
 
-    <string name="label_default">លំនាំដើម</string>
+    <string name="label_default">默认</string>
 
-    <string name="label_set_default">កំណត់ជាលំនាំដើម</string>
+    <string name="label_set_default">设为默认</string>
 
-    <string name="label_add_address">បន្ថែមថ្មី</string>
+    <string name="label_add_address">添加地址</string>
 
-    <string name="label_add_new_address">បន្ថែម​អាស័យដ្ឋាន</string>
+    <string name="label_add_new_address">编辑地址</string>
 
     <!--添加/编辑地址-->
 
-    <string name="label_consignee_address">មោះ​អ្នកទទួល</string>
+    <string name="label_consignee_address">收货人</string>
 
-    <string name="label_contact_phone_address">លេខ​ទំនាក់​ទំនង</string>
+    <string name="label_contact_phone_address">联系电话</string>
 
-    <string name="label_region_belong_address">ខេត្ត​/ក្រុង</string>
+    <string name="label_region_belong_address">所在地区</string>
 
-    <string name="label_detail_address">អាស័យដ្ឋាន</string>
+    <string name="label_detail_address">详细地址</string>
 
-    <string name="label_locate">ទីតាំង</string>
+    <string name="label_locate">定位</string>
 
-    <string name="hint_fill_consignee_name">ចូរបំពេញឈ្មោះអ្នកទទួល</string>
+    <string name="hint_fill_consignee_name">请填写收货人姓名</string>
 
-    <string name="hint_fill_consignee_phone">ចូរបំពេញលេខទូរស័ព្ទ</string>
+    <string name="hint_fill_consignee_phone">请填写收货人手机号</string>
 
-    <string name="hint_fill_region">រុក​/ខណ្ឌ</string>
+    <string name="hint_fill_region">省事区县等</string>
 
-    <string name="hint_fill_detail_address">ចូរបំពេញ​អាស័យដ្ឋាន​លម្អិត</string>
+    <string name="hint_fill_detail_address">街道、楼牌号等</string>
 
-    <string name="tip_fill_region_belong">សូមជ្រើសរើសអាសយដ្ឋាន</string>
+    <string name="tip_fill_region_belong">请选择所在地区</string>
 
-    <string name="tip_phone_illegal">សូមបញ្ចូលលេខទូរស័ព្ទត្រឹមត្រូវទ</string>
+    <string name="tip_phone_illegal">请输入正确手机号</string>
 
-    <string name="tip_add_address_succ">ស្នេីសុំបានសម្រេច</string>
+    <string name="tip_add_address_succ">添加地址成功</string>
 
-    <string name="tip_modify_address_succ">ស្នេីសុំបានសម្រេច</string>
+    <string name="tip_modify_address_succ">修改地址成功</string>
 
-    <string name="label_save">រក្សា​ទុក</string>
+    <string name="label_save">保存</string>
 
-    <string name="label_city_choose">សូមជ្រើសរើស</string>
+    <string name="label_city_choose">请选择</string>
 
-    <string name="tips_delete_address">លុបអាសយដ្ឋាន?</string>
+    <string name="tips_delete_address">删除地址？</string>
 
     <!--手机注册登录页，页面暂时隐藏-->
 
 
-    <string name="label_facebook_login">Facebook</string>
+    <string name="label_facebook_login">Facebook登录</string>
 
-    <string name="label_login">ចូល</string>
+    <string name="label_login">登录</string>
 
-    <string name="label_logout">ចាកចេញ</string>
+    <string name="label_logout">注销</string>
 
-    <string name="label_register">ចុះឈ្មោះ</string>
+    <string name="label_register">注册</string>
 
-    <string name="protocol_prefix">ខ្ញុំបានអាននិងយល់ព្រម</string>
+    <string name="protocol_prefix">我已阅读并同意</string>
 
-    <string name="protocol_bee">《Privacy Policy》</string>
+    <string name="protocol_bee">《用户协议》</string>
 
-    <string name="protocol_service">《Privacy Policy》</string>
+    <string name="protocol_service">《服务协议》</string>
 
-    <string name="text_please_check_agreement">សូមអាននិងយល់ព្រមនឹង《Privacy Policy》</string>
+    <string name="text_please_check_agreement">请阅读并同意《用户协议》及《隐私政策》</string>
 
-    <string name="hint_input_phone_number">សូមបញ្ចូលលេខទូរស័ព្ទ</string>
+    <string name="hint_input_phone_number">请输入手机号</string>
 
-    <string name="hint_input_password">សូមបញ្ចូលលេខសម្ងាត់(6-16)</string>
+    <string name="hint_input_password">请输入密码（6-16位）</string>
 
-    <string name="hint_input_pay_password">សូមបញ្ចូលលេខកូដបញ្ជាក់</string>
+    <string name="hint_input_pay_password">请输入支付密码（6位）</string>
 
-    <string name="hint_input_pay_password2">សូមបញ្ចូលលេខកូដបញ្ជាក់ម្តងទៀត</string>
+    <string name="hint_input_pay_password2">请确认支付密码（6位）</string>
 
-    <string name="hint_input_auth_code">សូមបញ្ចូលលេខកូដផ្ទៀងផ្ទាត់</string>
+    <string name="hint_input_auth_code">请输入短信验证码</string>
 
-    <string name="hint_input_nickname">សូមបញ្ចូលឈ្មោះ</string>
+    <string name="hint_input_nickname">请输入昵称</string>
 
-    <string name="hint_input_new_password">សូមបញ្ចូលលេខសម្ងាត់(6-16)</string>
+    <string name="hint_input_new_password">请输入新密码（6-16位）</string>
 
-    <string name="text_forget_password">លេចលេខសម្ងាត់?</string>
+    <string name="text_forget_password">忘记密码?</string>
 
-    <string name="label_forget_password">លេចលេខសម្ងាត់</string>
+    <string name="label_forget_password">忘记密码</string>
 
-    <string name="label_auth_code">ញើរលេខកូដ</string>
+    <string name="label_auth_code">获取验证码</string>
 
-    <string name="tip_pwd_set_succ">លេខសម្ងាត់ត្រូវបានកំណត់ដោយជោគជ័យ​​ សូមចូលម្តងទៀត</string>
+    <string name="tip_pwd_set_succ">密码设置成功，请重新登录</string>
 
 
 
@@ -492,15 +492,15 @@
     <!--设置-->
 
 
-    <string name="label_about_us">អំពី​ពួក​យើង</string>
+    <string name="label_about_us">关于我们</string>
 
-    <string name="label_pay_password_modify">លេខកូដ​បញ្ជាក់</string>
+    <string name="label_pay_password_modify">支付密码设置</string>
 
-    <string name="label_pay_password">លេខកូដ​បញ្ជាក់</string>
+    <string name="label_pay_password">支付密码</string>
 
-    <string name="label_app_language">ជ្ភាសា</string>
+    <string name="label_app_language">语言</string>
 
-    <string name="label_language_choice">ជ្ភាសា</string>
+    <string name="label_language_choice">选择语言</string>
 
     <string name="label_lan_english">English</string>
 
@@ -508,29 +508,29 @@
 
     <string name="label_lan_cambodia">មែរ</string>
 
-    <string name="label_modify_password">ផ្លាស់ប្តូរលេខកូដ​បញ្ជាក់</string>
+    <string name="label_modify_password">修改支付密码</string>
 
-    <string name="label_clear_cache_tips">លុប​ទិន្នន័យ？</string>
+    <string name="label_clear_cache_tips">是否清除缓存？</string>
 
-    <string name="label_nickname">ឈ្មោះ</string>
+    <string name="label_nickname">昵称</string>
 
-    <string name="label_modify_login_pwd">ប្តូរ​លេខសម្ងាត់</string>
+    <string name="label_modify_login_pwd">修改登录密码</string>
 
-    <string name="label_reset_pay_pwd">ប្តូរ​លេខកូដ​បញ្ជាក់</string>
+    <string name="label_reset_pay_pwd">重置支付密码</string>
 
-    <string name="label_clear_cache">លុប​ទិន្នន័យ</string>
+    <string name="label_clear_cache">清除缓存</string>
 
-    <string name="label_app_version">Version</string>
+    <string name="label_app_version">版本</string>
 
-    <string name="label_log_out">ចាកចេញ</string>
+    <string name="label_log_out">退出登录</string>
 
-    <string name="label_find">បានឃើញ</string>
+    <string name="label_find">发现</string>
 
-    <string name="loading">កំពុង​ដំណើរ​ការ​ទិន្នន័យ​ឡើង​វិញ​​</string>
+    <string name="loading">加载中</string>
 
-    <string name="no_more">មិនមានទិន្នន័យទៀតទេ</string>
+    <string name="no_more">没有更多啦</string>
 
-    <string name="load_failed_try_agian">គ្មាន​ទិន្នន័យ​​ សូមចុចដំណើរ​ការ​ទិន្នន័យ​ឡើង​វិញ</string>
+    <string name="load_failed_try_agian">请求失败，点击重新加载</string>
 
     <string name="facebook_app_id">409513450402246</string>
 
@@ -538,32 +538,32 @@
 
 
 
-    <string name="label_update_now">ធ្វើបច្ចុប្បន្នភាពភ្លាម</string>
+    <string name="label_update_now">立即升级</string>
 
-    <string name="no_new_version">កំណែចុងក្រោយបំផុត</string>
+    <string name="no_new_version">已是最新的版本</string>
 
-    <string name="no_connect_error_msg">កំហុសទិន្នន័យ សូមព្យាយាមម្តងទៀតពេលក្រោយ(100)</string>
+    <string name="no_connect_error_msg">网络错误，请稍后再试(100)</string>
 
-    <string name="auth_error_msg">គណនីរបស់អ្នកបានចូលនៅលើឧបករណ៍ផ្សេងទៀត សូមចូលម្តងទៀត(101)</string>
+    <string name="auth_error_msg">您的账号在其他设备登录，请重新登录(101)</string>
 
-    <string name="nodata_error_msg">គ្មាន​ទិន្នន័យ(102)</string>
+    <string name="nodata_error_msg">没有数据(102)</string>
 
-    <string name="insufficient_error_msg">មុខងារនេះមិនអាចប្រើជាបណ្តោះអាសន្ន(103)</string>
+    <string name="insufficient_error_msg">暂时无法使用此功能(103)</string>
 
-    <string name="net_error_msg">បណ្តាញមិនត្រូវបានភ្ជាប់(104)</string>
+    <string name="net_error_msg">网络未连接(104)</string>
 
     <!--未知：商品详情页-->
 
 
-    <string name="label_confirm">សម្រេច</string>
+    <string name="label_confirm">确认</string>
 
-    <string name="label_already_selected_prefix">បានជ្រេីសរេីស</string>
+    <string name="label_already_selected_prefix">已选</string>
 
-    <string name="label_price_prefix">តម្លៃ</string>
+    <string name="label_price_prefix">价格</string>
 
-    <string name="tip_draw_succ">ទទួលដោយជោគជ័យ</string>
+    <string name="tip_draw_succ">领取成功</string>
 
-    <string name="tip_no_goods_selected">បានជ្រេីសរេីស</string>
+    <string name="tip_no_goods_selected">请选择商品</string>
 
 
 
@@ -574,57 +574,57 @@
     <!--订单详情-->
 
 
-    <string name="label_order_detail">សេចក្តីលម្អិតការបញ្ជាទិញ</string>
+    <string name="label_order_detail">订单详情</string>
 
-    <string name="format_tip_num_coupon_available">%dអាចប្រេី</string>
+    <string name="format_tip_num_coupon_available">%d张可用</string>
 
-    <string name="label_availabel_time_prefix_coupon"> </string>
+    <string name="label_availabel_time_prefix_coupon">有效期至:</string>
 
-    <string name="label_draw_coupon">ប័ណ្ណ​បញ្ចុះ​តម្លៃ</string>
+    <string name="label_draw_coupon">领取优惠券</string>
 
-    <string name="tip_need_login">សូមចូរដើម្បីប្រើ</string>
+    <string name="tip_need_login">请重新登录</string>
 
     <string name="format_uid_mine">ID %d</string>
 
-    <string name="label_order_num_prefix">លេខរៀង​ការបញ្ជាទិញ </string>
+    <string name="label_order_num_prefix">订单编号:</string>
 
-    <string name="format_order_total">%d ទំនិញ​ </string>
+    <string name="format_order_total">共 %d 件商品 金额 </string>
 
-    <string name="format_order_create_time">ម៉ោង​ការបញ្ជាទិញ %s</string>
+    <string name="format_order_create_time">下单时间：%s</string>
 
-    <string name="format_order_remarks">ចំណាំ %s</string>
+    <string name="format_order_remarks">订单备注：%s</string>
 
-    <string name="format_order_pick_code">លេខទទួលទំនិញ %s</string>
+    <string name="format_order_pick_code">取货码：%s</string>
 
-    <string name="format_order_dis_mode">វិធីសាស្ត្រ​ដឹកជញ្ជូន %s</string>
+    <string name="format_order_dis_mode">配送方式：%s</string>
 
-    <string name="format_order_pay_total">សរុប%1$s បានទូទាត់រួច%2$s រង់ចាំ​ទូទាត់</string>
+    <string name="format_order_pay_total">总计%1$s 已付款%2$s 待付款</string>
 
-    <string name="format_count_down">%s ត្រូវបានលុបចោលដោយស្វ័យប្រវត្តិ</string>
+    <string name="format_count_down">剩下%s自动取消</string>
 
-    <string name="label_express_volume">ទំហំខ្នាត</string>
+    <string name="label_express_volume">快递体积</string>
 
-    <string name="label_billing_weight">ទំងន់</string>
+    <string name="label_billing_weight">计费重量</string>
 
-    <string name="label_china_freight">ថ្លៃដឹកជញ្ជូននៅចិន</string>
+    <string name="label_china_freight">中国运费</string>
 
-    <string name="label_international_freight">ថ្លៃដឹកជញ្ជូនអន្តរជាតិ</string>
+    <string name="label_international_freight">国际运费</string>
 
-    <string name="label_delivery_fee">ការដឹកជញ្ជូន</string>
+    <string name="label_delivery_fee">派送费</string>
 
-    <string name="label_freight_voucher">ប័ណ្ណ​ដឹកជញ្ជូន</string>
+    <string name="label_freight_voucher">运费券</string>
 
-    <string name="label_freight_paid_in">សរុប​ថ្លៃដឹកជញ្ជូន</string>
+    <string name="label_freight_paid_in">运费实付</string>
 
-    <string name="tb_delivery"> លៃដឹកជញ្ជូនtaobao </string>
+    <string name="tb_delivery">,淘宝运费 </string>
 
     <!--其他-->
 
-    <string name="label_platform_tb">Taobao</string>
+    <string name="label_platform_tb">淘宝</string>
 
-    <string name="label_platform_jd">JD</string>
+    <string name="label_platform_jd">京东</string>
 
-    <string name="label_platform_pdd">PDD</string>
+    <string name="label_platform_pdd">拼多多</string>
 
     <string name="label_platform_1688">1688</string>
 
@@ -632,26 +632,28 @@
 
     <string name="label_share_to_you">给你分享了</string>
 
-    <string name="label_setting_succ">ស្នេីសុំបានសម្រេច</string>
+    <string name="label_setting_succ">设置成功</string>
 
-    <string name="label_modify_pwd_error">ការបញ្ចូលលេខសម្ងាត់ទាំងពីរលើកមិនត្រូវគ្នាទេ</string>
+    <string name="label_modify_pwd_error">两次密码输入不一致</string>
 
-    <string name="tips_data_error">កំហុសទិន្នន័យ សូមព្យាយាមម្តងទៀតពេលក្រោយ</string>
+    <string name="tips_data_error">数据错误</string>
+
+
 
 
 
     <!--其他，可能已取消的-->
 
 
-    <string name="title_input_password_pls">សូមបញ្ចូលលេខកូដបញ្ជាក់</string>
+    <string name="title_input_password_pls">请输入支付密码</string>
 
-    <string name="hint_forget_password_ask">ភ្លេចលេខសម្ងាត់</string>
+    <string name="hint_forget_password_ask">忘记密码</string>
 
-    <string name="label_order_remark_prefix">ចំណាំ</string>
+    <string name="label_order_remark_prefix">订单备注</string>
 
-    <string name="label_mode_delivery">វិធី​សា​ស្រ្ត​ដឹកជញ្ជូន</string>
+    <string name="label_mode_delivery">发货方式</string>
 
-    <string name="label_mode_delivery_choose">វិធី​សា​ស្រ្ត​ដឹកជញ្ជូន</string>
+    <string name="label_mode_delivery_choose">发货方式选择</string>
 
     <string name="label_type_delivery_on_all_ready">到齐发货</string>
 
@@ -684,7 +686,7 @@
 
 
 
-    <string name="label_confirm_succ">បានទទួលទំនិញជោគជ័យ</string>
+    <string name="label_confirm_succ">收货成功</string>
 
     <!--其他-->
 
@@ -705,9 +707,9 @@
 
 
 
-    <string name="tip_input_phone">សូមបញ្ចូលលេខទូរស័ព្ទ</string>
+    <string name="tip_input_phone">请输入手机号</string>
 
-    <string name="tip_input_phone_correctly">សូមបញ្ចូលលេខទូរស័ព្ទត្រឹមត្រូវ</string>
+    <string name="tip_input_phone_correctly">请输入正确手机号</string>
 
     <string name="em_notice_sending">发送中</string>
 
@@ -715,22 +717,22 @@
 
     <string name="tip_msg_looking_order">我正在看订单</string>
 
-    <string name="format_order_sn">លេខរៀង​ការបញ្ជាទិញ：%s</string>
+    <string name="format_order_sn">订单编号：%s</string>
 
     <string name="tip_img_upload_fail">图片上传失败</string>
 
     <!--消息-->
 
 
-    <string name="label_msg">សារ</string>
+    <string name="label_msg">消息</string>
 
-    <string name="label_msg_order">សារបញ្ជាទិញ</string>
+    <string name="label_msg_order">订单消息</string>
 
-    <string name="label_msg_recharge">សារបញ្ចូលទឹកប្រាក់</string>
+    <string name="label_msg_recharge">充值消息</string>
 
-    <string name="label_msg_delivery">សារទទួលទំនិញ</string>
+    <string name="label_msg_delivery">提货消息</string>
 
-    <string name="label_looking_at">មើល</string>
+    <string name="label_looking_at">我正在看</string>
 
     <string name="label_title_chat"> </string>
 
@@ -756,24 +758,23 @@
 
 
 
-    <string name="label_input_password">សូមបញ្ចូលលេខកូដបញ្ជាក់</string>
+    <string name="label_input_password">请输入支付密码</string>
 
 
 
-    <string name="label_pwd_safe_tips">ដើម្បីសុវត្ថិភាពគណនីរបស់អ្នកសូមកំណត់លេខកូដ​បញ្ជាក់។</string>
+    <string name="label_pwd_safe_tips">为了您的账户安全，请设置支付密码。</string>
 
-    <string name="label_pwd_modify">បញ្ចូលលេខកូដ​បញ្ជាក់</string>
+    <string name="label_pwd_modify">设置支付密码</string>
 
-    <string name="label_pwd_confirm_tips">សូមបំពេញម្តងទៀតដើម្បីបញ្ជាក់លេខសម្ងាត់</string>
+    <string name="label_pwd_confirm_tips">请再次填写以确认密码</string>
 
 
 
-    <string name="set_now">កំណត់ឥឡូវនេះ</string>
+    <string name="set_now">立即设置</string>
 
-    <string name="label_trace_info">ដឹកជញ្ជូន</string>
+    <string name="label_trace_info">物流信息</string>
 
-    <string name="label_expected_arrival">ប្រហែល​ថ្ងៃមកដល់</string>
-
+    <string name="label_expected_arrival">预计到达</string>
 
 
 
@@ -792,55 +793,54 @@
 
 
 
+    <string name="label_all">全部</string>
 
-    <string name="label_all">ទាំងអស់</string>
+    <string name="label_freight_after_delivery">发货后付运费</string>
 
-    <string name="label_freight_after_delivery">ក្រោយ​ពេលចេញទំនិញបង់ថ្លៃសេវាដឹកជញ្ជូន</string>
+    <string name="label_my_nickname">我的昵称</string>
 
-    <string name="label_my_nickname">ឈ្មោះ</string>
+    <string name="label_phone_number">手机号码</string>
 
-    <string name="label_phone_number">លេខទូរស័ព្ទ</string>
+    <string name="label_gender">性别</string>
 
-    <string name="label_gender">ភេទ</string>
+    <string name="label_birthday">生日</string>
 
-    <string name="label_birthday">ងៃខែ​ឆ្នាំកំណើត</string>
+    <string name="label_my_ava">我的头像</string>
 
-    <string name="label_my_ava">រូបភាព</string>
+    <string name="label_app_not_use">app不能正常使用</string>
 
-    <string name="label_app_not_use">appនេះមិនអាចប្រើជាធម្មតាទេ</string>
+    <string name="label_reset_premissions">重新设置权限</string>
 
-    <string name="label_reset_premissions">កំណត់សិទ្ធិឡើងវិញ</string>
+    <string name="male">男</string>
 
-    <string name="male">ប្រុស</string>
+    <string name="female">女</string>
 
-    <string name="female">ស្រី</string>
+    <string name="label_edit_nickname">编辑昵称</string>
 
-    <string name="label_edit_nickname">ប្តូរ​ឈ្មោះ</string>
+    <string name="input_your_nickname">输入您的昵称</string>
 
-    <string name="input_your_nickname">សូមបញ្ចូលឈ្មោះ</string>
+    <string name="tip_copy_succ">复制成功</string>
 
-    <string name="tip_copy_succ">បានចម្លង</string>
+    <string name="tip_copy_failed">复制失败</string>
 
-    <string name="tip_copy_failed">ការចម្លងបរាជ័យ</string>
+    <string name="label_wait_handler">待处理</string>
 
-    <string name="label_wait_handler">រង់ចាំដំណើរការ</string>
+    <string name="url_is_null">链接为空</string>
 
-    <string name="url_is_null">linkទទេ</string>
-
-    <string name="exit_app_tips">ចុចម្តងទៀតដើម្បីចេញពីapp</string>
-
+    <string name="exit_app_tips">再按一次退出app</string>
 
 
 
 
-    <string name="label_no_coupons">មិនប្រេី</string>
+
+    <string name="label_no_coupons">暂不使用优惠券</string>
 
     <!--其他-->
 
 
 
 
-    <string name="label_pay_ali">AliPay</string>
+    <string name="label_pay_ali">支付宝支付</string>
 
     <string name="label_pay_ali_tips">按当天汇率自动换算，免手续费</string>
 
@@ -851,7 +851,6 @@
     <string name="tap_to_pay_with_aba_mobile">Tap to pay with ABA Mobile</string>
 
     <!--订单详情-->
-
 
 
 

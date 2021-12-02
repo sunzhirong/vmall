@@ -346,12 +346,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="vertical"
-                android:paddingVertical="15dp">
+                android:orientation="vertical">
 
                 <RelativeLayout
+                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:paddingHorizontal="@dimen/margin_h_common">
 
                     <TextView
@@ -365,9 +365,9 @@
 
                 </RelativeLayout>
                 <RelativeLayout
-                    android:paddingVertical="25dp"
+                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:paddingHorizontal="@dimen/margin_h_common">
 
                     <TextView
@@ -383,18 +383,21 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/rl_coupon"
+                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
+                    android:id="@+id/rl_coupon"
                     android:paddingHorizontal="@dimen/margin_h_common"
                     >
 
                     <TextView
+                        android:layout_centerVertical="true"
                         android:id="@+id/tv_coupon_label"
                         style="@style/blackA14sp"
                         android:text="@string/label_coupon" />
 
                     <TextView
+                        android:layout_centerVertical="true"
                         android:id="@+id/tv_coupon_use"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -407,6 +410,7 @@
                         android:visibility="gone" />
 
                     <TextView
+                        android:layout_centerVertical="true"
                         android:id="@+id/tv_coupon_price"
                         style="@style/redA14sp"
                         android:layout_marginRight="8dp"
@@ -436,6 +440,25 @@
 
                 </RelativeLayout>
 
+
+                <RelativeLayout
+                    android:id="@+id/rl_freight"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="@dimen/margin_h_common">
+
+                    <TextView
+                        style="@style/blackA14sp"
+                        android:text="@string/label_freight" />
+
+                    <TextView
+                        android:id="@+id/tv_freight_price"
+                        style="@style/redA14sp"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="@color/text_hint" />
+
+                </RelativeLayout>
 
 
             </LinearLayout>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ysarch.uibase.base.BaseFragment;
@@ -86,7 +87,7 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
     LinearLayout mLyDeliveryFright;
     @BindView(R.id.tv_address_warehouse_order_confirm)
     TextView mTVWarehouseAddress;
-  @BindView(R.id.tv_user_info_order_confirm_self)
+    @BindView(R.id.tv_user_info_order_confirm_self)
     TextView mTvWarehouseUserInfo;
 
     @BindView(R.id.iv_dis_mode_self)
@@ -111,6 +112,14 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
     TextView mTvReceiveAddress;
     @BindView(R.id.tv_no_use)
     TextView mTvNoUse;
+
+    @BindView(R.id.tv_freight_price)
+    TextView mTvFreightPrice;
+    @BindView(R.id.rl_freight)
+    RelativeLayout mRlFreight;
+    @BindView(R.id.rl_coupon)
+    RelativeLayout mRlCoupon;
+
 
     private GenerateOrderConfirmResult mGenerateOrderConfirmResult;
     private AddressItemBean mAddressItemBean;
@@ -186,7 +195,17 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
             mTVTotalAmount.setText(VMallUtils.convertPriceString(mGenerateOrderConfirmResult.getCalcAmount().getTotalAmount()));
             mTVFreight.setText(VMallUtils.convertPriceString(mGenerateOrderConfirmResult.getCalcAmount().getFreightAmount()));
             mTVPayAmount.setText(VMallUtils.convertPriceString(mGenerateOrderConfirmResult.getCalcAmount().getPayAmount()));
+
+            if(mGenerateOrderConfirmResult.getCalcAmount().getCnFreight()==0){
+                mRlFreight.setVisibility(View.GONE);
+            }else {
+                mRlFreight.setVisibility(View.VISIBLE);
+                mTvFreightPrice.setText(VMallUtils.convertPriceString(mGenerateOrderConfirmResult.getCalcAmount().getCnFreight()));
+            }
+
         }
+
+
 
         // 优惠券选择
         mCouponBeans.clear();
@@ -215,7 +234,7 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
                     mCouponBeans.size()));
             mIvCoupon.setVisibility(View.VISIBLE);
             mTvNoUse.setVisibility(View.GONE);
-
+            mRlCoupon.setVisibility(View.VISIBLE);
 
         } else {
             mTVCoupon.setText(ResUtils.getString(R.string.label_coupon_empty_to_use));
@@ -229,6 +248,7 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
                     mCouponBeans.size()));
             mIvCoupon.setVisibility(View.GONE);
             mTvNoUse.setVisibility(View.VISIBLE);
+            mRlCoupon.setVisibility(View.GONE);
 
         }
 

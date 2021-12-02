@@ -118,7 +118,7 @@ public class GoodsDetailPresenter extends BasePresenter<GoodsDetailActivity> {
         Map<String,Object> map = new HashMap<>();
         map.put("entry",entry);
         map.put("failReason",fail_reason);
-        map.put("visitTime",visit_time);
+        map.put("visitTime",visit_time/1000);
         map.put("visitResultTime",visit_result_time);
         map.put("commodityId",commodity_id);
         map.put("commodityName",commodityName);

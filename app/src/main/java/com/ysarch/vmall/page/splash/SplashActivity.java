@@ -31,8 +31,8 @@ public class SplashActivity extends XActivity<SplashPresenter> {
     private static final int STATUS_TOKEN = 4;
     private static final long DELAY = 3000;
     protected final String[] PERMISSIONS_NEED = {
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,//存储卡写入权限
-            android.Manifest.permission.READ_EXTERNAL_STORAGE,//存储卡读取权限
+//            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,//存储卡写入权限
+//            android.Manifest.permission.READ_EXTERNAL_STORAGE,//存储卡读取权限
             android.Manifest.permission.READ_PHONE_STATE,//读取手机状态权限
     };
     private int mStatus;

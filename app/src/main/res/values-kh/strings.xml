@@ -586,17 +586,17 @@
 
     <string name="format_uid_mine">ID %d</string>
 
-    <string name="label_order_num_prefix">លេខរៀង​ការបញ្ជាទិញ </string>
+    <string name="label_order_num_prefix">លេខរៀង​ការបញ្ជាទិញ：</string>
 
     <string name="format_order_total">%d ទំនិញ​ </string>
 
-    <string name="format_order_create_time">ម៉ោង​ការបញ្ជាទិញ %s</string>
+    <string name="format_order_create_time">ម៉ោង​ការបញ្ជាទិញ：%s</string>
 
-    <string name="format_order_remarks">ចំណាំ %s</string>
+    <string name="format_order_remarks">ចំណាំ：%s</string>
 
-    <string name="format_order_pick_code">លេខទទួលទំនិញ %s</string>
+    <string name="format_order_pick_code">លេខទទួលទំនិញ：%s</string>
 
-    <string name="format_order_dis_mode">វិធីសាស្ត្រ​ដឹកជញ្ជូន %s</string>
+    <string name="format_order_dis_mode">វិធីសាស្ត្រ​ដឹកជញ្ជូន：%s</string>
 
     <string name="format_order_pay_total">សរុប%1$s បានទូទាត់រួច%2$s រង់ចាំ​ទូទាត់</string>
 

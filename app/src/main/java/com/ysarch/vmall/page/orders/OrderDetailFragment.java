@@ -115,6 +115,9 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
     TextView mTvCouponAmountPrefixOrderDetail;
     @BindView(R.id.tv_pay_amount_prefix_order_detail)
     TextView mTvPayAmountPrefixOrderDetail;
+
+    @BindView(R.id.tv_china_freight)
+    TextView mTvChinaFreight;
     @BindView(R.id.tv_china_freight_detail)
     TextView mTvChinaFreightDetail;
     @BindView(R.id.tv_international_freight_detail)
@@ -123,6 +126,8 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
     TextView mTvDeliveryFee;
     @BindView(R.id.tv_delivery_fee_detail)
     TextView mTvDeliveryFeeDetail;
+    @BindView(R.id.tv_freight_coupon)
+    TextView mTvFreightCoupon;
     @BindView(R.id.tv_freight_coupon_detail)
     TextView mTvFreightCouponDetail;
     @BindView(R.id.tv_freight_prepaid_detail)
@@ -153,6 +158,11 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
     ImageView mIvOrderTrace;
     @BindView(R.id.tv_order_pick_code)
     TextView mTvOrderPickCode;
+    @BindView(R.id.tv_tb_freight)
+    TextView mTvTbFreight;
+    @BindView(R.id.tv_tb_freight_price)
+    TextView mTvTbFreightPrice;
+
 
     private long mOrderId = -1;
 
@@ -204,7 +214,21 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
                 if(wmsWarehouseInfo==null){return;}
                 mTVUserInfo.setText(VMallUtils.decodeString(wmsWarehouseInfo.getName()) + "  "
                         + VMallUtils.decodeString(wmsWarehouseInfo.getPhone()));
-                mTVAddress.setText(VMallUtils.decodeString(wmsWarehouseInfo.getAddress()));
+                switch (AppContext.getsInstance().getLanguageEntity().getLanId()){
+                    case Constants.ID_LAN_KM:
+                        mTVAddress.setText(wmsWarehouseInfo.getKhAddress());
+                        break;
+                    case Constants.ID_LAN_ZH:
+                        mTVAddress.setText(wmsWarehouseInfo.getAddress());
+                        break;
+                    case Constants.ID_LAN_EN:
+                        mTVAddress.setText(wmsWarehouseInfo.getEnAddress());
+                        break;
+                    default:
+                        mTVAddress.setText(wmsWarehouseInfo.getAddress());
+                        break;
+
+                }
             }
         }
     }
@@ -282,8 +306,12 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         //订单信息
         mTvOrderSn.setText(String.format(ResUtils.getString(R.string.format_order_sn), mOrderBean.getOrderSn()));
         mTvOrderCreateTime.setText(String.format(ResUtils.getString(R.string.format_order_create_time), VMallUtils.GTMToLocal(mOrderBean.getCreateTime())));
-        mTvOrderRemarks.setText(String.format(ResUtils.getString(R.string.format_order_remarks), !TextUtils.isEmpty(mOrderBean.getRemark())?mOrderBean.getRemark():""));
-        mTvOrderDisMode.setText(String.format(ResUtils.getString(R.string.format_order_dis_mode), mOrderBean.getShippingMethod()==1?"自提":"快递配送"));
+        if(TextUtils.isEmpty(mOrderBean.getRemark())){
+            mTvOrderRemarks.setVisibility(View.GONE);
+        }else {
+            mTvOrderRemarks.setText(String.format(ResUtils.getString(R.string.format_order_remarks), !TextUtils.isEmpty(mOrderBean.getRemark())?mOrderBean.getRemark():""));
+        }
+        mTvOrderDisMode.setText(String.format(ResUtils.getString(R.string.format_order_dis_mode), mOrderBean.getShippingMethod()==1?R.string.label_pick_by_yourself:R.string.label_express_delivery));
 
         //商品信息
         mTvTotalCouponDetail.setVisibility(needShow(mOrderBean.getCouponAmount()));
@@ -302,11 +330,17 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
 
         //运费相关
         mTvChinaFreightDetail.setText(VMallUtils.convertPriceString(mOrderBean.getCnFreight()));
+        mTvTbFreightPrice.setText(VMallUtils.convertPriceString(mOrderBean.getCnFreight()));
+        mTvTbFreight.setVisibility(needShow(mOrderBean.getCnFreight()));
+        mTvTbFreightPrice.setVisibility(needShow(mOrderBean.getCnFreight()));
+
         mTvInternationalFreightDetail.setText(VMallUtils.convertPriceString(mOrderBean.getOverseasFreight()));
         mTvDeliveryFeeDetail.setVisibility(needShow(mOrderBean.getLocalFreight()));
         mTvDeliveryFee.setVisibility(needShow(mOrderBean.getLocalFreight()));
         mTvDeliveryFeeDetail.setText(VMallUtils.convertPriceString(mOrderBean.getLocalFreight()));
         mTvFreightCouponDetail.setText(VMallUtils.convertPriceString(mOrderBean.getFreightCouponAmount()));
+        mTvFreightCouponDetail.setVisibility(needShow(mOrderBean.getFreightCouponAmount()));
+        mTvFreightCoupon.setVisibility(needShow(mOrderBean.getFreightCouponAmount()));
         mTvFreightPrepaidDetail.setText(VMallUtils.convertPriceString(mOrderBean.getPredictFreightAmount()));
 
 

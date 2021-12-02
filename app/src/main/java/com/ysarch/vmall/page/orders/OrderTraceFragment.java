@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.ysarch.uibase.base.BaseFragment;
 import com.ysarch.uibase.listview.TraceListAdapter;
 import com.ysarch.vmall.R;
+import com.ysarch.vmall.common.context.AppContext;
 import com.ysarch.vmall.domain.bean.OrderBean;
 import com.ysarch.vmall.domain.bean.OrderTraceBean;
 import com.ysarch.vmall.domain.bean.WmsWarehouseInfoBean;
@@ -69,7 +70,21 @@ public class OrderTraceFragment extends BaseFragment<OrderTracePresenter> {
                 if(wmsWarehouseInfo==null){return;}
                 mTvUserInfoOrderDetail.setText(VMallUtils.decodeString(wmsWarehouseInfo.getName()) + "  "
                         + VMallUtils.decodeString(wmsWarehouseInfo.getPhone()));
-                mTvAddressOrderDetail.setText(VMallUtils.decodeString(wmsWarehouseInfo.getAddress()));
+                switch (AppContext.getsInstance().getLanguageEntity().getLanId()){
+                    case Constants.ID_LAN_KM:
+                        mTvAddressOrderDetail.setText(wmsWarehouseInfo.getKhAddress());
+                        break;
+                    case Constants.ID_LAN_ZH:
+                        mTvAddressOrderDetail.setText(wmsWarehouseInfo.getAddress());
+                        break;
+                    case Constants.ID_LAN_EN:
+                        mTvAddressOrderDetail.setText(wmsWarehouseInfo.getEnAddress());
+                        break;
+                    default:
+                        mTvAddressOrderDetail.setText(wmsWarehouseInfo.getAddress());
+                        break;
+
+                }
             }
             mTvOrderSn.setText(String.format(ResUtils.getString(R.string.format_order_sn), mOrderBean.getOrderSn()));
 

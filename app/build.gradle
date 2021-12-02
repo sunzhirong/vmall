@@ -39,8 +39,8 @@ android {
     buildTypes {
         release {
             debuggable false
-            shrinkResources true
-            minifyEnabled true
+//            shrinkResources true
+//            minifyEnabled true
             zipAlignEnabled true
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -48,10 +48,16 @@ android {
 
         debug {
             debuggable true
-            minifyEnabled false
+//            shrinkResources true
+//            minifyEnabled true
+            zipAlignEnabled true
             signingConfig signingConfigs.debug
-            buildConfigField "boolean", "ISDEBUG", "true"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            debuggable false
+//            zipAlignEnabled true
+//            signingConfig signingConfigs.debug
+//            buildConfigField "boolean", "ISDEBUG", "true"
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -118,6 +124,7 @@ dependencies {
     implementation project(":mvp")
     implementation project(":yslibrary")
     implementation project(":gridpassword")
+    implementation project(":takephoto_library")
 
     implementation compileDependencies.appcompat_v7
     implementation compileDependencies.constraint_layout
@@ -164,7 +171,7 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:latest.release'
 
 
-    implementation('org.devio.takephoto:takephoto_library:4.1.0')
+//    implementation('org.devio.takephoto:takephoto_library:4.1.0')
 
     implementation 'com.qianwen:update-app:3.5.2'
     implementation 'com.qianwen:okhttp-utils:3.8.0'
