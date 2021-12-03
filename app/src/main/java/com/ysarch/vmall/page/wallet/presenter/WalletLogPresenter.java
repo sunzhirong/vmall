@@ -26,8 +26,11 @@ public class WalletLogPresenter extends BasePresenter<WalletLogFragment> {
                 .subscribe(new ApiSubscriber<List<WalletLogBean>>(getV()) {
                     @Override
                     public void onSuccess(List<WalletLogBean> walletLogBeans) {
-                        hasMore = (CollectionUtils.isNotEmpty(walletLogBeans)
-                                && walletLogBeans.size() >= Constants.COUNT_PER_PAGE_GRID);
+                        if (CollectionUtils.isNotEmpty(walletLogBeans)) {
+                            hasMore = true;
+                        } else {
+                            hasMore = false;
+                        }
                         getV().onDataSucc(page, walletLogBeans);
                     }
 

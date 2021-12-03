@@ -33,8 +33,11 @@ public class SearchContentPresenter extends BasePresenter<SearchContentFragment>
                 .subscribe(new ApiSubscriber<ListResult<GoodsItemBean>>(getV()) {
                     @Override
                     public void onSuccess(ListResult<GoodsItemBean> goodsItemBeanListResult) {
-                        hasMore = (CollectionUtils.isNotEmpty(goodsItemBeanListResult.getList())
-                                && goodsItemBeanListResult.getList().size() >= Constants.COUNT_PER_PAGE_GRID);
+                        if (CollectionUtils.isNotEmpty(goodsItemBeanListResult.getList())) {
+                            hasMore = goodsItemBeanListResult.getTotalPage() > page;
+                        } else {
+                            hasMore = false;
+                        }
                         getV().onLoadSucc(keyword, page, goodsItemBeanListResult);
                     }
 

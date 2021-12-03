@@ -34,8 +34,11 @@ public class ShouYeSubpagePresenter extends BasePresenter<ShouyeSubpageFragment>
                 .subscribe(new ApiSubscriber<ListResult<GoodsItemBeanV2>>(getV()) {
                     @Override
                     public void onSuccess(ListResult<GoodsItemBeanV2> goodsItemBeansResult) {
-                        hasMore = (CollectionUtils.isNotEmpty(goodsItemBeansResult.getList())
-                                && goodsItemBeansResult.getList().size() >= Constants.COUNT_PER_PAGE_GRID);
+                        if (CollectionUtils.isNotEmpty(goodsItemBeansResult.getList())) {
+                            hasMore = goodsItemBeansResult.getTotalPage() > page;
+                        } else {
+                            hasMore = false;
+                        }
                         getV().onDataSucc(cateName,page,goodsItemBeansResult);
                     }
 
