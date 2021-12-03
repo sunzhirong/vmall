@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
-import com.tendcloud.tenddata.TCAgent;
 import com.ysarch.uibase.fragment.CommonPureListFragment;
 import com.ysarch.uibase.recyclerview.FRecyclerView;
 import com.ysarch.uibase.recyclerview.itemDecoration.FRcyGridLayoutDecoration;
@@ -41,7 +40,7 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
     private HomeContentResult mHomeContentResult;
     private FRcyGridLayoutDecoration mLayoutDecoration;
     private boolean isFirstLoad = true;
-    private boolean mHasMore;
+//    private boolean mHasMore;
 
     @Override
     protected RecyclerView.Adapter createAdapter() {
@@ -255,7 +254,7 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
             mRcyAdapter.appendWelcomeDatas(homeRecResult.getList());
         }
 
-        mHasMore = homeRecResult.getTotalPage() > mPage;
+//        mHasMore = homeRecResult.getTotalPage() > mPage;
 
     }
 
@@ -280,7 +279,7 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
 
     @Override
     protected boolean hasMore() {
-        return mHasMore;
+        return getPresenter().hasMore;
     }
 
 

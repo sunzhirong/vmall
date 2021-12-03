@@ -6,6 +6,7 @@ import com.ysarch.vmall.domain.bean.ListResult;
 import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.services.GoodsLoader;
 import com.ysarch.vmall.page.main.shoye.ShouyeSubpageFragment;
+import com.yslibrary.utils.CollectionUtils;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ import cn.droidlover.xdroidmvp.net.NetError;
  **/
 public class ShouYeSubpagePresenter extends BasePresenter<ShouyeSubpageFragment> {
 
+
+    public boolean hasMore = true;
 
     /**
      *
@@ -31,6 +34,8 @@ public class ShouYeSubpagePresenter extends BasePresenter<ShouyeSubpageFragment>
                 .subscribe(new ApiSubscriber<ListResult<GoodsItemBeanV2>>(getV()) {
                     @Override
                     public void onSuccess(ListResult<GoodsItemBeanV2> goodsItemBeansResult) {
+                        hasMore = (CollectionUtils.isNotEmpty(goodsItemBeansResult.getList())
+                                && goodsItemBeansResult.getList().size() >= Constants.COUNT_PER_PAGE_GRID);
                         getV().onDataSucc(cateName,page,goodsItemBeansResult);
                     }
 

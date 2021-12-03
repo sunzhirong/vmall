@@ -4,9 +4,9 @@ import com.ysarch.uibase.base.BasePresenter;
 import com.ysarch.vmall.domain.bean.GoodsItemBeanV2;
 import com.ysarch.vmall.domain.bean.HomeContentResult;
 import com.ysarch.vmall.domain.bean.ListResult;
-import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.services.GoodsLoader;
 import com.ysarch.vmall.page.main.shoye.ShouyeWelcomeFragment;
+import com.yslibrary.utils.CollectionUtils;
 
 import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
@@ -16,6 +16,8 @@ import cn.droidlover.xdroidmvp.net.NetError;
  **/
 public class ShouYeWelcomePresenter extends BasePresenter<ShouyeWelcomeFragment> {
 
+    public boolean hasMore = true;
+
     public void requestRecGoods(int page) {
         GoodsLoader.getInstance().requestRecommendGoods(page)
                 .compose(dontShowDialog())
@@ -23,6 +25,11 @@ public class ShouYeWelcomePresenter extends BasePresenter<ShouyeWelcomeFragment>
                 .subscribe(new ApiSubscriber<ListResult<GoodsItemBeanV2>>(getV()) {
                     @Override
                     public void onSuccess(ListResult<GoodsItemBeanV2> goodsItemBeanListResult) {
+                        if (CollectionUtils.isNotEmpty(goodsItemBeanListResult.getList())) {
+                            hasMore = goodsItemBeanListResult.getTotalPage() > page;
+                        } else {
+                            hasMore = false;
+                        }
                         getV().dismissLoadingDialog();
                         getV().onGoodsDataSucc(page, goodsItemBeanListResult);
                     }

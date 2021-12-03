@@ -6,6 +6,7 @@ import com.ysarch.vmall.domain.bean.ListResult;
 import com.ysarch.vmall.domain.constant.Constants;
 import com.ysarch.vmall.domain.services.GoodsLoader;
 import com.ysarch.vmall.page.search.SearchContentFragment;
+import com.yslibrary.utils.CollectionUtils;
 
 import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
@@ -14,6 +15,9 @@ import cn.droidlover.xdroidmvp.net.NetError;
  * Created by fysong on 17/09/2020
  **/
 public class SearchContentPresenter extends BasePresenter<SearchContentFragment> {
+
+
+    public boolean hasMore = true;
 
     /**
      * 综合搜索商品
@@ -29,6 +33,8 @@ public class SearchContentPresenter extends BasePresenter<SearchContentFragment>
                 .subscribe(new ApiSubscriber<ListResult<GoodsItemBean>>(getV()) {
                     @Override
                     public void onSuccess(ListResult<GoodsItemBean> goodsItemBeanListResult) {
+                        hasMore = (CollectionUtils.isNotEmpty(goodsItemBeanListResult.getList())
+                                && goodsItemBeanListResult.getList().size() >= Constants.COUNT_PER_PAGE_GRID);
                         getV().onLoadSucc(keyword, page, goodsItemBeanListResult);
                     }
 
@@ -57,6 +63,8 @@ public class SearchContentPresenter extends BasePresenter<SearchContentFragment>
                 .subscribe(new ApiSubscriber<ListResult<GoodsItemBean>>(getV()) {
                     @Override
                     public void onSuccess(ListResult<GoodsItemBean> goodsItemBeanListResult) {
+                        hasMore = (CollectionUtils.isNotEmpty(goodsItemBeanListResult.getList())
+                                && goodsItemBeanListResult.getList().size() >= Constants.COUNT_PER_PAGE_GRID);
                         getV().onLoadSucc(keyword, page, goodsItemBeanListResult);
                     }
 

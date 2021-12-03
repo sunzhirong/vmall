@@ -31,11 +31,9 @@ import retrofit2.http.Field;
  **/
 public class OrderListPresenter extends BasePresenter<OrderListFragment> {
 
-    private boolean mHasMore = true;
+    public boolean hasMore = true;
 
-    public boolean isHasMore() {
-        return mHasMore;
-    }
+
 
     /**
      * 获取订单数据
@@ -52,9 +50,9 @@ public class OrderListPresenter extends BasePresenter<OrderListFragment> {
                     @Override
                     public void onSuccess(ListResult<OrderBean> orderBeanListResult) {
                         if (CollectionUtils.isNotEmpty(orderBeanListResult.getList())) {
-                            mHasMore = orderBeanListResult.getTotalPage() > page;
+                            hasMore = orderBeanListResult.getTotalPage() > page;
                         } else {
-                            mHasMore = false;
+                            hasMore = false;
                         }
                         getV().onOrderListSucc(page, orderBeanListResult.getList());
 //                        getV().resetUIStatus(page, true);

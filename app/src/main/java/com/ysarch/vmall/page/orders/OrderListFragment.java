@@ -184,7 +184,7 @@ public class OrderListFragment extends CommonPureListFragment<OrderListPresenter
 
     @Override
     protected boolean hasMore() {
-        return getPresenter().isHasMore();
+        return getPresenter().hasMore;
     }
 
 

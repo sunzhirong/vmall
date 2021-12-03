@@ -17,7 +17,7 @@ import cn.droidlover.xdroidmvp.net.NetError;
  **/
 public class WalletLogPresenter extends BasePresenter<WalletLogFragment> {
 
-    public boolean hasMore;
+    public boolean hasMore = true;
 
     public void requestWalletLogs(int page, boolean showLoading){
         WalletLoader.getInstance().requestWalletLogs(page, Constants.COUNT_PER_PAGE_GRID)

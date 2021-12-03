@@ -47,7 +47,7 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
     private String mCurCateName;
     private int mCurCateDataId;
 
-    private boolean mHasMore;
+//    private boolean mHasMore;
 
 //    public static Bundle getBundle(int cateId, List<CateLevelBean> cateLevelBeans) {
 //        Bundle bundle = new Bundle();
@@ -193,7 +193,7 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
 
     @Override
     protected boolean hasMore() {
-        return mHasMore;
+        return getPresenter().hasMore;
     }
 
 
@@ -206,7 +206,7 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
             mRcyAdapter.appendGoods(goodsItemBeanListResult.getList());
         }
 
-        mHasMore = goodsItemBeanListResult.getTotalPage() > mPage;
+//        mHasMore = goodsItemBeanListResult.getTotalPage() > mPage;
         resetUIStatus(page, true);
     }
 
@@ -216,35 +216,35 @@ public class ShouyeSubpageFragment extends CommonPureListFragment<ShouYeSubpageP
         if (!cateName.equals(mCurCateName) && page == 1) {
             mRcyAdapter.refreshSubCateDatas(mCateLevelBeans, null);
             mCurCateName = cateName;
-            mHasMore = false;
+//            mHasMore = false;
         }
     }
 
 
-    @Deprecated
-    public void onDataSucc(int cateId, int page, ListResult<GoodsItemBeanV2> goodsItemBeanListResult) {
-        mCurCateDataId = cateId;
-        mPage = page;
-        mHasMore = goodsItemBeanListResult.getTotalPage() > mPage;
-        resetUIStatus(page, true);
+//    @Deprecated
+//    public void onDataSucc(int cateId, int page, ListResult<GoodsItemBeanV2> goodsItemBeanListResult) {
+//        mCurCateDataId = cateId;
+//        mPage = page;
+////        mHasMore = goodsItemBeanListResult.getTotalPage() > mPage;
+//        resetUIStatus(page, true);
+//
+//        if (mPage == 1) {
+//            mRcyAdapter.refreshSubCateDatas(mCateLevelBeans, goodsItemBeanListResult.getList());
+//        } else {
+//            mRcyAdapter.appendGoods(goodsItemBeanListResult.getList());
+//        }
+//    }
 
-        if (mPage == 1) {
-            mRcyAdapter.refreshSubCateDatas(mCateLevelBeans, goodsItemBeanListResult.getList());
-        } else {
-            mRcyAdapter.appendGoods(goodsItemBeanListResult.getList());
-        }
-    }
-
-    @Deprecated
-    public void onDataFail(int cateId, int page) {
-        resetUIStatus(page, false);
-
-        if (cateId != mCurCateDataId && page == 1) {
-            mRcyAdapter.refreshSubCateDatas(mCateLevelBeans, null);
-            mCurCateDataId = cateId;
-            mHasMore = false;
-        }
-    }
+//    @Deprecated
+//    public void onDataFail(int cateId, int page) {
+//        resetUIStatus(page, false);
+//
+//        if (cateId != mCurCateDataId && page == 1) {
+//            mRcyAdapter.refreshSubCateDatas(mCateLevelBeans, null);
+//            mCurCateDataId = cateId;
+////            mHasMore = false;
+//        }
+//    }
 
     @Override
     protected String getPageName() {

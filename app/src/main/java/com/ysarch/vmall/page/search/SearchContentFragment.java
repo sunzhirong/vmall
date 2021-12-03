@@ -31,7 +31,7 @@ public class SearchContentFragment extends CommonPureListFragment<SearchContentP
     private String mKeyword = null;
     private ShouYeSubpageRcyAdapter mRcyAdapter;
     private String mCurKeyword;
-    private boolean mHasMore;
+//    private boolean mHasMore;
     private int mPlatformType = Constants.TYPE_PLATFORM_TB;
 
     public static Bundle getBundle(String keyword) {
@@ -129,14 +129,14 @@ public class SearchContentFragment extends CommonPureListFragment<SearchContentP
             } else {
                 mRcyAdapter.appendGoods(goodsItemBeanListResult.getList());
             }
-            mHasMore = goodsItemBeanListResult.getTotalPage() > page;
+//            mHasMore = goodsItemBeanListResult.getTotalPage() > page;
         }
         resetUIStatus(page, true);
     }
 
     @Override
     protected boolean hasMore() {
-        return mHasMore;
+        return getPresenter().hasMore;
     }
 
     @Override
