@@ -95,7 +95,7 @@ public abstract class ApiSubscriber<T> extends ResourceSubscriber<T> {
                 }
                 XLog.d("apiException=>" + apiException.getErrorMessage());
             } else {
-                error = new NetError(e, NetError.OtherError);
+                error = new NetError(NetError.NetError_Msg, NetError.OtherError);
             }
         } else {
             error = (NetError) e;

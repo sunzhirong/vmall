@@ -20,6 +20,7 @@ import com.yslibrary.utils.NetUtils;
 import com.yslibrary.utils.qmui.QMUIDisplayHelper;
 
 import cn.droidlover.xdroidmvp.mvp.XActivity;
+import cn.droidlover.xdroidmvp.net.NetError;
 
 /**
  * Created by fysong on 03/09/2020
@@ -75,9 +76,17 @@ public class SplashActivity extends XActivity<SplashPresenter> {
 
     }
 
+    private void initNetError(){
+        NetError.NoConnectError_Msg = getString(R.string.no_connect_error_msg);
+        NetError.AuthError_Msg = getString(R.string.auth_error_msg);
+        NetError.NoDataError_Msg = getString(R.string.nodata_error_msg);
+        NetError.InsufficientError_Msg = getString(R.string.insufficient_error_msg);
+        NetError.NetError_Msg = getString(R.string.net_error_msg);
+    }
+
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        initNetError();
         if (VMallBuildConfig.isDebugBuild()) {
             VMallBuildConfig.setEnv(CacheHelper.getInt(CacheKeys.KEY_ENV_VALUE, VMallBuildConfig.CUR_ENV));
         }

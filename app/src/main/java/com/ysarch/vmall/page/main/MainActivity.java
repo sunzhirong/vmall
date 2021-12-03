@@ -27,12 +27,14 @@ import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.droidlover.xdroidmvp.net.NetError;
 import qiu.niorgai.StatusBarCompat;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private long mLastClickTime = 0;
+
 
 
     public static Bundle getBundle(MainPageTag mainPageTag) {
@@ -44,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         StatusBarCompat.translucentStatusBar(this, true);
         StatusBarCompat.changeToLightStatusBar(this);
         setContentView(R.layout.activity_main);
