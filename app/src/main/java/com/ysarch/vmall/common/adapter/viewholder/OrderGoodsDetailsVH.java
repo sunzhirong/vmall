@@ -93,9 +93,13 @@ public class OrderGoodsDetailsVH extends AbsViewHolder {
             mLine.setVisibility(View.VISIBLE);
             mTVTotalPrice.setText(VMallUtils.convertPriceString(mOrderItemListBean.getAmount()));
             String numString = String.format(ResUtils.getString(R.string.format_order_total), mOrderItemListBean.getNumber());
+            String number = String.valueOf(mOrderItemListBean.getNumber());
+
+            int index = numString.indexOf(number);
+
             SpannableStringBuilder builder = new SpannableStringBuilder(numString);
             ForegroundColorSpan span = new ForegroundColorSpan(Color.parseColor("#f94956"));
-            builder.setSpan(span, 1, 1 + String.valueOf(mOrderItemListBean.getNumber()).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.setSpan(span, index, index + number.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             mTVCountOrderGoods.setText(builder);
             mTVDeliveryOrderGoods.setVisibility(mOrderItemListBean.getDollorDelivery()==0?View.GONE:View.VISIBLE);
             mTVDeliveryOrder.setVisibility(mOrderItemListBean.getDollorDelivery()==0?View.GONE:View.VISIBLE);

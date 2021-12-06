@@ -166,7 +166,6 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
 
     private long mOrderId = -1;
 
-    private AddressItemBean mAddressItemBean;
     private OrderGoodsAdapter mAdapter;
     private List<OrderItemListBean> mOrderItemListBeans;
     private EnumBean mWarehouseBean;
@@ -208,7 +207,13 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
             if(mOrderBean.getShippingMethod()==Constants.SHIPPING_METHOD_DELIVERY) {
                 mTVUserInfo.setText(VMallUtils.decodeString(mOrderBean.getReceiverName()) + "  "
                         + VMallUtils.decodeString(mOrderBean.getReceiverPhone()));
-                mTVAddress.setText(VMallUtils.decodeString(mOrderBean.getReceiverDetailAddress()));
+//                mTVAddress.setText(VMallUtils.decodeString(mOrderBean.getReceiverDetailAddress()));
+
+                if(!TextUtils.isEmpty(mOrderBean.getReceiverDetailAddress())) {
+                    mTVAddress.setText(mOrderBean.getReceiverDetailAddress() + "," + VMallUtils.getAddress(mOrderBean.getReceiverProvince(), mOrderBean.getReceiverCity(), mOrderBean.getReceiverRegion()));
+                }else {
+                    mTVAddress.setText(VMallUtils.getAddress(mOrderBean.getReceiverProvince(), mOrderBean.getReceiverCity(), mOrderBean.getReceiverRegion()));
+                }
             }else {
                 WmsWarehouseInfoBean wmsWarehouseInfo = mOrderBean.getWmsWarehouseInfo();
                 if(wmsWarehouseInfo==null){return;}
@@ -311,14 +316,19 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         }else {
             mTvOrderRemarks.setText(String.format(ResUtils.getString(R.string.format_order_remarks), !TextUtils.isEmpty(mOrderBean.getRemark())?mOrderBean.getRemark():""));
         }
-        mTvOrderDisMode.setText(String.format(ResUtils.getString(R.string.format_order_dis_mode), mOrderBean.getShippingMethod()==1?R.string.label_pick_by_yourself:R.string.label_express_delivery));
+        mTvOrderDisMode.setText(String.format(ResUtils.getString(R.string.format_order_dis_mode), mOrderBean.getShippingMethod()==1?getString(R.string.label_pick_by_yourself):getString(R.string.label_express_delivery)));
 
         //商品信息
         mTvTotalCouponDetail.setVisibility(needShow(mOrderBean.getCouponAmount()));
         mTvTotalCoupon.setVisibility(needShow(mOrderBean.getCouponAmount()));
         mTvTotalCouponDetail.setText("-"+VMallUtils.convertPriceString(mOrderBean.getCouponAmount()));
         mTVCoupon.setText(VMallUtils.convertPriceString(mOrderBean.getServiceAmount()));
-        mTvOrderPickCode.setText(String.format(ResUtils.getString(R.string.format_order_pick_code), !TextUtils.isEmpty(mOrderBean.getPickUpCode())?mOrderBean.getRemark():""));
+        if(!TextUtils.isEmpty(mOrderBean.getPickUpCode())){
+            mTvOrderPickCode.setText(String.format(ResUtils.getString(R.string.format_order_pick_code), mOrderBean.getPickUpCode()));
+        }else {
+            mTvOrderPickCode.setVisibility(View.GONE);
+        }
+
 
         if(mOrderBean.getStatus()==Constants.STATUS_ORDER_DELIVERED) {
             mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
@@ -344,8 +354,12 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         mTvFreightPrepaidDetail.setText(VMallUtils.convertPriceString(mOrderBean.getPredictFreightAmount()));
 
 
-        mTvPackageNumDetail.setText(VMallUtils.convertTo3String(mOrderBean.getInternationalPackageVolume())+"m³");
-        mTvPackageWeightDetail.setText(VMallUtils.convertTo3String(mOrderBean.getInternationalPackageWeight())+"kg");
+        if(mOrderBean.getInternationalPackageVolume()==0){
+            mTvPackageNumDetail.setVisibility(View.GONE);
+        }else {
+            mTvPackageNumDetail.setText(VMallUtils.convertTo3String(mOrderBean.getInternationalPackageVolume())+"m³");
+        }
+        mTvPackageWeightDetail.setText(VMallUtils.convertTo2String(mOrderBean.getInternationalPackageWeight())+"kg");
         if(mOrderBean.getStatus()==Constants.STATUS_ORDER_UNPAY){
             mIvOrderTrace.setVisibility(View.GONE);
         }

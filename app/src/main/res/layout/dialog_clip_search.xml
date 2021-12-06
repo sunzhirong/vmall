@@ -65,7 +65,7 @@
         android:layout_height="40dp"
         android:padding="4dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_close_white"
+        android:src="@drawable/ic_circle_red_close"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ly_pay_pwd_verify" />

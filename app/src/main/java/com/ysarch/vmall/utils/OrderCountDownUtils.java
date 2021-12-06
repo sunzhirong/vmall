@@ -60,6 +60,7 @@ public class OrderCountDownUtils extends CountDownTimer {
         }
     }
     private String timeConversion(long time) {
+        long hour = time/3600;
         long minutes = 0;
         long sencond = 0;
         long temp = time % 3600;
@@ -80,7 +81,7 @@ public class OrderCountDownUtils extends CountDownTimer {
                 sencond = time % 60;
             }
         }
-        return  (minutes<10?("0"+minutes):minutes) + ":" + (sencond<10?("0"+sencond):sencond);
+        return  (hour<10?("0"+hour):hour)+":"+(minutes<10?("0"+minutes):minutes) + ":" + (sencond<10?("0"+sencond):sencond);
     }
 
 

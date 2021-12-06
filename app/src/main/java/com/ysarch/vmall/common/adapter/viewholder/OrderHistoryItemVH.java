@@ -146,7 +146,7 @@ public class OrderHistoryItemVH extends AbsViewHolder {
         mTVOrderSn.setText(mOrderBean.getOrderSn());
         mTvGoodsPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_price),VMallUtils.convertPriceString(mOrderBean.getPayAmount())));
         mTvFreightPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_freight),VMallUtils.convertPriceString(mOrderBean.getPredictFreightAmount())));
-        mTvTotalPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_total),VMallUtils.convertPriceString(mOrderBean.getOrderAmount())));
+        mTvTotalPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_total),VMallUtils.convertPriceString(mOrderBean.getPayAmount())));
 //        if(mOrderBean.getStatus() == Constants.STATUS_ORDER_UNPAY){
 //            mTvTotalPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_total),VMallUtils.convertPriceString(mOrderBean.getAlreadyPayAmount())));
 //        }else {

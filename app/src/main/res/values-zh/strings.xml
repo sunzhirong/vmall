@@ -133,7 +133,7 @@
 
     <string name="dialog_delete">删除</string>
 
-    <string name="dialog_confirm_delete_cart">确定删除%d个商品？</string>
+    <string name="dialog_confirm_delete_cart">确定删除所选商品？</string>
 
     <string name="label_complete">完成</string>
 
@@ -163,6 +163,8 @@
     <string name="label_order_pick_address">取货地址</string>
 
     <string name="label_submit_order">提交订单</string>
+
+    <string name="label_submit_recharge_order">提交充值</string>
 
     <string name="label_goods_price">商品金额</string>
 
@@ -211,7 +213,7 @@
 
     <string name="label_submit_succ">提交成功</string>
 
-    <string name="label_rechage_succ_tips">提交成功，等待审核</string>
+    <string name="label_rechage_succ_tips">审核中 请耐心等待5-30分钟</string>
 
     <!--确认付款弹窗-->
 
@@ -550,7 +552,7 @@
 
     <string name="insufficient_error_msg">暂时无法使用此功能(103)</string>
 
-    <string name="net_error_msg">网络未连接(104)</string>
+    <string name="net_error_msg">Disconnected(104)</string>
 
     <!--未知：商品详情页-->
 
@@ -586,9 +588,9 @@
 
     <string name="format_uid_mine">ID %d</string>
 
-    <string name="label_order_num_prefix">订单编号:</string>
+    <string name="label_order_num_prefix">订单编号</string>
 
-    <string name="format_order_total">共 %d 件商品 金额 </string>
+    <string name="format_order_total">共%d件商品，金额：</string>
 
     <string name="format_order_create_time">下单时间 %s</string>
 
@@ -616,7 +618,7 @@
 
     <string name="label_freight_paid_in">运费实付</string>
 
-    <string name="tb_delivery">,淘宝运费 </string>
+    <string name="tb_delivery">，淘宝运费:</string>
 
     <!--其他-->
 

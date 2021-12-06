@@ -133,7 +133,7 @@
 
     <string name="dialog_delete">delete</string>
 
-    <string name="dialog_confirm_delete_cart">Are you sure to delete%dproducts？</string>
+    <string name="dialog_confirm_delete_cart">Comfirm deletion of the items?</string>
 
     <string name="label_complete">Done</string>
 
@@ -163,6 +163,8 @@
     <string name="label_order_pick_address">Pickup Address</string>
 
     <string name="label_submit_order">Submit</string>
+
+    <string name="label_submit_recharge_order">Submit</string>
 
     <string name="label_goods_price">Item(s)</string>
 
@@ -211,7 +213,7 @@
 
     <string name="label_submit_succ">Submitted successfully</string>
 
-    <string name="label_rechage_succ_tips">Submitted and under review</string>
+    <string name="label_rechage_succ_tips">Under review,Please wait 5-30 min</string>
 
     <!--确认付款弹窗-->
 
@@ -261,7 +263,7 @@
     <!--订单列表-->
 
 
-    <string name="label_order_all">ALL</string>
+    <string name="label_order_all">All</string>
 
     <string name="label_order_unpay">To Pay</string>
 
@@ -586,17 +588,17 @@
 
     <string name="format_uid_mine">ID %d</string>
 
-    <string name="label_order_num_prefix">Order ID：</string>
+    <string name="label_order_num_prefix">Order ID </string>
 
-    <string name="format_order_total">%d item(s) </string>
+    <string name="format_order_total">%ditem(s)：</string>
 
-    <string name="format_order_create_time">Order Time：%s</string>
+    <string name="format_order_create_time">Order Time %s</string>
 
-    <string name="format_order_remarks">Message：%s</string>
+    <string name="format_order_remarks">Message %s</string>
 
-    <string name="format_order_pick_code">Pickup code：%s</string>
+    <string name="format_order_pick_code">Pickup code %s</string>
 
-    <string name="format_order_dis_mode">Delivery Method：%s</string>
+    <string name="format_order_dis_mode">Delivery Method %s</string>
 
     <string name="format_order_pay_total">Total%1$s Paid%2$s To pay</string>
 
@@ -616,7 +618,7 @@
 
     <string name="label_freight_paid_in">Shipping total</string>
 
-    <string name="tb_delivery"> Taobao shipping </string>
+    <string name="tb_delivery">，Taobao shipping:</string>
 
     <!--其他-->
 

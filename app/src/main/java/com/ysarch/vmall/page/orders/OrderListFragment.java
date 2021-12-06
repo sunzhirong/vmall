@@ -225,7 +225,7 @@ public class OrderListFragment extends CommonPureListFragment<OrderListPresenter
 //            mPayDialog.setPrice(mOrderBean.getFreightAmount());
 //        }
 
-        mPayDialog.setPrice(mOrderBean.getRestAmount());
+        mPayDialog.setPrice(mOrderBean.getPayAmount());
         mPayDialog.show(getFragmentManager(),"test");
     }
 

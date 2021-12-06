@@ -331,8 +331,8 @@ public class GoodsDetailActivity extends BaseActivity<GoodsDetailPresenter> {
             mBannerImgCount = mGoodsDetailBean.getImages().size();
             mTVBannerIndicator.setVisibility(View.VISIBLE);
             mTVBannerIndicator.setText(1 + "/" + mBannerImgCount);
-//            if (mBannerImgCount > 1)
-//                mConvenientBanner.startTurning(3000);
+            if (mBannerImgCount > 1)
+                mConvenientBanner.startTurning(6000);
         } else {
             mBannerImgCount = 0;
             mTVBannerIndicator.setVisibility(View.GONE);

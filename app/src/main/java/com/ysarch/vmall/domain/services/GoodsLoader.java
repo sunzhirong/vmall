@@ -231,7 +231,7 @@ public class GoodsLoader extends ObjectLoader {
     public Flowable<SimpleResponse<Object>> requestAddCartV2(GoodsDetailItemBean goodsDetailBean, SkuBeanV2 skuBean, String picImg,
                                                              String skuLabel, int quantity, int platformType) {
         if (skuBean != null)
-            return mService.requestAddCart(Float.parseFloat(goodsDetailBean.getDollarPrice()), "", goodsDetailBean.getCategoryId(),
+            return mService.requestAddCart(Float.parseFloat(skuBean.getPrice()), "", goodsDetailBean.getCategoryId(),
                     goodsDetailBean.getItemId(), goodsDetailBean.getTitle(), skuBean.getSkuId(), skuLabel, picImg, quantity, platformType);
         else
             return mService.requestAddCart(Float.parseFloat(goodsDetailBean.getDollarPrice()), "",

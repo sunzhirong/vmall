@@ -7,7 +7,7 @@
 
     <string name="label_cancel">បោះបង់</string>
 
-    <string name="label_next">ជំហ៊ាន​បន្ទាប់​</string>
+    <string name="label_next">ជំហ៊ានបន្ទាប់</string>
 
     <string name="app_name">SabayShop</string>
 
@@ -19,25 +19,25 @@
 
     <string name="label_cart_tab">កន្រ្តកទំនិញ</string>
 
-    <string name="label_mine_tab">គណនី​របស់​ខ្ញុំ</string>
+    <string name="label_mine_tab">គណនីរបស់ខ្ញុំ</string>
 
     <!--首页-->
 
 
-    <string name="label_home_taobao">ការ​បញ្ជា​ទិញTaobao</string>
+    <string name="label_home_taobao">ការបញ្ជាទិញTaobao</string>
 
-    <string name="label_national_transport">តាមដាន​ការ​ដឹកជញ្ជូន</string>
+    <string name="label_national_transport">តាមដានការដឹកជញ្ជូន</string>
 
     <string name="label_home_return_back">ក្នុងរយះពេល72ម៉ោងដោះស្រាយបញ្ហា</string>
 
-    <string name="label_hot_goods">ផលិតផល​ពេញនិយម</string>
+    <string name="label_hot_goods">ផលិតផលពេញនិយម</string>
 
     <string name="label_most_popular">ពេញនិយមបំផុត</string>
 
     <!--复制粘贴弹窗-->
 
 
-    <string name="label_intelligent_search">ស្វែងរក​ផលិតផល</string>
+    <string name="label_intelligent_search">ស្វែងរកផលិតផល</string>
 
     <string name="label_intelligent_search_tips">អ្នកប្រហែលជាចូលចិត្ត</string>
 
@@ -48,38 +48,38 @@
     <!--搜索-->
 
 
-    <string name="label_home_search">ស្វែងរក​ផលិតផល</string>
+    <string name="label_home_search">ស្វែងរកផលិតផល</string>
 
     <string name="hint_search_goods">ស្វែងរកមុខទំនិញជាភាសាចិន</string>
 
-    <string name="label_search_history">ធ្លាប់​ស្វែងរក</string>
+    <string name="label_search_history">ធ្លាប់ស្វែងរក</string>
 
     <!--商品详情页-->
 
 
-    <string name="label_get_coupon">ប័ណ្ណ​បញ្ចុះ​តម្លៃ</string>
+    <string name="label_get_coupon">ប័ណ្ណបញ្ចុះតម្លៃ</string>
 
     <string name="label_goods_id_prefix">TaobaoID </string>
 
-    <string name="label_exchange_rate_prefix">អត្រា​ប្តូ​រ​ប្រាក់ </string>
+    <string name="label_exchange_rate_prefix">អត្រាប្តូរប្រាក់ </string>
 
     <string name="label_freight">ថ្លៃដឹកជញ្ជូនTaobao</string>
 
     <string name="label_tb_freight_illustrate">ថ្លៃដឹកជញ្ជូនTaobao</string>
 
-    <string name="tb_freight_illustrate_1">1.ថ្លៃដឹកជញ្ជូនTaobaoគឺជាការដឹកជញ្ជូនទំនិញដែលគិតថ្លៃដោយ Taobao។ ពេលបញ្ជាទិញសូមដាក់ស្នើសម្រាប់ការពិនិត្យឡើងវិញ​ សេវាកម្មអតិថិជននឹងពិនិត្យមើលថ្លៃដឹកជញ្ជូន Taobao ទើបបង់ប្រាក់បញ្ជាទិញ។</string>
+    <string name="tb_freight_illustrate_1">1.ថ្លៃដឹកជញ្ជូនTaobaoគឺជាការដឹកជញ្ជូនទំនិញដែលគិតថ្លៃដោយ Taobao។ ពេលបញ្ជាទិញសូមដាក់ស្នើសម្រាប់ការពិនិត្យឡើងវិញ សេវាកម្មអតិថិជននឹងពិនិត្យមើលថ្លៃដឹកជញ្ជូន Taobao ទើបបង់ប្រាក់បញ្ជាទិញ។</string>
 
     <string name="tb_freight_illustrate_2">2.ថ្លៃដឹកជញ្ជូនTaobao មិនគិតចូលថ្លៃសេវាកម្ម។</string>
 
     <string name="label_service">សេវាកម្ម</string>
 
-    <string name="label_service_1">ការ​បញ្ជា​ទិញTaobao</string>
+    <string name="label_service_1">ការបញ្ជាទិញTaobao</string>
 
     <string name="label_service_2">បញ្ញេីគ្រប់ដំបន់</string>
 
     <string name="label_service_3">ក្នុងរយះពេល72ម៉ោងដោះស្រាយបញ្ហា</string>
 
-    <string name="label_service_4">តាមដាន​ការ​ដឹកជញ្ជូន</string>
+    <string name="label_service_4">តាមដានការដឹកជញ្ជូន</string>
 
     <string name="label_prop">បានជ្រេីសរេីស</string>
 
@@ -87,7 +87,7 @@
 
     <string name="label_trace_title">រយះពេលដឹកជញ្ជូន</string>
 
-    <string name="label_stock_up">រៀប​ចំ​ទំនិញ</string>
+    <string name="label_stock_up">រៀបចំទំនិញ</string>
 
     <string name="label_1_3_day">1-3ថ្ងៃ</string>
 
@@ -103,29 +103,29 @@
 
     <string name="label_cart">កន្រ្តកទំនិញ</string>
 
-    <string name="label_add_to_cart">បញ្ចូល​ក្នុង​កន្ត្រក</string>
+    <string name="label_add_to_cart">បញ្ចូលក្នុងកន្ត្រក</string>
 
     <string name="tip_add_cart_succ">ការបន្ថែមជោគជ័យ</string>
 
     <string name="label_count">ចំនួន</string>
 
-    <string name="label_goods_detail">ព​ត៌​មាន​លម្អិត​ពី​ទំនិញ</string>
+    <string name="label_goods_detail">ពត៌មានលម្អិតពីទំនិញ</string>
 
     <string name="no_worry_shopping">សេវាកម្ម</string>
 
-    <string name="label_taobao_purchasing">ការ​បញ្ជា​ទិញTaobao</string>
+    <string name="label_taobao_purchasing">ការបញ្ជាទិញTaobao</string>
 
-    <string name="label_taobao_tips">បញ្ជាទិញពីTaobaoផ្ទាល់​​ ជ្រើសរើសនូវទំនិញមានគុណភាពខ្ពស់​ ទុកចិត្តក្នុងការបញ្ជាទិញ។</string>
+    <string name="label_taobao_tips">បញ្ជាទិញពីTaobaoផ្ទាល់ ជ្រើសរើសនូវទំនិញមានគុណភាពខ្ពស់ ទុកចិត្តក្នុងការបញ្ជាទិញ។</string>
 
     <string name="label_national_transport_tips">ដឹកជញ្ជូនទូទាំង25ខេត្ត/ក្រុង</string>
 
-    <string name="label_deliver_goods">100%ផ្ញេីទំនិញ តាមដាន​ការ​ដឹកជញ្ជូន</string>
+    <string name="label_deliver_goods">100%ផ្ញេីទំនិញ តាមដានការដឹកជញ្ជូន</string>
 
-    <string name="label_deliver_goods_tips">បន្ទាប់ពីការទូទាត់ប្រាក់រួច​នឹងធ្វើការបញ្ជាទិញជូន អាចតាមដានទំនិញក្នុងទំព័រ ការបញ្ជាទិញព័ត៌មានលម្អិត​ និង ស្ថានភាពដឹកជញ្ជូន។</string>
+    <string name="label_deliver_goods_tips">បន្ទាប់ពីការទូទាត់ប្រាក់រួចនឹងធ្វើការបញ្ជាទិញជូន អាចតាមដានទំនិញក្នុងទំព័រ ការបញ្ជាទិញព័ត៌មានលម្អិត និង ស្ថានភាពដឹកជញ្ជូន។</string>
 
-    <string name="label_service_3_tips">បន្ទាប់ពីទទួលបានទំនិញ​ បើមានបញ្ហា សូមទាក់ទងផ្នែកសេវាកម្មក្នុងរយះពេល72ម៉ោង​។</string>
+    <string name="label_service_3_tips">បន្ទាប់ពីទទួលបានទំនិញ បើមានបញ្ហា សូមទាក់ទងផ្នែកសេវាកម្មក្នុងរយះពេល72ម៉ោង។</string>
 
-    <string name="label_no_quality">ដាច់ស្តុក​</string>
+    <string name="label_no_quality">ដាច់ស្តុក</string>
 
     <!--购物车-->
 
@@ -133,7 +133,7 @@
 
     <string name="dialog_delete">លុប</string>
 
-    <string name="dialog_confirm_delete_cart">សម្រេចលុបចោល%dទំនិញ？</string>
+    <string name="dialog_confirm_delete_cart">តើអ្នកសម្រេចលុបទំនិញនេះ?</string>
 
     <string name="label_complete">រួចរាល់</string>
 
@@ -141,7 +141,7 @@
 
     <string name="label_edit">កែសម្រួល</string>
 
-    <string name="label_create_order">ទូទាត់​លុយ</string>
+    <string name="label_create_order">ទូទាត់លុយ</string>
 
     <string name="dialog_edit_order_title">សូមបញ្ចូលបរិមាណ</string>
 
@@ -150,19 +150,21 @@
 
     <string name="label_fill_order_info">បញ្ជីទិញទំនិញ</string>
 
-    <string name="order_dis_mode">វិធីសាស្ត្រ​ដឹកជញ្ជូន</string>
+    <string name="order_dis_mode">វិធីសាស្ត្រដឹកជញ្ជូន</string>
 
-    <string name="label_pick_by_yourself">មកយកនៅហាង(ភ្នំពេញ​)</string>
+    <string name="label_pick_by_yourself">មកយកនៅហាង(ភ្នំពេញ)</string>
 
-    <string name="label_express_delivery">ដឹកជញ្ជូន​រហ័ស</string>
+    <string name="label_express_delivery">ដឹកជញ្ជូនរហ័ស</string>
 
-    <string name="label_confirm_order_tips_hint">ចូលបំពេញ​ សូមចរចារជាមួយសេវាកម្មអតិថិជនជាមុនសិន</string>
+    <string name="label_confirm_order_tips_hint">ចូលបំពេញ សូមចរចារជាមួយសេវាកម្មអតិថិជនជាមុនសិន</string>
 
-    <string name="label_order_receive_address">អាស័យដ្ឋាន​ទទួល​ជញ្ជូន</string>
+    <string name="label_order_receive_address">អាស័យដ្ឋានទទួលជញ្ជូន</string>
 
-    <string name="label_order_pick_address">អាស័យដ្ឋាន​យកទំនិញ</string>
+    <string name="label_order_pick_address">អាស័យដ្ឋានយកទំនិញ</string>
 
-    <string name="label_submit_order">បន្តទិញ​</string>
+    <string name="label_submit_order">បន្តទិញ</string>
+
+    <string name="label_submit_recharge_order">ដាក់ស្នេីសុំបញ្ចូលលុយ</string>
 
     <string name="label_goods_price">តម្លៃទំនិញសរុប</string>
 
@@ -170,11 +172,11 @@
 
     <string name="format_coupon_drop_off"> -%s</string>
 
-    <string name="label_freight_tips">▲រំលឹកៈការគិតថ្លៃដឹកទំនិញក្រោយពេលដឹកជញ្ជូន​ ដើម្បីបង្កើនពេលវេលាដឹកជញ្ជូន សូមបញ្ចូលទឹកប្រាក់ជាមុនទៅកាបូបដើម្បីបង់ថ្លៃដឹកជញ្ជូន</string>
+    <string name="label_freight_tips">▲រំលឹកៈការគិតថ្លៃដឹកទំនិញក្រោយពេលដឹកជញ្ជូន ដើម្បីបង្កើនពេលវេលាដឹកជញ្ជូន សូមបញ្ចូលទឹកប្រាក់ជាមុនទៅកាបូបដើម្បីបង់ថ្លៃដឹកជញ្ជូន</string>
 
-    <string name="label_international_mode_of_transport">វិធី​ដឹកជញ្ជូន</string>
+    <string name="label_international_mode_of_transport">វិធីដឹកជញ្ជូន</string>
 
-    <string name="label_land_transportation">ផ្លូវ​គោក</string>
+    <string name="label_land_transportation">ផ្លូវគោក</string>
 
     <string name="label_coupon_empty_to_use">គ្មាន</string>
 
@@ -193,7 +195,7 @@
 
     <string name="label_pay_on_delivery">សាច់ប្រាក់នៅពេលដឹកជញ្ជូន</string>
 
-    <string name="label_pay_amount">តម្លៃ​សរុប</string>
+    <string name="label_pay_amount">តម្លៃសរុប</string>
 
     <string name="label_submit">ស្នេីសុំ</string>
 
@@ -201,17 +203,17 @@
 
     <string name="label_coupon_amount_reduce"> </string>
 
-    <string name="label_pay_amount_order_detail">តម្លៃ​សរុប</string>
+    <string name="label_pay_amount_order_detail">តម្លៃសរុប</string>
 
     <string name="label_server_tips_detail">ថ្លៃសេវា</string>
 
-    <string name="tip_pls_select_address">អាស័យដ្ឋាន​ទទួល​ជញ្ជូន</string>
+    <string name="tip_pls_select_address">អាស័យដ្ឋានទទួលជញ្ជូន</string>
 
     <!--提交成功页-->
 
     <string name="label_submit_succ">ស្នេីសុំបានសម្រេច</string>
 
-    <string name="label_rechage_succ_tips">ស្ស្នេីសុំបានសម្រេច​ រង់ចាំ​ពិនិត្យ</string>
+    <string name="label_rechage_succ_tips">កំពុងពិនិត្យ សូមរង់ចាំ 5-30 នាទី</string>
 
     <!--确认付款弹窗-->
 
@@ -244,9 +246,9 @@
 
     <string name="label_my_wallet">កាបូប</string>
 
-    <string name="label_coupon">ប័ណ្ណ​បញ្ចុះ​តម្លៃ</string>
+    <string name="label_coupon">ប័ណ្ណបញ្ចុះតម្លៃ</string>
 
-    <string name="label_address_manage">អាស័យដ្ឋាន​ទទួល</string>
+    <string name="label_address_manage">អាស័យដ្ឋានទទួល</string>
 
     <string name="label_my_collection">ពេញចិត្ត</string>
 
@@ -254,18 +256,18 @@
 
     <string name="label_setting">ការកំណត់</string>
 
-    <string name="label_owner_setting">ពត៌មាន​ផ្ទាល់ខ្លួន</string>
+    <string name="label_owner_setting">ពត៌មានផ្ទាល់ខ្លួន</string>
 
-    <string name="label_select_reason">សូម​ជ្រើសរើស</string>
+    <string name="label_select_reason">សូមជ្រើសរើស</string>
 
     <!--订单列表-->
 
 
     <string name="label_order_all">ទាំងអស់</string>
 
-    <string name="label_order_unpay">រង់ចាំ​ទូទាត់</string>
+    <string name="label_order_unpay">រង់ចាំទូទាត់</string>
 
-    <string name="label_order_deliver_waiting">រៀប​ចំ​ទំនិញ</string>
+    <string name="label_order_deliver_waiting">រៀបចំទំនិញ</string>
 
     <string name="label_order_delivered">កំពុងដឹកជញ្ជូន</string>
 
@@ -273,10 +275,10 @@
 
     <string name="label_order_close">បានបោះបង់</string>
 
-    <string name="label_order_audit_waiting">ពិនិត្យ​ឡើង​វិញ</string>
+    <string name="label_order_audit_waiting">ពិនិត្យឡើងវិញ</string>
 
 
-    <string name="format_item_goods_price">ផលិត​ផល%s，</string>
+    <string name="format_item_goods_price">ផលិតផល%s，</string>
 
     <string name="format_item_goods_freight">ដឹកជញ្ជូន%s，</string>
 
@@ -285,9 +287,9 @@
     <string name="format_item_goods_paid">បានទូទាត់រួច%s</string>
 
 
-    <string name="label_order_to_pay">ទូទាត់​ប្រាក់</string>
+    <string name="label_order_to_pay">ទូទាត់ប្រាក់</string>
 
-    <string name="label_order_cancel">បោះបង់ការបញ្ជាទិញ</string>
+    <string name="label_order_cancel">បោះបង់</string>
 
     <string name="label_order_delete">លុបការបញ្ជាទិញ</string>
 
@@ -298,9 +300,9 @@
 
     <!--取消订单、删除订单弹窗-->
 
-    <string name="label_cancel_order_1">អាស័យដ្ឋាន​ ឬ លេខទូរស័ព្ទដៃមិនត្រឹមត្រូវ</string>
+    <string name="label_cancel_order_1">អាស័យដ្ឋាន ឬ លេខទូរស័ព្ទដៃមិនត្រឹមត្រូវ</string>
 
-    <string name="label_cancel_order_2">ភ្លេចលេខកូដ​បញ្ជាក់ / ទឹកប្រាក់មិនគ្រប់គ្រាន់</string>
+    <string name="label_cancel_order_2">ភ្លេចលេខកូដបញ្ជាក់ / ទឹកប្រាក់មិនគ្រប់គ្រាន់</string>
 
     <string name="label_cancel_order_3">មិនអាចបង់ប្រាក់តាមធម្មតា</string>
 
@@ -310,12 +312,12 @@
 
     <string name="dialog_delete_order_title">លុបការបញ្ជាទិញ？</string>
 
-    <string name="dialog_delete_order_content">ការបញ្ជាទិញត្រូវបានលុបចោល​មិនអាចកំណត់ឡើងវិញបានទេ សូមពិចារណាដោយយកចិត្តទុកដាក់</string>
+    <string name="dialog_delete_order_content">ការបញ្ជាទិញត្រូវបានលុបចោលមិនអាចកំណត់ឡើងវិញបានទេ សូមពិចារណាដោយយកចិត្តទុកដាក់</string>
 
 
     <!--我的钱包-->
 
-    <string name="label_recharge">បញ្ចូល​ទឹកប្រាក់</string>
+    <string name="label_recharge">បញ្ចូលទឹកប្រាក់</string>
 
     <string name="label_my_balance">សមតុល្យ</string>
 
@@ -331,18 +333,18 @@
 
     <string name="label_recharge_by_self">បំពេញទឹកប្រាក់</string>
 
-    <string name="label_choose_pay_way">ជ្រើសរើស​របៀបបញ្ចូល</string>
+    <string name="label_choose_pay_way">ជ្រើសរើសរបៀបបញ្ចូល</string>
 
-    <string name="label_recharge_now">ជំហ៊ាន​បន្ទាប់​</string>
+    <string name="label_recharge_now">ជំហ៊ានបន្ទាប់</string>
 
 
     <!--银行卡转账页-->
 
-    <string name="label_recharge_bank">បញ្ចូល​ទឹកប្រាក់</string>
+    <string name="label_recharge_bank">បញ្ចូលទឹកប្រាក់</string>
 
     <string name="label_recharge_success">បញ្ចូលជោគជ័យ</string>
 
-    <string name="label_bank_account_tips">ជ្រើសរើស​កាតធនាគារ</string>
+    <string name="label_bank_account_tips">ជ្រើសរើសកាតធនាគារ</string>
 
     <string name="label_bank">ធនាគារ</string>
 
@@ -352,21 +354,21 @@
 
     <string name="label_name">ឈ្មោះ</string>
 
-    <string name="label_recharge_tips">*សូមធ្វេីការផ្ទេរប្រាក់​រួចរាល់​មុននឹង​ធ្វេីការស្នេីសុំ</string>
+    <string name="label_recharge_tips">*សូមធ្វេីការផ្ទេរប្រាក់រួចរាល់មុននឹងធ្វេីការស្នេីសុំ</string>
 
-    <string name="label_recharge_amount">ទឹកប្រាក់​ដែលបានផ្ទេរ</string>
+    <string name="label_recharge_amount">ទឹកប្រាក់ដែលបានផ្ទេរ</string>
 
-    <string name="label_record">ទិន្នន័យ​</string>
+    <string name="label_record">ទិន្នន័យ</string>
 
     <string name="label_recharge_status_reject">ការស្នើសុំបានបរាជ័យ</string>
 
-    <string name="label_recharge_status_audit_waiting">ពិនិត្យ​ឡើង​វិញ</string>
+    <string name="label_recharge_status_audit_waiting">ពិនិត្យឡើងវិញ</string>
 
     <string name="label_recharge_status_succ">បញ្ចូលជោគជ័យ</string>
 
     <string name="label_recharge_history">ទិន្នន័យ</string>
 
-    <string name="label_upload_recharge_evidence">ចែករំលែករូបភាព​ដែលបានផ្ទេរប្រាក់</string>
+    <string name="label_upload_recharge_evidence">ចែករំលែករូបភាពដែលបានផ្ទេរប្រាក់</string>
 
     <string name="text_take_photo">រូបថត</string>
 
@@ -374,22 +376,22 @@
 
     <string name="text_please_agree_to_authorize">ដើម្បីធានាបាននូវមុខងារសូមយល់ព្រមលើការប្រើប្រាស់អាល់ប៊ុមរូបថតនិងមុខងារផ្សេងទៀត</string>
 
-    <string name="tip_pls_select_bank">ជ្រើសរើស​កាតធនាគារ</string>
+    <string name="tip_pls_select_bank">ជ្រើសរើសកាតធនាគារ</string>
 
-    <string name="tip_pls_upload_recharge_proof">ចែករំលែករូបភាព​ដែលបានផ្ទេរប្រាក់</string>
+    <string name="tip_pls_upload_recharge_proof">ចែករំលែករូបភាពដែលបានផ្ទេរប្រាក់</string>
 
-    <string name="please_input_recharge_amount">ទឹកប្រាក់​បញ្ចូល</string>
+    <string name="please_input_recharge_amount">ទឹកប្រាក់បញ្ចូល</string>
 
-    <string name="please_select_bank">ជ្រើសរើស​កាតធនាគារ</string>
+    <string name="please_select_bank">ជ្រើសរើសកាតធនាគារ</string>
 
-    <string name="label_select_bank">ជ្រើសរើស​កាតធនាគារ</string>
+    <string name="label_select_bank">ជ្រើសរើសកាតធនាគារ</string>
 
-    <string name="label_order_audit">ពិនិត្យ​ឡើង​វិញ</string>
+    <string name="label_order_audit">ពិនិត្យឡើងវិញ</string>
 
 
     <!--优惠券-->
 
-    <string name="label_can_use_coupon">ប័ណ្ណ​បញ្ចុះ​តម្លៃ</string>
+    <string name="label_can_use_coupon">ប័ណ្ណបញ្ចុះតម្លៃ</string>
 
     <string name="label_coupon_used">ប្រើប្រាស់រួច</string>
 
@@ -400,7 +402,7 @@
     <!--地址管理-->
 
 
-    <string name="label_address_manager">អាស័យដ្ឋាន​ទទួល</string>
+    <string name="label_address_manager">អាស័យដ្ឋានទទួល</string>
 
     <string name="label_default">លំនាំដើម</string>
 
@@ -408,15 +410,15 @@
 
     <string name="label_add_address">បន្ថែមថ្មី</string>
 
-    <string name="label_add_new_address">បន្ថែម​អាស័យដ្ឋាន</string>
+    <string name="label_add_new_address">បន្ថែមអាស័យដ្ឋាន</string>
 
     <!--添加/编辑地址-->
 
-    <string name="label_consignee_address">មោះ​អ្នកទទួល</string>
+    <string name="label_consignee_address">ឈ្មោះអ្នកទទួល</string>
 
-    <string name="label_contact_phone_address">លេខ​ទំនាក់​ទំនង</string>
+    <string name="label_contact_phone_address">លេខទំនាក់ទំនង</string>
 
-    <string name="label_region_belong_address">ខេត្ត​/ក្រុង</string>
+    <string name="label_region_belong_address">ខេត្ត/ក្រុង</string>
 
     <string name="label_detail_address">អាស័យដ្ឋាន</string>
 
@@ -426,9 +428,9 @@
 
     <string name="hint_fill_consignee_phone">ចូរបំពេញលេខទូរស័ព្ទ</string>
 
-    <string name="hint_fill_region">រុក​/ខណ្ឌ</string>
+    <string name="hint_fill_region">រុក/ខណ្ឌ</string>
 
-    <string name="hint_fill_detail_address">ចូរបំពេញ​អាស័យដ្ឋាន​លម្អិត</string>
+    <string name="hint_fill_detail_address">ចូរបំពេញអាស័យដ្ឋានលម្អិត</string>
 
     <string name="tip_fill_region_belong">សូមជ្រើសរើសអាសយដ្ឋាន</string>
 
@@ -438,7 +440,7 @@
 
     <string name="tip_modify_address_succ">ស្នេីសុំបានសម្រេច</string>
 
-    <string name="label_save">រក្សា​ទុក</string>
+    <string name="label_save">រក្សាទុក</string>
 
     <string name="label_city_choose">សូមជ្រើសរើស</string>
 
@@ -483,7 +485,7 @@
 
     <string name="label_auth_code">ញើរលេខកូដ</string>
 
-    <string name="tip_pwd_set_succ">លេខសម្ងាត់ត្រូវបានកំណត់ដោយជោគជ័យ​​ សូមចូលម្តងទៀត</string>
+    <string name="tip_pwd_set_succ">លេខសម្ងាត់ត្រូវបានកំណត់ដោយជោគជ័យ សូមចូលម្តងទៀត</string>
 
 
 
@@ -492,15 +494,15 @@
     <!--设置-->
 
 
-    <string name="label_about_us">អំពី​ពួក​យើង</string>
+    <string name="label_about_us">អំពីពួកយើង</string>
 
-    <string name="label_pay_password_modify">លេខកូដ​បញ្ជាក់</string>
+    <string name="label_pay_password_modify">លេខកូដបញ្ជាក់</string>
 
-    <string name="label_pay_password">លេខកូដ​បញ្ជាក់</string>
+    <string name="label_pay_password">លេខកូដបញ្ជាក់</string>
 
-    <string name="label_app_language">ជ្ភាសា</string>
+    <string name="label_app_language">ភាសា</string>
 
-    <string name="label_language_choice">ជ្ភាសា</string>
+    <string name="label_language_choice">ភាសា</string>
 
     <string name="label_lan_english">English</string>
 
@@ -508,17 +510,17 @@
 
     <string name="label_lan_cambodia">មែរ</string>
 
-    <string name="label_modify_password">ផ្លាស់ប្តូរលេខកូដ​បញ្ជាក់</string>
+    <string name="label_modify_password">ផ្លាស់ប្តូរលេខកូដបញ្ជាក់</string>
 
-    <string name="label_clear_cache_tips">លុប​ទិន្នន័យ？</string>
+    <string name="label_clear_cache_tips">លុបទិន្នន័យ？</string>
 
     <string name="label_nickname">ឈ្មោះ</string>
 
-    <string name="label_modify_login_pwd">ប្តូរ​លេខសម្ងាត់</string>
+    <string name="label_modify_login_pwd">ប្តូរលេខសម្ងាត់</string>
 
-    <string name="label_reset_pay_pwd">ប្តូរ​លេខកូដ​បញ្ជាក់</string>
+    <string name="label_reset_pay_pwd">ប្តូរលេខកូដបញ្ជាក់</string>
 
-    <string name="label_clear_cache">លុប​ទិន្នន័យ</string>
+    <string name="label_clear_cache">លុបទិន្នន័យ</string>
 
     <string name="label_app_version">Version</string>
 
@@ -526,11 +528,11 @@
 
     <string name="label_find">បានឃើញ</string>
 
-    <string name="loading">កំពុង​ដំណើរ​ការ​ទិន្នន័យ​ឡើង​វិញ​​</string>
+    <string name="loading">កំពុងដំណើរការទិន្នន័យឡើងវិញ</string>
 
     <string name="no_more">មិនមានទិន្នន័យទៀតទេ</string>
 
-    <string name="load_failed_try_agian">គ្មាន​ទិន្នន័យ​​ សូមចុចដំណើរ​ការ​ទិន្នន័យ​ឡើង​វិញ</string>
+    <string name="load_failed_try_agian">គ្មានទិន្នន័យ សូមចុចដំណើរការទិន្នន័យឡើងវិញ</string>
 
     <string name="facebook_app_id">409513450402246</string>
 
@@ -546,12 +548,11 @@
 
     <string name="auth_error_msg">គណនីរបស់អ្នកបានចូលនៅលើឧបករណ៍ផ្សេងទៀត សូមចូលម្តងទៀត(101)</string>
 
-    <string name="nodata_error_msg">គ្មាន​ទិន្នន័យ(102)</string>
+    <string name="nodata_error_msg">គ្មានទិន្នន័យ(102)</string>
 
     <string name="insufficient_error_msg">មុខងារនេះមិនអាចប្រើជាបណ្តោះអាសន្ន(103)</string>
 
     <string name="net_error_msg">បណ្តាញមិនត្រូវបានភ្ជាប់(104)</string>
-
     <!--未知：商品详情页-->
 
 
@@ -580,27 +581,27 @@
 
     <string name="label_availabel_time_prefix_coupon"> </string>
 
-    <string name="label_draw_coupon">ប័ណ្ណ​បញ្ចុះ​តម្លៃ</string>
+    <string name="label_draw_coupon">ប័ណ្ណបញ្ចុះតម្លៃ</string>
 
     <string name="tip_need_login">សូមចូរដើម្បីប្រើ</string>
 
     <string name="format_uid_mine">ID %d</string>
 
-    <string name="label_order_num_prefix">លេខរៀង​ការបញ្ជាទិញ：</string>
+    <string name="label_order_num_prefix">លេខរៀងការបញ្ជាទិញ </string>
 
-    <string name="format_order_total">%d ទំនិញ​ </string>
+    <string name="format_order_total">%dទំនិញ：</string>
 
-    <string name="format_order_create_time">ម៉ោង​ការបញ្ជាទិញ：%s</string>
+    <string name="format_order_create_time">ម៉ោងការបញ្ជាទិញ %s</string>
 
-    <string name="format_order_remarks">ចំណាំ：%s</string>
+    <string name="format_order_remarks">ចំណាំ %s</string>
 
-    <string name="format_order_pick_code">លេខទទួលទំនិញ：%s</string>
+    <string name="format_order_pick_code">លេខទទួលទំនិញ %s</string>
 
-    <string name="format_order_dis_mode">វិធីសាស្ត្រ​ដឹកជញ្ជូន：%s</string>
+    <string name="format_order_dis_mode">វិធីសាស្ត្រដឹកជញ្ជូន %s</string>
 
-    <string name="format_order_pay_total">សរុប%1$s បានទូទាត់រួច%2$s រង់ចាំ​ទូទាត់</string>
+    <string name="format_order_pay_total">សរុប%1$s បានទូទាត់រួច%2$s រង់ចាំទូទាត់</string>
 
-    <string name="format_count_down">%s ត្រូវបានលុបចោលដោយស្វ័យប្រវត្តិ</string>
+    <string name="format_count_down">%s លុបចោលដោយស្វ័យប្រវត្តិ</string>
 
     <string name="label_express_volume">ទំហំខ្នាត</string>
 
@@ -612,11 +613,11 @@
 
     <string name="label_delivery_fee">ការដឹកជញ្ជូន</string>
 
-    <string name="label_freight_voucher">ប័ណ្ណ​ដឹកជញ្ជូន</string>
+    <string name="label_freight_voucher">ប័ណ្ណដឹកជញ្ជូន</string>
 
-    <string name="label_freight_paid_in">សរុប​ថ្លៃដឹកជញ្ជូន</string>
+    <string name="label_freight_paid_in">សរុបថ្លៃដឹកជញ្ជូន</string>
 
-    <string name="tb_delivery"> លៃដឹកជញ្ជូនtaobao </string>
+    <string name="tb_delivery">，លៃដឹកជញ្ជូនtaobao:</string>
 
     <!--其他-->
 
@@ -649,9 +650,9 @@
 
     <string name="label_order_remark_prefix">ចំណាំ</string>
 
-    <string name="label_mode_delivery">វិធី​សា​ស្រ្ត​ដឹកជញ្ជូន</string>
+    <string name="label_mode_delivery">វិធីសាស្រ្តដឹកជញ្ជូន</string>
 
-    <string name="label_mode_delivery_choose">វិធី​សា​ស្រ្ត​ដឹកជញ្ជូន</string>
+    <string name="label_mode_delivery_choose">វិធីសាស្រ្តដឹកជញ្ជូន</string>
 
     <string name="label_type_delivery_on_all_ready">到齐发货</string>
 
@@ -715,7 +716,7 @@
 
     <string name="tip_msg_looking_order">我正在看订单</string>
 
-    <string name="format_order_sn">លេខរៀង​ការបញ្ជាទិញ：%s</string>
+    <string name="format_order_sn">លេខរៀងការបញ្ជាទិញ：%s</string>
 
     <string name="tip_img_upload_fail">图片上传失败</string>
 
@@ -760,9 +761,9 @@
 
 
 
-    <string name="label_pwd_safe_tips">ដើម្បីសុវត្ថិភាពគណនីរបស់អ្នកសូមកំណត់លេខកូដ​បញ្ជាក់។</string>
+    <string name="label_pwd_safe_tips">ដើម្បីសុវត្ថិភាពគណនីរបស់អ្នកសូមកំណត់លេខកូដបញ្ជាក់។</string>
 
-    <string name="label_pwd_modify">បញ្ចូលលេខកូដ​បញ្ជាក់</string>
+    <string name="label_pwd_modify">បញ្ចូលលេខកូដបញ្ជាក់</string>
 
     <string name="label_pwd_confirm_tips">សូមបំពេញម្តងទៀតដើម្បីបញ្ជាក់លេខសម្ងាត់</string>
 
@@ -772,7 +773,7 @@
 
     <string name="label_trace_info">ដឹកជញ្ជូន</string>
 
-    <string name="label_expected_arrival">ប្រហែល​ថ្ងៃមកដល់</string>
+    <string name="label_expected_arrival">ប្រហែលថ្ងៃមកដល់</string>
 
 
 
@@ -795,7 +796,7 @@
 
     <string name="label_all">ទាំងអស់</string>
 
-    <string name="label_freight_after_delivery">ក្រោយ​ពេលចេញទំនិញបង់ថ្លៃសេវាដឹកជញ្ជូន</string>
+    <string name="label_freight_after_delivery">ក្រោយពេលចេញទំនិញបង់ថ្លៃសេវាដឹកជញ្ជូន</string>
 
     <string name="label_my_nickname">ឈ្មោះ</string>
 
@@ -803,7 +804,7 @@
 
     <string name="label_gender">ភេទ</string>
 
-    <string name="label_birthday">ងៃខែ​ឆ្នាំកំណើត</string>
+    <string name="label_birthday">ងៃខែឆ្នាំកំណើត</string>
 
     <string name="label_my_ava">រូបភាព</string>
 
@@ -815,7 +816,7 @@
 
     <string name="female">ស្រី</string>
 
-    <string name="label_edit_nickname">ប្តូរ​ឈ្មោះ</string>
+    <string name="label_edit_nickname">ប្តូរឈ្មោះ</string>
 
     <string name="input_your_nickname">សូមបញ្ចូលឈ្មោះ</string>
 

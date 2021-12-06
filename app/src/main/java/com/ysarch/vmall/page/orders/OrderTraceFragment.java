@@ -1,6 +1,7 @@
 package com.ysarch.vmall.page.orders;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -64,7 +65,12 @@ public class OrderTraceFragment extends BaseFragment<OrderTracePresenter> {
             if(mOrderBean.getShippingMethod()== Constants.SHIPPING_METHOD_DELIVERY) {
                 mTvUserInfoOrderDetail.setText(VMallUtils.decodeString(mOrderBean.getReceiverName()) + "  "
                         + VMallUtils.decodeString(mOrderBean.getReceiverPhone()));
-                mTvAddressOrderDetail.setText(VMallUtils.decodeString(mOrderBean.getReceiverDetailAddress()));
+//                mTvAddressOrderDetail.setText(VMallUtils.decodeString(mOrderBean.getReceiverDetailAddress()));
+                if(!TextUtils.isEmpty(mOrderBean.getReceiverDetailAddress())) {
+                    mTvAddressOrderDetail.setText(mOrderBean.getReceiverDetailAddress() + "," + VMallUtils.getAddress(mOrderBean.getReceiverProvince(), mOrderBean.getReceiverCity(), mOrderBean.getReceiverRegion()));
+                }else {
+                    mTvAddressOrderDetail.setText(VMallUtils.getAddress(mOrderBean.getReceiverProvince(), mOrderBean.getReceiverCity(), mOrderBean.getReceiverRegion()));
+                }
             }else {
                 WmsWarehouseInfoBean wmsWarehouseInfo = mOrderBean.getWmsWarehouseInfo();
                 if(wmsWarehouseInfo==null){return;}
