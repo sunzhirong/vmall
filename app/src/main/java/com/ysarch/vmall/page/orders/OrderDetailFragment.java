@@ -619,7 +619,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
 //        }else {
 //            mPayDialog.setPrice(mOrderBean.getFreightAmount());
 //        }
-        mPayDialog.setPrice(mOrderBean.getRestAmount());
+        mPayDialog.setPrice(mOrderBean.getPayAmount());
         mPayDialog.show(getFragmentManager(),"test");
     }
 
