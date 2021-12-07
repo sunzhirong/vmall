@@ -149,6 +149,7 @@
             android:layout_weight="1"
             android:background="@null"
             android:maxLines="1"
+            android:singleLine="true"
             android:gravity="center_vertical"
             android:hint="@string/hint_fill_detail_address"
             android:textColor="#343434"

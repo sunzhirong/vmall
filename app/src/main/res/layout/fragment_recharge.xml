@@ -501,7 +501,7 @@
         android:layout_width="match_parent"
         android:layout_marginHorizontal="@dimen/margin_h_common"
         android:id="@+id/tv_submit_recharge"
-        android:text="@string/label_submit_order"
+        android:text="@string/label_submit_recharge_order"
         style="@style/sumbitTvStyle"/>
 
 <!--    <TextView-->

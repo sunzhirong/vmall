@@ -144,9 +144,9 @@ public class OrderHistoryItemVH extends AbsViewHolder {
         mCallback = (Callback) callback;
 
         mTVOrderSn.setText(mOrderBean.getOrderSn());
-        mTvGoodsPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_price),VMallUtils.convertPriceString(mOrderBean.getPayAmount())));
+        mTvGoodsPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_price),VMallUtils.convertPriceString(mOrderBean.getTotalAmount())));
         mTvFreightPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_freight),VMallUtils.convertPriceString(mOrderBean.getPredictFreightAmount())));
-        mTvTotalPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_total),VMallUtils.convertPriceString(mOrderBean.getPayAmount())));
+        mTvTotalPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_total),VMallUtils.convertPriceString(mOrderBean.getOrderAmount())));
 //        if(mOrderBean.getStatus() == Constants.STATUS_ORDER_UNPAY){
 //            mTvTotalPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_total),VMallUtils.convertPriceString(mOrderBean.getAlreadyPayAmount())));
 //        }else {
@@ -154,7 +154,7 @@ public class OrderHistoryItemVH extends AbsViewHolder {
 //        }
 //        mTvTotalPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_total),VMallUtils.convertPriceString(mOrderBean.getPayAmount())));
         mTvPaidPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_paid),VMallUtils.convertPriceString(mOrderBean.getAlreadyPayAmount())));
-        mTvUnpaidPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
+        mTvUnpaidPrice.setText(VMallUtils.convertPriceString(mOrderBean.getPayAmount()));
 
 
 

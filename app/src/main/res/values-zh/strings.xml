@@ -580,7 +580,7 @@
 
     <string name="format_tip_num_coupon_available">%d张可用</string>
 
-    <string name="label_availabel_time_prefix_coupon">有效期至:</string>
+    <string name="label_availabel_time_prefix_coupon">有效期至：</string>
 
     <string name="label_draw_coupon">领取优惠券</string>
 
@@ -618,7 +618,7 @@
 
     <string name="label_freight_paid_in">运费实付</string>
 
-    <string name="tb_delivery">，淘宝运费:</string>
+    <string name="tb_delivery">，淘宝运费：</string>
 
     <!--其他-->
 

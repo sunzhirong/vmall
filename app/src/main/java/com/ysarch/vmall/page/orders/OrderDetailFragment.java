@@ -150,8 +150,14 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
     TextView mTvModeTransportPrefixOrderDetail;
     @BindView(R.id.tv_bottome_total_price)
     TextView mTvBottomeTotalPrice;
+    @BindView(R.id.tv_package_num)
+    TextView mTvPackageNum;
     @BindView(R.id.tv_package_num_detail)
     TextView mTvPackageNumDetail;
+    @BindView(R.id.cl_package)
+    View mClPackage;
+    @BindView(R.id.tv_package_weight)
+    TextView mTvPackageWeight;
     @BindView(R.id.tv_package_weight_detail)
     TextView mTvPackageWeightDetail;
     @BindView(R.id.iv_order_trace)
@@ -193,7 +199,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         }
 
         if (mOrderBean != null) {
-            updateData();
+//            updateData();
         }
 
         getPresenter().requestOrderDetail(mOrderId);
@@ -303,9 +309,17 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
             num += bean.getProductQuantity();
         }
         String numString = String.format(ResUtils.getString(R.string.format_order_total), num);
+
+
+        String number = String.valueOf(num);
+        int index = numString.indexOf(number);
         SpannableStringBuilder builder = new SpannableStringBuilder(numString);
         ForegroundColorSpan span = new ForegroundColorSpan(Color.RED);
-        builder.setSpan(span, 1, 1 + String.valueOf(num).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        builder.setSpan(span, index, index + number.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+//        SpannableStringBuilder builder = new SpannableStringBuilder(numString);
+//        ForegroundColorSpan span = new ForegroundColorSpan(Color.RED);
+//        builder.setSpan(span, 1, 1 + String.valueOf(num).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         mTvTotalNum.setText(builder);
 
         //订单信息
@@ -354,12 +368,24 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         mTvFreightPrepaidDetail.setText(VMallUtils.convertPriceString(mOrderBean.getPredictFreightAmount()));
 
 
-        if(mOrderBean.getInternationalPackageVolume()==0){
-            mTvPackageNumDetail.setVisibility(View.GONE);
+        if(mOrderBean.getInternationalPackageVolume()==0&&mOrderBean.getInternationalPackageWeight()==0){
+            mClPackage.setVisibility(View.GONE);
         }else {
-            mTvPackageNumDetail.setText(VMallUtils.convertTo3String(mOrderBean.getInternationalPackageVolume())+"m³");
+            if(mOrderBean.getInternationalPackageVolume()==0){
+                mTvPackageNumDetail.setVisibility(View.GONE);
+                mTvPackageNum.setVisibility(View.GONE);
+            }else {
+                mTvPackageNumDetail.setText(VMallUtils.convertTo3String(mOrderBean.getInternationalPackageVolume())+"m³");
+            }
+
+            if(mOrderBean.getInternationalPackageWeight()==0){
+                mTvPackageWeightDetail.setVisibility(View.GONE);
+                mTvPackageWeight.setVisibility(View.GONE);
+            }else {
+                mTvPackageWeightDetail.setText(VMallUtils.convertTo2String(mOrderBean.getInternationalPackageWeight())+"kg");
+            }
         }
-        mTvPackageWeightDetail.setText(VMallUtils.convertTo2String(mOrderBean.getInternationalPackageWeight())+"kg");
+
         if(mOrderBean.getStatus()==Constants.STATUS_ORDER_UNPAY){
             mIvOrderTrace.setVisibility(View.GONE);
         }
@@ -437,7 +463,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
                 mTVBlackOpt.setText(ResUtils.getString(R.string.label_cancel));
                 mTVStatusLabel.setText(getWholeOrderStatus(ResUtils.getString(R.string.label_order_unpay)));
                 //倒计时
-                if (mCountDownUtils == null) {
+                if (mCountDownUtils == null&&mOrderBean.getRestTime()!=0) {
                     mCountDownUtils = new OrderCountDownUtils(getContext(), mOrderBean.getRestTime()*1000, 1000, mTvCountDown,
                             "");
                 }
