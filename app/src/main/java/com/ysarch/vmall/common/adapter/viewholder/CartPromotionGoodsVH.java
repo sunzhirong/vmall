@@ -104,10 +104,12 @@ public class CartPromotionGoodsVH extends AbsViewHolder {
             mLlBottom.setVisibility(View.VISIBLE);
             mLine.setVisibility(View.VISIBLE);
             mTVTotalPrice.setText(VMallUtils.convertPriceString(mBean.getAmount()));
-            String numString = String.format(ResUtils.getString(R.string.format_order_total), mBean.getNumber());
+            String numString = String.format(ResUtils.getString(R.string.format_order_total), mBean.getQuantity());
+            String number = String.valueOf(mBean.getQuantity());
+            int index = numString.indexOf(number);
             SpannableStringBuilder builder = new SpannableStringBuilder(numString);
             ForegroundColorSpan span = new ForegroundColorSpan(Color.parseColor("#f94956"));
-            builder.setSpan(span, 1, 1 + String.valueOf(mBean.getNumber()).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.setSpan(span, index, index + number.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             mTVCountOrderGoods.setText(builder);
 //            mTVCountOrderGoods.setText(String.format(ResUtils.getString(R.string.format_order_total), mBean.getNumber()));
             mTVDeliveryOrderGoods.setVisibility(mBean.getDollorDelivery()==0?View.GONE:View.VISIBLE);

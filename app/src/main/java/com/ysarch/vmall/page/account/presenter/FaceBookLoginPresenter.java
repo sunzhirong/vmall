@@ -56,7 +56,7 @@ public class FaceBookLoginPresenter extends BasePresenter<FacebookLoginFragment>
 
     public void loginLog(long visitTime,String failReason,boolean result){
         Map<String,Object> map = new HashMap<>();
-        map.put("visitTime",visitTime);
+        map.put("visitTime",visitTime/1000);
         map.put("failReason",failReason);
         map.put("operationResult",result);
         map.put("serverErrorCode",0);

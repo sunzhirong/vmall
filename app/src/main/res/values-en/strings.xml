@@ -61,7 +61,7 @@
 
     <string name="label_goods_id_prefix">TaobaoID </string>
 
-    <string name="label_exchange_rate_prefix">Rate </string>
+    <string name="label_exchange_rate_prefix">Rate:</string>
 
     <string name="label_freight">Taobao shipping</string>
 
@@ -592,13 +592,13 @@
 
     <string name="format_order_total">%ditem(s)：</string>
 
-    <string name="format_order_create_time">Order Time %s</string>
+    <string name="format_order_create_time">Order Time：%s</string>
 
-    <string name="format_order_remarks">Message %s</string>
+    <string name="format_order_remarks">Message：%s</string>
 
-    <string name="format_order_pick_code">Pickup code %s</string>
+    <string name="format_order_pick_code">Pickup code：%s</string>
 
-    <string name="format_order_dis_mode">Delivery Method %s</string>
+    <string name="format_order_dis_mode">Delivery Method：%s</string>
 
     <string name="format_order_pay_total">Total%1$s Paid%2$s To pay</string>
 

@@ -22,6 +22,8 @@
             android:textSize="@dimen/text_14pt" />
 
         <EditText
+            android:maxLines="1"
+            android:singleLine="true"
             android:id="@+id/et_consignee_name_edit_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -56,6 +58,8 @@
             android:textSize="@dimen/text_14pt" />
 
         <EditText
+            android:maxLines="1"
+            android:singleLine="true"
             android:id="@+id/et_consignee_phone_edit_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

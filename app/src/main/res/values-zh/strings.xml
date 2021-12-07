@@ -61,7 +61,7 @@
 
     <string name="label_goods_id_prefix">淘宝ID </string>
 
-    <string name="label_exchange_rate_prefix">汇率 </string>
+    <string name="label_exchange_rate_prefix">汇率:</string>
 
     <string name="label_freight">淘宝运费</string>
 
@@ -580,7 +580,7 @@
 
     <string name="format_tip_num_coupon_available">%d张可用</string>
 
-    <string name="label_availabel_time_prefix_coupon">有效期至：</string>
+    <string name="label_availabel_time_prefix_coupon">有效期至:</string>
 
     <string name="label_draw_coupon">领取优惠券</string>
 
@@ -592,13 +592,13 @@
 
     <string name="format_order_total">共%d件商品，金额：</string>
 
-    <string name="format_order_create_time">下单时间 %s</string>
+    <string name="format_order_create_time">下单时间：%s</string>
 
-    <string name="format_order_remarks">订单备注 %s</string>
+    <string name="format_order_remarks">订单备注：%s</string>
 
-    <string name="format_order_pick_code">取货码 %s</string>
+    <string name="format_order_pick_code">取货码：%s</string>
 
-    <string name="format_order_dis_mode">配送方式 %s</string>
+    <string name="format_order_dis_mode">配送方式：%s</string>
 
     <string name="format_order_pay_total">总计%1$s 已付款%2$s 待付款</string>
 
@@ -618,7 +618,7 @@
 
     <string name="label_freight_paid_in">运费实付</string>
 
-    <string name="tb_delivery">，淘宝运费：</string>
+    <string name="tb_delivery">，淘宝运费:</string>
 
     <!--其他-->
 
