@@ -344,13 +344,13 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         }
 
 
-        if(mOrderBean.getStatus()==Constants.STATUS_ORDER_DELIVERED) {
-            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
-        }else {
-//            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getPayAmount()));
-            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getOrderAmount()));
-
-        }
+//        if(mOrderBean.getStatus()==Constants.STATUS_ORDER_DELIVERED) {
+//            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
+//        }else {
+////            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getPayAmount()));
+//            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getOrderAmount()));
+//        }
+        mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getTotalAmount()));
 
         //运费相关
         mTvChinaFreightDetail.setText(VMallUtils.convertPriceString(mOrderBean.getCnFreight()));

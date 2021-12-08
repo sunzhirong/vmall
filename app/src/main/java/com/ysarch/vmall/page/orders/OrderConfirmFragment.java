@@ -194,7 +194,8 @@ public class OrderConfirmFragment extends BaseFragment<OrderConfirmPresenter> {
         if (mGenerateOrderConfirmResult.getCalcAmount() != null) {
             mTVTotalAmount.setText(VMallUtils.convertPriceString(mGenerateOrderConfirmResult.getCalcAmount().getTotalAmount()));
             mTVFreight.setText(VMallUtils.convertPriceString(mGenerateOrderConfirmResult.getCalcAmount().getFreightAmount()));
-            mTVPayAmount.setText(VMallUtils.convertPriceString(mGenerateOrderConfirmResult.getCalcAmount().getPayAmount()));
+//            mTVPayAmount.setText(VMallUtils.convertPriceString(mGenerateOrderConfirmResult.getCalcAmount().getPayAmount()));
+            mTVPayAmount.setText(VMallUtils.convertPriceString(mGenerateOrderConfirmResult.getCalcAmount().getTotalAmount()));
 
             if(mGenerateOrderConfirmResult.getCalcAmount().getCnFreight()==0){
                 mRlFreight.setVisibility(View.GONE);
