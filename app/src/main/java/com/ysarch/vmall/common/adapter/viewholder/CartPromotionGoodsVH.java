@@ -104,8 +104,8 @@ public class CartPromotionGoodsVH extends AbsViewHolder {
             mLlBottom.setVisibility(View.VISIBLE);
             mLine.setVisibility(View.VISIBLE);
             mTVTotalPrice.setText(VMallUtils.convertPriceString(mBean.getAmount()));
-            String numString = String.format(ResUtils.getString(R.string.format_order_total), mBean.getQuantity());
-            String number = String.valueOf(mBean.getQuantity());
+            String numString = String.format(ResUtils.getString(R.string.format_order_total), mBean.getNumber());
+            String number = String.valueOf(mBean.getNumber());
             int index = numString.indexOf(number);
             SpannableStringBuilder builder = new SpannableStringBuilder(numString);
             ForegroundColorSpan span = new ForegroundColorSpan(Color.parseColor("#f94956"));

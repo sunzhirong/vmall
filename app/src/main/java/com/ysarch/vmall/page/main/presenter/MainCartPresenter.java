@@ -288,7 +288,7 @@ public class MainCartPresenter extends BasePresenter<MainCartFragment> {
                                         List<GenerateOrderConfirmResult.CartPromotionItemListBean> cartList = bean.getCartPromotionItemList();
                                         for (int i = 0;i<cartList.size();i++){
                                             GenerateOrderConfirmResult.CartPromotionItemListBean cartBean = cartList.get(i);
-                                            cartBean.setNumber(cartList.size());
+                                            cartBean.setNumber(bean.getProductQuantity());
                                             cartBean.setAmount(bean.getAmount());
                                             cartBean.setDollorDelivery(bean.getDollorDelivery());
                                             cartBean.setType(CartPromotionGoodsVH.TYPE_NORMAL);

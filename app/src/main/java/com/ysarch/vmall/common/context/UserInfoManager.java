@@ -33,15 +33,15 @@ public class UserInfoManager {
         EventCenter.getInstance().notify(NotificationDef.EVENT_USER_ACCOUNT_CHANGE);
     }
 
-    public static void onLoginSuccess(UserInfoBean userInfoBean) {
-        setUser(userInfoBean);
-        CacheHelper.putString(CacheKeys.KEY_APP_ACCOUNT, userInfoBean.getAccount());
-        CacheHelper.putString(CacheKeys.KEY_APP_USER, new Gson().toJson(userInfoBean));
-
-        Log.e("user1",new Gson().toJson(userInfoBean));
-
-        EventCenter.getInstance().notify(NotificationDef.EVENT_USER_ACCOUNT_CHANGE);
-    }
+//    public static void onLoginSuccess(UserInfoBean userInfoBean) {
+//        setUser(userInfoBean);
+//        CacheHelper.putString(CacheKeys.KEY_APP_ACCOUNT, userInfoBean.getAccount());
+//        CacheHelper.putString(CacheKeys.KEY_APP_USER, new Gson().toJson(userInfoBean));
+//
+//        Log.e("user1",new Gson().toJson(userInfoBean));
+//
+//        EventCenter.getInstance().notify(NotificationDef.EVENT_USER_ACCOUNT_CHANGE);
+//    }
 
 
 //    public static void updateToken(String token, String tokenHeader) {
@@ -110,17 +110,17 @@ public class UserInfoManager {
 //    }
 
 
-    public static void updateWallet(float amount) {
-        if (getUser() == null) {
-          return;
-        }
-        sUserInfoBean.setWallet(amount);
-
-        CacheHelper.putString(CacheKeys.KEY_APP_ACCOUNT, sUserInfoBean.getAccount());
-        CacheHelper.putString(CacheKeys.KEY_APP_USER, new Gson().toJson(sUserInfoBean));
-        Log.e("user3",new Gson().toJson(sUserInfoBean));
-        EventCenter.getInstance().notify(NotificationDef.EVENT_USER_INFO_CHANGE);
-    }
+//    public static void updateWallet(float amount) {
+//        if (getUser() == null) {
+//          return;
+//        }
+//        sUserInfoBean.setWallet(amount);
+//
+//        CacheHelper.putString(CacheKeys.KEY_APP_ACCOUNT, sUserInfoBean.getAccount());
+//        CacheHelper.putString(CacheKeys.KEY_APP_USER, new Gson().toJson(sUserInfoBean));
+//        Log.e("user3",new Gson().toJson(sUserInfoBean));
+//        EventCenter.getInstance().notify(NotificationDef.EVENT_USER_INFO_CHANGE);
+//    }
 
 
     public static void updateToken(String token, String tokenHeader) {
@@ -221,14 +221,14 @@ public class UserInfoManager {
         }
     }
 
-    public static void updateAndSaveUserInfo(UserInfoBean userInfoBean) {
-        setUser(userInfoBean);
-        CacheHelper.putString(CacheKeys.KEY_APP_ACCOUNT, userInfoBean.getAccount());
-        CacheHelper.putString(CacheKeys.KEY_APP_USER, new Gson().toJson(userInfoBean));
-        Log.e("user7",new Gson().toJson(userInfoBean));
-
-        EventCenter.getInstance().notify(NotificationDef.EVENT_USER_INFO_CHANGE);
-    }
+//    public static void updateAndSaveUserInfo(UserInfoBean userInfoBean) {
+//        setUser(userInfoBean);
+//        CacheHelper.putString(CacheKeys.KEY_APP_ACCOUNT, userInfoBean.getAccount());
+//        CacheHelper.putString(CacheKeys.KEY_APP_USER, new Gson().toJson(userInfoBean));
+//        Log.e("user7",new Gson().toJson(userInfoBean));
+//
+//        EventCenter.getInstance().notify(NotificationDef.EVENT_USER_INFO_CHANGE);
+//    }
 
     public static boolean judeIsLogin(Activity context) {
         if (!UserInfoManager.isLogin()) {

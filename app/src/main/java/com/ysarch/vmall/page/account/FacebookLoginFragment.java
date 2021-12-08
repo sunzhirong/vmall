@@ -141,7 +141,7 @@ public class FacebookLoginFragment extends AbsAccountFragment<FaceBookLoginPrese
 
     @OnClick(R.id.tv_protocol_service)
     void onProtocolServiceClick(View view) {
-        NavHelper.startActivity(this, CommonWebActivity .class, CommonWebActivity.getBundle("http://portal.sabayshop.club/PrivacyPolicy.html"));
+        NavHelper.startActivity(this, CommonWebActivity .class, CommonWebActivity.getBundle("http://47.112.237.160:8989/PrivacyPolicy.html"));
     }
 
     @Override

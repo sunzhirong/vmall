@@ -7,6 +7,7 @@ import com.google.gson.JsonSyntaxException;
 
 import org.json.JSONException;
 
+import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
@@ -95,7 +96,11 @@ public abstract class ApiSubscriber<T> extends ResourceSubscriber<T> {
                 }
                 XLog.d("apiException=>" + apiException.getErrorMessage());
             } else {
-                error = new NetError(NetError.NetError_Msg, NetError.OtherError);
+                if(e instanceof ConnectException){
+                    error = new NetError(NetError.NetError_Msg, NetError.OtherError);
+                }else {
+                    error = new NetError(e, NetError.OtherError);
+                }
             }
         } else {
             error = (NetError) e;

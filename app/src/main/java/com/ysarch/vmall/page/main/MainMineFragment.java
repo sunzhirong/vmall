@@ -18,7 +18,9 @@ import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.common.event.NotificationDef;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
 import com.ysarch.vmall.common.imageloader.ImageLoadConfig;
+import com.ysarch.vmall.domain.constant.CacheKeys;
 import com.ysarch.vmall.domain.constant.Constants;
+import com.ysarch.vmall.helper.CacheHelper;
 import com.ysarch.vmall.page.account.AccountActivity;
 import com.ysarch.vmall.page.address.AddressListActivity;
 import com.ysarch.vmall.page.coupon.CouponActivity;
@@ -36,6 +38,7 @@ import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.event.EventCenter;
 import com.yslibrary.event.IEventListener;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -215,13 +218,13 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
                     int lanId = AppContext.getsInstance().getLanguageEntity().getLanId();
                     switch (lanId){
                         case Constants.ID_LAN_KM:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/km/index.html","使用帮助页"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/km/index.html","使用帮助页"));
                             break;
                         case Constants.ID_LAN_ZH:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/zh/index.html","使用帮助页"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/en/index.html","使用帮助页"));
                             break;
                         default:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(" http://portal.sabayshop.club/help/en/index.html","使用帮助页"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/zh/index.html","使用帮助页"));
                             break;
                     }
 

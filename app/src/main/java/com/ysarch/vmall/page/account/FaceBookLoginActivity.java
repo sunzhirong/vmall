@@ -36,42 +36,6 @@ import java.util.Arrays;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-//public class FaceBookLoginActivity  extends BaseTitleActivity {
-//    private FacebookLoginFragment mFragment;
-//
-//    @Override
-//    protected String getCustomTitle() {
-//        return "";
-//    }
-//
-////    @Override
-////    protected View initBarRight() {
-////        TextView textView = new TextView(this);
-////        textView.setTextColor(0xff666666);
-////        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-////        textView.setText(getString(R.string.label_add_address));
-////        return textView;
-////    }
-//
-//    @Override
-//    protected Fragment createFragment() {
-//        mFragment = new FacebookLoginFragment();
-//        return mFragment;
-//    }
-//
-//
-//    @Override
-//    protected void onTitlebarRightClick(View view) {
-//        finish();
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (mFragment != null) {
-//            mFragment.onActivityResult(requestCode, resultCode, data);
-//        }
-//    }
 public class FaceBookLoginActivity  extends AppCompatActivity {
     private static final String EMAIL = "email";
     private CallbackManager callbackManager;

@@ -14,22 +14,22 @@ import cn.droidlover.xdroidmvp.net.NetError;
 public class SplashPresenter extends BasePresenter<SplashActivity> {
 
     public void refreshToken() {
-        AccountLoader.getInstance().refreshToken()
-                .compose(dontShowDialog())
-                .compose(getV().bindToLifecycle())
-                .subscribe(new ApiSubscriber<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        UserInfoManager.updateToken(loginResult.getToken(),loginResult.getTokenHead());
-                        getV().afterResreshToken();
-                    }
-
-                    @Override
-                    protected void onFail(NetError error) {
-                        super.onFail(error);
-                        UserInfoManager.logout();
-                        getV().afterResreshToken();
-                    }
-                });
+//        AccountLoader.getInstance().refreshToken()
+//                .compose(dontShowDialog())
+//                .compose(getV().bindToLifecycle())
+//                .subscribe(new ApiSubscriber<LoginResult>() {
+//                    @Override
+//                    public void onSuccess(LoginResult loginResult) {
+//                        UserInfoManager.updateToken(loginResult.getToken(),loginResult.getTokenHead());
+//                        getV().afterResreshToken();
+//                    }
+//
+//                    @Override
+//                    protected void onFail(NetError error) {
+//                        super.onFail(error);
+//                        UserInfoManager.logout();
+//                        getV().afterResreshToken();
+//                    }
+//                });
     }
 }

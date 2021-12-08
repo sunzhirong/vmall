@@ -94,7 +94,8 @@ public class SplashActivity extends XActivity<SplashPresenter> {
         checkPermissions();
 
         if(UserInfoManager.isLogin()&& QMUIDisplayHelper.hasInternet(context)){
-            getPresenter().refreshToken();
+//            getPresenter().refreshToken();
+            sendMsg(STATUS_TOKEN);
         } else {
             sendMsg(STATUS_TOKEN);
         }

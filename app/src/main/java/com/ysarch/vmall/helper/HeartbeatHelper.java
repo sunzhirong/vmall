@@ -40,7 +40,7 @@ public class HeartbeatHelper implements IEventListener {
             mTimerCallback = new YSTimer.TimerCallback() {
                 @Override
                 protected void onTime() {
-                    checkHasNewMsg();
+//                    checkHasNewMsg();
                 }
             };
         }

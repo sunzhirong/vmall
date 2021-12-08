@@ -103,13 +103,13 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
                         int lanId = AppContext.getsInstance().getLanguageEntity().getLanId();
                         switch (lanId){
                             case Constants.ID_LAN_KM:
-                                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/km/index.html"));
+                                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/km/index.html"));
                                 break;
                             case Constants.ID_LAN_ZH:
-                                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/zh/index.html"));
+                                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/en/index.html"));
                                 break;
                             default:
-                                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(" http://portal.sabayshop.club/help/en/index.html"));
+                                NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/zh/index.html"));
                                 break;
                         }
                         break;
@@ -155,13 +155,13 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
                     int lanId = AppContext.getsInstance().getLanguageEntity().getLanId();
                     switch (lanId){
                         case Constants.ID_LAN_KM:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/km/index.html"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/km/index.html"));
                             break;
                         case Constants.ID_LAN_ZH:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/help/zh/index.html"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/en/index.html"));
                             break;
                         default:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle(" http://portal.sabayshop.club/help/en/index.html"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/zh/index.html"));
                             break;
                     }
                     break;
@@ -217,6 +217,7 @@ public class ShouyeWelcomeFragment extends CommonPureListFragment<ShouYeWelcomeP
     @Override
     public void initData(Bundle savedInstanceState) {
         getPresenter().requestContents();
+        getPresenter().refreshToken();
     }
 
     @Override

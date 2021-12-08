@@ -54,6 +54,15 @@ public class GenerateOrderConfirmResult implements Serializable {
 //        private int sellerId;
         private int source;
         private List<CartPromotionItemListBean> cartPromotionItemList;
+        private int productQuantity;
+
+        public int getProductQuantity() {
+            return productQuantity;
+        }
+
+        public void setProductQuantity(int productQuantity) {
+            this.productQuantity = productQuantity;
+        }
 
         public List<CartPromotionItemListBean> getCartPromotionItemList() {
             return cartPromotionItemList;

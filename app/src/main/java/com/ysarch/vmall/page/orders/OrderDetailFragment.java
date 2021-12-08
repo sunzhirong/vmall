@@ -199,7 +199,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         }
 
         if (mOrderBean != null) {
-//            updateData();
+            updateData();
         }
 
         getPresenter().requestOrderDetail(mOrderId);
@@ -463,11 +463,13 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
                 mTVBlackOpt.setText(ResUtils.getString(R.string.label_cancel));
                 mTVStatusLabel.setText(getWholeOrderStatus(ResUtils.getString(R.string.label_order_unpay)));
                 //倒计时
-                if (mCountDownUtils == null&&mOrderBean.getRestTime()!=0) {
+                if (mCountDownUtils == null) {
                     mCountDownUtils = new OrderCountDownUtils(getContext(), mOrderBean.getRestTime()*1000, 1000, mTvCountDown,
                             "");
                 }
-                mCountDownUtils.start();
+                if(mOrderBean.getRestTime()!=0) {
+                    mCountDownUtils.start();
+                }
                 mIvOrderStatus.setBackground(getResources().getDrawable(R.drawable.ic_order_status_unpay));
                 break;
             //待审核

@@ -168,7 +168,7 @@ public class AccountActivity extends AppCompatActivity {
 //                break;
 //            case R.id.tv_protocol_service:
 ////                UserAgreementActivity.toUserAgreementActivity(this, UserAgreementActivity.screct);
-//                NavHelper.startActivity(this, CommonWebActivity.class, CommonWebActivity.getBundle("http://portal.sabayshop.club/PrivacyPolicy.html"));
+//                NavHelper.startActivity(this, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/PrivacyPolicy.html"));
 //                break;
             case R.id.iv_close_account:
                 setResult(Activity.RESULT_CANCELED);

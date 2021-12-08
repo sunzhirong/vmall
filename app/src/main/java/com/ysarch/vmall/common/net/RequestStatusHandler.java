@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.ysarch.vmall.R;
+import com.ysarch.vmall.VMallApplication;
 import com.ysarch.vmall.common.context.CustomActivityManager;
 import com.ysarch.vmall.common.context.ThreadManager;
 import com.ysarch.vmall.common.context.UserInfoManager;
@@ -13,6 +14,7 @@ import com.ysarch.vmall.page.account.AccountActivity;
 import com.ysarch.vmall.utils.NavHelper;
 import com.ysarch.vmall.utils.ResUtils;
 import com.ysarch.vmall.utils.StringUtils;
+import com.yslibrary.utils.ToastUtils;
 
 import org.json.JSONObject;
 
@@ -24,6 +26,7 @@ import okio.Buffer;
 import okio.BufferedSource;
 
 public class RequestStatusHandler implements RequestHandler {
+
     public static RequestStatusHandler getInstance() {
         return SingletonHolder.INSTANCE;
     }
@@ -45,7 +48,6 @@ public class RequestStatusHandler implements RequestHandler {
 
                     JSONObject jsonObject = new JSONObject(buffer.clone().readString(StringUtils.UTF8));
                     int businessCode = jsonObject.getInt("code");
-
                     if (NetCode.needToLogin(businessCode)) {
                         ThreadManager.getInstance().mainThread(new Runnable() {
                             @Override

@@ -1,9 +1,12 @@
 package com.ysarch.vmall.page.main.presenter;
 
 import com.ysarch.uibase.base.BasePresenter;
+import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.domain.bean.GoodsItemBeanV2;
 import com.ysarch.vmall.domain.bean.HomeContentResult;
 import com.ysarch.vmall.domain.bean.ListResult;
+import com.ysarch.vmall.domain.bean.LoginResult;
+import com.ysarch.vmall.domain.services.AccountLoader;
 import com.ysarch.vmall.domain.services.GoodsLoader;
 import com.ysarch.vmall.page.main.shoye.ShouyeWelcomeFragment;
 import com.yslibrary.utils.CollectionUtils;
@@ -17,6 +20,24 @@ import cn.droidlover.xdroidmvp.net.NetError;
 public class ShouYeWelcomePresenter extends BasePresenter<ShouyeWelcomeFragment> {
 
     public boolean hasMore = true;
+
+    public void refreshToken() {
+        AccountLoader.getInstance().refreshToken()
+                .compose(dontShowDialog())
+                .compose(getV().bindToLifecycle())
+                .subscribe(new ApiSubscriber<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        UserInfoManager.updateToken(loginResult.getToken(),loginResult.getTokenHead());
+                    }
+
+                    @Override
+                    protected void onFail(NetError error) {
+                        super.onFail(error);
+                        UserInfoManager.logout();
+                    }
+                });
+    }
 
     public void requestRecGoods(int page) {
         GoodsLoader.getInstance().requestRecommendGoods(page)

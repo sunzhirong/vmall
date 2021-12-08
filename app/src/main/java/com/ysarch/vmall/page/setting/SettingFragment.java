@@ -13,6 +13,7 @@ import com.ysarch.uibase.dialog.SimpleDialogWithTwoBtn;
 import com.ysarch.uibase.textview.CompatTextView;
 import com.ysarch.vmall.BuildConfig;
 import com.ysarch.vmall.R;
+import com.ysarch.vmall.VMallApplication;
 import com.ysarch.vmall.common.context.AppContext;
 import com.ysarch.vmall.common.context.UserInfoManager;
 import com.ysarch.vmall.common.imageloader.BeeGlide;
