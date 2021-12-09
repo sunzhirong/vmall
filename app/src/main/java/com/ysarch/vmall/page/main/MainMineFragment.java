@@ -221,10 +221,10 @@ public class MainMineFragment extends BaseFragment<MainMinePresenter> implements
                             NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/km/index.html","使用帮助页"));
                             break;
                         case Constants.ID_LAN_ZH:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/en/index.html","使用帮助页"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/zh/index.html","使用帮助页"));
                             break;
                         default:
-                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/zh/index.html","使用帮助页"));
+                            NavHelper.startActivity(context, CommonWebActivity.class, CommonWebActivity.getBundle("http://47.112.237.160:8989/help/en/index.html","使用帮助页"));
                             break;
                     }
 

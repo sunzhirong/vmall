@@ -47,17 +47,17 @@ android {
         }
 
         debug {
-            debuggable true
-//            shrinkResources true
-//            minifyEnabled true
-            zipAlignEnabled true
-            signingConfig signingConfigs.debug
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//            debuggable false
+//            debuggable true
+////            shrinkResources true
+////            minifyEnabled true
 //            zipAlignEnabled true
 //            signingConfig signingConfigs.debug
-//            buildConfigField "boolean", "ISDEBUG", "true"
 //            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            buildConfigField "boolean", "ISDEBUG", "true"
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
