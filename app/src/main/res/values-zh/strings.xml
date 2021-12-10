@@ -203,7 +203,7 @@
 
     <string name="label_coupon_amount_reduce">优惠减免</string>
 
-    <string name="label_pay_amount_order_detail">商品实付</string>
+    <string name="label_pay_amount_order_detail">商品合计</string>
 
     <string name="label_server_tips_detail">服务费</string>
 
@@ -616,7 +616,7 @@
 
     <string name="label_freight_voucher">运费券</string>
 
-    <string name="label_freight_paid_in">运费实付</string>
+    <string name="label_freight_paid_in">运费合计</string>
 
     <string name="tb_delivery">，淘宝运费:</string>
 

@@ -154,23 +154,23 @@ public class OrderHistoryItemVH extends AbsViewHolder {
 //        }
 //        mTvTotalPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_total),VMallUtils.convertPriceString(mOrderBean.getPayAmount())));
         mTvPaidPrice.setText(String.format(ResUtils.getString(R.string.format_item_goods_paid),VMallUtils.convertPriceString(mOrderBean.getAlreadyPayAmount())));
-        mTvUnpaidPrice.setText(VMallUtils.convertPriceString(mOrderBean.getPayAmount()));
+        mTvUnpaidPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
 
 
 
         switch (mOrderBean.getStatus()) {
-            case Constants.STATUS_ORDER_UNPAY:
-                mTVRedBtn.setVisibility(View.VISIBLE);
-                mTVBlackBtn.setVisibility(View.VISIBLE);
-                mTVRedBtn.setText(ResUtils.getString(R.string.label_order_to_pay));
-                mTVBlackBtn.setText(ResUtils.getString(R.string.label_order_cancel));
-                mTVStatusLabel.setText(ResUtils.getString(R.string.label_order_unpay));
-                mLlOtp.setVisibility(View.VISIBLE);
+                case Constants.STATUS_ORDER_UNPAY:
+                    mTVRedBtn.setVisibility(View.VISIBLE);
+                    mTVBlackBtn.setVisibility(View.VISIBLE);
+                    mTVRedBtn.setText(ResUtils.getString(R.string.label_order_to_pay));
+                    mTVBlackBtn.setText(ResUtils.getString(R.string.label_order_cancel));
+                    mTVStatusLabel.setText(ResUtils.getString(R.string.label_order_unpay));
+                    mLlOtp.setVisibility(View.VISIBLE);
 
+//                    mTvUnpaidPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
+                    setUnpaidVisible(true);
 
-                setUnpaidVisible(true);
-
-                break;
+                    break;
             case Constants.STATUS_ORDER_AUDIT_WAITING:
                 mTVRedBtn.setVisibility(View.GONE);
                 mTVBlackBtn.setVisibility(View.GONE);

@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ysarch.uibase.base.BaseFragment;
@@ -169,6 +170,9 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
     @BindView(R.id.tv_tb_freight_price)
     TextView mTvTbFreightPrice;
 
+    @BindView(R.id.ll_bottom)
+    LinearLayout mLlBottom;
+
 
     private long mOrderId = -1;
 
@@ -277,7 +281,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         }
 
         mTVTotalAmount.setText(VMallUtils.convertPriceString(mOrderBean.getTotalAmount()));
-        mTVPayAmount.setText(VMallUtils.convertPriceString(mOrderBean.getPayAmount()));
+        mTVPayAmount.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
 
         // 发货方式
         String deliveryType = AppContext.getsInstance().getModeDelivery().get(0).getDesc();
@@ -350,8 +354,10 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
 ////            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getPayAmount()));
 //            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getOrderAmount()));
 //        }
-        mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getTotalAmount()));
-
+        mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
+        if(mOrderBean.getRestAmount()==0){
+            mLlBottom.setVisibility(View.GONE);
+        }
         //运费相关
         mTvChinaFreightDetail.setText(VMallUtils.convertPriceString(mOrderBean.getCnFreight()));
         mTvTbFreightPrice.setText(VMallUtils.convertPriceString(mOrderBean.getCnFreight()));
@@ -647,7 +653,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
 //        }else {
 //            mPayDialog.setPrice(mOrderBean.getFreightAmount());
 //        }
-        mPayDialog.setPrice(mOrderBean.getPayAmount());
+        mPayDialog.setPrice(mOrderBean.getRestAmount());
         mPayDialog.show(getFragmentManager(),"test");
     }
 
