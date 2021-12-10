@@ -203,7 +203,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         }
 
         if (mOrderBean != null) {
-            updateData();
+            updateData(false);
         }
 
         getPresenter().requestOrderDetail(mOrderId);
@@ -248,7 +248,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         }
     }
 
-    private void updateData() {
+    private void updateData(boolean startCountDown) {
 //        mOrderItemListBeans = mOrderBean.getOrderItemList();
         List<OrderItemListBean> list = new ArrayList<>();
         List<OrderBean.SameSellerCartPromotionBean> sameList = mOrderBean.getSameSellerOrderItemList();
@@ -355,7 +355,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
 //            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getOrderAmount()));
 //        }
         mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
-        if(mOrderBean.getRestAmount()==0){
+        if(mOrderBean.getRestAmount()<0){
             mLlBottom.setVisibility(View.GONE);
         }
         //运费相关
@@ -403,7 +403,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         //仓库数据
         updateWarehouse();
         //状态信息
-        updateStatusUI();
+        updateStatusUI(startCountDown);
     }
 
     private int needShow(double number){
@@ -459,7 +459,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
      * public static final int STATUS_ORDER_AUDIT_WAITING = 5;                 //待审核
      */
 
-    private void updateStatusUI() {
+    private void updateStatusUI(boolean startCountDown) {
         switch (mOrderBean.getStatus()) {
             //待支付
             case Constants.STATUS_ORDER_UNPAY:
@@ -473,7 +473,7 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
                     mCountDownUtils = new OrderCountDownUtils(getContext(), mOrderBean.getRestTime()*1000, 1000, mTvCountDown,
                             "");
                 }
-                if(mOrderBean.getRestTime()!=0) {
+                if(mOrderBean.getRestTime()!=0 &&startCountDown) {
                     mCountDownUtils.start();
                 }
                 mIvOrderStatus.setBackground(getResources().getDrawable(R.drawable.ic_order_status_unpay));
@@ -608,12 +608,12 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
 
     public void onCancelSucc(OrderBean orderBean) {
         mTvCountDown.setVisibility(View.GONE);
-        updateStatusUI();
+        updateStatusUI(false);
     }
 
     public void onDataSucc(OrderBean orderBean) {
         mOrderBean = orderBean;
-        updateData();
+        updateData(true);
 
     }
 

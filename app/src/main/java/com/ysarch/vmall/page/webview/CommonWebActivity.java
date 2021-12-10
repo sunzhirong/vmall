@@ -88,13 +88,13 @@ public class CommonWebActivity extends XActivity<CommonWebPresenter> {
     }
 
     /**
-     * @param title
+     * @param url
      * @param pagename
      * @return
      */
-    public static Bundle getBundle(String title, String pagename) {
+    public static Bundle getBundle(String url, String pagename) {
         Bundle bundle = new Bundle();
-        bundle.putString(ARG_TITLE, title);
+        bundle.putString(ARG_URL, url);
         bundle.putString(BundleKey.ARG_TALKINGDATA_PAGE_NAME, pagename);
         return bundle;
     }
