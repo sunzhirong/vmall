@@ -20,8 +20,11 @@ import com.ysarch.vmall.domain.constant.BundleKey;
 import com.ysarch.vmall.domain.enums.MainPageTag;
 import com.ysarch.vmall.page.main.shoye.MainShouYeFragment;
 import com.ysarch.vmall.utils.LanguageUtils;
+import com.ysarch.vmall.utils.Log;
 import com.ysarch.vmall.utils.UpdateAppHttpUtil;
+import com.ysarch.vmall.utils.VMallUtils;
 import com.yslibrary.utils.FragmentTransUtil;
+import com.yslibrary.utils.ToastUtils;
 
 import java.util.Locale;
 
@@ -78,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
 //                        .update();
 //            }
 //        },5000);
+
+//        ToastUtils.showShortToast(this, VMallUtils.getKeyHash(this));
     }
 
 

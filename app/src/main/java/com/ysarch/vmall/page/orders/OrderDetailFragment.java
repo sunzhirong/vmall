@@ -281,7 +281,8 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
         }
 
         mTVTotalAmount.setText(VMallUtils.convertPriceString(mOrderBean.getTotalAmount()));
-        mTVPayAmount.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
+//        mTVPayAmount.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
+        mTVPayAmount.setText(VMallUtils.convertPriceString(mOrderBean.getPayAmount()));
 
         // 发货方式
         String deliveryType = AppContext.getsInstance().getModeDelivery().get(0).getDesc();
@@ -347,15 +348,8 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
             mTvOrderPickCode.setVisibility(View.GONE);
         }
 
-
-//        if(mOrderBean.getStatus()==Constants.STATUS_ORDER_DELIVERED) {
-//            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
-//        }else {
-////            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getPayAmount()));
-//            mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getOrderAmount()));
-//        }
         mTvBottomeTotalPrice.setText(VMallUtils.convertPriceString(mOrderBean.getRestAmount()));
-        if(mOrderBean.getRestAmount()<0){
+        if(mOrderBean.getRestAmount()<=0){
             mLlBottom.setVisibility(View.GONE);
         }
         //运费相关
@@ -469,12 +463,12 @@ public class OrderDetailFragment extends BaseFragment<OrderDetailPresenter> {
                 mTVBlackOpt.setText(ResUtils.getString(R.string.label_cancel));
                 mTVStatusLabel.setText(getWholeOrderStatus(ResUtils.getString(R.string.label_order_unpay)));
                 //倒计时
-                if (mCountDownUtils == null) {
-                    mCountDownUtils = new OrderCountDownUtils(getContext(), mOrderBean.getRestTime()*1000, 1000, mTvCountDown,
-                            "");
-                }
                 if(mOrderBean.getRestTime()!=0 &&startCountDown) {
-                    mCountDownUtils.start();
+                    if (mCountDownUtils == null) {
+                        mCountDownUtils = new OrderCountDownUtils(getContext(), mOrderBean.getRestTime()*1000, 1000, mTvCountDown,
+                                "");
+                        mCountDownUtils.start();
+                    }
                 }
                 mIvOrderStatus.setBackground(getResources().getDrawable(R.drawable.ic_order_status_unpay));
                 break;

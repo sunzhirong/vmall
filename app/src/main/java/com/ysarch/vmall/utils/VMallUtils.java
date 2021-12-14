@@ -1,6 +1,11 @@
 package com.ysarch.vmall.utils;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.text.TextUtils;
+import android.util.Base64;
 
 import com.alibaba.fastjson.JSON;
 import com.ysarch.vmall.R;
@@ -14,6 +19,8 @@ import org.jsoup.select.Elements;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -335,4 +342,27 @@ public class VMallUtils {
         return simpleDateFormat.format(date);
     }
 
+
+    /**
+     * 注意运行的时候，app需要正式的签名
+     * @param context
+     */
+    public static String getKeyHash(Context context) {
+        try {
+            PackageInfo info = null;
+            info = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest messageDigest = null;
+                messageDigest = MessageDigest.getInstance("SHA");
+                messageDigest.update(signature.toByteArray());
+                String hs = Base64.encodeToString(messageDigest.digest(), Base64.DEFAULT);
+                return hs;
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }

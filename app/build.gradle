@@ -15,7 +15,8 @@ android {
 //        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             ndk {
                 //选择要添加的对应cpu类型的.so库
-                abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86','armeabi'
+//                abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86','armeabi'
+                abiFilters 'arm64-v8a', 'armeabi'
                 //还可以添加 'armeabi', 'x86'
             }
     }
@@ -42,7 +43,7 @@ android {
 //            shrinkResources true
             minifyEnabled false
             zipAlignEnabled true
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
@@ -55,7 +56,7 @@ android {
 //            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             debuggable true
             minifyEnabled false
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             buildConfigField "boolean", "ISDEBUG", "true"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -71,13 +72,13 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
-    packagingOptions {
-        doNotStrip "*/armeabi-v7a/*.so"
-        doNotStrip "*/x86/*.so"
-        doNotStrip "*/arm64-v8a/*.so"
-        doNotStrip "*/x86_64/*.so"
-        doNotStrip "armeabi.so"
-    }
+//    packagingOptions {
+//        doNotStrip "*/armeabi-v7a/*.so"
+//        doNotStrip "*/x86/*.so"
+//        doNotStrip "*/arm64-v8a/*.so"
+//        doNotStrip "*/x86_64/*.so"
+//        doNotStrip "armeabi.so"
+//    }
 
     sourceSets {
         main {
@@ -177,5 +178,5 @@ dependencies {
     implementation 'com.qianwen:okhttp-utils:3.8.0'
 
     //talkingData
-    implementation files('libs/SaaS_AppAnalytics_Android_SDK_V4.0.69.jar')
+    implementation files('libs/GooglePlay_AppAnalytics_Android_SDK_V4.0.69.jar')
 }

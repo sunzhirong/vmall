@@ -85,6 +85,11 @@ public class GoodsPictureDetailsActivity extends BaseActivity {
                 }
             }
 
+            if(mLocalSkuEntities.size()==0){
+                finish();
+                return;
+            }
+
             horizontalAdapter = new GoodsPictureRvAdapter(context,new BeeGlide(context));
             mRecyclerview.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
             mRecyclerview.setAdapter(horizontalAdapter);

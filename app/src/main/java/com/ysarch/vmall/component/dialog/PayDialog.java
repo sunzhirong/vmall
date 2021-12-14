@@ -163,7 +163,8 @@ public class PayDialog extends DialogFragment {
                 break;
             case R.id.tv_confirm:
                 if (UserInfoManager.judeIsLogin(getActivity())) {
-                    if (UserInfoManager.getUser().getWallet() > mPrice) {
+//                    if (UserInfoManager.getUser().getWallet() >= mPrice) {
+                    if (Math.abs(UserInfoManager.getUser().getWallet() - mPrice) < 0.000001) {
                         if (UserInfoManager.getUser().isHasPayPassword()) {
                             mLlPayConfirm.startAnimation(slide_left_to_left);
                             mLlPayConfirm.setVisibility(View.GONE);
