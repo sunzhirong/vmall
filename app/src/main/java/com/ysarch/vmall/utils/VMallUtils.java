@@ -1,6 +1,8 @@
 package com.ysarch.vmall.utils;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -364,5 +366,17 @@ public class VMallUtils {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public static String getMeta(Context context){
+        try {
+            ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            return appInfo.metaData.getString("TD_CHANNEL_ID");
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return "";
+        }
+
+
     }
 }

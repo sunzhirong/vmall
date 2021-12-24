@@ -34,5 +34,6 @@ public class ApiUrl {
 //        return "http://" + RELEASE_HOST + "/";
 
         return "http://" + DEV_HOST_SZ + "/";
+//        return "http://" + "47.243.170.181:8085" + "/";
     }
 }

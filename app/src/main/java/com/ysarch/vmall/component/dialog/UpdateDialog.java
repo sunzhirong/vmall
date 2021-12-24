@@ -22,6 +22,8 @@ import com.ysarch.vmall.common.imageloader.ImageLoadConfig;
 import com.ysarch.vmall.domain.bean.TBShareCmdBean;
 import com.ysarch.vmall.domain.bean.UpdateBean;
 import com.ysarch.vmall.utils.Log;
+import com.ysarch.vmall.utils.NavHelper;
+import com.ysarch.vmall.utils.VMallUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,7 +68,7 @@ public class UpdateDialog extends Dialog {
         Log.e("UpdateDialog","setUpdateBean");
         mTvUpdateVersion.setText("V"+updateBean.getVersionName());
         mTvUpdateInfo.setText(updateBean.getModifyContent());
-//        mIvClose.setVisibility(updateBean.isForceUpdate()?View.GONE:View.VISIBLE);
+        mIvClose.setVisibility(updateBean.isForceUpdate()?View.GONE:View.VISIBLE);
         mTvUpdateTitle.setText(updateBean.getTitle());
     }
 
@@ -74,7 +76,11 @@ public class UpdateDialog extends Dialog {
     void onViewClick(View view){
         switch (view.getId()){
             case R.id.tv_update:
-                launchAppDetail(BuildConfig.APPLICATION_ID,"com.android.vending");
+                if("play.google.com".equals(VMallUtils.getMeta(getContext()))){
+                    launchAppDetail(BuildConfig.APPLICATION_ID,"com.android.vending");
+                }else {
+                    NavHelper.startWeb(getContext(),mUpdateBean.getPageUrl());
+                }
                 if(mUpdateBean.isForceUpdate()){return;}
                 dismiss();
                 break;

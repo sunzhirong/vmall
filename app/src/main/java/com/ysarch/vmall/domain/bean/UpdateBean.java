@@ -6,8 +6,17 @@ public class UpdateBean {
     private String modifyContent;
     private String versionName;
     private String title;
+    private String pageUrl;
     private int versionCode;
     private int os;
+
+    public String getPageUrl() {
+        return pageUrl;
+    }
+
+    public void setPageUrl(String pageUrl) {
+        this.pageUrl = pageUrl;
+    }
 
     public boolean isCurrentVersionNewest() {
         return currentVersionNewest;
