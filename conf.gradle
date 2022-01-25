@@ -34,8 +34,8 @@ ext {
             minSdkVersion     : 21,
             targetSdkVersion  : 30,
 
-            versionCode       : 6,
-            versionName       : '1.0.2',
+            versionCode       : 7,
+            versionName       : '1.0.3',
 
             VSupportSdk       : '27.1.0',
 

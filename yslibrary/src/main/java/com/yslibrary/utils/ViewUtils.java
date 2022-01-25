@@ -119,17 +119,17 @@ public class ViewUtils {
      *
      * @param recyclerView
      */
-    public static void scrollRecyclerViewToTop(final RecyclerView recyclerView) {
-        if (recyclerView != null) {
-            recyclerView.smoothScrollToPosition(0);
-            recyclerView.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    recyclerView.scrollToPosition(0);
-                }
-            }, 200);
-        }
-    }
+//    public static void scrollRecyclerViewToTop(final RecyclerView recyclerView) {
+//        if (recyclerView != null) {
+//            recyclerView.smoothScrollToPosition(0);
+//            recyclerView.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    recyclerView.scrollToPosition(0);
+//                }
+//            }, 200);
+//        }
+//    }
 
     /**
      * 获取忽略两端空白的字符串

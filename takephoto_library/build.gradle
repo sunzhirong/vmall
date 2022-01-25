@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply from: "../conf.gradle"
 android {
     compileSdkVersion 30
-    buildToolsVersion '26.0.3'
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
         minSdkVersion 14
